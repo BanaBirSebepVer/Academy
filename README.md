@@ -11,7 +11,7 @@
 > **Automated Deployments**: Continuous integration and deployment is fully automated via GitHub Actions ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)) on every push to `main`.
 
 ---
-
+ 
 ## 1. Project Overview & Mission
 
 This repository contains the complete source code, course materials, publication records, and digital essays for the personal academic platform of **Can Bekcan** — Lecturer and Researcher in New Media, Journalism, and Computational Communication at Eastern Mediterranean University (*Doğu Akdeniz Üniversitesi*).

@@ -1,7 +1,7 @@
 # Academy — Academic Portfolio, Course Hub & Research Archive
 
 [![Deploy to GitHub Pages](https://github.com/canbekcan/Academy/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/canbekcan/Academy/actions/workflows/deploy.yml)
-[![Jekyll Engine](https://img.shields.io/badge/Jekyll-3.9.x-red.svg?style=flat-square&logo=jekyll)](https://jekyllrb.com/)
+[![Jekyll Engine](https://img.shields.io/github/gemversion/canbekcan/Academy/jekyll?style=flat-square&logo=jekyll&logoColor=white&color=blue)](https://jekyllrb.com/)
 [![Ruby Version](https://img.shields.io/badge/Ruby-%3E%3D%203.0-ruby.svg?style=flat-square&logo=ruby)](https://www.ruby-lang.org/)
 [![License: MIT](https://img.shields.io/badge/Code%20License-MIT-blue.svg?style=flat-square)](./LICENSE)
 [![Content License: CC BY-NC-SA 4.0](https://img.shields.io/badge/Content-CC%20BY--NC--SA%204.0-lightgrey.svg?style=flat-square&logo=creative-commons)](https://creativecommons.org/licenses/by-nc-sa/4.0/)

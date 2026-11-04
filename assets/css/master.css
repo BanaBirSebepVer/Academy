@@ -1,0 +1,50 @@
+/**
+ * Master Stylesheet
+ * Consolidates and imports all theme and custom stylesheets
+ * Organized into dedicated, human-friendly modular files
+ */
+
+/* Icons */
+@import url("font-awesome.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/v4-shims.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css");
+
+/* Framework & Grid */
+@import url("bootstrap.css");
+
+/* Core Design System */
+@import url("modules/color.css");
+@import url("modules/typography.css");
+@import url("modules/layout.css");
+@import url("modules/forms.css");
+
+/* Sidebar & Navigation */
+@import url("modules/sidebar.css");
+@import url("modules/profile.css");
+@import url("modules/navigation.css");
+@import url("modules/flags.css");
+@import url("modules/social.css");
+@import url("modules/footer.css");
+
+/* Academic Lists & Components */
+@import url("modules/card.css");
+@import url("modules/dates.css");
+@import url("modules/timeline.css");
+@import url("modules/details.css");
+
+/* Page Layouts & Content */
+@import url("modules/homepage.css");
+@import url("modules/lesson.css");
+@import url("modules/lesson-panel.css");
+@import url("modules/publication.css");
+@import url("modules/post.css");
+@import url("modules/network.css");
+@import url("modules/gallery.css");
+@import url("modules/contact.css");
+@import url("modules/archive.css");
+@import url("modules/single.css");
+
+/* Legacy Compatibility */
+@import url("js_composer.min.css");
+@import url("modules/visual-composer.css");

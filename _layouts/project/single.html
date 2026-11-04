@@ -1,0 +1,169 @@
+---
+layout: default
+---
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign projects_page = site.pages | where: "ref", "projects" | where: "lang", current_lang | first %}
+{% assign projects_url = projects_page.url | default: "/projeler/" | relative_url %}
+
+<div class="fac-page single-project-page">
+  <div id="inside">
+
+    <!-- Project Header -->
+    <div class="project-header single-hero-header">
+      <div class="section-container">
+        <!-- Breadcrumbs -->
+        <div class="single-breadcrumb">
+          <a href="{{ '/' | relative_url }}">Anasayfa</a>
+          <span class="single-breadcrumb-separator">/</span>
+          <a href="{{ projects_url }}">Projeler</a>
+          <span class="single-breadcrumb-separator">/</span>
+          <span class="single-breadcrumb-current">{{ page.title }}</span>
+        </div>
+
+        <div class="single-hero-meta-bar">
+          {% if page.badge_label %}
+          <span class="label archive-badge-primary">
+            {{ page.badge_label }}
+          </span>
+          {% endif %}
+          {% if page.status %}
+          <span class="status-badge {{ page.status_class | default: 'status-active' }}">
+            {{ page.status }}
+          </span>
+          {% endif %}
+          {% if page.start_year %}
+          <span>
+            <i class="fa fa-calendar-o"></i> {{ page.start_year }} {% if page.end_year %}– {{ page.end_year }}{% endif %}
+          </span>
+          {% endif %}
+        </div>
+
+        <h1 class="title single-hero-title">
+          {{ page.title }}
+        </h1>
+        {% if page.subtitle %}
+        <p class="single-hero-subtitle">
+          {{ page.subtitle }}
+        </p>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Project Content Section -->
+    <div class="pagecontents color-1 single-content-body">
+      <div class="section-container">
+        <div class="row">
+          
+          <div class="col-md-8 col-sm-12">
+            {% if page.image and page.image != "" %}
+            <div class="single-featured-image-box">
+              <img src="{{ page.image }}" alt="{{ page.title }}">
+            </div>
+            {% endif %}
+
+            <div class="entry-content article-body">
+              {{ content }}
+            </div>
+
+            {% if page.details and page.details.size > 0 %}
+            <div class="panel panel-default scope-goals-panel">
+              <div class="panel-heading">
+                <i class="fa fa-check-square-o"></i> Proje Kapsamı ve Hedefleri
+              </div>
+              <div class="panel-body">
+                <ul class="scope-goals-list">
+                  {% for item in page.details %}
+                  <li>{{ item }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- Footer Navigation & Sharing -->
+            <div class="project-footer-nav single-footer-nav">
+              <a href="{{ projects_url }}" class="btn btn-default single-back-btn">
+                <i class="fa fa-arrow-left"></i> Tüm Projeler
+              </a>
+
+              <div class="project-share single-share-bar">
+                <span class="single-share-label">Paylaş:</span>
+                <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column / Meta Sidebar -->
+          <div class="col-md-4 col-sm-12">
+            <div class="panel panel-default sidebar-widget-card">
+              <div class="sidebar-widget-header">
+                <span><i class="fa fa-info-circle"></i> Proje Künyesi</span>
+              </div>
+
+              <div class="sidebar-widget-body">
+                <div class="sidebar-meta-list">
+                  {% if page.role %}
+                  <div>
+                    <strong class="sidebar-meta-label">Görev / Rol:</strong>
+                    <span class="sidebar-meta-value">{{ page.role }}</span>
+                  </div>
+                  {% endif %}
+
+                  {% if page.organization %}
+                  <div>
+                    <strong class="sidebar-meta-label">Kurum / İnisiyatif:</strong>
+                    <span class="sidebar-meta-value">{{ page.organization }}</span>
+                  </div>
+                  {% endif %}
+
+                  {% if page.start_year %}
+                  <div>
+                    <strong class="sidebar-meta-label">Dönem:</strong>
+                    <span class="sidebar-meta-value">{{ page.start_year }} {% if page.end_year %}– {{ page.end_year }}{% endif %}</span>
+                  </div>
+                  {% endif %}
+
+                  {% if page.tags and page.tags.size > 0 %}
+                  <div>
+                    <strong class="sidebar-meta-label">Etiketler:</strong>
+                    <div class="sidebar-tags-container">
+                      {% for tag in page.tags %}
+                      <span class="sidebar-tag-item">#{{ tag }}</span>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  {% endif %}
+                </div>
+
+                {% if page.link and page.link != "" %}
+                <div class="project-sidebar-cta-wrap">
+                  <a href="{{ page.link | relative_url }}" {% if page.link contains 'http' %}target="_blank" rel="noopener noreferrer"{% endif %} class="btn btn-block btn-archive-primary">
+                    {{ page.link_text | default: "Projeyi Ziyaret Et" }}
+                    {% if page.link_icon %}
+                      <i class="fa {{ page.link_icon }}"></i>
+                    {% else %}
+                      &rarr;
+                    {% endif %}
+                  </a>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="panel panel-default sidebar-widget-card">
+              <div class="sidebar-widget-body text-center">
+                <a href="{{ projects_url }}" class="btn btn-block btn-default single-back-btn">
+                  <i class="fa fa-folder-open-o"></i> Tüm Projeleri Gör
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

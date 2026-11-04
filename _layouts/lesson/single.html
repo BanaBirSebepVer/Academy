@@ -1,0 +1,37 @@
+---
+layout: default
+---
+
+<div class="fac-page lesson-page">
+  <div id="inside">
+
+    <!-- Lesson Header Component -->
+    {% include lesson/lesson-header.html %}
+
+    <!-- Lesson Timetable / Quick Navigation Component -->
+    {% include lesson/lesson-timetable.html %}
+
+    <!-- Lesson Content Body with Sidebar -->
+    <div class="lesson-content-body">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- Main Syllabus Content (8 columns) -->
+          <div class="col-md-8 col-sm-12">
+            <div class="markdown-body lesson-markdown">
+              {{ content }}
+            </div>
+          </div>
+
+          <!-- Lesson Sidebar Widget (4 columns) -->
+          <div class="col-md-4 col-sm-12">
+            {% include lesson/lesson-sidebar.html %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Lesson Footer Navigation Component -->
+      {% include lesson/lesson-footer.html %}
+    </div>
+
+  </div>
+</div>

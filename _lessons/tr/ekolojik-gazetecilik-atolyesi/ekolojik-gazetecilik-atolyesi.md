@@ -1,0 +1,25 @@
+---
+ref: ekolojik-gazetecilik-atolyesi
+lang: tr
+layout: lesson
+title: "Ekolojik Gazetecilik Atölyesi"
+course_code: ""
+course_order: 102
+category: "Atölye"
+institution: "Doğu Akdeniz Üniversitesi İletişim Fakültesi"
+institution_initial: "DAÜ"
+instructor: "Can Bekcan"
+instructor_title: "Araştırma Görevlisi"
+course_date: "2015 - 2022"
+instructor_title_duration: "2015 - 2022"
+appointments:
+  - instructor_title: "Araştırma Görevlisi"
+    course_date: "2015 - 2022"
+    instructor_title_duration: "2015 - 2022"
+description: "Çevre ve ekoloji odaklı araştırmacı gazetecilik, veri toplama ve saha haberciliği atölyesi."
+permalink: /dersler/ekolojik-gazetecilik-atolyesi/
+active_nav: dersler
+email: "can@canbekcan.com"
+---
+
+Çevre sorunları, iklim haberciliği, saha araştırmaları ve ekolojik gazetecilik pratikleri atölyesi.

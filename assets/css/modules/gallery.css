@@ -1,0 +1,70 @@
+/**
+ * Gallery & Lightbox Styles
+ * Handles photo grid, popup overlays, and animations
+ */
+
+/* ===================================================
+   GALLERY HEADER & CONTAINER
+   =================================================== */
+#gallery-header {
+  color: var(--text-inverse);
+}
+
+#gallery-header:after {
+  content: none !important;
+}
+
+#gallery-header h2 {
+  font-size: 50px;
+  text-align: center;
+  border: none;
+  color: var(--text-inverse);
+}
+
+#gallery-large {
+  background: var(--dark-nav-item);
+  padding-top: 20px;
+}
+
+a.popup-with-move-anim {
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* ===================================================
+   PHOTO GRID
+   =================================================== */
+ul.grid {
+  max-width: 69em;
+  list-style: none;
+  margin: 30px auto;
+  padding: 0;
+}
+
+ul.grid li {
+  display: block;
+  float: left;
+  padding: 15px;
+  width: 33.333%;
+}
+
+ul.grid li > div {
+  box-shadow: 0 0 8px -1px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  position: relative;
+}
+
+@media screen and (max-width: 900px) {
+  ul.grid li {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  ul.grid li {
+    width: 100%;
+  }
+}

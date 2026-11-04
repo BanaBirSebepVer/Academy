@@ -1,0 +1,15 @@
+<!-- Quick Navigation & Timetable Bar -->
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+
+<div class="lesson-timetable-bar" id="lesson-timetable-bar">
+  <span class="lesson-timetable-title">
+    <i class="fa fa-calendar-check-o"></i> {{ locale.ui.syllabus_nav | default: "İzlence Gezintisi" }}:
+  </span>
+  <div class="lesson-timetable-links" id="lesson-timetable-links"></div>
+  {% if page.lecture_notes_url %}
+  <a href="{{ page.lecture_notes_url | relative_url }}" class="btn btn-xs btn-info lesson-timetable-cta">
+    <i class="fa fa-file-text-o"></i> {{ locale.ui.lecture_notes | default: "Ders Notları Sayfası" }}
+  </a>
+  {% endif %}
+</div>

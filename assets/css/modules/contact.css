@@ -1,0 +1,24 @@
+/**
+ * Contact Styles
+ * Handles office & lab contact cards and icons
+ */
+
+/* ===================================================
+   CONTACT CARDS
+   =================================================== */
+.contact-office {
+  background: var(--bg-body) url('../img/contact-office.jpg') no-repeat;
+}
+
+.contact-lab {
+  background: var(--dark) url('../img/contact-lab.jpg') no-repeat;
+  color: var(--text-inverse);
+}
+
+.icon-huge {
+  font-size: 170px;
+  text-align: center;
+  opacity: 0.3;
+  display: block;
+  padding-top: 30px;
+}

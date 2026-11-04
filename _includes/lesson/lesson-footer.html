@@ -1,0 +1,24 @@
+<!-- Lesson Footer Navigation -->
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign lessons_page = site.pages | where: "ref", "lessons" | where: "lang", current_lang | first %}
+{% assign lessons_archive_url = lessons_page.url | default: "/dersler/" | relative_url %}
+
+<div class="lesson-footer-nav single-footer-nav">
+  <a href="{{ lessons_archive_url }}" class="btn btn-default single-back-btn">
+    <i class="fa fa-arrow-left"></i> {{ locale.ui.back_to_lessons | default: "Tüm Dersler Listesine Dön" }}
+  </a>
+
+  <div class="lesson-share single-share-bar">
+    <span class="single-share-label">{{ locale.ui.share_lesson | default: "Dersi Paylaş" }}:</span>
+    <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+  </div>
+
+  {% if page.lecture_notes_url %}
+  <a href="{{ page.lecture_notes_url | relative_url }}" class="btn btn-archive-primary">
+    {{ locale.ui.materials_and_notes | default: "Ders Notları ve Ders Materyalleri" }} <i class="fa fa-arrow-right"></i>
+  </a>
+  {% endif %}
+</div>

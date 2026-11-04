@@ -1,0 +1,85 @@
+---
+layout: default
+---
+{% assign current_lang = page.lang | default: site.default_lang | default: "tr" %}
+{% if page.url contains "/en/" %}{% assign current_lang = "en" %}{% endif %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign is_en = false %}
+{% if current_lang == "en" %}
+  {% assign is_en = true %}
+{% endif %}
+{% assign posts_archive_url = "/yazilar/" %}
+{% if is_en %}
+  {% assign posts_archive_url = "/en/posts/" %}
+{% endif %}
+
+<div class="fac-page single-post-layout">
+  <div id="post-content">
+    <div class="inner-wrapper" id="ajax-single-post">
+      
+      <div class="pageheader single-hero-header hero-light">
+        {% if page.featured_image and page.featured_image != "" %}
+        <div class="post-featured-image-wrapper">
+          <img src="{{ page.featured_image }}" alt="{{ page.title }}" class="post-featured-image">
+        </div>
+        {% endif %}
+
+        <div class="headercontent">
+          <div class="section-container">
+            <h1 class="title">{{ page.title }}</h1>
+            <div class="post-meta">
+              <span><i class="fa fa-calendar"></i> {% if is_en %}{{ page.date | date: "%B %d, %Y" }}{% else %}{{ page.date | date: "%d.%m.%Y" }}{% endif %}</span>
+              {% if page.author %}
+                {% assign a_key = page.author | strip | downcase %}
+                {% assign p_author = site.person | where: "username", a_key | first %}
+                {% if p_author == nil %}{% assign p_author = site.person | where: "slug", a_key | first %}{% endif %}
+                {% if p_author == nil %}{% assign p_author = site.person | where: "name", page.author | first %}{% endif %}
+                <span><i class="fa fa-user"></i> {{ p_author.name | default: page.author }}</span>
+              {% endif %}
+              {% if page.categories and page.categories.size > 0 %}
+              <span><i class="fa fa-folder-open"></i> {{ page.categories | join: ", " }}</span>
+              {% endif %}
+              {% if page.tags and page.tags.size > 0 %}
+              <span><i class="fa fa-tags"></i> {{ page.tags | join: ", " }}</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-contents color-1 single-content-body">
+        <div class="section">
+          <div class="section-container">
+            <div class="row">
+              <!-- Article Body (8 columns) -->
+              <div class="col-md-8 col-sm-12">
+                <div class="entry-content article-body">
+                  {{ content }}
+                </div>
+
+                <div class="post-footer-nav single-footer-nav">
+                  <a href="{{ posts_archive_url | relative_url }}" class="btn btn-default single-back-btn">
+                    <i class="fa fa-arrow-left"></i> {{ locale.ui.all_posts_nav | default: "Tüm Yazılar" }}
+                  </a>
+                  <div class="post-share single-share-bar">
+                    <span class="single-share-label">{{ locale.ui.share | default: "Paylaş" }}:</span>
+                    <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://wa.me/?text={{ page.title | url_encode }}%20{{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Post Sidebar (4 columns) -->
+              <div class="col-md-4 col-sm-12">
+                {% include post/sidebar.html %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

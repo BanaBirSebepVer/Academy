@@ -1,0 +1,741 @@
+/**
+ * Network Module Styles
+ * Dedicated styling for the Academic Network directory, filter controls,
+ * dropdowns, counter badges, and responsive cards.
+ */
+
+.network-page {
+  padding-bottom: 50px;
+}
+
+/* Header & Intro */
+.network-header {
+  margin-bottom: 35px;
+}
+
+.network-header h1 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-heading, #1f2937);
+}
+
+.network-header h1 i {
+  color: var(--primary, #03cc85);
+  margin-right: 8px;
+}
+
+.network-header p {
+  color: var(--color-muted, #6b7280);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Top Row: CTA (10/12) on Left, Version (2/12) on Right */
+.network-top-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 25px;
+  align-items: stretch;
+}
+
+@media (min-width: 992px) {
+  .network-top-row {
+    grid-template-columns: 10fr 2fr;
+    gap: 16px;
+  }
+}
+
+/* Base Network Card Component */
+.network-card {
+  border-radius: 10px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.network-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+/* Call To Action Card (10/12) */
+.network-cta-card {
+  background: #ffffff;
+  border-left: 5px solid var(--primary, #03cc85);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px 22px;
+}
+
+.network-cta-content {
+  flex: 1 1 400px;
+}
+
+.network-cta-header {
+  margin-bottom: 0;
+}
+
+.network-cta-title {
+  margin-top: 0;
+  margin-bottom: 6px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.network-cta-title i {
+  color: var(--primary, #03cc85);
+}
+
+.network-cta-desc {
+  color: #4b5563;
+  line-height: 1.5;
+  font-size: 13.5px;
+  margin-bottom: 0;
+}
+
+.network-cta-action {
+  flex-shrink: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.network-cta-btn {
+  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--primary, #03cc85);
+  border-color: var(--primary, #03cc85);
+  color: #ffffff;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.network-cta-btn:hover,
+.network-cta-btn:focus {
+  background-color: var(--primary-hover, #029a64);
+  border-color: var(--primary-hover, #029a64);
+  color: #ffffff;
+}
+
+/* Version Information Card (2/12) */
+.version-card {
+  border: 1px solid #e5e7eb;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.version-card .version-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  gap: 4px;
+}
+
+.version-card .version-title {
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.version-card .version-status-pill {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.version-card .version-meta {
+  margin: 0 0 6px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 11.5px;
+}
+
+.version-card .version-meta-row {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+}
+
+.version-card .version-meta-label {
+  font-weight: 600;
+  font-size: 11px;
+  color: #4b5563;
+}
+
+.version-card .version-badge-val {
+  background: #f3f4f6;
+  color: #1f2937;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 11px;
+  border: 1px solid #e5e7eb;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.version-card .version-commit-val {
+  background: #f1f5f9;
+  color: #0f172a;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 11px;
+}
+
+.version-card .version-date-val {
+  color: #4b5563;
+  font-size: 11px;
+}
+
+.version-card .version-status-text {
+  margin-top: auto;
+  padding-top: 6px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Filter Controls Container */
+.network-controls-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 22px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+/* Search Box */
+.network-search-wrap {
+  margin-bottom: 20px;
+}
+
+.network-search-wrap .input-group-addon {
+  background: #f9fafb;
+  border-color: #d1d5db;
+  color: #6b7280;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.network-search-input {
+  border-color: #d1d5db;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  height: 42px;
+  font-size: 15px;
+  box-shadow: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.network-search-input:focus {
+  border-color: var(--color-primary, #03cc85);
+  box-shadow: 0 0 0 3px rgba(3, 204, 133, 0.15);
+}
+
+/* Dropdowns Row */
+.network-dropdowns-row {
+  margin-left: -8px;
+  margin-right: -8px;
+}
+
+.network-dropdown-col {
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-bottom: 12px;
+}
+
+.network-filter-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #4b5563;
+  margin-bottom: 5px;
+}
+
+.network-filter-select {
+  border-color: #d1d5db;
+  border-radius: 6px;
+  height: 38px;
+  font-size: 13.5px;
+  color: #374151;
+  background-color: #fff;
+  box-shadow: none;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.network-filter-select:focus {
+  border-color: var(--color-primary, #03cc85);
+  box-shadow: 0 0 0 3px rgba(3, 204, 133, 0.15);
+  outline: none;
+}
+
+/* Active State on Selected Dropdowns */
+.network-filter-select.is-active {
+  border-color: var(--color-primary, #03cc85);
+  background-color: #f0fdf7;
+  font-weight: 600;
+  color: #065f46;
+}
+
+/* Filter Summary / Counter Meta Bar */
+.network-meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 15px;
+  margin-top: 8px;
+  border-top: 1px solid #f3f4f6;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.network-counter-wrap {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13.5px;
+  color: #4b5563;
+}
+
+.network-counter-badge {
+  display: inline-block;
+  background: #e6f9f2;
+  color: #027a48;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  margin-right: 8px;
+  border: 1px solid #b8edd9;
+}
+
+.network-reset-btn {
+  font-size: 12.5px;
+  color: #6b7280;
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-weight: 600;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.network-reset-btn:hover,
+.network-reset-btn:focus {
+  color: #111827;
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+/* Cards Grid */
+.network-grid {
+  margin-top: 10px;
+}
+
+.network-card-col {
+  margin-bottom: 20px;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Compact Network Card Component */
+.network-compact-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px 16px;
+  text-decoration: none !important;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.network-compact-card:hover,
+.network-compact-card:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+  border-color: var(--primary, #03cc85);
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.network-compact-avatar {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #f3f4f6;
+  border: 2px solid #e5e7eb;
+  transition: border-color 0.2s ease;
+}
+
+.network-compact-card:hover .network-compact-avatar {
+  border-color: var(--primary, #03cc85);
+}
+
+.network-compact-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.network-compact-info {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.network-compact-name {
+  margin: 0 0 3px 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+
+.network-compact-card:hover .network-compact-name {
+  color: var(--primary, #03cc85);
+}
+
+.network-compact-inst {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Hidden Information for SEO & Filters */
+.network-hidden-seo {
+  display: none !important;
+}
+
+.network-item-card {
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  overflow: hidden;
+}
+
+.network-item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border-color: #cbd5e1;
+}
+
+.network-card-body {
+  padding: 22px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.network-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+  gap: 8px;
+}
+
+.network-country-badge {
+  font-size: 11.5px;
+  padding: 4px 9px;
+  background-color: #f0f7f4;
+  color: #029460;
+  border: 1px solid #c2e8d8;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.network-verified-badge {
+  font-size: 11.5px;
+  padding: 4px 9px;
+  background-color: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* Card Profile Header & Avatar */
+.network-card-profile-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.network-avatar-wrap {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #f3f4f6;
+  border: 2px solid #e5e7eb;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s ease;
+}
+
+.network-item-card:hover .network-avatar-wrap {
+  border-color: var(--primary, #03cc85);
+}
+
+.network-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.network-card-title-group {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.network-card-title-group .network-institution-title {
+  margin-bottom: 4px;
+}
+
+.network-card-title-group .network-person {
+  margin-bottom: 0;
+}
+
+.network-institution-title {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 19px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.4;
+}
+
+.network-institution-title i {
+  color: #03cc85;
+  margin-right: 6px;
+  font-size: 16px;
+}
+
+.network-faculty {
+  color: #4b5563;
+  font-size: 14px;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.network-faculty i {
+  color: #9ca3af;
+  margin-right: 5px;
+}
+
+.network-person {
+  color: #1f2937;
+  font-weight: 600;
+  font-size: 14.5px;
+  margin-bottom: 12px;
+}
+
+.network-person i {
+  color: #03cc85;
+  margin-right: 5px;
+}
+
+.network-field-row {
+  margin-bottom: 12px;
+  font-size: 13.5px;
+  color: #374151;
+}
+
+.network-field-label {
+  font-weight: 600;
+  color: #1f2937;
+  margin-right: 4px;
+}
+
+.network-field-tag {
+  display: inline-block;
+  background: #f3f4f6;
+  color: #374151;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12.5px;
+  border: 1px solid #e5e7eb;
+}
+
+/* Keywords List */
+.network-keywords-wrap {
+  margin-top: 4px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.network-keyword-badge {
+  display: inline-block;
+  font-size: 11.5px;
+  color: #4b5563;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding: 2px 8px;
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+
+.network-keyword-badge:hover {
+  background-color: #ecfdf5;
+  color: #047857;
+  border-color: #a7f3d0;
+}
+
+/* Card Footer */
+.network-card-footer {
+  padding: 14px 22px;
+  background: #fbfbfb;
+  border-top: 1px solid #f1f3f5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.network-domain-preview code {
+  background: #eef2f6;
+  color: #475569;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.network-visit-btn {
+  font-weight: 600;
+  border-radius: 6px;
+  font-size: 12.5px;
+  padding: 5px 12px;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  background: #fff;
+  transition: all 0.2s;
+}
+
+.network-visit-btn:hover {
+  background: #03cc85;
+  color: #fff;
+  border-color: #03cc85;
+}
+
+.network-visit-btn i {
+  margin-left: 4px;
+}
+
+/* No Results State */
+.network-no-results {
+  display: none;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.network-no-results-panel {
+  background: #ffffff;
+  border: 1px dashed #d1d5db;
+  border-radius: 10px;
+  padding: 45px 20px;
+  text-align: center;
+}
+
+.network-no-results-panel i.icon-empty {
+  font-size: 44px;
+  color: #cbd5e1;
+  margin-bottom: 15px;
+}
+
+.network-no-results-panel h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.network-no-results-panel p {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+  .network-cta-card .panel-body {
+    padding: 16px;
+  }
+  .network-controls-card {
+    padding: 16px;
+  }
+  .network-card-body {
+    padding: 16px;
+  }
+  .network-meta-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

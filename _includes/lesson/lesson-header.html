@@ -1,0 +1,104 @@
+<!-- Lesson Header / Hero Section -->
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign lessons_page = site.pages | where: "ref", "lessons" | where: "lang", current_lang | first %}
+{% assign lessons_archive_url = lessons_page.url | default: "/dersler/" | relative_url %}
+
+<div class="lesson-hero single-hero-header">
+  <div class="lesson-breadcrumb single-breadcrumb">
+    <a href="{{ '/' | relative_url }}"><i class="fa fa-home"></i></a>
+    <span class="single-breadcrumb-separator">/</span>
+    <a href="{{ lessons_archive_url }}">{{ locale.ui.lessons_title | default: "Lessons" }}</a>
+    <span class="single-breadcrumb-separator">/</span>
+    <span class="single-breadcrumb-current">{{ page.title }}</span>
+  </div>
+
+  {% if page.course_code %}
+  <span class="label label-success archive-badge-primary">{{ page.course_code }}</span>
+  {% endif %}
+
+  <h1 class="lesson-title single-hero-title">
+    {{ page.title }}
+  </h1>
+
+  {% if page.institution %}
+  <p class="lesson-institution single-hero-subtitle">
+    <i class="fa fa-university"></i> {{ page.institution }}
+  </p>
+  {% endif %}
+
+  <div class="lesson-meta-bar single-hero-meta-bar">
+    <span><i class="fa fa-user"></i> {{ locale.ui.instructor | default: "Öğretim Görevlisi" }}: <strong>{{ page.instructor | default: "Can Bekcan" }}</strong></span>
+    {% if page.category %}
+    <span><i class="fa fa-folder-open"></i> {{ locale.ui.field_category | default: "Alan" }}: {{ page.category }}</span>
+    {% endif %}
+    {% if page.term %}
+    <span><i class="fa fa-calendar"></i> {{ locale.ui.term | default: "Dönem" }}: {{ page.term }}</span>
+    {% endif %}
+    {% if page.lecture_notes_url %}
+    <a href="{{ page.lecture_notes_url | relative_url }}" class="btn btn-sm btn-archive-primary lesson-timetable-cta">
+      <i class="fa fa-book"></i> {{ locale.ui.materials_and_notes | default: "Ders Notları & Materyalleri" }} &rarr;
+    </a>
+    {% endif %}
+  </div>
+
+  <!-- Social / Communication Channels in Hero (Only active if link is defined) -->
+  {% assign has_social = false %}
+  {% if page.discord and page.discord != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.teams and page.teams != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.whatsapp and page.whatsapp != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.telegram and page.telegram != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.slack and page.slack != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.zoom and page.zoom != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.email and page.email != "" %}{% assign has_social = true %}{% endif %}
+
+  {% if has_social %}
+  <div class="lesson-channels-bar">
+    <span class="lesson-channels-title">
+      <i class="fa fa-comments"></i> {{ locale.ui.course_channels | default: "İletişim & Ders Kanalları" }}:
+    </span>
+
+    {% if page.discord and page.discord != "" %}
+    <a href="{{ page.discord }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-discord">
+      <i class="fa-brands fa-discord"></i> Discord Kanalı
+    </a>
+    {% endif %}
+
+    {% if page.teams and page.teams != "" %}
+    <a href="{{ page.teams }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-teams">
+      <i class="fa-brands fa-microsoft"></i> Microsoft Teams
+    </a>
+    {% endif %}
+
+    {% if page.whatsapp and page.whatsapp != "" %}
+    <a href="{{ page.whatsapp }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-whatsapp">
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp Grubu
+    </a>
+    {% endif %}
+
+    {% if page.telegram and page.telegram != "" %}
+    <a href="{{ page.telegram }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-telegram">
+      <i class="fa-brands fa-telegram"></i> Telegram
+    </a>
+    {% endif %}
+
+    {% if page.slack and page.slack != "" %}
+    <a href="{{ page.slack }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-slack">
+      <i class="fa-brands fa-slack"></i> Slack
+    </a>
+    {% endif %}
+
+    {% if page.zoom and page.zoom != "" %}
+    <a href="{{ page.zoom }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-zoom">
+      <i class="fa fa-video-camera"></i> Zoom
+    </a>
+    {% endif %}
+
+    {% if page.email and page.email != "" %}
+    <a href="mailto:{{ page.email }}" class="btn btn-xs btn-channel btn-email">
+      <i class="fa fa-envelope"></i> E-posta
+    </a>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>

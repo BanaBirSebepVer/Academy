@@ -1,0 +1,132 @@
+/**
+ * Social Media & Academic Profile Icons
+ * Handles social icons list in sidebar footer, hover animations, and Academicons font
+ */
+
+/* ===================================================
+   ACADEMICONS FONT-FACE & BASE CLASSES
+   Academic icons for Google Scholar, ORCID, Academia.edu, ResearchGate, arXiv, etc.
+   =================================================== */
+@font-face {
+  font-family: 'Academicons';
+  src: url('../font/academicons.eot?v=1.8.6');
+  src: url('../font/academicons.eot?v=1.8.6') format('embedded-opentype'),
+       url('../font/academicons.ttf?v=1.8.6') format('truetype'),
+       url('../font/academicons.woff?v=1.8.6') format('woff'),
+       url('../font/academicons.svg?v=1.8.6#academicons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.ai {
+  display: inline-block;
+  font: normal normal normal 14px/1 Academicons;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Common academic icon glyphs */
+.ai-academia:before { content: "\e9af"; }
+.ai-academia-square:before { content: "\e93d"; }
+.ai-google-scholar:before { content: "\e9d4"; }
+.ai-google-scholar-square:before { content: "\e9f9"; }
+.ai-orcid:before { content: "\e9d9"; }
+.ai-orcid-square:before { content: "\e9c3"; }
+.ai-researchgate:before { content: "\e95e"; }
+.ai-researchgate-square:before { content: "\e99e"; }
+.ai-arxiv:before { content: "\e974"; }
+.ai-arxiv-square:before { content: "\e9a6"; }
+.ai-biorxiv:before { content: "\e9a2"; }
+.ai-biorxiv-square:before { content: "\e98b"; }
+.ai-doi:before { content: "\e97e"; }
+.ai-doi-square:before { content: "\e98f"; }
+.ai-ieee:before { content: "\e929"; }
+.ai-ieee-square:before { content: "\e9b9"; }
+.ai-mendeley:before { content: "\e9f0"; }
+.ai-mendeley-square:before { content: "\e9f3"; }
+.ai-open-access:before { content: "\e939"; }
+.ai-open-access-square:before { content: "\e9f4"; }
+.ai-overleaf:before { content: "\e914"; }
+.ai-overleaf-square:before { content: "\e98d"; }
+.ai-publons:before { content: "\e937"; }
+.ai-publons-square:before { content: "\e94e"; }
+.ai-pubmed:before { content: "\e99f"; }
+.ai-pubmed-square:before { content: "\e97d"; }
+.ai-researcherid:before { content: "\e91a"; }
+.ai-researcherid-square:before { content: "\e95c"; }
+.ai-scirate:before { content: "\e98e"; }
+.ai-semantic-scholar:before { content: "\e96e"; }
+.ai-springer:before { content: "\e928"; }
+.ai-zotero:before { content: "\e962"; }
+.ai-cv:before { content: "\e9a5"; }
+.ai-cv-square:before { content: "\e90a"; }
+
+/* ===================================================
+   SOCIAL ICONS LIST CONTAINER (SIDEBAR FOOTER)
+   =================================================== */
+.social-icons {
+  text-align: center;
+}
+
+.social-icons ul {
+  padding: 0 20px;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.social-icons li {
+  padding: 5px;
+  text-align: center;
+  display: inline-block;
+}
+
+/* ===================================================
+   SOCIAL LINKS & HOVER STATES
+   =================================================== */
+.social-icons a {
+  color: var(--text-disabled);
+  display: inline-block;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover,
+.social-icons a:focus {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.social-icons i {
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+/* ===================================================
+   LEGACY SPRITE ICONS (BACKWARD COMPATIBILITY)
+   =================================================== */
+i.academia,
+i.researchgate {
+  background-repeat: no-repeat;
+  background-position: top;
+  width: 18px;
+  height: 15px;
+  display: block;
+  position: relative;
+  top: 8px;
+  margin: 0 auto;
+}
+
+i.academia {
+  background: url(../img/i-academia.png);
+}
+
+i.researchgate {
+  background: url(../img/i-researchgate.png);
+}
+
+.social-icons a:hover i.academia,
+.social-icons a:hover i.researchgate {
+  background-position: bottom;
+}

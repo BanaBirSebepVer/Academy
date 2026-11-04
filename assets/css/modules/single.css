@@ -1,0 +1,634 @@
+/**
+ * Single Detail Page Styles
+ * Standard layout and component styles for single reading pages:
+ * Posts, Projects, Publications, and Lessons
+ */
+
+/* ===================================================
+   SINGLE PAGE HERO / HEADER
+   =================================================== */
+.single-hero-header {
+  background: linear-gradient(135deg, var(--dark) 0%, var(--dark-hero) 100%);
+  color: var(--text-inverse);
+  padding: 45px 35px 35px;
+  border-bottom: 4px solid var(--primary);
+}
+
+.single-hero-header.hero-light {
+  background: var(--bg-alt);
+  color: var(--text-main);
+  border-bottom: 2px solid var(--border-light);
+}
+
+.single-hero-title {
+  color: var(--text-inverse);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 5px 0 12px 0;
+}
+
+.single-hero-subtitle {
+  color: var(--text-inverse-muted);
+  font-size: 16px;
+  margin: 0 0 15px 0;
+  font-weight: 400;
+}
+
+.single-hero-meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  font-size: 14px;
+  color: var(--text-inverse-muted);
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.single-hero-meta-bar span i {
+  color: var(--primary);
+  margin-right: 6px;
+}
+
+/* ===================================================
+   BREADCRUMBS
+   =================================================== */
+.single-breadcrumb {
+  font-size: 13px;
+  color: var(--text-inverse-subtle);
+  margin-bottom: 15px;
+}
+
+.single-breadcrumb a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.single-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.single-breadcrumb-separator {
+  margin: 0 8px;
+  color: var(--text-light);
+}
+
+.single-breadcrumb-current {
+  color: var(--text-inverse-muted);
+}
+
+/* ===================================================
+   FEATURED IMAGE BANNER
+   =================================================== */
+.single-featured-image-box {
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow-md);
+}
+
+.single-featured-image-box img {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===================================================
+   SINGLE PAGE CONTENT CONTAINER
+   =================================================== */
+.single-content-body {
+  padding: 40px 30px 60px;
+  background: var(--bg-body);
+}
+
+@media (max-width: 768px) {
+  .single-content-body {
+    padding: 25px 15px 40px;
+  }
+}
+
+/* ===================================================
+   FOOTER NAVIGATION & SHARING
+   =================================================== */
+.single-footer-nav {
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px solid var(--border-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.single-back-btn {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.single-back-btn i {
+  margin-right: 6px;
+}
+
+.btn-archive-primary i {
+  margin-left: 6px;
+}
+
+.single-share-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.single-share-label {
+  font-size: 13px;
+  color: var(--text-light);
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+/* ===================================================
+   SIDEBAR WIDGETS
+   =================================================== */
+.sidebar-sticky-wrap {
+  position: sticky;
+  top: 20px;
+}
+
+.sidebar-widget-card {
+  border-radius: 8px;
+  border: 1px solid var(--border-main);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 25px;
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.sidebar-widget-header {
+  background-color: var(--bg-panel);
+  border-bottom: 1px solid var(--border-light);
+  padding: 12px 18px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-body);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-widget-header i {
+  color: var(--primary);
+  margin-right: 6px;
+}
+
+.sidebar-widget-header-dark {
+  background-color: var(--dark);
+  color: var(--text-inverse);
+  padding: 14px 18px;
+  font-weight: 700;
+  font-size: 15px;
+  border-bottom: none;
+}
+
+.sidebar-widget-header-dark i {
+  color: var(--primary);
+  margin-right: 6px;
+}
+
+.sidebar-widget-body {
+  padding: 18px 20px;
+}
+
+/* Profile Card */
+.sidebar-profile-card {
+  border-radius: 8px;
+  border: 1px solid var(--border-main);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 25px;
+  overflow: hidden;
+  text-align: center;
+  padding: 25px 20px;
+  background: var(--bg-card);
+}
+
+.sidebar-profile-avatar-wrap {
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--primary);
+  box-shadow: 0 2px 6px var(--primary-shadow);
+  background: var(--bg-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-profile-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sidebar-profile-name {
+  margin: 0 0 5px;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--text-main);
+}
+
+.sidebar-profile-role {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.sidebar-profile-bio {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.sidebar-profile-social {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Metadata List */
+.sidebar-meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.sidebar-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sidebar-meta-row i {
+  color: var(--primary);
+  margin-right: 5px;
+}
+
+.sidebar-meta-label {
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.sidebar-meta-value {
+  color: var(--text-secondary);
+}
+
+.sidebar-meta-icon {
+  color: var(--primary);
+  width: 18px;
+}
+
+.sidebar-category-badge {
+  background-color: var(--primary);
+  font-size: 11px;
+  margin-right: 3px;
+  color: var(--text-inverse);
+  padding: 3px 6px;
+  border-radius: 3px;
+}
+
+.sidebar-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.sidebar-tag-item {
+  background: var(--bg-tag);
+  color: var(--text-secondary);
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+/* List with links */
+.sidebar-link-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.sidebar-link-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sidebar-link-item:last-child {
+  border-bottom: none;
+}
+
+.sidebar-link-row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-link-date {
+  display: block;
+  font-size: 11px;
+  color: var(--text-subtle);
+  margin-bottom: 3px;
+}
+
+.sidebar-link-anchor {
+  color: var(--text-main);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  display: block;
+  transition: color 0.2s ease;
+}
+
+.sidebar-link-anchor:hover {
+  color: var(--primary);
+}
+
+.sidebar-link-badge {
+  background-color: var(--bg-hover);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ===================================================
+   COMMUNICATION CHANNELS BUTTONS
+   =================================================== */
+.btn-channel {
+  font-weight: 600 !important;
+  color: var(--text-inverse) !important;
+  border-radius: 4px !important;
+  border: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  padding: 6px 14px !important;
+  transition: transform 0.2s ease, opacity 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+.btn-channel:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  color: var(--text-inverse) !important;
+}
+
+.btn-channel-block {
+  display: flex !important;
+  width: 100% !important;
+  text-align: left !important;
+  padding: 8px 12px !important;
+}
+
+.btn-channel-discord { background-color: var(--channel-discord) !important; }
+.btn-channel-teams { background-color: var(--channel-teams) !important; }
+.btn-channel-whatsapp { background-color: var(--channel-whatsapp) !important; }
+.btn-channel-telegram { background-color: var(--channel-telegram) !important; }
+.btn-channel-slack { background-color: var(--channel-slack) !important; }
+.btn-channel-zoom { background-color: var(--channel-zoom) !important; }
+.btn-channel-email { background-color: var(--channel-email) !important; }
+
+.lesson-channels-bar {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.lesson-channels-title {
+  font-size: 13px;
+  color: var(--text-inverse-muted);
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+.lesson-channels-title i {
+  color: var(--primary);
+  margin-right: 6px;
+}
+
+.sidebar-footer-link-wrap {
+  margin-top: 12px;
+  text-align: right;
+}
+
+.sidebar-footer-link-wrap a {
+  font-size: 12px;
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.project-sidebar-cta-wrap {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* ===================================================
+   PUBLICATION SINGLE DETAILS
+   =================================================== */
+.pub-single-thumb-box {
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  background: var(--bg-card);
+  padding: 8px;
+}
+
+.pub-single-thumb-img {
+  width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.pub-single-badges {
+  margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.pub-single-meta-table {
+  margin-bottom: 15px;
+  font-size: 14px;
+  background: transparent;
+}
+
+.pub-single-meta-table td {
+  border-top: none !important;
+}
+
+.pub-single-meta-label {
+  width: 110px;
+  font-weight: 600;
+  color: var(--text-light);
+  padding-left: 0 !important;
+}
+
+.pub-single-meta-value {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.pub-single-citation-text {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.pub-single-citation-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 6px;
+  padding: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 25px;
+}
+
+/* ===================================================
+   LESSON TIMETABLE / QUICK NAV BAR
+   =================================================== */
+.lesson-timetable-bar {
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border-main);
+  padding: 12px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.lesson-timetable-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-right: 5px;
+}
+
+.lesson-timetable-title i {
+  color: var(--primary);
+}
+
+.lesson-timetable-cta {
+  margin-left: auto;
+}
+
+.lesson-timetable-links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.lesson-timetable-links .btn {
+  transition: all 0.2s ease;
+}
+
+.lesson-timetable-links .btn.active,
+.lesson-timetable-bar .btn.active {
+  background-color: var(--primary, #03cc85);
+  color: #ffffff;
+  border-color: var(--primary, #03cc85);
+}
+
+.lesson-timetable-links .btn:hover,
+.lesson-timetable-bar .btn:hover {
+  border-color: var(--primary, #03cc85);
+  color: var(--text-main, #1a202c);
+}
+
+/* Scope & Goals box */
+.scope-goals-panel {
+  border-radius: 8px;
+  border: 1px solid var(--border-card);
+  margin-bottom: 35px;
+  background: var(--bg-panel);
+}
+
+.scope-goals-panel .panel-heading {
+  background: var(--bg-panel-header);
+  font-weight: 700;
+  color: var(--text-secondary);
+  padding: 12px 20px;
+}
+
+.scope-goals-panel .panel-heading i {
+  color: var(--primary);
+  margin-right: 6px;
+}
+
+.scope-goals-panel .panel-body {
+  padding: 20px;
+}
+
+.scope-goals-list {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.scope-goals-list li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* Material CTA Box */
+.material-cta-card {
+  border-radius: 8px;
+  border: 1px solid var(--bg-notice-border);
+  background-color: var(--bg-notice);
+  margin-bottom: 25px;
+  padding: 18px;
+}
+
+.material-cta-card h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-hover);
+}
+
+.material-cta-card h4 i {
+  margin-right: 6px;
+}
+
+.material-cta-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}

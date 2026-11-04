@@ -1,0 +1,33 @@
+# ==============================================================================
+# Academic Network Registry
+# Community of scholars, courses, and institutions powered by the Academy Engine
+# ==============================================================================
+- name: "Dr. Can Bekcan"
+  institution: "Eastern Mediterranean University"
+  faculty: "Faculty of Communication and Media Studies"
+  fields: "Communication Studies"
+  keywords: ["Communication Studies", "Media Studies", "Digital Media", "Social Media"]
+  url: "https://canbekcan.com"
+  country: "Cyprus"
+  verified: true
+  avatar: "https://canbekcan.github.io/Academy/assets/images/Can-Bekcan-PADI.jpg"
+
+- name: "Communication Studies Lab"
+  institution: "Sample Partner University"
+  faculty: "Department of New Media"
+  fields: "Journalism & Media"
+  keywords: ["Journalism", "Data Journalism", "Digital Media"]
+  url: "https://example.edu/lab"
+  country: "Turkey"
+  verified: true
+  avatar: ""
+
+- name: "Computational Media Research Group"
+  institution: "Arkın University of Creative Arts and Design"
+  faculty: "Faculty of Communication"
+  fields: "Computational Media"
+  keywords: ["Visual Design", "Media Studies", "Artificial Intelligence"]
+  url: "https://example.edu/arucad-lab"
+  country: "Cyprus"
+  verified: true
+  avatar: ""

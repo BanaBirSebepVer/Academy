@@ -1,0 +1,711 @@
+---
+layout: default
+---
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign lang_slash = "/" | append: current_lang | append: "/" %}
+
+{% assign display_name = page.name %}
+{% if display_name == 'index.md' or display_name == nil or display_name == '' %}
+  {% assign display_name = page.author | default: site.author | default: 'Can Bekcan' %}
+{% endif %}
+
+<div id="inside" class="cv-homepage">
+  <!-- Hero Section -->
+  <section class="cv-hero">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-3 text-center">
+          <div class="cv-hero-avatar">
+            <img src="{{ page.image | default: page.avatar | default: '/assets/images/Can-Bekcan-PADI.jpg' | relative_url }}" alt="{{ display_name }}" class="img-responsive cv-avatar-img" />
+          </div>
+        </div>
+        <div class="col-sm-9 col-md-9">
+          <h1 class="cv-hero-name">{{ display_name }}</h1>
+          {% if page.bio %}
+          <div class="cv-hero-bio">
+            <p>{{ page.bio }}</p>
+          </div>
+          {% endif %}
+          {% if page.interests %}
+          <div class="cv-hero-interests">
+            <p><em>{{ page.interests }}</em></p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. Education -->
+  {% assign educations = "" | split: "" %}
+  {% for item in site.educations %}
+    {% assign match = false %}
+    {% if item.lang == current_lang or item.path contains lang_slash %}
+      {% assign match = true %}
+    {% elsif current_lang == site.default_lang %}
+      {% unless item.path contains "/en/" or item.lang == "en" %}
+        {% assign match = true %}
+      {% endunless %}
+    {% endif %}
+    {% if match %}
+      {% assign educations = educations | push: item %}
+    {% endif %}
+  {% endfor %}
+  {% assign educations = educations | sort: "order" %}
+
+  {% if educations.size > 0 %}
+  <section class="cv-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <h2 class="cv-section-title">{{ locale.cv.education }}</h2>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <ul class="ul-card">
+            {% for edu in educations %}
+            <li>
+              <div class="dy">
+                <span class="degree">{{ edu.degree }}</span>
+                <span class="year">{{ edu.year }}</span>
+              </div>
+              <div class="description">
+                <p class="what">{{ edu.field }}</p>
+                <p class="where">{{ edu.institution }}</p>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3"></div>
+      </div>
+    </div>
+  </section>
+  <div class="cv-separator"></div>
+  {% endif %}
+
+  <!-- 2. Honors & Fellowships -->
+  {% assign awards = "" | split: "" %}
+  {% for item in site.awards %}
+    {% assign match = false %}
+    {% if item.lang == current_lang or item.path contains lang_slash %}
+      {% assign match = true %}
+    {% elsif current_lang == site.default_lang %}
+      {% unless item.path contains "/en/" or item.lang == "en" %}
+        {% assign match = true %}
+      {% endunless %}
+    {% endif %}
+    {% if match %}
+      {% assign awards = awards | push: item %}
+    {% endif %}
+  {% endfor %}
+  {% assign awards = awards | sort: "order" %}
+
+  {% if awards.size > 0 %}
+  <section class="cv-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <h2 class="cv-section-title">{{ locale.cv.awards }}</h2>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <ul class="ul-dates">
+            {% for award in awards %}
+            <li>
+              <div class="dates">
+                <span>{{ award.end_year }}</span>
+                <span>{{ award.start_year }}</span>
+              </div>
+              <div class="content">
+                <h4>{{ award.title }}</h4>
+                <ul>
+                  {% for detail in award.details %}
+                  <li>{{ detail }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3"></div>
+      </div>
+    </div>
+  </section>
+  <div class="cv-separator"></div>
+  {% endif %}
+
+  <!-- 3. Academic Appointments (Built dynamically from site.lessons and locale tiers) -->
+  {% assign lang_lessons = "" | split: "" %}
+  {% for l in site.lessons %}
+    {% if l.layout == "lesson" %}
+      {% assign match = false %}
+      {% if l.lang == current_lang or l.path contains lang_slash %}
+        {% assign match = true %}
+      {% elsif current_lang == site.default_lang %}
+        {% unless l.path contains "/en/" or l.lang == "en" %}
+          {% assign match = true %}
+        {% endunless %}
+      {% endif %}
+      {% if match %}
+        {% assign lang_lessons = lang_lessons | push: l %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  {% assign lang_lessons = lang_lessons | sort: "course_order" %}
+
+  {% assign active_tiers = "" | split: "" %}
+  {% for tier in locale.cv.academic_tiers %}
+    {% assign tier_has_lessons = false %}
+    {% for l in lang_lessons %}
+      {% if l.instructor_title contains tier.match %}
+        {% assign tier_has_lessons = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% if tier_has_lessons %}
+      {% assign active_tiers = active_tiers | push: tier %}
+    {% endif %}
+  {% endfor %}
+
+  {% if active_tiers.size > 0 %}
+  <section class="cv-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <h2 class="cv-section-title">{{ locale.cv.appointments }}</h2>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <ul class="ul-dates">
+            {% for tier in active_tiers %}
+              <li>
+                <div class="dates">
+                  <span>{{ tier.end_year }}</span>
+                  <span>{{ tier.start_year }}</span>
+                </div>
+                <div class="content">
+                  <h4>{{ tier.title }}</h4>
+
+                  {% comment %} --- EMU / DAÜ Lessons --- {% endcomment %}
+                  {% assign emu_lessons = "" | split: "" %}
+                  {% for l in lang_lessons %}
+                    {% if l.instructor_title contains tier.match %}
+                      {% if l.institution contains "Doğu Akdeniz" or l.institution contains "DAÜ" or l.institution contains "Eastern Mediterranean" or l.institution contains "EMU" %}
+                        {% if l.category != "Atölye" and l.category != "Workshop" %}
+                          {% assign emu_lessons = emu_lessons | push: l %}
+                        {% endif %}
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+
+                  {% if emu_lessons.size > 0 %}
+                    <h3>
+                      <a href="https://fcms.emu.edu.tr/en/about-us/staff/staff-detail?sid=309&amp;n=can-bekcan" target="_blank" rel="noopener noreferrer">
+                        {{ locale.cv.institutions.emu }}
+                      </a>
+                    </h3>
+                    {% for lesson in emu_lessons %}
+                      <h5>
+                        <strong>
+                          {% if lesson.url %}
+                            <a href="{{ lesson.url | relative_url }}">
+                          {% endif %}
+                          {% if lesson.course_code and lesson.course_code != "" %}{{ lesson.course_code }}: {% endif %}{{ lesson.title }}
+                          {% if lesson.url %}
+                            </a>
+                          {% endif %}
+                        </strong>
+                      </h5>
+                      {% if lesson.duties and lesson.duties.size > 0 %}
+                        <ul>
+                          {% for duty in lesson.duties %}
+                            <li>{{ duty }}</li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+
+                  {% comment %} --- Workshops --- {% endcomment %}
+                  {% assign workshops = "" | split: "" %}
+                  {% for l in lang_lessons %}
+                    {% if l.instructor_title contains tier.match %}
+                      {% if l.category == "Atölye" or l.category == "Workshop" %}
+                        {% assign workshops = workshops | push: l %}
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                  {% if workshops.size > 0 %}
+                    <h4><strong>{{ locale.cv.workshops }}:</strong></h4>
+                    {% for ws in workshops %}
+                      <h5>
+                        {% if ws.url %}<a href="{{ ws.url | relative_url }}">{% endif %}
+                        {{ ws.title }}
+                        {% if ws.url %}</a>{% endif %}
+                      </h5>
+                    {% endfor %}
+                  {% endif %}
+
+                  {% comment %} --- ARUCAD Lessons --- {% endcomment %}
+                  {% assign arucad_lessons = "" | split: "" %}
+                  {% for l in lang_lessons %}
+                    {% if l.instructor_title contains tier.match %}
+                      {% if l.institution contains "Arkın" or l.institution contains "ARUCAD" %}
+                        {% assign arucad_lessons = arucad_lessons | push: l %}
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+
+                  {% if arucad_lessons.size > 0 %}
+                    <hr/>
+                    <h3>
+                      <a href="https://arucad.edu.tr/en/" target="_blank" rel="noopener noreferrer">
+                        {{ locale.cv.institutions.arucad }}
+                      </a>
+                    </h3>
+                    {% for lesson in arucad_lessons %}
+                      <h5>
+                        <strong>
+                          {% if lesson.url %}
+                            <a href="{{ lesson.url | relative_url }}">
+                          {% endif %}
+                          {% if lesson.course_code and lesson.course_code != "" %}{{ lesson.course_code }}: {% endif %}{{ lesson.title }}
+                          {% if lesson.url %}
+                            </a>
+                          {% endif %}
+                        </strong>
+                      </h5>
+                      {% if lesson.duties and lesson.duties.size > 0 %}
+                        <ul>
+                          {% for duty in lesson.duties %}
+                            <li>{{ duty }}</li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3"></div>
+      </div>
+    </div>
+  </section>
+  <div class="cv-separator"></div>
+  {% endif %}
+
+  <!-- 4. Publications -->
+  {% assign pubs = "" | split: "" %}
+  {% for item in site.publications %}
+    {% assign match = false %}
+    {% if item.lang == current_lang or item.path contains lang_slash %}
+      {% assign match = true %}
+    {% elsif current_lang == site.default_lang %}
+      {% unless item.path contains "/en/" or item.lang == "en" %}
+        {% assign match = true %}
+      {% endunless %}
+    {% endif %}
+    {% if match %}
+      {% assign pubs = pubs | push: item %}
+    {% endif %}
+  {% endfor %}
+  {% assign pubs = pubs | sort: "order" %}
+
+  {% if pubs.size > 0 %}
+  <section class="cv-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <h2 class="cv-section-title">{{ locale.cv.publications }}</h2>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          {% for pub in pubs %}
+          <div class="fac-publications">
+            <h2>{{ pub.publication_type }}</h2>
+            <div class="pitems">
+              <div class="item">
+                <div class="pubmain {% if pub.image %}pub-has-thumbnail{% endif %}">
+                  {% if pub.image %}
+                  <div class="pub-thumb">
+                    <img src="{{ pub.image }}" alt="{{ pub.title }}" class="attachment-medium size-medium wp-post-image" />
+                  </div>
+                  {% endif %}
+                  <div class="pub-contents">
+                    <h4 class="pubtitle"><a href="{{ pub.url | relative_url }}">{{ pub.title }}</a></h4>
+                    <div class="pubcontents">
+                      {% if pub.type_label %}
+                      <a href="{{ pub.type_url | default: '#' }}"><span class="label label-warning">{{ pub.type_label }}</span></a>
+                      {% endif %}
+                      {% if pub.author %}
+                      <div class="pubauthor">{{ pub.author }}</div>
+                      {% endif %}
+                      {% if pub.citation %}
+                      <div class="pubcite">{{ pub.citation }}</div>
+                      {% endif %}
+                      {% if pub.year %}
+                      <div class="pubyear">{{ locale.cv.pub_year }}: {{ pub.year }}</div>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="col-sm-3 col-md-3"></div>
+      </div>
+    </div>
+  </section>
+  <div class="cv-separator"></div>
+  {% endif %}
+
+  <!-- 5. Conference Presentations -->
+  {% assign confs = "" | split: "" %}
+  {% for item in site.conferences %}
+    {% assign match = false %}
+    {% if item.lang == current_lang or item.path contains lang_slash %}
+      {% assign match = true %}
+    {% elsif current_lang == site.default_lang %}
+      {% unless item.path contains "/en/" or item.lang == "en" %}
+        {% assign match = true %}
+      {% endunless %}
+    {% endif %}
+    {% if match %}
+      {% assign confs = confs | push: item %}
+    {% endif %}
+  {% endfor %}
+
+  {% if confs.size > 0 %}
+  <section class="cv-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <h2 class="cv-section-title">{{ locale.cv.conferences }}</h2>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <div class="panel-group cv-accordion" id="accordion-conf">
+            {% assign conf_years = confs | map: "year" | uniq | sort | reverse %}
+            {% for yr in conf_years %}
+            {% assign yr_conferences = confs | where: "year", yr | sort: "order" %}
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion-conf" href="#collapse-conf-{{ yr }}">
+                    {{ yr }} <i class="fa fa-chevron-down pull-right"></i>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapse-conf-{{ yr }}" class="panel-collapse collapse {% if forloop.first %}in{% endif %}">
+                <div class="panel-body">
+                  {% for conf in yr_conferences %}
+                  <p>
+                    {{ conf.title }} – 
+                    <a href="{{ conf.conference_url | default: conf.link }}" target="_blank" rel="noopener noreferrer">
+                      {{ conf.conference }}
+                    </a>
+                  </p>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col-sm-3 col-md-3"></div>
+      </div>
+    </div>
+  </section>
+  <div class="cv-separator"></div>
+  {% endif %}
+
+  <!-- 6. Academic / University Services -->
+  {% assign academic_positions = "" | split: "" %}
+  {% for item in site.academic_positions %}
+    {% assign match = false %}
+    {% if item.lang == current_lang or item.path contains lang_slash %}
+      {% assign match = true %}
+    {% elsif current_lang == site.default_lang %}
+      {% unless item.path contains "/en/" or item.lang == "en" %}
+        {% assign match = true %}
+      {% endunless %}
+    {% endif %}
+    {% if match %}
+      {% assign academic_positions = academic_positions | push: item %}
+    {% endif %}
+  {% endfor %}
+  {% assign academic_positions = academic_positions | sort: "order" %}
+
+  {% if academic_positions.size > 0 %}
+  <section class="cv-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <h2 class="cv-section-title">{{ locale.cv.academic_services }}</h2>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <ul class="ul-dates">
+            {% for pos in academic_positions %}
+            <li>
+              <div class="dates">
+                <span>{{ pos.end_year }}</span>
+                <span>{{ pos.start_year }}</span>
+              </div>
+              <div class="content">
+                <h4>{% if pos.link and pos.link != "" %}<a href="{{ pos.link }}">{% endif %}{{ pos.title }}{% if pos.link and pos.link != "" %}</a>{% endif %}</h4>
+                <ul>
+                  {% for detail in pos.details %}
+                  <li>{{ detail }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3"></div>
+      </div>
+    </div>
+  </section>
+  <div class="cv-separator"></div>
+  {% endif %}
+
+  <!-- 7. Projects -->
+  {% assign raw_projects = site.project | default: site.projects %}
+  {% assign projects = "" | split: "" %}
+  {% for item in raw_projects %}
+    {% assign match = false %}
+    {% if item.lang == current_lang or item.path contains lang_slash %}
+      {% assign match = true %}
+    {% elsif current_lang == site.default_lang %}
+      {% unless item.path contains "/en/" or item.lang == "en" %}
+        {% assign match = true %}
+      {% endunless %}
+    {% endif %}
+    {% if match %}
+      {% assign projects = projects | push: item %}
+    {% endif %}
+  {% endfor %}
+  {% assign projects = projects | sort: "order" %}
+
+  {% if projects.size > 0 %}
+  <section class="cv-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <h2 class="cv-section-title">{{ locale.cv.projects }}</h2>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <ul class="ul-dates">
+            {% for proj in projects %}
+            <li>
+              <div class="dates">
+                <span>{{ proj.end_year }}</span>
+                <span>{{ proj.start_year }}</span>
+              </div>
+              <div class="content">
+                <h4>{% if proj.link and proj.link != "" %}<a href="{{ proj.link }}">{% endif %}{{ proj.title }}{% if proj.link and proj.link != "" %}</a>{% endif %}</h4>
+                <ul>
+                  {% for detail in proj.details %}
+                  <li>{{ detail }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3"></div>
+      </div>
+    </div>
+  </section>
+  <div class="cv-separator"></div>
+  {% endif %}
+
+  <!-- 8. Professional / Industry Experience -->
+  {% assign experiences = "" | split: "" %}
+  {% for item in site.experiences %}
+    {% assign match = false %}
+    {% if item.lang == current_lang or item.path contains lang_slash %}
+      {% assign match = true %}
+    {% elsif current_lang == site.default_lang %}
+      {% unless item.path contains "/en/" or item.lang == "en" %}
+        {% assign match = true %}
+      {% endunless %}
+    {% endif %}
+    {% if match %}
+      {% assign experiences = experiences | push: item %}
+    {% endif %}
+  {% endfor %}
+  {% assign experiences = experiences | sort: "order" %}
+
+  {% if experiences.size > 0 %}
+  <section class="cv-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <h2 class="cv-section-title">{{ locale.cv.experience }}</h2>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <ul class="ul-dates">
+            {% for exp in experiences %}
+            <li>
+              <div class="dates">
+                <span>{{ exp.end_year }}</span>
+                <span>{{ exp.start_year }}</span>
+              </div>
+              <div class="content">
+                <h4>{% if exp.link and exp.link != "" %}<a href="{{ exp.link }}">{% endif %}{{ exp.title }}{% if exp.link and exp.link != "" %}</a>{% endif %}</h4>
+                <ul>
+                  {% for detail in exp.details %}
+                  <li>{{ detail }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3"></div>
+      </div>
+    </div>
+  </section>
+  <div class="cv-separator"></div>
+  {% endif %}
+
+  <!-- 9. Services & Professional Memberships -->
+  {% assign memberships = "" | split: "" %}
+  {% for item in site.memberships %}
+    {% assign match = false %}
+    {% if item.lang == current_lang or item.path contains lang_slash %}
+      {% assign match = true %}
+    {% elsif current_lang == site.default_lang %}
+      {% unless item.path contains "/en/" or item.lang == "en" %}
+        {% assign match = true %}
+      {% endunless %}
+    {% endif %}
+    {% if match %}
+      {% assign memberships = memberships | push: item %}
+    {% endif %}
+  {% endfor %}
+  {% assign memberships = memberships | sort: "order" %}
+
+  {% if memberships.size > 0 %}
+  <section class="cv-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <h2 class="cv-section-title">{{ locale.cv.memberships }}</h2>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <ul class="ul-dates">
+            {% for member in memberships %}
+            <li>
+              <div class="dates">
+                <span>{{ member.end_year }}</span>
+                <span>{{ member.start_year }}</span>
+              </div>
+              <div class="content">
+                <h4>{{ member.role }}</h4>
+                <p>{% if member.link and member.link != "" %}<a href="{{ member.link }}" target="_blank" rel="noopener noreferrer">{% endif %}{{ member.organization }}{% if member.link and member.link != "" %}</a>{% endif %}</p>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3"></div>
+      </div>
+    </div>
+  </section>
+  <div class="cv-separator"></div>
+  {% endif %}
+
+  <!-- 10. Additional Skills / Certificates -->
+  {% assign certificates = "" | split: "" %}
+  {% for item in site.certificates %}
+    {% assign match = false %}
+    {% if item.lang == current_lang or item.path contains lang_slash %}
+      {% assign match = true %}
+    {% elsif current_lang == site.default_lang %}
+      {% unless item.path contains "/en/" or item.lang == "en" %}
+        {% assign match = true %}
+      {% endunless %}
+    {% endif %}
+    {% if match %}
+      {% assign certificates = certificates | push: item %}
+    {% endif %}
+  {% endfor %}
+  {% assign certificates = certificates | sort: "order" %}
+
+  {% if certificates.size > 0 %}
+  <section class="cv-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <h2 class="cv-section-title">{{ locale.cv.certificates }}</h2>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <ul class="ul-dates">
+            {% for cert in certificates %}
+            <li>
+              <div class="dates">
+                <span>{{ cert.end_year }}</span>
+                <span>{{ cert.start_year }}</span>
+              </div>
+              <div class="content">
+                <h4>{% if cert.link and cert.link != "" %}<a href="{{ cert.link }}">{% endif %}{{ cert.title }}{% if cert.link and cert.link != "" %}</a>{% endif %}</h4>
+                <p>{% if cert.issuer_link and cert.issuer_link != "" %}<a href="{{ cert.issuer_link }}">{% endif %}{{ cert.issuer }}{% if cert.issuer_link and cert.issuer_link != "" %}</a>{% endif %}</p>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3"></div>
+      </div>
+    </div>
+  </section>
+  <div class="cv-separator"></div>
+  {% endif %}
+
+  <!-- 11. Languages -->
+  {% if page.languages and page.languages.size > 0 %}
+  <section class="cv-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <h2 class="cv-section-title">{{ locale.cv.languages }}</h2>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <ul class="list-unstyled cv-languages-list">
+            {% for lang in page.languages %}
+            <li>
+              <strong><i class="fa fas fa-scroll"></i>&nbsp;&nbsp;</strong>
+              <span>{{ lang.name }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3"></div>
+      </div>
+    </div>
+  </section>
+  <div class="cv-separator"></div>
+  {% endif %}
+
+  {% assign content_stripped = content | strip %}
+  {% if content_stripped != "" %}
+  <section class="cv-section cv-body-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          {{ content }}
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+</div>

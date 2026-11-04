@@ -1,0 +1,248 @@
+---
+layout: default
+---
+
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign is_en = false %}
+{% if current_lang == 'en' or page.url contains '/en/' %}
+  {% assign is_en = true %}
+{% endif %}
+
+<div class="fac-page single-publication-page">
+  <div id="inside">
+
+    <!-- Publication Header -->
+    <div class="publication-hero">
+      <div class="section-container header-wrapper">
+        <div class="row">
+          <div class="col-xs-12">
+            <!-- Breadcrumbs -->
+            <div class="single-breadcrumb">
+              {% if is_en %}
+              <a href="{{ '/en/' | relative_url }}">Home</a>
+              <span class="single-breadcrumb-separator">/</span>
+              <a href="{{ '/en/publications/' | relative_url }}">Publications</a>
+              {% else %}
+              <a href="{{ '/' | relative_url }}">Anasayfa</a>
+              <span class="single-breadcrumb-separator">/</span>
+              <a href="{{ '/yayinlar/' | relative_url }}">Yayınlar</a>
+              {% endif %}
+              {% if page.publication_type %}
+              <span class="single-breadcrumb-separator">/</span>
+              <span class="single-breadcrumb-current">
+                {{ page.publication_type }}
+              </span>
+              {% endif %}
+            </div>
+
+            <h1 class="title publication-hero-title">
+              {{ page.title }}
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Publication Details & Meta Section -->
+    <div class="pagecontents color-1 single-content-body">
+      <div class="section-container">
+        <div class="row">
+
+          <!-- Left / Main Column: Overview Card & Full Content -->
+          <div class="col-md-8 col-sm-12">
+
+            <!-- Card Overview Box -->
+            <div class="panel panel-default sidebar-widget-card">
+              <div class="panel-body sidebar-widget-body">
+                <div class="row">
+                  {% if page.image %}
+                  <div class="col-sm-4 col-xs-12 pub-single-image-col">
+                    <div class="pub-single-thumb-box">
+                      <img src="{{ page.image }}" alt="{{ page.title }}" class="pub-single-thumb-img">
+                    </div>
+                  </div>
+                  <div class="col-sm-8 col-xs-12">
+                  {% else %}
+                  <div class="col-xs-12">
+                  {% endif %}
+
+                    <!-- Publication Badges -->
+                    <div class="pub-single-badges">
+                      {% if page.publication_type %}
+                      <span class="label label-primary archive-badge-primary">
+                        {{ page.publication_type }}
+                      </span>
+                      {% endif %}
+                      {% if page.type_label and page.type_label != page.publication_type %}
+                      <span class="label label-warning">
+                        {{ page.type_label }}
+                      </span>
+                      {% endif %}
+                      {% if page.year %}
+                      <span class="label label-default archive-badge-soft">
+                        <i class="fa fa-calendar"></i> {{ page.year }}
+                      </span>
+                      {% endif %}
+                    </div>
+
+                    <!-- Meta Details -->
+                    <table class="table pub-single-meta-table">
+                      <tbody>
+                        {% if page.author %}
+                        <tr>
+                          <td class="pub-single-meta-label">
+                            {% if is_en %}Author(s):{% else %}Yazar(lar):{% endif %}
+                          </td>
+                          <td class="pub-single-meta-value">
+                            {{ page.author }}
+                          </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if page.year %}
+                        <tr>
+                          <td class="pub-single-meta-label">
+                            {% if is_en %}Year:{% else %}Yıl:{% endif %}
+                          </td>
+                          <td class="pub-single-meta-value">
+                            {{ page.year }}
+                          </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if page.citation %}
+                        <tr>
+                          <td class="pub-single-meta-label">
+                            {% if is_en %}Citation:{% else %}Atıf / Künye:{% endif %}
+                          </td>
+                          <td class="pub-single-citation-text">
+                            {{ page.citation }}
+                          </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if page.doi %}
+                        <tr>
+                          <td class="pub-single-meta-label">DOI:</td>
+                          <td>
+                            <a href="https://doi.org/{{ page.doi }}" target="_blank" rel="noopener noreferrer" class="sidebar-link-anchor">
+                              {{ page.doi }}
+                            </a>
+                          </td>
+                        </tr>
+                        {% endif %}
+                      </tbody>
+                    </table>
+
+                    <!-- Action buttons -->
+                    <div class="pub-actions-row">
+                      {% if page.link %}
+                      <a href="{{ page.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-archive-primary">
+                        <i class="fa fa-external-link"></i>
+                        {% if is_en %}Read Online / Source{% else %}Orijinal Yayına Git{% endif %}
+                      </a>
+                      {% endif %}
+                      {% if page.pdf or page.download_url %}
+                      <a href="{{ page.pdf | default: page.download_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-default">
+                        <i class="fa fa-file-pdf-o"></i>
+                        PDF
+                      </a>
+                      {% endif %}
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Full Article / Abstract / Markdown Body -->
+            <div class="entry-content article-body markdown-body">
+              {{ content }}
+            </div>
+
+            <!-- Footer Navigation & Sharing -->
+            <div class="pub-footer-nav single-footer-nav">
+              <a href="{% if is_en %}{{ '/en/publications/' | relative_url }}{% else %}{{ '/yayinlar/' | relative_url }}{% endif %}" class="btn btn-default single-back-btn">
+                <i class="fa fa-arrow-left"></i>
+                {% if is_en %}{{ locale.ui.all_publications_nav | default: "All Publications" }}{% else %}{{ locale.ui.all_publications_nav | default: "Tüm Yayınlar" }}{% endif %}
+              </a>
+
+              <div class="pub-share single-share-bar">
+                <span class="single-share-label">
+                  {% if is_en %}Share:{% else %}Paylaş:{% endif %}
+                </span>
+                <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Twitter / X">
+                  <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="LinkedIn">
+                  <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Facebook">
+                  <i class="fa-brands fa-facebook"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Sidebar Column: Related info -->
+          <div class="col-md-4 col-sm-12">
+            <div class="pub-sidebar sidebar-widget-card sidebar-widget-body">
+              
+              <!-- Quick Citation Box -->
+              <h3 class="sidebar-widget-header">
+                <span><i class="fa fa-quote-left"></i> {% if is_en %}How to Cite{% else %}Nasıl Atıf Yapılır?{% endif %}</span>
+              </h3>
+              <div class="pub-single-citation-box">
+                {{ page.citation | default: page.title }}
+              </div>
+
+              <!-- Other Publications -->
+              <h3 class="sidebar-widget-header">
+                <span><i class="fa fa-book"></i> {% if is_en %}{{ locale.ui.other_publications | default: "Other Publications" }}{% else %}{{ locale.ui.other_publications | default: "Diğer Yayınlar" }}{% endif %}</span>
+              </h3>
+              <ul class="sidebar-link-list">
+                {% assign other_pubs = site.publications | where: "lang", current_lang | sort: "order" %}
+                {% if other_pubs.size == 0 %}
+                  {% assign other_pubs = site.publications | sort: "order" %}
+                {% endif %}
+                {% for opub in other_pubs %}
+                {% if opub.url != page.url %}
+                <li class="sidebar-link-item">
+                  <a href="{{ opub.url | relative_url }}" class="sidebar-link-anchor">
+                    {{ opub.title }}
+                  </a>
+                  <span class="sidebar-link-date">
+                    {{ opub.publication_type }} &bull; {{ opub.year }}
+                  </span>
+                </li>
+                {% endif %}
+                {% endfor %}
+              </ul>
+
+              <!-- Academic Profiles -->
+              <h3 class="sidebar-widget-header">
+                <span><i class="fa fa-graduation-cap"></i> {% if is_en %}Academic Profiles{% else %}Akademik Profiller{% endif %}</span>
+              </h3>
+              <div class="sidebar-meta-list">
+                <a href="https://scholar.google.com/citations?user=zyPFJ1EAAAAJ&amp;hl=en&amp;authuser=1" target="_blank" rel="noopener noreferrer" class="sidebar-link-anchor">
+                  <i class="ai ai-google-scholar"></i> Google Scholar
+                </a>
+                <a href="https://orcid.org/0000-0003-4786-8870" target="_blank" rel="noopener noreferrer" class="sidebar-link-anchor">
+                  <i class="ai ai-orcid"></i> ORCID
+                </a>
+                <a href="https://emu.academia.edu/CanBEKCAN" target="_blank" rel="noopener noreferrer" class="sidebar-link-anchor">
+                  <i class="ai ai-academia"></i> Academia.edu
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,56 @@
+{% assign current_lang = page.lang | default: site.default_lang %}
+
+<div class="language-switcher">
+  {% for lang in site.languages %}
+    {% if lang == current_lang %}
+      <span class="lang-item active" aria-current="page">
+        <span class="flag-icon flag-icon-{{ lang }}"></span>
+        <span class="lang-code">{{ lang | upcase }}</span>
+      </span>
+    {% else %}
+      {% assign target_lang = lang %}
+      {% assign target_url = nil %}
+
+      {% if page.ref %}
+        <!-- 1. Check in site.pages -->
+        {% assign match = site.pages | where: "ref", page.ref | where: "lang", target_lang | first %}
+
+        <!-- 2. Check in current collection -->
+        {% if match == nil and page.collection %}
+          {% assign collection_items = site[page.collection] %}
+          {% assign match = collection_items | where: "ref", page.ref | where: "lang", target_lang | first %}
+        {% endif %}
+
+        <!-- 3. Check across all rich content collections -->
+        {% if match == nil %}
+          {% assign match = site.lessons | where: "ref", page.ref | where: "lang", target_lang | first %}
+        {% endif %}
+        {% if match == nil %}
+          {% assign match = site.posts | where: "ref", page.ref | where: "lang", target_lang | first %}
+        {% endif %}
+        {% if match == nil %}
+          {% assign match = site.publications | where: "ref", page.ref | where: "lang", target_lang | first %}
+        {% endif %}
+
+        {% if match %}
+          {% assign target_url = match.url %}
+        {% endif %}
+      {% endif %}
+
+      <!-- 4. Clean fallback to the target language homepage -->
+      {% if target_url == nil or target_url == '' %}
+        {% if target_lang == site.default_lang %}
+          {% assign target_url = "/" %}
+        {% else %}
+          {% assign target_url = "/" | append: target_lang | append: "/" %}
+        {% endif %}
+      {% endif %}
+
+      <a href="{{ target_url | relative_url }}" class="lang-item" title="{{ site.data.locales[target_lang].ui.current_language }}">
+        <span class="flag-icon flag-icon-{{ target_lang }}"></span>
+        <span class="lang-code">{{ target_lang | upcase }}</span>
+      </a>
+    {% endif %}
+    {% unless forloop.last %}<span class="lang-separator">|</span>{% endunless %}
+  {% endfor %}
+</div>

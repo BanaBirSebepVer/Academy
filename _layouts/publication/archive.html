@@ -1,0 +1,182 @@
+---
+layout: default
+---
+
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign is_en = false %}
+{% if current_lang == 'en' or page.url contains '/en/' %}
+  {% assign is_en = true %}
+{% endif %}
+{% assign lang_slash = "/" | append: current_lang | append: "/" %}
+
+<div class="fac-page publication-archive-page">
+  <div id="inside" class="archive-page-container">
+    <div class="container-fluid">
+
+      <!-- Header Section -->
+      <div class="page-header archive-header">
+        <h1>
+          {{ page.title | default: locale.ui.publications_title | default: "Yayınlar" }}
+        </h1>
+        <p>
+          {% if is_en %}
+            {{ page.description | default: "Book chapters, academic theses, peer-reviewed articles, and scientific research publications." }}
+          {% else %}
+            {{ page.description | default: "Kitap bölümleri, akademik tezler, hakemli dergi makaleleri ve bilimsel araştırma yayınları." }}
+          {% endif %}
+        </p>
+      </div>
+
+      <!-- Page Content (if any intro markdown text is provided) -->
+      {% if content and content != "" %}
+      <div class="archive-intro-content markdown-body">
+        {{ content }}
+      </div>
+      {% endif %}
+
+      <!-- Dynamic publication collection filtered by language -->
+      {% assign all_publications = "" | split: "" %}
+      {% for pub in site.publications %}
+        {% assign match = false %}
+        {% if pub.lang == current_lang or pub.path contains lang_slash %}
+          {% assign match = true %}
+        {% elsif current_lang == site.default_lang %}
+          {% unless pub.path contains "/en/" or pub.lang == "en" %}
+            {% assign match = true %}
+          {% endunless %}
+        {% endif %}
+        {% if match %}
+          {% assign all_publications = all_publications | push: pub %}
+        {% endif %}
+      {% endfor %}
+
+      {% assign all_publications = all_publications | sort: "order" %}
+      {% assign all_types = all_publications | map: "publication_type" | compact | uniq | sort %}
+
+      <!-- Search & Filter Controls -->
+      <div class="publication-controls archive-controls">
+        <!-- Search Box -->
+        <div class="archive-search-box">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="fa fa-search"></i>
+            </span>
+            <input type="text" id="publicationSearchInput" class="form-control" placeholder="{{ locale.ui.search_publications_placeholder | default: 'Başlık, yazar, atıf veya yıl ile ara...' }}">
+          </div>
+        </div>
+
+        <!-- Type Filter Buttons -->
+        <div id="pubTypeFilterButtons" class="archive-filter-pills">
+          <button class="btn btn-sm btn-primary active archive-filter-btn pub-filter-btn pub-cat-btn" data-type="all">
+            {{ locale.ui.all_publications | default: "Tümü" }} ({{ all_publications.size }})
+          </button>
+          {% for ptype in all_types %}
+            {% assign type_slug = ptype | slugify %}
+            {% assign type_count = all_publications | where: "publication_type", ptype | size %}
+            <button class="btn btn-sm btn-default archive-filter-btn pub-filter-btn pub-cat-btn" data-type="{{ type_slug }}">
+              {{ ptype }} ({{ type_count }})
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Publications List / Cards -->
+      <div class="fac-publications" id="publicationsList">
+        <div class="pitems">
+          <div class="row">
+            {% for pub in all_publications %}
+            {% assign ptype = pub.publication_type %}
+            {% assign ptype_slug = ptype | slugify %}
+            <div class="col-xs-12 pub-item-wrapper publication-card-wrapper"
+                 data-type="{{ ptype_slug }}"
+                 data-title="{{ pub.title | downcase | escape }}"
+                 data-author="{{ pub.author | downcase | escape }}"
+                 data-year="{{ pub.year }}"
+                 data-cite="{{ pub.citation | downcase | escape }}">
+              
+              <div class="item">
+                <div class="pubmain pub-item-card {% if pub.image %}pub-has-thumb{% endif %}">
+                  
+                  {% if pub.image %}
+                  <div class="pub-thumb pub-thumb-container">
+                    <a href="{{ pub.url | relative_url }}">
+                      <img src="{{ pub.image }}" alt="{{ pub.title }}" class="pub-thumb-image">
+                    </a>
+                  </div>
+                  {% endif %}
+
+                  <div class="pub-contents pub-contents-container">
+                    
+                    <!-- Top Meta: Type & Year -->
+                    <div class="pub-meta-top">
+                      <span class="label label-primary archive-badge-primary">
+                        {{ pub.type_label | default: pub.publication_type }}
+                      </span>
+                      <span class="pub-year-text">
+                        <i class="fa fa-calendar"></i> {{ pub.year }}
+                      </span>
+                    </div>
+
+                    <!-- Title -->
+                    <h3 class="pubtitle pub-item-title">
+                      <a href="{{ pub.url | relative_url }}">
+                        {{ pub.title }}
+                      </a>
+                    </h3>
+
+                    <!-- Author & Citation -->
+                    <div class="pubcontents">
+                      <div class="pubauthor pub-author-text">
+                        <i class="fa fa-user"></i>
+                        {% if is_en %}{{ pub.author_en | default: pub.author }}{% else %}{{ pub.author }}{% endif %}
+                      </div>
+                      <div class="pubcite pub-cite-text">
+                        {{ pub.citation }}
+                      </div>
+                    </div>
+
+                    <!-- Action Links -->
+                    <div class="pub-actions-row">
+                      <a href="{{ pub.url | relative_url }}" class="btn btn-sm btn-archive-primary">
+                        {{ locale.ui.view_publication_details | default: "Detayları İncele" }} &rarr;
+                      </a>
+                      {% if pub.link %}
+                      <a href="{{ pub.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-default">
+                        <i class="fa fa-external-link"></i>
+                        {{ locale.ui.original_link | default: "Orijinal Bağlantı" }}
+                      </a>
+                      {% endif %}
+                      {% if pub.pdf or pub.download_url %}
+                      <a href="{{ pub.pdf | default: pub.download_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-default">
+                        <i class="fa fa-file-pdf-o"></i>
+                        PDF
+                      </a>
+                      {% endif %}
+                    </div>
+
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <!-- No Results Box -->
+      <div id="noPubsMatch" class="archive-no-match">
+        <i class="fa fa-book"></i>
+        <h4>
+          {{ locale.ui.no_publications_found | default: "Aramanıza uygun yayın bulunamadı." }}
+        </h4>
+        <p>
+          {{ locale.ui.no_publications_found_sub | default: "Lütfen farklı bir arama terimi deneyin veya filtreleri temizleyin." }}
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>

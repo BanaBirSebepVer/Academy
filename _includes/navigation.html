@@ -1,0 +1,51 @@
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign folder_prefix = "pages/" | append: current_lang | append: "/" %}
+
+{% comment %} Select all pages belonging to the active language folder that are not excluded {% endcomment %}
+{% assign lang_pages = site.pages | where_exp: "p", "p.path contains folder_prefix" | where_exp: "p", "p.nav_exclude != true" %}
+
+{% comment %} Extract top-level navigation items (parent is nil) and sort by nav_order {% endcomment %}
+{% assign top_pages = lang_pages | where_exp: "p", "p.parent == nil" | sort: "nav_order" %}
+
+<div id="main-nav">
+  <ul id="navigation">
+    {% for item in top_pages %}
+      {% assign item_ref = item.ref %}
+      {% assign children = lang_pages | where_exp: "c", "c.parent == item_ref" | sort: "nav_order" %}
+
+      {% assign is_current = false %}
+      {% if page.url == item.url or page.ref == item.ref or page.active_nav == item.ref %}
+        {% assign is_current = true %}
+      {% endif %}
+
+      {% if children.size > 0 %}
+        {% assign has_current_child = false %}
+        {% for child in children %}
+          {% if page.url == child.url or page.ref == child.ref or page.active_nav == child.ref or page.parent == item.ref %}
+            {% assign has_current_child = true %}
+          {% endif %}
+        {% endfor %}
+
+        <li class="menu-item menu-item-has-children {% if is_current or has_current_child %}current-menu-item current-menu-ancestor open{% endif %}">
+          <a href="{{ item.url | relative_url }}">{{ item.nav_title | default: item.title }}</a>
+          <span class="submenu-trigger"></span>
+          <ul class="sub-menu">
+            {% for child in children %}
+              {% assign is_child_current = false %}
+              {% if page.url == child.url or page.ref == child.ref or page.active_nav == child.ref %}
+                {% assign is_child_current = true %}
+              {% endif %}
+              <li class="menu-item {% if is_child_current %}current-menu-item{% endif %}">
+                <a href="{{ child.url | relative_url }}">{{ child.nav_title | default: child.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% else %}
+        <li class="menu-item {% if is_current %}current-menu-item{% endif %}">
+          <a href="{{ item.url | relative_url }}">{{ item.nav_title | default: item.title }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>

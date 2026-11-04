@@ -1,0 +1,184 @@
+---
+layout: default
+---
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign lang_slash = "/" | append: current_lang | append: "/" %}
+
+<div class="fac-page lessons-category-page">
+  <div id="inside" class="archive-page-container">
+    <div class="container-fluid">
+      
+      <!-- Category Page Header -->
+      <div class="page-header archive-header">
+        <h1>
+          {{ page.title | default: locale.ui.lessons_title }}
+        </h1>
+        <p>
+          {{ page.description | default: locale.ui.lessons_title }}
+        </p>
+      </div>
+
+      <!-- Intro Content if provided in markdown page -->
+      {% if content and content != "" %}
+      <div class="archive-intro-content markdown-body">
+        {{ content }}
+      </div>
+      {% endif %}
+
+      {% comment %} Filter lessons dynamically for active language {% endcomment %}
+      {% assign all_lessons = "" | split: "" %}
+      {% for item in site.lessons %}
+        {% assign match = false %}
+        {% if item.lang == current_lang or item.path contains lang_slash %}
+          {% assign match = true %}
+        {% elsif current_lang == site.default_lang %}
+          {% unless item.path contains "/en/" or item.lang == "en" %}
+            {% assign match = true %}
+          {% endunless %}
+        {% endif %}
+        {% if match and item.course_code != nil %}
+          {% assign all_lessons = all_lessons | push: item %}
+        {% endif %}
+      {% endfor %}
+
+      {% if all_lessons.size == 0 %}
+        {% for item in site.lessons %}
+          {% assign match = false %}
+          {% if item.lang == current_lang or item.path contains lang_slash %}
+            {% assign match = true %}
+          {% elsif current_lang == site.default_lang %}
+            {% unless item.path contains "/en/" or item.lang == "en" %}
+              {% assign match = true %}
+            {% endunless %}
+          {% endif %}
+          {% if match and item.layout == "lesson" %}
+            {% assign all_lessons = all_lessons | push: item %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      {% assign all_categories = all_lessons | map: "category" | compact | uniq | sort %}
+
+      <!-- Controls: Search & Category Filter Pills -->
+      <div class="category-controls archive-controls">
+        <div class="archive-search-box">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            <input type="text" id="lessonSearchInput" class="form-control" placeholder="{{ locale.ui.search_lessons_placeholder | default: 'Search courses...' }}">
+          </div>
+        </div>
+
+        <div id="categoryFilterButtons" class="archive-filter-pills">
+          <button class="btn btn-sm btn-primary active archive-filter-btn lesson-cat-btn" data-category="all">
+            {{ locale.ui.all_lessons | default: "All Courses" }}
+          </button>
+          {% for cat in all_categories %}
+            {% assign cat_slug = cat | slugify %}
+            {% assign cat_lower = cat | downcase %}
+            {% if cat_lower contains "veri" or cat_lower contains "data" %}
+              {% assign cat_icon = "fa-database" %}
+            {% elsif cat_lower contains "medya prod" or cat_lower contains "video" or cat_lower contains "production" %}
+              {% assign cat_icon = "fa-video-camera" %}
+            {% elsif cat_lower contains "sosyal" or cat_lower contains "social" or cat_lower contains "teori" or cat_lower contains "theory" %}
+              {% assign cat_icon = "fa-comments" %}
+            {% elsif cat_lower contains "tasarim" or cat_lower contains "design" %}
+              {% assign cat_icon = "fa-paint-brush" %}
+            {% elsif cat_lower contains "fotograf" or cat_lower contains "photo" %}
+              {% assign cat_icon = "fa-camera" %}
+            {% else %}
+              {% assign cat_icon = "fa-graduation-cap" %}
+            {% endif %}
+            <button class="btn btn-sm btn-default archive-filter-btn lesson-cat-btn" data-category="{{ cat_slug }}">
+              <i class="fa {{ cat_icon }}"></i> {{ cat }}
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Dynamic Category Sections -->
+      {% for cat in all_categories %}
+        {% assign cat_slug = cat | slugify %}
+        {% assign cat_lower = cat | downcase %}
+        {% if cat_lower contains "veri" or cat_lower contains "data" %}
+          {% assign cat_icon = "fa-database" %}
+        {% elsif cat_lower contains "medya prod" or cat_lower contains "video" or cat_lower contains "production" %}
+          {% assign cat_icon = "fa-video-camera" %}
+        {% elsif cat_lower contains "sosyal" or cat_lower contains "social" or cat_lower contains "teori" or cat_lower contains "theory" %}
+          {% assign cat_icon = "fa-comments" %}
+        {% elsif cat_lower contains "tasarim" or cat_lower contains "design" %}
+          {% assign cat_icon = "fa-paint-brush" %}
+        {% elsif cat_lower contains "fotograf" or cat_lower contains "photo" %}
+          {% assign cat_icon = "fa-camera" %}
+        {% else %}
+          {% assign cat_icon = "fa-graduation-cap" %}
+        {% endif %}
+
+        {% assign cat_lessons = all_lessons | where: "category", cat | sort: "course_code" %}
+        {% if cat_lessons.size > 0 %}
+        <div class="category-group-block" data-category="{{ cat_slug }}">
+          <div class="category-title-header">
+            <div class="category-title-icon">
+              <i class="fa {{ cat_icon }}"></i>
+            </div>
+            <h2 class="category-title-text">
+              {{ cat }}
+            </h2>
+            <span class="badge category-title-badge">
+              {{ cat_lessons.size }} {{ locale.ui.course_count_suffix | default: "Courses" }}
+            </span>
+          </div>
+
+          <div class="row flex-masonry-grid">
+            {% for lesson in cat_lessons %}
+              <div class="col-md-6 col-sm-12 archive-card-col lesson-card-wrapper flex-masonry-item" data-category="{{ cat_slug }}" data-title="{{ lesson.title | downcase }}" data-code="{{ lesson.course_code | downcase }}">
+                <div class="lesson-card panel panel-default archive-card">
+                  <div class="panel-body archive-card-body">
+                    <div class="archive-card-meta">
+                      <span class="label label-primary archive-badge-primary">
+                        {{ lesson.course_code }}
+                      </span>
+                      <span class="archive-meta-institution">
+                        {{ lesson.institution_initial | default: lesson.institution }}
+                      </span>
+                    </div>
+                    <h3 class="archive-card-title">
+                      <a href="{{ lesson.url | relative_url }}">
+                        {{ lesson.title }}
+                      </a>
+                    </h3>
+                    <p class="archive-card-subtitle">
+                      <i class="fa fa-university"></i>
+                      {{ lesson.institution }}
+                    </p>
+                    <div class="archive-card-desc">
+                      {{ lesson.description | default: "Ders içeriği, haftalık izlence, proje isterleri ve notlandırma kriterleri." }}
+                    </div>
+                    <div class="archive-card-footer">
+                      <a href="{{ lesson.url | relative_url }}" class="btn btn-sm btn-archive-primary">
+                        {{ locale.ui.view_syllabus | default: "Müfredatı İncele" }} &rarr;
+                      </a>
+                      {% if lesson.lecture_notes_url %}
+                      <a href="{{ lesson.lecture_notes_url | relative_url }}" class="btn btn-sm btn-default">
+                        <i class="fa fa-book"></i> {{ locale.ui.lecture_notes | default: "Ders Notları" }}
+                      </a>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+
+      <div id="noLessonsMatch" class="archive-no-match">
+        <i class="fa fa-graduation-cap"></i>
+        <h4>{{ locale.ui.no_lessons_found | default: "Aramanıza uygun ders bulunamadı." }}</h4>
+        <p>{{ locale.ui.no_lessons_found_sub | default: "Lütfen farklı bir arama terimi deneyin veya filtreleri temizleyin." }}</p>
+      </div>
+
+    </div>
+  </div>
+</div>

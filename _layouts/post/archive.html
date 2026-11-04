@@ -1,0 +1,184 @@
+---
+layout: default
+---
+
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign is_en = false %}
+{% if current_lang == 'en' or page.url contains '/en/' %}
+  {% assign is_en = true %}
+{% endif %}
+{% assign lang_slash = "/" | append: current_lang | append: "/" %}
+
+<div class="fac-page post-archive-page">
+  <div id="inside" class="archive-page-container">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+          
+          <!-- Page Header Section -->
+          <div class="page-header archive-header">
+            <h1>
+              {{ page.title | default: locale.ui.posts_title | default: "Yazılar" }}
+            </h1>
+            <p>
+              {{ page.description | default: locale.ui.posts_description | default: "Akademik yazılar, düşünceler, teknoloji ve medya üzerine notlar." }}
+            </p>
+          </div>
+
+          <!-- Page Content (if intro text provided in markdown page) -->
+          {% if content and content != "" %}
+          <div class="archive-intro-content">
+            {{ content }}
+          </div>
+          {% endif %}
+
+          <!-- Filter posts dynamically for active language -->
+          {% assign all_posts = "" | split: "" %}
+          {% for p in site.posts %}
+            {% assign match = false %}
+            {% if p.lang == current_lang or p.path contains lang_slash %}
+              {% assign match = true %}
+            {% elsif current_lang == site.default_lang %}
+              {% unless p.path contains "/en/" or p.lang == "en" %}
+                {% assign match = true %}
+              {% endunless %}
+            {% endif %}
+            {% if match %}
+              {% assign all_posts = all_posts | push: p %}
+            {% endif %}
+          {% endfor %}
+
+          <!-- Extract unique categories dynamically from filtered posts -->
+          {% assign post_categories = "" | split: "" %}
+          {% for p in all_posts %}
+            {% for cat in p.categories %}
+              {% assign post_categories = post_categories | push: cat %}
+            {% endfor %}
+          {% endfor %}
+          {% assign post_categories = post_categories | uniq | sort %}
+
+          <!-- Search & Filter Controls -->
+          <div class="post-controls archive-controls">
+            <div class="archive-search-box">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="fa fa-search"></i>
+                </span>
+                <input type="text" id="postSearchInput" class="form-control" placeholder="{{ locale.ui.search_posts_placeholder | default: 'Yazılarda başlık, konu veya yazar ile ara...' }}">
+              </div>
+            </div>
+            
+            <div id="categoryFilter" class="archive-filter-pills">
+              <button class="btn btn-sm btn-primary active archive-filter-btn cat-btn" data-cat="all">
+                {{ locale.ui.all_posts | default: "Tümü" }} ({{ all_posts.size }})
+              </button>
+              {% for category in post_categories %}
+                {% assign cat_count = 0 %}
+                {% for p in all_posts %}
+                  {% if p.categories contains category %}
+                    {% assign cat_count = cat_count | plus: 1 %}
+                  {% endif %}
+                {% endfor %}
+                <button class="btn btn-sm btn-default archive-filter-btn cat-btn" data-cat="{{ category | slugify }}">
+                  {{ category }} ({{ cat_count }})
+                </button>
+              {% endfor %}
+            </div>
+          </div>
+
+          <!-- Empty State (No posts for this language) -->
+          {% if all_posts.size == 0 %}
+          <div class="archive-empty-state alert alert-info">
+            <i class="fa fa-info-circle"></i>
+            {{ locale.ui.empty_posts | default: "Henüz bu dilde yayınlanmış bir yazı bulunmuyor." }}
+          </div>
+          {% endif %}
+
+          <!-- Posts Archive Grid (Flex Masonry) -->
+          <div class="row flex-masonry-grid" id="postsGrid">
+            {% for post in all_posts %}
+              {% assign a_key = post.author | default: "canbekcan" | strip | downcase %}
+              {% assign p_author = site.person | where: "username", a_key | first %}
+              {% if p_author == nil %}{% assign p_author = site.person | where: "slug", a_key | first %}{% endif %}
+              {% if p_author == nil %}{% assign p_author = site.person | where: "name", post.author | first %}{% endif %}
+              {% if p_author == nil %}{% assign p_author = site.person | first %}{% endif %}
+              {% assign author_display_name = post.author_name | default: p_author.name | default: post.author %}
+              {% assign author_display_avatar = post.author_avatar | default: p_author.avatar | default: "/assets/images/Can-Bekcan-PADI.jpg" %}
+
+              <div class="col-md-6 col-sm-12 archive-card-col post-card-item flex-masonry-item" data-title="{{ post.title | downcase | escape }}" data-author="{{ author_display_name | downcase | escape }}" data-categories="{% for c in post.categories %}{{ c | slugify }} {% endfor %}">
+                <div class="archive-card">
+                  
+                  {% if post.featured_image and post.featured_image != "" %}
+                  <div class="archive-card-image">
+                    <a href="{{ post.url | relative_url }}">
+                      <img src="{{ post.featured_image }}" alt="{{ post.title }}">
+                    </a>
+                  </div>
+                  {% endif %}
+
+                  <div class="archive-card-body">
+                    
+                    <!-- Metadata: Date, Author & Category -->
+                    <div class="archive-card-meta">
+                      <div class="archive-card-meta-user">
+                        <img src="{{ author_display_avatar | relative_url }}" alt="{{ author_display_name }}" class="archive-card-author-avatar">
+                        <span class="archive-card-author-name">{{ author_display_name }}</span>
+                        &bull;
+                        <span>
+                          <i class="fa fa-calendar-o"></i> 
+                          {% if is_en %}
+                            {{ post.date | date: "%B %d, %Y" }}
+                          {% else %}
+                            {{ post.date | date: "%d.%m.%Y" }}
+                          {% endif %}
+                        </span>
+                      </div>
+                      {% if post.categories.size > 0 %}
+                      <span class="label label-info archive-badge-soft">
+                        {{ post.categories | first }}
+                      </span>
+                      {% endif %}
+                    </div>
+
+                    <!-- Post Title -->
+                    <h3 class="archive-card-title">
+                      <a href="{{ post.url | relative_url }}">
+                        {{ post.title }}
+                      </a>
+                    </h3>
+
+                    <!-- Post Excerpt -->
+                    <div class="archive-card-desc">
+                      {{ post.excerpt | strip_html | strip_newlines | truncate: 150 }}
+                    </div>
+
+                    <!-- Footer: Read More & Reading Time -->
+                    <div class="archive-card-footer">
+                      <a href="{{ post.url | relative_url }}" class="btn btn-sm btn-archive-outline">
+                        {{ locale.ui.read_more | default: "Devamını Oku" }} &rarr;
+                      </a>
+                      {% assign words = post.content | number_of_words %}
+                      <span class="archive-reading-time">
+                        <i class="fa fa-clock-o"></i> ~{{ words | divided_by: 200 | at_least: 1 }} {% if is_en %}min read{% else %}dk{% endif %}
+                      </span>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <!-- Empty Search Alert -->
+          <div id="noPostsMatch" class="archive-no-match">
+            <i class="fa fa-newspaper-o"></i>
+            <h4>{{ locale.ui.no_posts_found | default: "Aramanıza uygun yazı bulunamadı." }}</h4>
+            <p>{{ locale.ui.no_posts_found_sub | default: "Lütfen farklı bir arama terimi deneyin veya kategori filtresini temizleyin." }}</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

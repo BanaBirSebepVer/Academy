@@ -1,0 +1,164 @@
+<!-- Lesson Sidebar Widget -->
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign lang_slash = "/" | append: current_lang | append: "/" %}
+{% assign lessons_page = site.pages | where: "ref", "lessons" | where: "lang", current_lang | first %}
+{% assign lessons_archive_url = lessons_page.url | default: "/dersler/" | relative_url %}
+
+<aside class="lesson-sidebar sidebar-sticky-wrap">
+
+  <!-- Course Overview Card -->
+  <div class="panel panel-default sidebar-widget-card">
+    <div class="sidebar-widget-header sidebar-widget-header-dark">
+      <span><i class="fa fa-info-circle"></i> {{ locale.ui.course_info | default: "Ders Bilgileri" }}</span>
+    </div>
+    <div class="sidebar-widget-body">
+      <ul class="sidebar-meta-list">
+        {% if page.course_code %}
+        <li class="sidebar-meta-row">
+          <span class="sidebar-meta-label">{{ locale.ui.course_code | default: "Ders Kodu" }}:</span>
+          <strong class="sidebar-meta-value">{{ page.course_code }}</strong>
+        </li>
+        {% endif %}
+
+        {% if page.category %}
+        <li class="sidebar-meta-row">
+          <span class="sidebar-meta-label">{{ locale.ui.field_category | default: "Alan" }}:</span>
+          <span class="label label-default archive-badge-soft">{{ page.category }}</span>
+        </li>
+        {% endif %}
+
+        <li class="sidebar-meta-row">
+          <span class="sidebar-meta-label">{{ locale.ui.instructor | default: "Öğretim Görevlisi" }}:</span>
+          <strong class="sidebar-meta-value"><i class="fa fa-user"></i>{{ page.instructor | default: "Can Bekcan" }}</strong>
+        </li>
+
+        {% if page.institution %}
+        <li class="sidebar-meta-row">
+          <span class="sidebar-meta-label">{{ locale.ui.institution | default: "Kurum" }}:</span>
+          <span class="sidebar-meta-value">{{ page.institution }}</span>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Course Communication Channels (if defined) -->
+  {% assign has_social = false %}
+  {% if page.discord and page.discord != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.teams and page.teams != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.whatsapp and page.whatsapp != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.telegram and page.telegram != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.slack and page.slack != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.zoom and page.zoom != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.email and page.email != "" %}{% assign has_social = true %}{% endif %}
+
+  {% if has_social %}
+  <div class="panel panel-default sidebar-widget-card">
+    <div class="sidebar-widget-header">
+      <span><i class="fa fa-comments"></i> {{ locale.ui.course_channels | default: "Ders İletişim Kanalları" }}</span>
+    </div>
+    <div class="sidebar-widget-body">
+      <div class="sidebar-meta-list">
+        {% if page.discord and page.discord != "" %}
+        <a href="{{ page.discord }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-channel-block btn-channel-discord">
+          <i class="fa-brands fa-discord"></i> Discord Kanalı
+        </a>
+        {% endif %}
+
+        {% if page.teams and page.teams != "" %}
+        <a href="{{ page.teams }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-channel-block btn-channel-teams">
+          <i class="fa-brands fa-microsoft"></i> Microsoft Teams
+        </a>
+        {% endif %}
+
+        {% if page.whatsapp and page.whatsapp != "" %}
+        <a href="{{ page.whatsapp }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-channel-block btn-channel-whatsapp">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp Grubu
+        </a>
+        {% endif %}
+
+        {% if page.telegram and page.telegram != "" %}
+        <a href="{{ page.telegram }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-channel-block btn-channel-telegram">
+          <i class="fa-brands fa-telegram"></i> Telegram
+        </a>
+        {% endif %}
+
+        {% if page.slack and page.slack != "" %}
+        <a href="{{ page.slack }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-channel-block btn-channel-slack">
+          <i class="fa-brands fa-slack"></i> Slack
+        </a>
+        {% endif %}
+
+        {% if page.zoom and page.zoom != "" %}
+        <a href="{{ page.zoom }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-channel-block btn-channel-zoom">
+          <i class="fa fa-video-camera"></i> Zoom
+        </a>
+        {% endif %}
+
+        {% if page.email and page.email != "" %}
+        <a href="mailto:{{ page.email }}" class="btn btn-xs btn-channel btn-channel-block btn-channel-email">
+          <i class="fa fa-envelope"></i> E-posta: {{ page.email }}
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Course Materials CTA (if available) -->
+  {% if page.lecture_notes_url %}
+  <div class="panel panel-default material-cta-card">
+    <h4>
+      <i class="fa fa-book"></i> {{ locale.ui.lecture_notes | default: "Ders Notları" }}
+    </h4>
+    <p>
+      {{ locale.ui.materials_and_notes | default: "Bu derse ait haftalık ders slaytları, okuma metinleri ve dijital materyallere ulaşabilirsiniz." }}
+    </p>
+    <a href="{{ page.lecture_notes_url | relative_url }}" class="btn btn-sm btn-block btn-archive-primary">
+      {{ locale.ui.materials_and_notes | default: "Ders Notlarına Git" }} &rarr;
+    </a>
+  </div>
+  {% endif %}
+
+  <!-- Related Lessons in Same Category -->
+  {% if page.category %}
+  <div class="panel panel-default sidebar-widget-card">
+    <div class="sidebar-widget-header">
+      <span><i class="fa fa-graduation-cap"></i> {{ locale.ui.related_lessons | default: "Benzer Alandaki Dersler" }}</span>
+    </div>
+    <div class="sidebar-widget-body">
+      <ul class="sidebar-link-list">
+        {% assign related_count = 0 %}
+        {% for other in site.lessons %}
+          {% assign other_match = false %}
+          {% if other.lang == current_lang or other.path contains lang_slash %}
+            {% assign other_match = true %}
+          {% elsif current_lang == site.default_lang %}
+            {% unless other.path contains "/en/" or other.lang == "en" %}
+              {% assign other_match = true %}
+            {% endunless %}
+          {% endif %}
+          {% if other_match and other.category == page.category and other.url != page.url and other.layout == "lesson" %}
+            {% assign related_count = related_count | plus: 1 %}
+            {% if related_count <= 4 %}
+            <li class="sidebar-link-item">
+              <a href="{{ other.url | relative_url }}" class="sidebar-link-anchor">
+                <span class="label label-default archive-badge-soft">{{ other.course_code }}</span>
+                <span>{{ other.title }}</span>
+              </a>
+            </li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <div class="sidebar-footer-link-wrap">
+        <a href="{{ lessons_archive_url }}">
+          {{ locale.ui.view_all_lessons | default: "Tüm Dersleri Gör" }} &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+</aside>

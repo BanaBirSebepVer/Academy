@@ -1,0 +1,132 @@
+---
+layout: default
+---
+
+<div class="fac-page projects-archive-page">
+  <div class="archive-page-container">
+    <div class="container-fluid">
+
+      <!-- Header Section -->
+      <div class="archive-header">
+        <h1>{{ page.title | default: "Projects & Initiatives" }}</h1>
+        <p>{{ page.description | default: "Akademik araştırmalar, veri madenciliği girişimleri, sivil toplum hareketleri ve açık bilim projeleri arşivi." }}</p>
+      </div>
+
+      <!-- Intro Content if provided in markdown page -->
+      {% if content and content != "" %}
+      <div class="archive-intro-content markdown-body">
+        {{ content }}
+      </div>
+      {% endif %}
+
+      <!-- Search & Category Filter Controls -->
+      <div class="archive-controls">
+        <div class="archive-search-box">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="fa fa-search"></i>
+            </span>
+            <input type="text" id="projectSearchInput" class="form-control" placeholder="Projelerde ara (örn: Enstitü, Veri, Planet, Kütüphane)...">
+          </div>
+        </div>
+
+        <div class="archive-filter-pills" id="projectFilterButtons">
+          <button class="btn btn-sm btn-primary active archive-filter-btn project-cat-btn" data-category="all">
+            Tüm Projeler
+          </button>
+          <button class="btn btn-sm btn-default archive-filter-btn project-cat-btn" data-category="institutional">
+            <i class="fa fa-building"></i> Kurumsal & Topluluk
+          </button>
+          <button class="btn btn-sm btn-default archive-filter-btn project-cat-btn" data-category="research">
+            <i class="fa fa-flask"></i> Araştırma & Veri
+          </button>
+          <button class="btn btn-sm btn-default archive-filter-btn project-cat-btn" data-category="social">
+            <i class="fa fa-heart"></i> Sosyal Sorumluluk
+          </button>
+          <button class="btn btn-sm btn-default archive-filter-btn project-cat-btn" data-category="culture">
+            <i class="fa fa-bookmark"></i> Kültür & Arşiv
+          </button>
+        </div>
+      </div>
+
+      {% assign all_projects = site.project | default: site.projects | sort: "order" %}
+
+      <!-- Projects Archive Grid (Flex Masonry) -->
+      <div class="row flex-masonry-grid" id="projectsGrid">
+        {% for proj in all_projects %}
+        <div class="col-md-6 col-sm-12 archive-card-col project-card-item flex-masonry-item" data-category="{{ proj.category }}" data-title="{{ proj.title | downcase | escape }}" data-tags="{% for tag in proj.tags %}{{ tag | downcase }} {% endfor %}">
+          <div class="archive-card">
+            {% if proj.image and proj.image != "" %}
+            <div class="archive-card-image">
+              <img src="{{ proj.image }}" alt="{{ proj.title }}">
+            </div>
+            {% endif %}
+            
+            <div class="archive-card-body">
+              <div class="archive-card-meta">
+                {% if proj.badge_label %}
+                <span class="label archive-badge-primary">{{ proj.badge_label }}</span>
+                {% endif %}
+                {% if proj.status %}
+                <span class="status-badge {{ proj.status_class | default: 'status-active' }}">
+                  {{ proj.status }}
+                </span>
+                {% endif %}
+              </div>
+              
+              <h3 class="archive-card-title">
+                {% if proj.link and proj.link != "" %}
+                  <a href="{{ proj.link | relative_url }}" {% if proj.link contains 'http' %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ proj.title }}</a>
+                {% else %}
+                  {{ proj.title }}
+                {% endif %}
+              </h3>
+              
+              {% if proj.subtitle %}
+              <div class="archive-card-subtitle">
+                <i class="fa fa-info-circle"></i> {{ proj.subtitle }}
+              </div>
+              {% endif %}
+              
+              <div class="archive-card-desc">
+                {{ proj.content | markdownify }}
+              </div>
+              
+              {% if proj.tags and proj.tags.size > 0 %}
+              <div class="archive-card-tags">
+                {% for tag in proj.tags %}
+                <span class="archive-card-tag">{{ tag }}</span>
+                {% endfor %}
+              </div>
+              {% endif %}
+              
+              <div class="archive-card-footer">
+                {% if proj.link and proj.link != "" %}
+                  <a href="{{ proj.link | relative_url }}" {% if proj.link contains 'http' %}target="_blank" rel="noopener noreferrer"{% endif %} class="btn btn-sm btn-default archive-card-action-btn">
+                    {{ proj.link_text | default: "Detayları Gör" }}
+                    {% if proj.link_icon %}
+                      <i class="fa {{ proj.link_icon }}"></i>
+                    {% else %}
+                      &rarr;
+                    {% endif %}
+                  </a>
+                {% else %}
+                  <span class="archive-role-text">{{ proj.role | default: "Sosyal Sorumluluk İnisiyatifi" }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- No Matches Alert -->
+      <div id="noProjectsMatch" class="archive-no-match">
+        <i class="fa fa-folder-open"></i>
+        <h4>Aramanıza uygun proje bulunamadı.</h4>
+        <p>Lütfen farklı bir arama terimi deneyin veya kategori filtresini değiştirin.</p>
+      </div>
+
+    </div>
+  </div>
+</div>

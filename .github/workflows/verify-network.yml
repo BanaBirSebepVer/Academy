@@ -1,0 +1,57 @@
+name: Academic Network Health-Check Audit
+
+on:
+  schedule:
+    # Run every Sunday at midnight (00:00 UTC)
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  audit-network:
+    name: Audit Academic Network Registry
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml requests beautifulsoup4
+
+      - name: Run Academic Network Verification Script
+        id: audit
+        run: python scripts/verify_network.py --timeout 10
+
+      - name: Create Pull Request for Pruned Entries
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore(network): prune inactive or uninstalled academic network entries"
+          branch: "automation/prune-inactive-network"
+          delete-branch: true
+          title: "[Automation] Academic Network Audit: Pruned Inactive Sites"
+          body: |
+            ### Automated Academic Network Health-Check Report
+
+            The weekly automated audit script (`scripts/verify_network.py`) scanned all websites registered in `_data/academic_network.yml`.
+
+            #### Audit Findings:
+            - One or more entries failed the verification checks (connection failure, timeout, non-200 HTTP response, or missing the `<meta name="generator" content="Jekyll Academy Engine">` footprint signature).
+            - Inactive or non-compliant entries have been automatically pruned to maintain directory trust and compliance.
+
+            Please review the attached diff before merging this pull request.
+          labels: |
+            automated-pr
+            academic-network
+            maintenance

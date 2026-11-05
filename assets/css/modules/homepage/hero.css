@@ -1,6 +1,6 @@
 /**
  * Homepage Hero Banner Styles
- * Handles the academic CV hero banner, avatar, bio text, and research interests
+ * Handles the academic CV hero banner, avatar, and bio text
  * Uses color variables from color.css
  */
 
@@ -50,20 +50,6 @@
   margin-bottom: 0;
 }
 
-.cv-hero-interests {
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--text-inverse);
-  border-left: 3px solid var(--primary);
-  padding-left: 16px;
-  margin-top: 15px;
-}
-
-.cv-hero-interests p {
-  color: var(--text-inverse);
-  margin-bottom: 0;
-}
-
 @media (max-width: 768px) {
   .cv-hero {
     padding: 30px 15px;
@@ -73,9 +59,6 @@
     font-size: 34px;
   }
   .cv-hero-bio {
-    text-align: left;
-  }
-  .cv-hero-interests {
     text-align: left;
   }
 }

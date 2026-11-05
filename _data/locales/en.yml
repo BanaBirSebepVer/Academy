@@ -103,6 +103,7 @@ ui:
   academic_profiles: "Academic Profiles"
   abstract: "Abstract"
   keywords: "Keywords"
+  research_keywords_label: "Research Interests / Publication Keywords"
   keywords_cloud_title: "Research Keywords & Topic Cloud"
   clear_filter: "Clear Filter"
   filtered_by_keyword: "Filtered by Keyword:"

@@ -40,7 +40,6 @@ social:
     url: "https://twitter.com/canbekcan"
     icon: "fab fa-x-twitter"
 bio: "Medya sosyolojisi, hesaplamalı iletişim ve dijital teknolojinin kesişim noktasında çalışan bir akademisyen, dijital medya stratejisti ve BEKCAN Enstitüsü’nün kurucusuyum. Doğu Akdeniz Üniversitesi’nde Veri Gazeteciliği ve Sosyal Medya Veri Madenciliği gibi ileri düzey dersler vermiş olmanın getirdiği engin deneyimimle, misyonum öğrencilerin ve kuruluşların günümüzün ağ toplumunda yolunu bulabilmelerini sağlamaktır. Temel iletişim teorilerini derinlemesine kavramaktan modern video, fotoğraf ve veri çıkarma süreçlerini hayata geçirmeye kadar, etkili ve etik temellere dayanan dijital anlatılar oluşturmaya odaklanıyorum. Eğitim ve endüstri alanlarında devam eden yapay zeka devrimini aktif olarak analiz ederek, karmaşık dijital yapıları uygulamaya yönelik, gerçek hayatta kullanılabilir yetkinliklere dönüştürüyorum."
-interests: "Veri Gazeteciliği ve Sosyal Medya Veri Madenciliği, Dijital Video ve Fotoğraf Prodüksiyonu, İletişim Teorileri ve Medya Etiği"
 languages:
   - name: "Türkçe (Anadil)"
   - name: "İngilizce (İleri Düzey) [Mesleki Yeterlilik]"

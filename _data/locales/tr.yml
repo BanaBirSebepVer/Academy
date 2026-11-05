@@ -103,6 +103,7 @@ ui:
   academic_profiles: "Akademik Profiller"
   abstract: "Özet"
   keywords: "Anahtar Kelimeler"
+  research_keywords_label: "Yayınlardan Derlenen Araştırma Alanları"
   keywords_cloud_title: "Araştırma Alanları & Anahtar Kelime Bulutu"
   clear_filter: "Filtreyi Temizle"
   filtered_by_keyword: "Seçili Anahtar Kelime:"

@@ -27,14 +27,9 @@ layout: default
             <p>{{ page.bio }}</p>
           </div>
           {% endif %}
-          {% if page.interests %}
-          <div class="cv-hero-interests">
-            <p><em>{{ page.interests }}</em></p>
-          </div>
-          {% endif %}
 
-          {% comment %} Dynamic Publication Keywords for Academician Research Interests {% endcomment %}
-          {% assign hero_pub_keywords = "" | split: "" %}
+          {% comment %} Dynamic Top 5 Most Used Publication Keywords for Academician Research Interests {% endcomment %}
+          {% assign raw_pub_keywords = "" | split: "" %}
           {% for p in site.publications %}
             {% assign match = false %}
             {% if p.lang == current_lang or p.path contains lang_slash %}
@@ -48,23 +43,45 @@ layout: default
               {% for kw in p.keywords %}
                 {% assign trimmed_kw = kw | strip %}
                 {% if trimmed_kw != "" %}
-                  {% unless hero_pub_keywords contains trimmed_kw %}
-                    {% assign hero_pub_keywords = hero_pub_keywords | push: trimmed_kw %}
-                  {% endunless %}
+                  {% assign raw_pub_keywords = raw_pub_keywords | push: trimmed_kw %}
                 {% endif %}
               {% endfor %}
             {% endif %}
           {% endfor %}
 
-          {% if hero_pub_keywords.size > 0 %}
+          {% assign unique_pub_keywords = raw_pub_keywords | uniq | sort %}
+          {% assign hero_sort_keys = "" | split: "" %}
+          {% for ukw in unique_pub_keywords %}
+            {% assign kw_count = 0 %}
+            {% for rkw in raw_pub_keywords %}
+              {% if rkw == ukw %}
+                {% assign kw_count = kw_count | plus: 1 %}
+              {% endif %}
+            {% endfor %}
+            {% assign inv_count = 9999 | minus: kw_count %}
+            {% assign sort_prefix = inv_count %}
+            {% if inv_count < 1000 %}{% assign sort_prefix = "0" | append: inv_count %}{% endif %}
+            {% assign hero_entry = sort_prefix | append: ":::_:::" | append: kw_count | append: ":::_:::" | append: ukw %}
+            {% assign hero_sort_keys = hero_sort_keys | push: hero_entry %}
+          {% endfor %}
+          {% assign sorted_hero_keys = hero_sort_keys | sort %}
+
+          {% assign pub_page = site.pages | where: "ref", "publications" | where: "lang", current_lang | first %}
+          {% assign pub_page_url = pub_page.url | default: "/yayinlar/" | relative_url %}
+
+          {% if sorted_hero_keys.size > 0 %}
           <div class="cv-hero-keywords-cloud">
-            <span class="cv-hero-kw-label"><i class="fa fa-tags"></i> {% if current_lang == "en" %}Research Interests / Publication Keywords:{% else %}Yayınlardan Derlenen Araştırma Alanları:{% endif %}</span>
+            <span class="cv-hero-kw-label">
+              <i class="fa fa-tags"></i>
+              {{ locale.ui.research_keywords_label | default: "Yayınlardan Derlenen Araştırma Alanları" }}:
+            </span>
             <div class="cv-hero-kw-chips">
-              {% assign pub_page_url = '/yayinlar/' | relative_url %}
-              {% if current_lang == "en" %}{% assign pub_page_url = '/en/publications/' | relative_url %}{% endif %}
-              {% for kw in hero_pub_keywords %}
-                <a href="{{ pub_page_url }}?keyword={{ kw | url_encode }}" class="cv-hero-kw-chip" title="{{ kw }}">
-                  #{{ kw }}
+              {% for item in sorted_hero_keys limit: 5 %}
+                {% assign parts = item | split: ":::_:::" %}
+                {% assign c_count = parts[1] | plus: 0 %}
+                {% assign c_kw = parts[2] %}
+                <a href="{{ pub_page_url }}?keyword={{ c_kw | url_encode }}" class="cv-hero-kw-chip" title="{{ c_kw }} ({{ c_count }})">
+                  #{{ c_kw }}
                 </a>
               {% endfor %}
             </div>

@@ -37,7 +37,6 @@ social:
     url: "https://twitter.com/canbekcan"
     icon: "fab fa-x-twitter"
 bio: "I am an academic instructor, digital media strategist, and the Founder of BEKCAN Institute, working at the intersection of media sociology, computational communication, and digital technology. With extensive experience teaching advanced courses like Data Journalism and Social Media Data Mining at Eastern Mediterranean University, my mission is to empower students and organizations to navigate today’s network society. From mastering underlying communication theories to deploying modern video, photo, and data extraction pipelines, I focus on building impactful, ethically grounded digital narratives. I actively analyze the ongoing AI revolution in education and industry, turning complex digital structures into actionable, real-world competencies."
-interests: "Data Journalism & Social Media Mining, Digital Video & Photography Production, Communication Theories & Media Ethics"
 languages:
   - name: "Turkish (Native)"
   - name: "English (Advanced) [Professional Working Proficiency]"

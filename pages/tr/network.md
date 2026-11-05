@@ -98,7 +98,7 @@ active_nav: network
             </p>
           </div>
           <div class="network-cta-action">
-            <a href="https://github.com/canbekcan/Academy/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" class="btn btn-success network-cta-btn">
+            <a href="https://github.com/BanaBirSebepVer/Academy/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" class="btn btn-success network-cta-btn">
               <i class="fa fa-github"></i> {{ locale.ui.submit_site_button | default: locale.ui.network_cta_btn }}
             </a>
           </div>

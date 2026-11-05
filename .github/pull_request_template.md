@@ -1,5 +1,6 @@
-## Description
-<!-- Briefly describe what changes this Pull Request introduces and why they are necessary. -->
+> ⚠️ **Notice for Contributors:**
+> All pull requests must target the `test` (or `dev`) branch, **not** `main`. 
+> Please ensure the base branch dropdown above is set to `base: test`.
 
 ## Type of Change
 <!-- Select all that apply by putting an 'x' inside the brackets: [x] -->

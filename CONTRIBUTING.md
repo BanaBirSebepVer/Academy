@@ -66,7 +66,7 @@ Launch the live-reloading Jekyll server:
 ```bash
 ./serve.sh
 # Or manually:
-# bundle exec jekyll serve --config _config_engine.yml,_config.yml --livereload
+# bundle exec jekyll serve --livereload
 ```
 
 - **`--drafts`**: Renders posts stored in the `_drafts/` directory and unreleased teaching content.

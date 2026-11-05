@@ -11,16 +11,17 @@
 {% assign canonical_url = page.url | replace: "index.html", "" | absolute_url %}
 
 {% comment %} --- Calculate SEO Title --- {% endcomment %}
-{% assign site_author_name = page.author | default: site.author | default: "Can Bekcan" %}
+{% assign site_author_name = site.data.profile.name | default: page.author | default: site.author | default: "Can Bekcan" %}
+{% assign effective_site_title = site.data.profile.title | default: site.data.profile.name | default: site.title %}
 {% if page.name and page.name != "index.md" and page.name != "" %}
   {% assign site_author_name = page.name %}
 {% endif %}
 {% if page.layout == "homepage" or page.ref == "home" %}
   {% assign seo_title = site_author_name | append: " | " | append: page.title %}
 {% elsif page.title and page.title != "" %}
-  {% assign seo_title = page.title | append: " | " | append: site.title %}
+  {% assign seo_title = page.title | append: " | " | append: effective_site_title %}
 {% else %}
-  {% assign seo_title = site.title %}
+  {% assign seo_title = effective_site_title %}
 {% endif %}
 
 {% comment %} --- Calculate SEO Description --- {% endcomment %}
@@ -31,7 +32,7 @@
 {% elsif page.bio and page.bio != "" %}
   {% assign seo_description = page.bio | strip_html | strip_newlines | truncate: 200 %}
 {% else %}
-  {% assign seo_description = site.description | default: "Academic CV & Research Repository" %}
+  {% assign seo_description = site.data.profile.description | default: site.description | default: "Academic CV & Research Repository" %}
 {% endif %}
 
 {% comment %} --- Calculate Dynamic SEO Keywords --- {% endcomment %}
@@ -101,7 +102,7 @@
 <link rel="canonical" href="{{ canonical_url }}">
 
 <!-- Open Graph / Facebook -->
-<meta property="og:site_name" content="{{ site.title | escape }}">
+<meta property="og:site_name" content="{{ effective_site_title | escape }}">
 {% if page.layout contains "post" or page.layout contains "publication" %}
 <meta property="og:type" content="article">
 {% else %}

@@ -82,10 +82,6 @@ jobs:
           echo "[INFO] Generated version.yml successfully:"
           cat _data/version.yml
 
-      - name: Merge Engine and Site Configurations
-        run: |
-          python3 scripts/merge_config.py
-
       - name: Setup GitHub Pages Metadata
         uses: actions/configure-pages@v5
 

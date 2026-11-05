@@ -1,13 +1,15 @@
 # ==============================================================================
-# USER SITE CONFIGURATION (_config.yml)
-# Academic & Personal Website Information
-# Edit these values to personalize your site.
-# Framework architecture settings are located in _config_engine.yml.
+# ACADEMY CONFIGURATION (_config.yml)
+# Native GitHub Pages Compatible Jekyll Architecture
+#
+# Academicians: Personal details (name, email, institution, etc.) can be
+# personalized in _data/profile.yml so upstream updates never conflict with your data.
 # ==============================================================================
 
-title: Can Bekcan
-email: can@canbekcan.com
-description: "Akademik CV - Can Bekcan - Doğu Akdeniz Üniversitesi İletişim Fakültesi"
+# Site Identity & Fallbacks
+title: "Akademi | Modern Academic Website"
+email: "info@example.com"
+description: "Akademik CV & Research Repository"
 baseurl: "/Academy"
 url: "https://BanaBirSebepVer.github.io"
 repository: "BanaBirSebepVer/Academy"
@@ -17,6 +19,148 @@ google_analytics: ""
 encoding: utf-8
 favicon: "/favicon.ico"
 
-# Multilingual Settings (Native GitHub Pages Compatible)
+# Multilingual Settings
 default_lang: "tr"
 languages: ["tr", "en"]
+
+# Build settings
+markdown: kramdown
+future: true
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+permalink: /yazilar/:year/:month/:day/:title/
+
+# Collections Registration
+collections:
+  posts:
+    output: true
+  lessons:
+    output: true
+  publications:
+    output: true
+  project:
+    output: true
+  educations:
+    output: false
+  awards:
+    output: false
+  academic_positions:
+    output: false
+  conferences:
+    output: false
+  experiences:
+    output: false
+  memberships:
+    output: false
+  certificates:
+    output: false
+  person:
+    output: false
+
+# Scoped Defaults for Automated Language & Routing Assignment
+defaults:
+  # --- Lessons ---
+  - scope:
+      path: "_lessons/tr"
+      type: "lessons"
+    values:
+      layout: "lesson"
+      lang: "tr"
+      permalink: "/dersler/:name/"
+  - scope:
+      path: "_lessons/en"
+      type: "lessons"
+    values:
+      layout: "lesson"
+      lang: "en"
+      permalink: "/en/lessons/:name/"
+
+  # --- Posts ---
+  - scope:
+      path: "_posts/tr"
+      type: "posts"
+    values:
+      layout: "post/single"
+      lang: "tr"
+      permalink: "/yazilar/:year/:month/:day/:title/"
+  - scope:
+      path: "_posts/en"
+      type: "posts"
+    values:
+      layout: "post/single"
+      lang: "en"
+      permalink: "/en/posts/:year/:month/:day/:title/"
+
+  # --- Publications ---
+  - scope:
+      path: "_publications/tr"
+      type: "publications"
+    values:
+      layout: "publication/single"
+      lang: "tr"
+      permalink: "/yayinlar/:name/"
+  - scope:
+      path: "_publications/en"
+      type: "publications"
+    values:
+      layout: "publication/single"
+      lang: "en"
+      permalink: "/en/publications/:name/"
+
+  # --- Project Items ---
+  - scope:
+      path: "_project/tr"
+      type: "project"
+    values:
+      layout: "project/single"
+      lang: "tr"
+      permalink: "/projeler/:name/"
+  - scope:
+      path: "_project/en"
+      type: "project"
+    values:
+      layout: "project/single"
+      lang: "en"
+      permalink: "/en/projects/:name/"
+
+  # --- Pages ---
+  - scope:
+      path: "pages/tr"
+    values:
+      layout: "page"
+      lang: "tr"
+  - scope:
+      path: "pages/en"
+    values:
+      layout: "page"
+      lang: "en"
+
+# Core Jekyll Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+# Ignored Files & Directories
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - _config-local.yml
+  - _config-EXAMPLE.yml
+  - README.md
+  - AI.md
+  - ARCHITECTURE.md
+  - CONTRIBUTING.md
+  - LICENSE
+  - TASK.md
+  - migrate.sh
+  - tree.txt
+  - serve.sh
+  - scripts/
+  - .github/
+  - node_modules
+  - vendor
+  - .DS_Store

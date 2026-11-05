@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # ==============================================================================
 # Academy Local Development Server
-# Automatically detects and combines engine config, user config, and local config.
+# Automatically detects and applies local dev overrides if present.
 # ==============================================================================
 set -e
 
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$BASE_DIR"
 
-CONFIGS="_config_engine.yml,_config.yml"
+CONFIGS="_config.yml"
 
 if [ -f "_config-local.yml" ]; then
   CONFIGS="${CONFIGS},_config-local.yml"

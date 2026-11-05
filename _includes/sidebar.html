@@ -18,10 +18,10 @@
 
 {% assign profile_name = index_page.name | default: index_page.author %}
 {% if profile_name == nil or profile_name == '' or profile_name == 'index.md' %}
-  {% assign profile_name = site.author | default: 'Can Bekcan' %}
+  {% assign profile_name = site.data.profile.name | default: site.author | default: 'Can Bekcan' %}
 {% endif %}
-{% assign profile_image = index_page.image | default: index_page.avatar | default: "/assets/images/Can-Bekcan-PADI.jpg" %}
-{% assign profile_institution = index_page.institution %}
+{% assign profile_image = site.data.profile.avatar | default: index_page.image | default: index_page.avatar | default: "/assets/images/Can-Bekcan-PADI.jpg" %}
+{% assign profile_institution = site.data.profile.institution | default: index_page.institution %}
 {% if profile_institution == nil or profile_institution == "" %}
   {% assign first_lesson = site.lessons | where: "lang", current_lang | first %}
   {% assign profile_institution = first_lesson.institution | default: site.institution %}
@@ -107,7 +107,7 @@
         </div>
         <div id="copyright">
           <p>
-            &copy; {{ site.time | date: '%Y' }} {{ site.title }}. {{ locale.ui.all_rights_reserved | default: "All rights reserved." }}
+            &copy; {{ site.time | date: '%Y' }} {{ site.data.profile.title | default: site.data.profile.name | default: site.title }}. {{ locale.ui.all_rights_reserved | default: "All rights reserved." }}
           </p>
         </div>
       </div>

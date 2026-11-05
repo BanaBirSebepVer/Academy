@@ -73,9 +73,9 @@ This repository contains the complete source code, course materials, publication
 
 ```
 academy/
-├── _config.yml                    # User site configuration (Title, URL, Author, personal info - customized per fork)
-├── _config_engine.yml             # Academy engine configuration (Collections, defaults, routing, plugins - untouched by users)
+├── _config.yml                    # Jekyll architecture configuration (collections, defaults, plugins)
 ├── _data/
+│   ├── profile.yml                # Academician personal information (name, email, institution - customized per fork)
 │   └── locales/                   # Strict UI interface dictionaries (NEVER hardcode strings!)
 │       ├── tr.yml                 # Turkish UI labels, buttons, and navigation terms
 │       └── en.yml                 # English UI labels, buttons, and navigation terms
@@ -162,7 +162,7 @@ bundle install
 # 4. Boot the live-reloading development server
 ./serve.sh
 # Or alternatively with bundle directly:
-# bundle exec jekyll serve --config _config_engine.yml,_config.yml --livereload
+# bundle exec jekyll serve --livereload
 ```
 
 Open your browser and navigate to **`http://localhost:4000`**. Changes to Markdown, Liquid, and CSS files will trigger an instantaneous browser reload.

@@ -73,7 +73,8 @@ This repository contains the complete source code, course materials, publication
 
 ```
 academy/
-├── _config.yml                    # Central Jekyll configuration (collections, permalinks, default_lang)
+├── _config.yml                    # User site configuration (Title, URL, Author, personal info - customized per fork)
+├── _config_engine.yml             # Academy engine configuration (Collections, defaults, routing, plugins - untouched by users)
 ├── _data/
 │   └── locales/                   # Strict UI interface dictionaries (NEVER hardcode strings!)
 │       ├── tr.yml                 # Turkish UI labels, buttons, and navigation terms
@@ -159,7 +160,9 @@ export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 bundle install
 
 # 4. Boot the live-reloading development server
-bundle exec jekyll serve --drafts --livereload
+./serve.sh
+# Or alternatively with bundle directly:
+# bundle exec jekyll serve --config _config_engine.yml,_config.yml --livereload
 ```
 
 Open your browser and navigate to **`http://localhost:4000`**. Changes to Markdown, Liquid, and CSS files will trigger an instantaneous browser reload.

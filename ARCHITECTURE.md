@@ -285,7 +285,8 @@ Client-side interactivity uses modern, dependency-free vanilla ES6 modules aggre
 
 | File / Directory Path | Role & Responsibility | Upstream Dependents | Downstream Dependencies | Public Live URLs Impacted | Change Risk Level |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **`_config.yml`** | Central engine configuration: collections, default language (`default_lang: "tr"`), permalinks, scoped defaults. | Jekyll Build Engine | `_layouts/`, `pages/`, plugins | **Entire website globally** (all routes, permalinks, language prefixes). | `🔴 Critical` |
+| **`_config.yml`** | User site configuration: site title, author persona, email, baseurl, repository, default_lang. | User / Fork Owner | Jekyll Build Engine | Site metadata, footer, SEO. | `🟢 User Config` |
+| **`_config_engine.yml`** | Central engine configuration: collections, markdown, permalinks, scoped defaults, plugins, excludes. | Jekyll Build Engine | `_layouts/`, `pages/`, plugins | **Entire website globally** (all routes, permalinks, language prefixes). | `🔴 Critical Engine` |
 | **`_data/locales/tr.yml`** | Turkish UI interface dictionary: button labels, headings, metadata labels, institution names. | Partials, layouts, switcher | None | Text strings across all Turkish routes. | `🟡 Medium` |
 | **`_data/locales/en.yml`** | English UI interface dictionary: button labels, headings, metadata labels, institution names. | Partials, layouts, switcher | None | Text strings across all English routes. | `🟡 Medium` |
 | **`_includes/navigation.html`** | **Dynamic navigation engine:** scans `pages/[current_lang]/`, sorts by `nav_order`, builds parent/child menus. | `_includes/sidebar.html` | Front matter of `pages/tr/` & `pages/en/` | **Sitewide navigation menu** across all devices and pages. | `🟠 High` |

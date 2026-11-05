@@ -23,7 +23,6 @@ duties:
   - "İleri düzey ticari aydınlatma, makro fotoğrafçılık, foto-gazetecilik denemelerinin küratörlüğü ve profesyonel renk düzeltme konularına odaklanan özel stüdyo çalışmalarını yürüttü."
   - "Dönem sonu öğrenci görsel portföylerini ve fakülte galeri alanlarında düzenlenen dijital fotoğraf sergilerini küratörlüğünü üstlendi ve organize etti."
 description: "İleri düzey ticari aydınlatma, stüdyo ve dış mekan çekim teknikleri, makro fotoğrafçılık ve profesyonel portfolyo kürasyonu."
-permalink: /dersler/ileri-fotografcilik/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

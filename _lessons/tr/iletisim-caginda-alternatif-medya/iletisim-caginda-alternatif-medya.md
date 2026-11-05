@@ -20,7 +20,6 @@ appointments:
     course_date: "2022 - Devam"
     instructor_title_duration: "2022 - Devam"
 description: "Geleneksel medya dışı bağımsız yayıncılık, yurttaş gazeteciliği ve dijital kamusal söylem dinamikleri."
-permalink: /dersler/iletisim-caginda-alternatif-medya/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

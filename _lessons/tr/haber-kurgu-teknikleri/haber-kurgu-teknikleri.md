@@ -32,7 +32,6 @@ duties:
   - "Dijital gazetecilik için entelektüel ve pratik post-prodüksiyon iş akışlarını tanıttı; bu süreçlerde zamanlama, hikâye anlatım yapıları ve izleyici dikkatini sürdürme konularına odaklandı."
   - "Öğrencilere, gelişmiş doğrusal olmayan kurgu (non-linear editing – NLE) yazılımlarını kullanarak, yayın kalitesinde, çevrimiçi ve televizyon haber paketlerini birleştirme, sıralama ve son halini verme konusunda rehberlik etti."
 description: "Video montaj prensipleri, NLE yazılımları, ritim, ses-görüntü uyumu ve haber kurgusu atölyesi."
-permalink: /dersler/haber-kurgu-teknikleri/
 active_nav: dersler
 discord: ""
 teams: ""

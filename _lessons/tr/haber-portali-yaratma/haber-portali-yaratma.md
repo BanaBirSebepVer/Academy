@@ -32,7 +32,6 @@ duties:
   - "İçerik yönetim sistemleri (CMS), web barındırma ve duyarlı tasarımın temelleri dahil olmak üzere dijital gazeteciliğin teknik ve operasyonel altyapısını öğrettim."
   - "Öğrencilerin profesyonel ve işlevsel çevrimiçi haber portallarını sıfırdan oluşturdukları, yayına aldıkları ve yönettikleri uygulamalı laboratuvar derslerini yönettim."
 description: "Web sitesi mimarisi, WordPress CMS yönetimi, dijital haber portalı tasarımı ve online yayıncılık pratikleri."
-permalink: /dersler/haber-portali-yaratma/
 active_nav: dersler
 lecture_notes_url: "/lessons/haber-portali-yaratma/haber-portali-yaratma-ders-notlari/"
 discord: "http://discord.gg/ar8aq7u6zN"

@@ -23,7 +23,6 @@ duties:
   - "Televizyon stüdyosu kontrol odalarını ve saha prodüksiyon faaliyetlerini denetleyerek, çoklu kamera anahtarlayıcılarının, ses konsollarının ve teleprompterlerin teknik olarak hazır olmasını sağladı."
   - "Karmaşık belgesel veya stüdyo tabanlı televizyon prodüksiyon süreçlerini konsept aşamasından son kurguya kadar yöneten yüksek lisans öğrencilerine ileri düzeyde rehberlik sağladı."
 description: "Televizyon stüdyosu operasyonları, reji yönetimi, çoklu kamera sistemleri ve saha prodüksiyon teknikleri."
-permalink: /dersler/video-produksiyon-studyo-ve-alan/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

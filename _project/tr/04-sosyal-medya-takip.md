@@ -1,4 +1,6 @@
 ---
+ref: project-04-sosyal-medya-takip
+lang: tr
 title: "Sosyal Medya Takip & Veri Madenciliği"
 subtitle: "Veri Madenciliği ve İletişim Analitiği"
 role: "Araştırma Yürütücüsü"

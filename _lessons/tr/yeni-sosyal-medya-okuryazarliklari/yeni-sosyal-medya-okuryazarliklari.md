@@ -23,7 +23,6 @@ duties:
   - "Ana sorumlu öğretim üyesine, dijital vatandaşlık, algoritmik farkındalık, yanlış bilgi ve dezenformasyon kalıpları ile dijital gizlilik konularına odaklanan ders modüllerinin yürütülmesinde destek sağladı."
   - "Kullanıcı davranışını, dijital yankı odalarını ve sosyal ağ platformlarının sosyo-politik etkisini inceleyen lisansüstü düzeyindeki araştırma önerilerini değerlendirdi."
 description: "Dijital vatandaşlık, algoritmik farkındalık, dezenformasyon ve sosyal ağların sosyo-politik etkileri."
-permalink: /dersler/yeni-sosyal-medya-okuryazarliklari/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

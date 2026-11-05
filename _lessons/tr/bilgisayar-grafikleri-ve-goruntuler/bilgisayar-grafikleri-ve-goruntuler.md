@@ -23,7 +23,6 @@ duties:
   - "Öğrencilere dijital görüntüleme, bilgisayar grafikleri üretimi, vektör/bitmap işleme ve çeşitli medya çıktıları için görsel varlık hazırlama konularındaki teori ve uygulamaları öğrettim."
   - "Öğrencileri, yaratıcı mizanpajlar ve markalaşma projeleri için karmaşık görsel öğeleri düzenlemek, optimize etmek ve birleştirmek üzere endüstri standardı grafik tasarım yazılımlarını kullanma konusunda eğittim."
 description: "Dijital görüntüleme, vektör ve bitmap işleme, yaratıcı mizanpajlar ve görsel varlık hazırlama."
-permalink: /dersler/bilgisayar-grafikleri-ve-goruntuler/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

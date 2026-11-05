@@ -103,12 +103,19 @@ defaults:
 
   # --- Project Items ---
   - scope:
-      path: "_project"
+      path: "_project/tr"
       type: "project"
     values:
       layout: "project/single"
       lang: "tr"
       permalink: "/projeler/:name/"
+  - scope:
+      path: "_project/en"
+      type: "project"
+    values:
+      layout: "project/single"
+      lang: "en"
+      permalink: "/en/projects/:name/"
 
   # --- Pages ---
   - scope:
@@ -131,6 +138,7 @@ plugins:
 exclude:
   - Gemfile
   - Gemfile.lock
+  - _config-local.yml
   - README.md
   - ARCHITECTURE.md
   - CONTRIBUTING.md

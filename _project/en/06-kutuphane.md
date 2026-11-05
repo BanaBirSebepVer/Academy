@@ -1,4 +1,6 @@
 ---
+ref: project-06-kutuphane
+lang: en
 title: "Open Library & Book Sharing"
 subtitle: "Community Bookcases & Reading Culture"
 role: "Social Responsibility Coordinator"

@@ -1,4 +1,6 @@
 ---
+ref: project-02-bana-bir-sebep-ver
+lang: tr
 title: "Bana Bir Sebep Ver"
 subtitle: "Kurucu ve Topluluk Lideri • banabirsebepver.org"
 role: "Kurucu ve Topluluk Lideri"

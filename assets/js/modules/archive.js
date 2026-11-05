@@ -287,12 +287,19 @@ function initArchive() {
     noMatchId: 'noPubsMatch'
   });
 
-  // 5. Diving Archive
+  // 5. Diving Archive & Generic Folder Pages
+  const divingMasonryLayout = initFlexMasonry('#divingGrid, .folder-masonry-grid');
+
   createArchiveFilter({
     searchInputId: 'divingSearchInput',
-    filterBtnClass: '.diving-cat-btn',
-    cardClass: '.diving-card-item',
-    noMatchId: 'noDivingMatch'
+    filterBtnClass: '.diving-cat-btn, .folder-cat-btn',
+    cardClass: '.diving-card-item, .folder-card-item',
+    noMatchId: 'noDivingMatch',
+    onFilter: function () {
+      if (divingMasonryLayout) {
+        divingMasonryLayout();
+      }
+    }
   });
 
   // 6. Academic Archive with Flex Masonry

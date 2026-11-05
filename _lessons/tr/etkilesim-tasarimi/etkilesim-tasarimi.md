@@ -23,7 +23,6 @@ duties:
   - "Kullanıcı Deneyimi (UX) ve Kullanıcı Arayüzü (UI) tasarımının ilkelerini inceledi; sezgisel, kullanıcı odaklı etkileşimli dijital sistemler ve uygulamalar oluşturmaya yönelik öğretim yöntemlerini ele aldı."
   - "Kullanıcı yolculuğu haritalama, tel kafes modelleme, yüksek kaliteli prototip oluşturma ve kullanılabilirlik testi iş akışları dahil olmak üzere modern tasarım metodolojilerine odaklanan öğrenci projelerine danışmanlık yaptı."
 description: "Kullanıcı Deneyimi (UX) ve Kullanıcı Arayüzü (UI) tasarımı ilkeleri, tel kafes modelleme ve prototip oluşturma."
-permalink: /dersler/etkilesim-tasarimi/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

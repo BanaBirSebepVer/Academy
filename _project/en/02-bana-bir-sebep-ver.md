@@ -1,4 +1,6 @@
 ---
+ref: project-02-bana-bir-sebep-ver
+lang: en
 title: "Give Me a Reason (Bana Bir Sebep Ver)"
 subtitle: "Founder & Community Lead • banabirsebepver.org"
 role: "Founder & Community Lead"

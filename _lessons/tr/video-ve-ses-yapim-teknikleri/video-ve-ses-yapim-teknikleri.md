@@ -32,7 +32,6 @@ duties:
   - "Saha kaydı, ses kurgusu ve doğrusal olmayan video kurgusu dahil olmak üzere, çok platformlu dijital hikâye anlatımı konusunda uygulamalı teknik ve yaratıcı eğitimler verdi."
   - "Yayına hazır dijital ses/video içerikleri, podcast’ler ve mobil gazetecilik paketleri oluşturmak için tüm üretim sürecinde öğrencilere rehberlik etti."
 description: "Kamera teknikleri, ışık düzenekleri, profesyonel ses kaydı ve haber prodüksiyon uygulamaları."
-permalink: /dersler/video-ve-ses-yapim-teknikleri/
 active_nav: dersler
 lecture_notes_url: "/lessons/video-ve-ses-yapim-teknikleri/video-ve-ses-yapim-teknikleri-1/"
 discord: ""

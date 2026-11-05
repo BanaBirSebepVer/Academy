@@ -1,4 +1,6 @@
 ---
+ref: project-bekcan-enstitusu
+lang: tr
 title: "BEKCAN Enstitüsü"
 subtitle: "Kurucu ve Direktör • bekcan.com"
 role: "Kurucu ve Direktör"

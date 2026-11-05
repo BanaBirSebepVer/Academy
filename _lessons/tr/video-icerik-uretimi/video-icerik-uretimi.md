@@ -20,7 +20,6 @@ appointments:
     course_date: "2022 - 2024"
     instructor_title_duration: "2022 - 2024"
 description: "Dijital platformlar (YouTube, TikTok, Reels) için yatay ve dikey video prodüksiyonu."
-permalink: /dersler/video-icerik-uretimi/
 active_nav: dersler
 discord: ""
 teams: ""

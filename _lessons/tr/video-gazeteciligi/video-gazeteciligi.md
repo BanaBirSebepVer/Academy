@@ -32,7 +32,6 @@ duties:
   - "Hızlı gelişen son dakika haber ortamlarında kompozisyon, ışıklandırma ve sesin teknik entegrasyonuna vurgu yaparak, mobil gazetecilik (MoJo) ve saha haberciliği konularında yoğun eğitimler verdi."
   - "Araştırmacı görsel habercilik, kamera önünde röportaj teknikleri, görsel etik ve haberlerin zamanında yayınlanmasına odaklanan öğrenci saha projelerini yönetti."
 description: "Mobil gazetecilik (MoJo), saha haberciliği, son dakika kompozisyonu, ışıklandırma ve görsel röportaj teknikleri."
-permalink: /dersler/video-gazeteciligi/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

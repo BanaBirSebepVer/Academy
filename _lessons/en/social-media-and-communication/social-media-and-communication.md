@@ -23,7 +23,6 @@ duties:
   - "Mainstream social media platforms' sociological, cultural and political impacts are examined, along with changing mass participation patterns and digital ecosystem dynamics."
   - "Students are taught to analyze user-generated content, understand platform-specific viral trends and critically evaluate the role of algorithmic curation in shaping modern public discourse."
 description: "Aggregation theory, the impact of social media on the public sphere, digital identity and communication dynamics."
-permalink: /en/lessons/social-media-and-communication/
 redirect_from:
   - /lessons/social-media-and-communication/
 active_nav: lessons

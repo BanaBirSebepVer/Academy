@@ -20,7 +20,6 @@ appointments:
     course_date: "2015 - 2022"
     instructor_title_duration: "2015 - 2022"
 description: "Doğrusal olmayan kurgu programları, zamanlama, ritim ve video montaj prensipleri atölyesi."
-permalink: /dersler/temel-kurgu-atolyesi/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

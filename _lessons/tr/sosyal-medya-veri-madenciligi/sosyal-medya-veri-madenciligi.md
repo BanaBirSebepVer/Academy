@@ -32,7 +32,6 @@ duties:
   - "Önemli sosyal medya platformlarından büyük ölçekli verilerin çıkarılması, filtrelenmesi ve yorumlanmasına yönelik ders programı hazırladı ve ilgili yöntemleri öğretti."
   - "Dijital trendleri ve ağ davranışlarını tespit etmek amacıyla öğrencilere dijital ayak izi analizi, hedef kitlenin duyarlılıklarının izlenmesi ve hesaplamalı iletişim araştırma yöntemleri konusunda eğitim verdi."
 description: "Açık veri kaynakları, web scraping, Google Sheets ile veri temizleme, yapay zeka analizi ve veri gazeteciliği."
-permalink: /dersler/sosyal-medya-veri-madenciligi/
 active_nav: dersler
 lecture_notes_url: "/lessons/sosyal-medya-veri-madenciligi/sosyal-medya-veri-madenciligi-ders-notlari/"
 discord: "http://discord.gg/ar8aq7u6zN"

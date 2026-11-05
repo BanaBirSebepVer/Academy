@@ -1,4 +1,6 @@
 ---
+ref: project-07-kartpostal-koleksiyonu
+lang: tr
 title: "Kartpostal Koleksiyonu"
 subtitle: "Dünyadan Kartpostallar Arşivi"
 role: "Koleksiyoner & Arşivci"

@@ -1,4 +1,6 @@
 ---
+ref: project-bekcan-enstitusu
+lang: en
 title: "BEKCAN Institute"
 subtitle: "Founder and Director • bekcan.com"
 role: "Founder and Director"

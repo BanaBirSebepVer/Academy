@@ -1,4 +1,6 @@
 ---
+ref: project-06-kutuphane
+lang: tr
 title: "Kütüphane & Kitap Paylaşımı"
 subtitle: "Açık Kütüphane & Okuma Kültürü"
 role: "Sosyal Sorumluluk Koordinatörü"

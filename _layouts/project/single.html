@@ -2,8 +2,12 @@
 layout: default
 ---
 {% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign home_page = site.pages | where: "ref", "home" | where: "lang", current_lang | first %}
+{% assign home_url = home_page.url | default: "/" | relative_url %}
 {% assign projects_page = site.pages | where: "ref", "projects" | where: "lang", current_lang | first %}
 {% assign projects_url = projects_page.url | default: "/projeler/" | relative_url %}
+{% assign projects_title = projects_page.title | default: locale.ui.projects_title | default: "Projeler" %}
 
 <div class="fac-page single-project-page">
   <div id="inside">
@@ -13,9 +17,9 @@ layout: default
       <div class="section-container">
         <!-- Breadcrumbs -->
         <div class="single-breadcrumb">
-          <a href="{{ '/' | relative_url }}">Anasayfa</a>
+          <a href="{{ home_url }}">{{ locale.ui.home | default: "Anasayfa" }}</a>
           <span class="single-breadcrumb-separator">/</span>
-          <a href="{{ projects_url }}">Projeler</a>
+          <a href="{{ projects_url }}">{{ projects_title }}</a>
           <span class="single-breadcrumb-separator">/</span>
           <span class="single-breadcrumb-current">{{ page.title }}</span>
         </div>
@@ -83,11 +87,11 @@ layout: default
             <!-- Footer Navigation & Sharing -->
             <div class="project-footer-nav single-footer-nav">
               <a href="{{ projects_url }}" class="btn btn-default single-back-btn">
-                <i class="fa fa-arrow-left"></i> Tüm Projeler
+                <i class="fa fa-arrow-left"></i> {{ locale.ui.all_projects | default: projects_title }}
               </a>
 
               <div class="project-share single-share-bar">
-                <span class="single-share-label">Paylaş:</span>
+                <span class="single-share-label">{{ locale.ui.share | default: "Paylaş" }}:</span>
                 <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Facebook"><i class="fa-brands fa-facebook"></i></a>

@@ -23,7 +23,6 @@ duties:
   - "Çeşitli medya formatlarında, açıklık, anlatı yapısı, hedef kitleye uyum ve profesyonel düzenleme standartlarına odaklanarak ileri düzey yazma becerilerini geliştirdi."
   - "Öğrencilere, etkili ve etik ilkelere dayalı medya senaryoları, yaratıcı metinler, halkla ilişkiler paketleri ve araştırmacı gazetecilik makaleleri hazırlamaları konusunda eğitim verdi."
 description: "Medya formatlarında anlatı yapısı, hedef kitle uyumu, medya senaryoları ve yaratıcı metin yazımı."
-permalink: /dersler/yazma-becerileri/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

@@ -20,7 +20,6 @@ appointments:
     course_date: "2022 - Devam"
     instructor_title_duration: "2022 - Devam"
 description: "Doğrusal olmayan dijital hikaye anlatımı, mikro belgeseller, sosyal medya video paketleri ve kurumsal profiller."
-permalink: /dersler/hikaye-anlatim-cesitleri/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

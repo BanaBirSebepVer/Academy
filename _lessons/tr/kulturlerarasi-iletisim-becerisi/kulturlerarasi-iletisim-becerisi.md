@@ -20,7 +20,6 @@ appointments:
     course_date: "2022 - Devam"
     instructor_title_duration: "2022 - Devam"
 description: "Farklı kültürel bağlamlar, değerler ve küresel çevrelerde kişilerarası ve medya etkileşimleri dinamikleri."
-permalink: /dersler/kulturlerarasi-iletisim-becerisi/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

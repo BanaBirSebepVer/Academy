@@ -23,7 +23,6 @@ duties:
   - "Çağdaş gatekeeping teorileri, dijital platform ekonomileri ve ağ toplumu dinamikleri üzerine akademik literatürü derleyerek lisansüstü düzeydeki seminerlere destek sağladı."
   - "Geleneksel yayın modellerinden merkezi olmayan, algoritma odaklı haber odalarına doğru yaşanan sistemik dönüşümlere ilişkin eleştirel grup tartışmalarını eş-yönetti."
 description: "Ağ toplumunda haber odası dönüşümü, algoritmik habercilik ve dijital platform ekonomileri."
-permalink: /dersler/haber-uretimi-dijital-gazetecilik-ve-sosyal-medya/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

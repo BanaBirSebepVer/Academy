@@ -57,12 +57,26 @@ layout: default
       {% assign all_projects = "" | split: "" %}
       {% for proj in raw_projects %}
         {% assign match = false %}
-        {% if proj.lang == current_lang or proj.path contains lang_slash %}
-          {% assign match = true %}
-        {% elsif current_lang == site.default_lang %}
-          {% unless proj.path contains "/en/" or proj.lang == "en" %}
+        {% if current_lang == "tr" %}
+          {% if proj.path contains "/_project/tr/" or proj.path contains "_project/tr/" %}
             {% assign match = true %}
-          {% endunless %}
+          {% elsif proj.lang == "tr" %}
+            {% unless proj.path contains "/en/" or proj.path contains "_project/en" %}
+              {% assign match = true %}
+            {% endunless %}
+          {% endif %}
+        {% elsif current_lang == "en" %}
+          {% if proj.path contains "/_project/en/" or proj.path contains "_project/en/" %}
+            {% assign match = true %}
+          {% elsif proj.lang == "en" %}
+            {% unless proj.path contains "/tr/" or proj.path contains "_project/tr" %}
+              {% assign match = true %}
+            {% endunless %}
+          {% endif %}
+        {% else %}
+          {% if proj.lang == current_lang or proj.path contains lang_slash %}
+            {% assign match = true %}
+          {% endif %}
         {% endif %}
         {% if match %}
           {% assign all_projects = all_projects | push: proj %}

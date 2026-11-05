@@ -1,4 +1,6 @@
 ---
+ref: project-05-kktc-medya-sahiplik-yapisi
+lang: tr
 title: "KKTC Medya Sahiplik Yapısı"
 subtitle: "Basın Tarihi & Mülkiyet İlişkileri"
 role: "Araştırmacı"

@@ -23,7 +23,6 @@ duties:
   - "Araştırmacı gazetecilik için veri toplama, temizleme ve analiz teknikleri konusunda öğrencilere eğitim vererek, hesaplamalı araçlar ile geleneksel gazetecilik etiği arasındaki boşluğu doldurdu."
   - "Modern veri gazeteciliği çerçeveleri ve etkileşimli haritalama araçlarını kullanarak kamuya açık veri kümelerinin toplanması, analiz edilmesi ve görselleştirilmesine odaklanan lisans projelerine rehberlik etti."
 description: "Araştırmacı gazetecilik için veri toplama, temizleme, analiz ve kamuya açık veri kümelerinin görselleştirilmesi."
-permalink: /dersler/veri-gazeteciligi/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

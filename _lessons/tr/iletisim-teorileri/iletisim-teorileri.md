@@ -20,7 +20,6 @@ appointments:
     course_date: "2022 - Devam"
     instructor_title_duration: "2022 - Devam"
 description: "Klasik ve çağdaş iletişim teorileri, medya etkileri, izleyici alımlaması ve dijital sosyoloji."
-permalink: /dersler/iletisim-teorileri/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

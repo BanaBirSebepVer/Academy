@@ -20,7 +20,6 @@ appointments:
     course_date: "2015 - 2022"
     instructor_title_duration: "2015 - 2022"
 description: "Çevre ve ekoloji odaklı araştırmacı gazetecilik, veri toplama ve saha haberciliği atölyesi."
-permalink: /dersler/ekolojik-gazetecilik-atolyesi/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

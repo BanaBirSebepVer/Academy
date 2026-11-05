@@ -20,7 +20,6 @@ appointments:
     course_date: "2022 - Devam"
     instructor_title_duration: "2022 - Devam"
 description: "Enstantane, diyafram, ISO üçgeni, kompozisyon kuralları, ışık kullanımı ve fotoğrafik anlatım."
-permalink: /dersler/temel-fotografcilik/
 active_nav: dersler
 lecture_notes_url: "/lessons/temel-fotografcilik/temel-fotografcilik-ders-notlari/"
 discord: "http://discord.gg/ar8aq7u6zN"

@@ -20,7 +20,6 @@ appointments:
     course_date: "2022 - Devam"
     instructor_title_duration: "2022 - Devam"
 description: "Sözel ve sözel olmayan iletişim, etkin dinleme, çatışma çözümü ve profesyonel ekip içi iletişim becerileri."
-permalink: /dersler/kisilerarasi-iletisim-becerileri/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

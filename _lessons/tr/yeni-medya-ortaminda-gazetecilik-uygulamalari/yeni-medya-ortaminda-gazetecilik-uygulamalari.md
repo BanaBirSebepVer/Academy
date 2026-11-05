@@ -20,7 +20,6 @@ appointments:
     course_date: "2022 - Devam"
     instructor_title_duration: "2022 - Devam"
 description: "Dijital gazetecilik etiği, alternatif medya mecraları, yapay zeka araçları ve yeni nesil habercilik."
-permalink: /dersler/yeni-medya-ortaminda-gazetecilik-uygulamalari/
 active_nav: dersler
 discord: ""
 teams: ""

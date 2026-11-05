@@ -1,0 +1,223 @@
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign home_page = site.pages | where: "ref", "home" | where: "lang", current_lang | first %}
+{% assign home_url = home_page.url | default: "/" | relative_url %}
+
+{% comment %} Dynamically detect parent directory and parent index page {% endcomment %}
+{% assign path_parts = page.path | split: "/" %}
+{% assign folder_parts_count = path_parts.size | minus: 1 %}
+{% assign parent_folder = "" %}
+{% for i in (0..folder_parts_count) %}
+  {% if i < folder_parts_count %}
+    {% assign parent_folder = parent_folder | append: path_parts[i] | append: "/" %}
+  {% endif %}
+{% endfor %}
+
+{% assign parent_page = nil %}
+{% for p in site.pages %}
+  {% if p.path contains parent_folder and p.path contains "/index." %}
+    {% assign parent_page = p %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% assign parent_title = parent_page.nav_title | default: parent_page.title | default: "Geri" %}
+{% assign parent_url = parent_page.url | default: "/" | relative_url %}
+
+{% comment %} Gather sibling items in the same folder for navigation {% endcomment %}
+{% assign sibling_items = "" | split: "" %}
+{% for p in site.pages %}
+  {% if p.path contains parent_folder and p.path != page.path %}
+    {% unless p.path contains "/index." %}
+      {% assign sibling_items = sibling_items | push: p %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
+{% assign sibling_items = sibling_items | sort: "order" %}
+
+<div class="fac-page single-folder-item-page single-page-view">
+  <div id="inside">
+
+    <!-- Hero / Header Section -->
+    <div class="single-hero-header">
+      <div class="container-fluid">
+        <!-- Breadcrumbs -->
+        <div class="single-breadcrumb">
+          <a href="{{ home_url }}">{{ locale.ui.home | default: "Anasayfa" }}</a>
+          <span class="single-breadcrumb-separator">/</span>
+          {% if parent_page %}
+          <a href="{{ parent_url }}">{{ parent_title }}</a>
+          <span class="single-breadcrumb-separator">/</span>
+          {% endif %}
+          <span class="single-breadcrumb-current">{{ page.title }}</span>
+        </div>
+
+        <div class="single-hero-meta-bar">
+          {% if page.badge_label %}
+          <span class="label archive-badge-primary" {% if page.badge_color %}style="background-color: {{ page.badge_color }};"{% endif %}>
+            {{ page.badge_label }}
+          </span>
+          {% endif %}
+          {% if page.status %}
+          <span class="status-badge {{ page.status_class | default: 'status-active' }}">
+            {{ page.status }}
+          </span>
+          {% endif %}
+          {% if page.category %}
+          <span class="single-meta-category">
+            <i class="fa fa-folder-open-o"></i> {{ page.category | capitalize }}
+          </span>
+          {% endif %}
+        </div>
+
+        <h1 class="title single-hero-title">
+          {{ page.title }}
+        </h1>
+
+        {% if page.subtitle %}
+        <p class="single-hero-subtitle">
+          {% if page.subtitle_icon %}<i class="{{ page.subtitle_icon }}"></i> {% endif %}
+          {{ page.subtitle }}
+        </p>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="pagecontents color-1 single-content-body">
+      <div class="container-fluid">
+        <div class="row">
+
+          <!-- Left / Main Content Column (8 cols) -->
+          <div class="col-md-8 col-sm-12">
+            {% if page.image and page.image != "" %}
+            <div class="single-featured-image-box">
+              <img src="{{ page.image }}" alt="{{ page.title }}">
+            </div>
+            {% endif %}
+
+            <div class="entry-content article-body markdown-body folder-single-markdown">
+              {{ content }}
+            </div>
+
+            {% if page.button_url and page.button_url != "" %}
+            <div class="folder-single-cta-wrap">
+              <a href="{{ page.button_url }}" {% if page.button_url contains "http" %}target="_blank" rel="noopener noreferrer"{% endif %} class="btn btn-success folder-single-cta-btn">
+                {% if page.button_icon %}<i class="{{ page.button_icon }}"></i> {% else %}<i class="fa fa-external-link"></i> {% endif %}
+                <span>{{ page.button_text | default: "Detay & İletişim" }}</span> &rarr;
+              </a>
+            </div>
+            {% endif %}
+
+            {% if page.tags and page.tags.size > 0 %}
+            <div class="folder-single-tags-wrap">
+              <span class="folder-single-tags-label"><i class="fa fa-tags"></i> {{ locale.ui.tags | default: "Etiketler" }}:</span>
+              {% for tag in page.tags %}
+              <span class="archive-card-tag">{{ tag }}</span>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Footer Navigation & Social Share -->
+            <div class="single-footer-nav folder-single-footer-nav">
+              <a href="{{ parent_url }}" class="btn btn-default single-back-btn">
+                <i class="fa fa-arrow-left"></i> {{ parent_title }}
+              </a>
+
+              <div class="single-share-bar">
+                <span class="single-share-label">{{ locale.ui.share | default: "Paylaş" }}:</span>
+                <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://api.whatsapp.com/send?text={{ page.title | url_encode }}%20{{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Sidebar Column (4 cols) -->
+          <div class="col-md-4 col-sm-12">
+            <div class="sidebar-sticky-wrap">
+
+              <!-- Meta Overview Widget -->
+              <div class="panel panel-default sidebar-widget-card">
+                <div class="sidebar-widget-header">
+                  <span><i class="fa fa-info-circle"></i> {{ locale.ui.details | default: "Bilgiler" }}</span>
+                </div>
+                <div class="sidebar-widget-body">
+                  <div class="sidebar-meta-list">
+                    {% if page.category %}
+                    <div class="sidebar-meta-row">
+                      <span class="sidebar-meta-label"><i class="fa fa-folder-o"></i> {{ locale.ui.category | default: "Kategori" }}</span>
+                      <span class="sidebar-meta-value">{{ page.category | capitalize }}</span>
+                    </div>
+                    {% endif %}
+
+                    {% if page.badge_label %}
+                    <div class="sidebar-meta-row">
+                      <span class="sidebar-meta-label"><i class="fa fa-certificate"></i> {{ locale.ui.level | default: "Seviye" }}</span>
+                      <span class="sidebar-meta-value">{{ page.badge_label }}</span>
+                    </div>
+                    {% endif %}
+
+                    {% if page.status %}
+                    <div class="sidebar-meta-row">
+                      <span class="sidebar-meta-label"><i class="fa fa-check-circle-o"></i> {{ locale.ui.status | default: "Durum" }}</span>
+                      <span class="sidebar-meta-value">{{ page.status }}</span>
+                    </div>
+                    {% endif %}
+
+                    {% if page.footer_text %}
+                    <div class="sidebar-meta-row">
+                      <span class="sidebar-meta-label"><i class="fa fa-calendar-check-o"></i> {{ locale.ui.period | default: "Not / Dönem" }}</span>
+                      <span class="sidebar-meta-value">{{ page.footer_text }}</span>
+                    </div>
+                    {% endif %}
+                  </div>
+
+                  {% if page.button_url and page.button_url != "" %}
+                  <div style="margin-top: 15px;">
+                    <a href="{{ page.button_url }}" {% if page.button_url contains "http" %}target="_blank" rel="noopener noreferrer"{% endif %} class="btn btn-sm btn-success btn-block" style="background-color: var(--channel-whatsapp, #25d366); border-color: var(--channel-whatsapp, #25d366); font-weight: 700;">
+                      {% if page.button_icon %}<i class="{{ page.button_icon }}"></i> {% else %}<i class="fa fa-external-link"></i> {% endif %}
+                      {{ page.button_text | default: "İletişim / Rezervasyon" }}
+                    </a>
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+
+              <!-- Sibling Items in this Folder Widget -->
+              {% if sibling_items.size > 0 %}
+              <div class="panel panel-default sidebar-widget-card">
+                <div class="sidebar-widget-header">
+                  <span><i class="fa fa-list"></i> {{ parent_title }}</span>
+                  <span class="badge" style="background-color: var(--primary, #03cc85); color: #fff;">{{ sibling_items.size | plus: 1 }}</span>
+                </div>
+                <div class="sidebar-widget-body" style="padding: 10px 15px;">
+                  <ul class="sidebar-link-list folder-sibling-list">
+                    {% for sib in sibling_items %}
+                    <li class="sidebar-link-item folder-sibling-item">
+                      <a href="{{ sib.url | relative_url }}" class="sidebar-link-anchor">
+                        <i class="fa fa-angle-right" style="color: var(--primary); margin-right: 5px;"></i>
+                        {{ sib.title }}
+                      </a>
+                      {% if sib.badge_label %}
+                      <span class="sidebar-tag-item" style="font-size: 10px; margin-top: 4px; display: inline-block;">
+                        {{ sib.badge_label }}
+                      </span>
+                      {% endif %}
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+              {% endif %}
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

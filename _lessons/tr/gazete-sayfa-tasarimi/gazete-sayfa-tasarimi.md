@@ -23,7 +23,6 @@ duties:
   - "Çok sayfalı basılı ve dijital yayın ürünleri için görsel tasarımın temel ilkeleri, ızgara sistemleri, tipografi ve mizanpaj estetiği konularında dersler verdi."
   - "Öğrencilere, endüstri standardı masaüstü yayıncılık yazılımlarını kullanarak gazete, dergi ve etkileşimli broşürleri tasarlamaları, biçimlendirmeleri ve baskıya hazırlamaları konusunda eğitim verdi."
 description: "Adobe InDesign ile tipografi, gazete ve dergi mizanpajı, grid sistemleri ve e-yayıncılık tasarımı."
-permalink: /dersler/gazete-sayfa-tasarimi/
 active_nav: dersler
 lecture_notes_url: "/lessons/gazete-sayfa-tasarimi/gazete-sayfa-tasarimi-ders-notlari/"
 discord: ""

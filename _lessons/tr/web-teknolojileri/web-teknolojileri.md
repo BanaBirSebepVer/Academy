@@ -23,7 +23,6 @@ duties:
   - "World Wide Web’in temel teknik bileşenlerini tanıtarak, anlamsal HTML5 mimarileri, duyarlı CSS3 stil uygulamaları ve standart web barındırma protokollerine odaklandı."
   - "Öğrencilere, modern görsel ve teknik web standartlarına uygun, erişilebilir ve kullanıcı dostu web sitelerinin planlanması, geliştirilmesi ve devreye alınmasından oluşan tüm yaşam döngüsü boyunca rehberlik etti."
 description: "Semantik HTML5, duyarlı CSS3, standart web barındırma protokolleri ve kullanıcı dostu web siteleri geliştirme."
-permalink: /dersler/web-teknolojileri/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

@@ -20,7 +20,6 @@ appointments:
     course_date: "2022 - Devam"
     instructor_title_duration: "2022 - Devam"
 description: "Dijital markalaşma ilkeleri, içerik zamanlama, kurumsal iletişim stratejileri ve sosyal medya kampanya yönetimi."
-permalink: /dersler/sosyal-medya-planlama/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

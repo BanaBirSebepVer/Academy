@@ -20,7 +20,6 @@ appointments:
     course_date: "2022 - 2024"
     instructor_title_duration: "2022 - 2024"
 description: "Sosyal medya platform dinamikleri, kriz iletişimi, marka imajı, topluluk yönetimi ve içerik stratejisi."
-permalink: /dersler/sosyal-medya-yonetimi/
 active_nav: dersler
 lecture_notes_url: "/lessons/sosyal-medya-yonetimi/sosyal-medya-yonetimi-sinav-sorulari/"
 discord: ""

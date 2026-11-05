@@ -20,7 +20,6 @@ appointments:
     course_date: "2022 - Devam"
     instructor_title_duration: "2022 - Devam"
 description: "Matbaadan dijital çağa iletişim teknolojilerinin evrimi ve toplumsal yapılar üzerindeki etkileri."
-permalink: /dersler/iletisim-tarihi/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

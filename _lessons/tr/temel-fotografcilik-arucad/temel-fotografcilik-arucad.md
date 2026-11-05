@@ -23,7 +23,6 @@ duties:
   - "Dijital fotoğrafçılığın temelleri konusunda, manuel kamera kullanımı, pozlama değişkenleri, stüdyo aydınlatması ve yaratıcı kompozisyon konularını kapsayan teknik ve estetik eğitimler verdim."
   - "Öğrencilere, dijital varlık yönetimi ile tahribatlı ve tahribatsız görüntü düzenleme iş akışlarını öğrenirken profesyonel görsel portföyler oluşturmaları konusunda rehberlik ettim."
 description: "Manuel kamera kontrolü, pozlama üçgeni, stüdyo ışıklandırması ve dijital karanlık oda iş akışları."
-permalink: /dersler/temel-fotografcilik-arucad/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

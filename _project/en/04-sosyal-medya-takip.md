@@ -1,4 +1,6 @@
 ---
+ref: project-04-sosyal-medya-takip
+lang: en
 title: "Social Media Monitoring & Data Mining"
 subtitle: "Data Mining and Communication Analytics"
 role: "Principal Investigator"

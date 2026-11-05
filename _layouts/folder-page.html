@@ -1,0 +1,218 @@
+---
+layout: default
+---
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+
+{% comment %} Dynamically detect parent directory of this index page {% endcomment %}
+{% assign path_parts = page.path | split: "/" %}
+{% assign folder_parts_count = path_parts.size | minus: 1 %}
+{% assign current_folder = "" %}
+{% for i in (0..folder_parts_count) %}
+  {% if i < folder_parts_count %}
+    {% assign current_folder = current_folder | append: path_parts[i] | append: "/" %}
+  {% endif %}
+{% endfor %}
+
+{% comment %} Gather all items located in this folder {% endcomment %}
+{% assign folder_items = "" | split: "" %}
+{% for p in site.pages %}
+  {% if p.path contains current_folder and p.path != page.path %}
+    {% unless p.path contains "/index." %}
+      {% assign folder_items = folder_items | push: p %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
+{% assign folder_items = folder_items | sort: "order" %}
+
+<div class="fac-page folder-page diving-archive-page">
+  <div class="archive-page-container">
+    <div class="container-fluid">
+
+      <!-- Header Section -->
+      <div class="archive-header">
+        <h1>
+          {% if page.header_icon %}<i class="{{ page.header_icon }}"></i> {% endif %}
+          {{ page.title }}
+        </h1>
+        {% if page.description %}
+        <p>{{ page.description }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Optional Hero Banner Section (e.g. Instructor credentials, highlight bar) -->
+      {% if page.hero %}
+      {% assign hero = page.hero %}
+      <div class="diving-instructor-hero folder-hero-banner">
+        <div class="row folder-hero-row">
+          <div class="col-md-8 col-sm-12 folder-hero-content">
+            {% if hero.badges %}
+            <div class="folder-hero-badges">
+              {% for b in hero.badges %}
+              <span class="label {{ b.class | default: 'label-default' }}">{{ b.label }}</span>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if hero.title %}
+            <h2>{{ hero.title }}</h2>
+            {% endif %}
+
+            {% if hero.description %}
+            <p class="folder-hero-desc">{{ hero.description }}</p>
+            {% endif %}
+
+            {% if hero.buttons %}
+            <div class="folder-hero-buttons">
+              {% for btn in hero.buttons %}
+              <a href="{{ btn.url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm {{ btn.class | default: 'btn-default' }}">
+                {% if btn.icon %}<i class="{{ btn.icon }}"></i> {% endif %}
+                <span>{{ btn.label }}</span>
+              </a>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+
+          {% if hero.images %}
+          <div class="col-md-4 col-sm-12 text-center folder-hero-media">
+            <div class="folder-hero-images-wrap">
+              {% for img in hero.images %}
+              <img src="{{ img.url }}" alt="{{ img.alt | default: 'Hero badge' }}" class="{{ img.class | default: 'folder-hero-img' }}">
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- Optional Markdown Intro Content: rendered ONLY if body text exists -->
+      {% assign content_stripped = content | strip_html | strip %}
+      {% if content_stripped != "" %}
+      <div class="folder-intro-content markdown-body">
+        {{ content }}
+      </div>
+      {% endif %}
+
+      <!-- Controls: Search Input & Category Filter Pills -->
+      <div class="archive-controls folder-controls">
+        <div class="archive-search-box">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="fa fa-search"></i>
+            </span>
+            <input type="text" id="divingSearchInput" class="form-control" placeholder="{{ page.search_placeholder | default: 'Search in this section...' }}">
+          </div>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="archive-filter-pills" id="folderFilterButtons">
+          <button class="btn btn-sm btn-primary active archive-filter-btn diving-cat-btn folder-cat-btn" data-category="all">
+            {{ locale.ui.all | default: "All" }}
+          </button>
+
+          {% if page.categories %}
+            {% for cat in page.categories %}
+            <button class="btn btn-sm btn-default archive-filter-btn diving-cat-btn folder-cat-btn" data-category="{{ cat.slug }}">
+              {% if cat.icon %}<i class="{{ cat.icon }}"></i> {% endif %}
+              {{ cat.label }}
+            </button>
+            {% endfor %}
+          {% else %}
+            {% assign extracted_cats = folder_items | map: "category" | compact | uniq %}
+            {% for cat in extracted_cats %}
+            <button class="btn btn-sm btn-default archive-filter-btn diving-cat-btn folder-cat-btn" data-category="{{ cat }}">
+              {{ cat | capitalize }}
+            </button>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Divided Contents Showcase Grid -->
+      <div class="row flex-masonry-grid" id="divingGrid">
+        {% for item in folder_items %}
+        <div class="col-md-4 col-sm-6 col-xs-12 archive-card-col diving-card-item folder-card-item flex-masonry-item"
+             data-category="{{ item.category }}"
+             data-title="{{ item.title | downcase | escape }}"
+             data-tags="{% for tag in item.tags %}{{ tag | downcase }} {% endfor %}">
+          <div class="archive-card folder-card">
+            {% if item.image and item.image != "" %}
+            <div class="archive-card-image">
+              <img src="{{ item.image }}" alt="{{ item.title }}">
+            </div>
+            {% endif %}
+
+            <div class="archive-card-body">
+              <div class="archive-card-meta">
+                {% if item.badge_label %}
+                <span class="label archive-badge-primary" {% if item.badge_color %}style="background-color: {{ item.badge_color }};"{% endif %}>
+                  {{ item.badge_label }}
+                </span>
+                {% endif %}
+                {% if item.status %}
+                <span class="status-badge {{ item.status_class | default: 'status-active' }}">
+                  {{ item.status }}
+                </span>
+                {% endif %}
+              </div>
+
+              <h3 class="archive-card-title">
+                {% if item.url %}
+                <a href="{{ item.url | relative_url }}">
+                  {{ item.title }}
+                </a>
+                {% elsif item.button_url and item.button_url != "" %}
+                <a href="{{ item.button_url }}" {% if item.button_url contains "http" %}target="_blank" rel="noopener noreferrer"{% endif %}>
+                  {{ item.title }}
+                </a>
+                {% else %}
+                {{ item.title }}
+                {% endif %}
+              </h3>
+
+              {% if item.subtitle %}
+              <div class="archive-card-subtitle">
+                {% if item.subtitle_icon %}<i class="{{ item.subtitle_icon }}"></i> {% endif %}
+                {{ item.subtitle }}
+              </div>
+              {% endif %}
+
+              <div class="archive-card-desc">
+                {{ item.content | markdownify }}
+              </div>
+
+              {% if item.tags and item.tags.size > 0 %}
+              <div class="archive-card-tags">
+                {% for tag in item.tags %}
+                <span class="archive-card-tag">{{ tag }}</span>
+                {% endfor %}
+              </div>
+              {% endif %}
+
+              <div class="archive-card-footer">
+                {% if item.button_url and item.button_url != "" %}
+                <a href="{{ item.button_url }}" {% if item.button_url contains "http" %}target="_blank" rel="noopener noreferrer"{% endif %} class="btn btn-xs btn-success archive-card-action-btn">
+                  {{ item.button_text | default: "Details" }} &rarr;
+                </a>
+                {% elsif item.footer_text %}
+                <span class="archive-footer-note">{{ item.footer_text }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- No Matches Alert -->
+      <div id="noDivingMatch" class="archive-no-match" style="display: none;">
+        <i class="fa fa-search-minus"></i>
+        <h4>{{ locale.ui.no_results_found | default: "No content matched your search." }}</h4>
+        <p>{{ locale.ui.clear_filter | default: "Please try another search keyword or clear active filters." }}</p>
+      </div>
+
+    </div>
+  </div>
+</div>

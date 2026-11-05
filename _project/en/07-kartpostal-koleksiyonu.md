@@ -1,4 +1,6 @@
 ---
+ref: project-07-kartpostal-koleksiyonu
+lang: en
 title: "Historical Postcard Collection"
 subtitle: "Global Postcards Archive"
 role: "Collector & Archivist"

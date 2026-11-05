@@ -32,7 +32,6 @@ duties:
   - "Web tabanlı haberciliğin gelişimini, temel çerçevelerini ve mesleki uygulamalarını ele alarak, gerçek zamanlı haber sunumu, hiperlink yapıları ve etkileşimli multimedya sunumlarına vurgu yapıldı."
   - "Öğrencilere haberler için arama motoru optimizasyonu (SEO) stratejileri, dijital kitle analitiği takibi ve çevrimiçi haber odalarına özgü etik standartlar konusunda eğitim verildi."
 description: "Web tabanlı habercilik, gerçek zamanlı haber sunumu, hiperlink mimarileri, haber SEO'su ve kitle analitiği."
-permalink: /dersler/internet-gazeteciligi/
 active_nav: dersler
 email: "can@canbekcan.com"
 ---

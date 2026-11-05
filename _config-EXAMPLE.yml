@@ -1,29 +1,38 @@
 # ==============================================================================
-# ACADEMY CONFIGURATION TEMPLATE (_config-EXAMPLE.yml)
-# Copy this file to _config.yml if you need to restore the base configuration.
-#
-# Academicians: Personal details (name, email, institution, etc.) should be
-# customized in _data/profile.yml so upstream updates never conflict with your data.
+# SITE CONFIGURATION TEMPLATE (_config-EXAMPLE.yml)
+# ==============================================================================
+# 📝 ACADEMICIANS: Copy this file to _config.yml and edit the personal information
+# in this top section to setup your website. Once edited, simply push to deploy!
 # ==============================================================================
 
-# Site Identity & Fallbacks
+# 1. Personal & Academic Profile
 title: "Akademi | Modern Academic Website"
+author: "Your Name"
 email: "info@example.com"
 description: "Akademik CV & Research Repository"
+institution: "Your University"
+department: "Your Department"
+avatar: "/assets/images/Can-Bekcan-PADI.jpg"
+
+# 2. Site URL & Hosting
+# - Custom domain (e.g. yourdomain.com): baseurl: ""  | url: "https://yourdomain.com"
+# - Project site (e.g. username.github.io/repo): baseurl: "/repo" | url: "https://username.github.io"
 baseurl: "/Academy"
 url: "https://BanaBirSebepVer.github.io"
 repository: "BanaBirSebepVer/Academy"
 github_repo: "https://github.com/BanaBirSebepVer/Academy"
-author: "Can Bekcan"
 google_analytics: ""
 encoding: utf-8
 favicon: "/favicon.ico"
 
-# Multilingual Settings
+# 3. Multilingual Settings
 default_lang: "tr"
 languages: ["tr", "en"]
 
-# Build settings
+# ==============================================================================
+# FRAMEWORK & ARCHITECTURE SETTINGS (No need to edit below this line)
+# ==============================================================================
+
 markdown: kramdown
 future: true
 kramdown:

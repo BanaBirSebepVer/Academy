@@ -12,12 +12,11 @@
 
 {% assign current_lang = page.lang | default: site.default_lang | default: "tr" %}
 {% assign canonical_url = page.url | replace: "index.html", "" | absolute_url %}
-{% assign site_author_name = site.data.profile.name | default: page.author | default: site.author | default: "Can Bekcan" %}
-{% assign effective_site_title = site.data.profile.title | default: site.data.profile.name | default: site.title %}
+{% assign site_author_name = page.author | default: site.author | default: site.title %}
 {% if page.name and page.name != "index.md" and page.name != "" %}
   {% assign site_author_name = page.name %}
 {% endif %}
-{% assign raw_image = site.data.profile.avatar | default: page.image | default: page.featured_image | default: page.avatar | default: "/assets/images/Can-Bekcan-PADI.jpg" %}
+{% assign raw_image = page.image | default: page.featured_image | default: page.avatar | default: site.avatar | default: "/assets/images/Can-Bekcan-PADI.jpg" %}
 {% assign seo_image = raw_image | absolute_url %}
 
 {% if page.description and page.description != "" %}
@@ -27,7 +26,7 @@
 {% elsif page.bio and page.bio != "" %}
   {% assign schema_desc = page.bio | strip_html | strip_newlines | truncate: 250 %}
 {% else %}
-  {% assign schema_desc = site.data.profile.description | default: site.description %}
+  {% assign schema_desc = site.description %}
 {% endif %}
 
 <script type="application/ld+json">
@@ -266,13 +265,13 @@
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": {{ page.title | default: effective_site_title | jsonify }},
+  "name": {{ page.title | default: site.title | jsonify }},
   "description": {{ schema_desc | jsonify }},
   "url": "{{ canonical_url }}",
   "inLanguage": "{{ current_lang }}",
   "mainEntity": {
     "@type": "ItemList",
-    "name": {{ page.title | default: effective_site_title | jsonify }}
+    "name": {{ page.title | default: site.title | jsonify }}
   }
 }
 
@@ -281,7 +280,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": {{ page.title | default: effective_site_title | jsonify }},
+  "name": {{ page.title | default: site.title | jsonify }},
   "description": {{ schema_desc | jsonify }},
   "url": "{{ canonical_url }}",
   "inLanguage": "{{ current_lang }}"

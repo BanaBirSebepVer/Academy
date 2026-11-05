@@ -7,7 +7,7 @@ layout: default
 
 {% assign display_name = page.name %}
 {% if display_name == 'index.md' or display_name == nil or display_name == '' %}
-  {% assign display_name = site.data.profile.name | default: page.author | default: site.author | default: 'Can Bekcan' %}
+  {% assign display_name = page.author | default: site.author | default: site.title %}
 {% endif %}
 
 <div id="inside" class="cv-homepage">
@@ -17,15 +17,14 @@ layout: default
       <div class="row">
         <div class="col-sm-3 col-md-3 text-center">
           <div class="cv-hero-avatar">
-            <img src="{{ site.data.profile.avatar | default: page.image | default: page.avatar | default: '/assets/images/Can-Bekcan-PADI.jpg' | relative_url }}" alt="{{ display_name }}" class="img-responsive cv-avatar-img" />
+            <img src="{{ page.image | default: page.avatar | default: site.avatar | default: '/assets/images/Can-Bekcan-PADI.jpg' | relative_url }}" alt="{{ display_name }}" class="img-responsive cv-avatar-img" />
           </div>
         </div>
         <div class="col-sm-9 col-md-9">
           <h1 class="cv-hero-name">{{ display_name }}</h1>
-          {% assign hero_bio = page.bio | default: site.data.profile.bio %}
-          {% if hero_bio %}
+          {% if page.bio %}
           <div class="cv-hero-bio">
-            <p>{{ hero_bio }}</p>
+            <p>{{ page.bio }}</p>
           </div>
           {% endif %}
 

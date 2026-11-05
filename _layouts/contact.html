@@ -59,7 +59,7 @@ layout: default
         {% assign office = page.office %}
         <div class="{{ card_col_class }} contact-card-col">
           <div class="contact-info-card" itemprop="mainEntity" itemscope itemtype="https://schema.org/Person">
-            <meta itemprop="name" content="{{ site.data.profile.name | default: site.author | default: 'Can Bekcan' }}">
+            <meta itemprop="name" content="{{ site.author | default: site.title }}">
             <div class="contact-icon-wrapper">
               <i class="{{ office.icon | default: 'fa fa-university' }}"></i>
             </div>
@@ -164,7 +164,7 @@ layout: default
             {% endif %}
 
             <div class="contact-email-action">
-              {% assign target_email = email_sec.email | default: site.data.profile.email | default: site.email %}
+              {% assign target_email = email_sec.email | default: site.email %}
               <a href="mailto:{{ target_email }}" class="btn btn-sm contact-btn-email">
                 <i class="fa fa-paper-plane"></i> {{ target_email }}
               </a>

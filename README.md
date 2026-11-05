@@ -73,9 +73,8 @@ This repository contains the complete source code, course materials, publication
 
 ```
 academy/
-├── _config.yml                    # Jekyll architecture configuration (collections, defaults, plugins)
+├── _config.yml                    # Unified site configuration (personal profile at top + framework architecture)
 ├── _data/
-│   ├── profile.yml                # Academician personal information (name, email, institution - customized per fork)
 │   └── locales/                   # Strict UI interface dictionaries (NEVER hardcode strings!)
 │       ├── tr.yml                 # Turkish UI labels, buttons, and navigation terms
 │       └── en.yml                 # English UI labels, buttons, and navigation terms

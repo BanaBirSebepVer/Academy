@@ -1,0 +1,43 @@
+name: "🐛 Bug Report"
+description: Report a reproducible bug, build failure, or Liquid syntax error
+title: "[BUG]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the **Academy** theme!
+  - type: input
+    id: environment
+    attributes:
+      label: Environment Details
+      description: Provide your OS, Ruby version, and Jekyll version.
+      placeholder: e.g., macOS Sonoma, Ruby 3.3.5, Jekyll 3.10.0
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Exactly what steps did you take before the issue occurred?
+      placeholder: |
+        1. Run `bundle exec jekyll serve`
+        2. Navigate to `pages/en/network.md`
+        3. See build error
+    validations:
+      required: true
+  - type: textarea
+    id: trace
+    attributes:
+      label: Terminal Trace / Log Output
+      description: Paste any error messages from `bundle exec jekyll build --trace`.
+      render: shell
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-Submission Checklist
+      options:
+        - label: I searched open/closed issues to confirm this is not a duplicate.
+          required: true
+        - label: I am using standard modular CSS/JS files without unsupported plugins.
+          required: true

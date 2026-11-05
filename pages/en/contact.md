@@ -18,7 +18,7 @@ active_nav: contact
       <!-- Header Section -->
       <div class="archive-header">
         <h1>Contact & Location</h1>
-        <p>Akademik iş birlikleri, ders danışmanlığı, araştırma projeleri ve genel sorularınız için iletişim kanalları.</p>
+        <p>Communication channels for academic collaborations, student office hours, research projects, and general inquiries.</p>
       </div>
 
       <!-- Contact Showcase Cards Grid -->
@@ -30,15 +30,15 @@ active_nav: contact
             <div class="contact-icon-wrapper">
               <i class="fa fa-university"></i>
             </div>
-            <h3>Akademik Ofis & Posta Adresi</h3>
+            <h3>Academic Office & Mailing Address</h3>
             <p style="font-size: 14px; color: #555; line-height: 1.7; flex: 1; margin-bottom: 20px;">
-              <strong>Doğu Akdeniz Üniversitesi</strong><br>
-              İletişim Fakültesi, Yeni Medya ve Gazetecilik Bölümü<br>
-              Gazimağusa, Kuzey Kıbrıs Türk Cumhuriyeti<br>
-              Mersin 10 Turkey
+              <strong>Eastern Mediterranean University</strong><br>
+              Faculty of Communication, Department of New Media and Journalism<br>
+              Famagusta, North Cyprus<br>
+              via Mersin 10 Turkey
             </p>
             <div style="padding-top: 15px; border-top: 1px solid #edf2f7; font-size: 13px; color: #718096;">
-              <i class="fa fa-clock-o" style="color: #03cc85; margin-right: 5px;"></i> Ofis Görüşmeleri: Randevu ile
+              <i class="fa fa-clock-o" style="color: #03cc85; margin-right: 5px;"></i> Office Hours: By Appointment
             </div>
           </div>
         </div>
@@ -49,9 +49,9 @@ active_nav: contact
             <div class="contact-icon-wrapper">
               <i class="fa fa-comments"></i>
             </div>
-            <h3>Doğrudan İletişim & Mesajlaşma</h3>
+            <h3>Direct Contact & Instant Messaging</h3>
             <p style="font-size: 14px; color: #555; line-height: 1.7; flex: 1; margin-bottom: 20px;">
-              Acil ve hızlı iletişimleriniz için WhatsApp, Telegram veya doğrudan telefon hattı üzerinden ulaşabilirsiniz:
+              For quick and urgent communications, you can connect via WhatsApp, Telegram, or phone:
             </p>
             <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px;">
               <a href="tel:+905382760003" class="btn btn-sm btn-default" style="text-align: left; font-weight: 600;">
@@ -75,9 +75,9 @@ active_nav: contact
             <div class="contact-icon-wrapper">
               <i class="fa fa-envelope"></i>
             </div>
-            <h3>E-Posta & Akademik Başvurular</h3>
+            <h3>Email & Academic Inquiries</h3>
             <p style="font-size: 14px; color: #555; line-height: 1.7; flex: 1; margin-bottom: 20px;">
-              Ders içerikleri, araştırma projeleri, tez danışmanlığı veya konuşmacı davetleri için e-posta yoluyla iletişime geçebilirsiniz.
+              Feel free to reach out via email for course inquiries, research collaborations, thesis supervision, or guest speaker invitations.
             </p>
             <div style="margin-top: auto;">
               <a href="mailto:can@canbekcan.com" class="btn btn-sm btn-success" style="background-color: #03cc85; border-color: #03cc85; font-weight: 600; font-size: 14px; padding: 8px 16px;">
@@ -93,9 +93,9 @@ active_nav: contact
             <div class="contact-icon-wrapper">
               <i class="fa fa-share-alt"></i>
             </div>
-            <h3>Akademik Ağlar & Topluluklar</h3>
+            <h3>Academic Networks & Communities</h3>
             <p style="font-size: 14px; color: #555; line-height: 1.7; flex: 1; margin-bottom: 15px;">
-              Yayınlarımı, kod depolarımı ve akademik profillerimi aşağıdaki platformlardan takip edebilirsiniz:
+              You can explore my publications, code repositories, and academic profiles on the platforms below:
             </p>
             <div style="display: flex; flex-wrap: wrap; gap: 8px;">
               <a href="https://emu.academia.edu/CanBEKCAN" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" style="font-weight: 600;">
@@ -108,7 +108,7 @@ active_nav: contact
                 <i class="fa-brands fa-github"></i> GitHub
               </a>
               <a href="https://discord.gg/BSfuXZkcdg" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" style="font-weight: 600;">
-                <i class="fa-brands fa-discord"></i> Discord Topluluğu
+                <i class="fa-brands fa-discord"></i> Discord Community
               </a>
             </div>
           </div>
@@ -122,15 +122,15 @@ active_nav: contact
           <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 3px 8px rgba(0,0,0,0.03);">
             <div style="padding: 18px 24px; border-bottom: 1px solid #edf2f7; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
               <h3 style="margin: 0; font-size: 17px; font-weight: 700; color: #2b2b36;">
-                <i class="fa fa-map-marker" style="color: #03cc85; margin-right: 6px;"></i> Kampüs Konumu & Yol Tarifi
+                <i class="fa fa-map-marker" style="color: #03cc85; margin-right: 6px;"></i> Campus Location & Directions
               </h3>
               <a href="https://maps.google.com/?q=35.13909916898466,33.91156142600732" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" style="font-weight: 600;">
-                Google Haritalarda Aç <i class="fa fa-external-link"></i>
+                Open in Google Maps <i class="fa fa-external-link"></i>
               </a>
             </div>
             <div style="width: 100%; height: 420px; position: relative;">
               <iframe
-                title="Doğu Akdeniz Üniversitesi İletişim Fakültesi"
+                title="Eastern Mediterranean University Faculty of Communication"
                 src="https://maps.google.com/maps?q=35.13909916898466%2C%2033.91156142600732&t=m&z=17&output=embed&iwloc=near"
                 width="100%"
                 height="100%"

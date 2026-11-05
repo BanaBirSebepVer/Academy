@@ -151,6 +151,17 @@ ui:
 
   # Projects & Portfolio
   projects_title: "Araştırma ve Projeler"
+  projects_description: "Akademik araştırmalar, veri madenciliği girişimleri, sivil toplum hareketleri ve açık bilim projeleri arşivi."
+  projects_all: "Tüm Projeler"
+  projects_institutional: "Kurumsal & Topluluk"
+  projects_research: "Araştırma & Veri"
+  projects_social: "Sosyal Sorumluluk"
+  projects_culture: "Kültür & Arşiv"
+  search_projects_placeholder: "Projelerde ara (örn: Enstitü, Veri, Planet, Kütüphane)..."
+  view_project_details: "Detayları Gör"
+  default_project_role: "Sosyal Sorumluluk İnisiyatifi"
+  no_projects_found: "Aramanıza uygun proje bulunamadı."
+  no_projects_found_sub: "Lütfen farklı bir arama terimi deneyin veya kategori filtresini değiştirin."
   project_role: "Görev"
   project_organization: "Kurum / İnisiyatif"
   project_period: "Dönem"

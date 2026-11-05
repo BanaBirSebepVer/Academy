@@ -10,7 +10,7 @@ institution: "Eastern Mediterranean University"
 faculty: "Faculty of Communication"
 department: "New Media and Communication Department"
 institution_url: "https://www.emu.edu.tr"
-institution_initial: "DAÜ"
+institution_initial: "EMU"
 instructor: "Can Bekcan"
 instructor_title: "Senior Lecturer"
 course_date: "2022 - Continuing"
@@ -23,8 +23,10 @@ duties:
   - "Mainstream social media platforms' sociological, cultural and political impacts are examined, along with changing mass participation patterns and digital ecosystem dynamics."
   - "Students are taught to analyze user-generated content, understand platform-specific viral trends and critically evaluate the role of algorithmic curation in shaping modern public discourse."
 description: "Aggregation theory, the impact of social media on the public sphere, digital identity and communication dynamics."
-permalink: /lessons/social-media-and-communication/
-active_nav: dersler
+permalink: /en/lessons/social-media-and-communication/
+redirect_from:
+  - /lessons/social-media-and-communication/
+active_nav: lessons
 discord: ""
 teams: ""
 whatsapp: ""
@@ -90,7 +92,7 @@ Read the materials before you come to class, please.
 
 [Bibliography](https://support.microsoft.com/en-us/office/create-a-bibliography-citations-and-references-17686589-4824-4940-9c69-342c289fa2a5)
 
-## Weekly Courses Content {#haftalik-program}
+## Weekly Courses Content {#weekly-schedule}
 
 | Week | Topic | Theoretical Framework | Key Concepts & Coverage |
 | :---: | :--- | :--- | :--- |
@@ -109,7 +111,7 @@ Read the materials before you come to class, please.
 | **13** | **Project Presentations & Defense** | **Practical Application** | Student presentations of term projects, peer critique, and theoretical feedback. |
 | **14** | **Final Examination** | **Evaluation** | Comprehensive semester final examination. |
 
-## Detailed Grades {#detayli-notlandirma}
+## Detailed Grades {#detailed-grading}
 
 > ### Presentation
 > 

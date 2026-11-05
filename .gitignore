@@ -1,0 +1,12 @@
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/
+.DS_Store
+*.log
+migrate.sh
+tree.txt
+_config-local.yml
+TASK.md

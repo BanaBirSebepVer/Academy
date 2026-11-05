@@ -2,14 +2,18 @@
 layout: default
 ---
 
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign lang_slash = "/" | append: current_lang | append: "/" %}
+
 <div class="fac-page projects-archive-page">
   <div class="archive-page-container">
     <div class="container-fluid">
 
       <!-- Header Section -->
       <div class="archive-header">
-        <h1>{{ page.title | default: "Projects & Initiatives" }}</h1>
-        <p>{{ page.description | default: "Akademik araştırmalar, veri madenciliği girişimleri, sivil toplum hareketleri ve açık bilim projeleri arşivi." }}</p>
+        <h1>{{ page.title | default: locale.ui.projects_title }}</h1>
+        <p>{{ page.description | default: locale.ui.projects_description }}</p>
       </div>
 
       <!-- Intro Content if provided in markdown page -->
@@ -26,30 +30,45 @@ layout: default
             <span class="input-group-addon">
               <i class="fa fa-search"></i>
             </span>
-            <input type="text" id="projectSearchInput" class="form-control" placeholder="Projelerde ara (örn: Enstitü, Veri, Planet, Kütüphane)...">
+            <input type="text" id="projectSearchInput" class="form-control" placeholder="{{ locale.ui.search_projects_placeholder | default: 'Search projects...' }}">
           </div>
         </div>
 
         <div class="archive-filter-pills" id="projectFilterButtons">
           <button class="btn btn-sm btn-primary active archive-filter-btn project-cat-btn" data-category="all">
-            Tüm Projeler
+            {{ locale.ui.projects_all | default: "All Projects" }}
           </button>
           <button class="btn btn-sm btn-default archive-filter-btn project-cat-btn" data-category="institutional">
-            <i class="fa fa-building"></i> Kurumsal & Topluluk
+            <i class="fa fa-building"></i> {{ locale.ui.projects_institutional | default: "Institutional & Community" }}
           </button>
           <button class="btn btn-sm btn-default archive-filter-btn project-cat-btn" data-category="research">
-            <i class="fa fa-flask"></i> Araştırma & Veri
+            <i class="fa fa-flask"></i> {{ locale.ui.projects_research | default: "Research & Data" }}
           </button>
           <button class="btn btn-sm btn-default archive-filter-btn project-cat-btn" data-category="social">
-            <i class="fa fa-heart"></i> Sosyal Sorumluluk
+            <i class="fa fa-heart"></i> {{ locale.ui.projects_social | default: "Social Responsibility" }}
           </button>
           <button class="btn btn-sm btn-default archive-filter-btn project-cat-btn" data-category="culture">
-            <i class="fa fa-bookmark"></i> Kültür & Arşiv
+            <i class="fa fa-bookmark"></i> {{ locale.ui.projects_culture | default: "Culture & Archive" }}
           </button>
         </div>
       </div>
 
-      {% assign all_projects = site.project | default: site.projects | sort: "order" %}
+      {% assign raw_projects = site.project | default: site.projects %}
+      {% assign all_projects = "" | split: "" %}
+      {% for proj in raw_projects %}
+        {% assign match = false %}
+        {% if proj.lang == current_lang or proj.path contains lang_slash %}
+          {% assign match = true %}
+        {% elsif current_lang == site.default_lang %}
+          {% unless proj.path contains "/en/" or proj.lang == "en" %}
+            {% assign match = true %}
+          {% endunless %}
+        {% endif %}
+        {% if match %}
+          {% assign all_projects = all_projects | push: proj %}
+        {% endif %}
+      {% endfor %}
+      {% assign all_projects = all_projects | sort: "order" %}
 
       <!-- Projects Archive Grid (Flex Masonry) -->
       <div class="row flex-masonry-grid" id="projectsGrid">
@@ -103,7 +122,7 @@ layout: default
               <div class="archive-card-footer">
                 {% if proj.link and proj.link != "" %}
                   <a href="{{ proj.link | relative_url }}" {% if proj.link contains 'http' %}target="_blank" rel="noopener noreferrer"{% endif %} class="btn btn-sm btn-default archive-card-action-btn">
-                    {{ proj.link_text | default: "Detayları Gör" }}
+                    {{ proj.link_text | default: locale.ui.view_project_details | default: "View Details" }}
                     {% if proj.link_icon %}
                       <i class="fa {{ proj.link_icon }}"></i>
                     {% else %}
@@ -111,7 +130,7 @@ layout: default
                     {% endif %}
                   </a>
                 {% else %}
-                  <span class="archive-role-text">{{ proj.role | default: "Sosyal Sorumluluk İnisiyatifi" }}</span>
+                  <span class="archive-role-text">{{ proj.role | default: locale.ui.default_project_role | default: "Social Responsibility Initiative" }}</span>
                 {% endif %}
               </div>
             </div>
@@ -123,8 +142,8 @@ layout: default
       <!-- No Matches Alert -->
       <div id="noProjectsMatch" class="archive-no-match">
         <i class="fa fa-folder-open"></i>
-        <h4>Aramanıza uygun proje bulunamadı.</h4>
-        <p>Lütfen farklı bir arama terimi deneyin veya kategori filtresini değiştirin.</p>
+        <h4>{{ locale.ui.no_projects_found | default: "No projects found matching your search." }}</h4>
+        <p>{{ locale.ui.no_projects_found_sub | default: "Please try another search query or change category filter." }}</p>
       </div>
 
     </div>

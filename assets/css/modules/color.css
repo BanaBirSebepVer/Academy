@@ -124,6 +124,24 @@
   --channel-zoom: #2d8cff;
   --channel-email: #e67e22;
 
+  /* Social & Academic Networks (SNS) Brand Colors */
+  --sns-scholar: #4285f4;
+  --sns-academia: #1b75bb;
+  --sns-orcid: #a6ce39;
+  --sns-researchgate: #00ccbb;
+  --sns-github: #24292e;
+  --sns-linkedin: #0a66c2;
+  --sns-youtube: #ff0000;
+  --sns-twitter: #1da1f2;
+  --sns-x: #000000;
+  --sns-discord: #5865f2;
+  --sns-telegram: #229ed9;
+  --sns-whatsapp: #25d366;
+  --sns-facebook: #1877f2;
+  --sns-instagram: #e1306c;
+  --sns-medium: #00ab6c;
+  --sns-default: var(--primary, #03cc85);
+
   /* Version Status Tokens */
   --version-status-uptodate: var(--primary, #03cc85);
   --version-status-uptodate-bg: #f0fdf7;

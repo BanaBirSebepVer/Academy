@@ -1,0 +1,11 @@
+/**
+ * Contact Module Styles (Aggregator)
+ * Consolidates all contact page styles:
+ * - header.css: Header, lead intro, container
+ * - cards.css: Showcase cards (office, phone/messaging, email, academic profiles)
+ * - map.css: Campus location map card, header, iframe embed
+ */
+
+@import url("header.css");
+@import url("cards.css");
+@import url("map.css");

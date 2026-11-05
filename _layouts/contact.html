@@ -1,0 +1,297 @@
+---
+layout: default
+---
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+
+{% comment %} Fetch social profiles from home_page (index.md) if not explicitly set in page {% endcomment %}
+{% assign home_page = site.pages | where: "ref", "home" | where: "lang", current_lang | first %}
+{% if home_page == nil %}
+  {% assign home_page = site.pages | where: "ref", "home" | first %}
+{% endif %}
+{% assign raw_profiles = page.networks.profiles | default: home_page.social | default: site.social %}
+
+{% assign valid_profiles = "" | split: "" %}
+{% if raw_profiles %}
+  {% for profile in raw_profiles %}
+    {% if profile.url and profile.url != "" %}
+      {% assign valid_profiles = valid_profiles | push: profile %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% assign card_col_class = "col-md-6 col-sm-12" %}
+{% if valid_profiles.size == 0 %}
+  {% assign card_col_class = "col-md-4 col-sm-12" %}
+{% endif %}
+
+<div class="fac-page contact-page" itemscope itemtype="https://schema.org/ContactPage">
+  <div class="archive-page-container">
+    <div class="container-fluid">
+
+      <!-- Header Section -->
+      <div class="archive-header contact-header text-center">
+        <h1 itemprop="name">
+          <i class="{{ page.header.icon | default: 'fa fa-address-book' }}"></i>
+          {{ page.header.title | default: page.title | default: locale.ui.contact_info | default: "Contact & Location" }}
+        </h1>
+        {% assign subtitle_text = page.header.subtitle | default: page.description %}
+        {% if subtitle_text and subtitle_text != "" %}
+        <p class="lead" itemprop="description">
+          {{ subtitle_text }}
+        </p>
+        {% endif %}
+      </div>
+
+      <!-- Optional Markdown Intro Content: ONLY visible if body text actually exists -->
+      {% assign content_stripped = content | strip_html | strip %}
+      {% if content_stripped != "" %}
+      <div class="contact-intro-content markdown-body">
+        {{ content }}
+      </div>
+      {% endif %}
+
+      <!-- Contact Showcase Cards Grid (Equal Flexbox Height, No Empty Spaces) -->
+      <div class="row contact-grid">
+
+        <!-- 1. Office & Postal Address Card -->
+        {% if page.office %}
+        {% assign office = page.office %}
+        <div class="{{ card_col_class }} contact-card-col">
+          <div class="contact-info-card" itemprop="mainEntity" itemscope itemtype="https://schema.org/Person">
+            <meta itemprop="name" content="{{ site.author | default: 'Can Bekcan' }}">
+            <div class="contact-icon-wrapper">
+              <i class="{{ office.icon | default: 'fa fa-university' }}"></i>
+            </div>
+            <h3 class="contact-card-title">{{ office.title | default: "Academic Office & Mailing Address" }}</h3>
+            
+            <div class="contact-card-text" itemprop="workLocation" itemscope itemtype="https://schema.org/Place">
+              {% if office.institution %}
+                <strong itemprop="name">{{ office.institution }}</strong><br>
+              {% endif %}
+              {% if office.faculty or office.department %}
+                {% if office.faculty %}{{ office.faculty }}{% if office.department %}, {% endif %}{% endif %}
+                {% if office.department %}{{ office.department }}{% endif %}<br>
+              {% endif %}
+              <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                {% if office.address_lines %}
+                  {% for line in office.address_lines %}
+                    <span>{{ line }}</span>{% unless forloop.last %}<br>{% endunless %}
+                  {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+
+            {% if office.institution_phone %}
+            <div class="contact-institution-phone">
+              <i class="fa fa-phone-square"></i>
+              <span>{{ locale.ui.institution_phone | default: "Institution Phone" }}:</span>
+              {% assign inst_phone_clean = office.institution_phone | replace: " ", "" | replace: "-", "" %}
+              <a href="tel:{{ inst_phone_clean }}"><strong>{{ office.institution_phone }}</strong></a>
+            </div>
+            {% endif %}
+
+            {% if office.office_hours %}
+            <div class="contact-office-hours">
+              <i class="fa fa-clock-o"></i>
+              <span>{{ office.office_hours }}</span>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- 2. Direct Messaging & Phone Card -->
+        {% if page.messaging %}
+        {% assign messaging = page.messaging %}
+        <div class="{{ card_col_class }} contact-card-col">
+          <div class="contact-info-card">
+            <div class="contact-icon-wrapper">
+              <i class="{{ messaging.icon | default: 'fa fa-comments' }}"></i>
+            </div>
+            <h3 class="contact-card-title">{{ messaging.title | default: "Direct Contact & Instant Messaging" }}</h3>
+            
+            {% if messaging.description %}
+            <p class="contact-card-text">{{ messaging.description }}</p>
+            {% endif %}
+
+            <div class="contact-action-group">
+              {% if messaging.phone %}
+              {% assign phone_clean = messaging.phone | replace: " ", "" | replace: "-", "" %}
+              <a href="tel:{{ phone_clean }}" class="btn btn-sm contact-btn-phone">
+                <i class="fa fa-phone"></i> {{ messaging.phone }}
+              </a>
+              {% endif %}
+
+              {% if messaging.whatsapp or messaging.telegram %}
+              <div class="contact-quick-buttons">
+                {% if messaging.whatsapp %}
+                {% assign wa_clean = messaging.whatsapp | replace: "+", "" | replace: " ", "" | replace: "-", "" %}
+                <a href="https://wa.me/{{ wa_clean }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm contact-btn-whatsapp">
+                  <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+                {% endif %}
+
+                {% if messaging.telegram %}
+                {% assign tg_url = messaging.telegram %}
+                {% unless tg_url contains "http" %}
+                  {% assign tg_clean = messaging.telegram | replace: "@", "" %}
+                  {% assign tg_url = "https://t.me/" | append: tg_clean %}
+                {% endunless %}
+                <a href="{{ tg_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm contact-btn-telegram">
+                  <i class="fa-brands fa-telegram"></i> Telegram
+                </a>
+                {% endif %}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- 3. Email Inquiries Card -->
+        {% if page.email_section %}
+        {% assign email_sec = page.email_section %}
+        <div class="{{ card_col_class }} contact-card-col">
+          <div class="contact-info-card">
+            <div class="contact-icon-wrapper">
+              <i class="{{ email_sec.icon | default: 'fa fa-envelope' }}"></i>
+            </div>
+            <h3 class="contact-card-title">{{ email_sec.title | default: "Email & Academic Inquiries" }}</h3>
+            
+            {% if email_sec.description %}
+            <p class="contact-card-text">{{ email_sec.description }}</p>
+            {% endif %}
+
+            <div class="contact-email-action">
+              {% assign target_email = email_sec.email | default: site.email %}
+              <a href="mailto:{{ target_email }}" class="btn btn-sm contact-btn-email">
+                <i class="fa fa-paper-plane"></i> {{ target_email }}
+              </a>
+              <button type="button" class="btn btn-sm contact-btn-copy" data-copy="{{ target_email }}" data-copied-text="{{ locale.ui.copied | default: 'Copied!' }}" title="{{ locale.ui.click_to_copy | default: 'Copy email' }}">
+                <i class="fa fa-clone"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- 4. Academic Networks & Communities Card (Loaded from index.md, only shown if valid profiles exist) -->
+        {% if valid_profiles.size > 0 %}
+        <div class="{{ card_col_class }} contact-card-col">
+          <div class="contact-info-card">
+            <div class="contact-icon-wrapper">
+              <i class="{{ page.networks.icon | default: 'fa fa-share-alt' }}"></i>
+            </div>
+            <h3 class="contact-card-title">{{ page.networks.title | default: locale.ui.academic_networks | default: "Academic Networks & Communities" }}</h3>
+            
+            {% assign net_desc = page.networks.description | default: "Scientific publications, code repositories, and academic profiles:" %}
+            <p class="contact-card-text">{{ net_desc }}</p>
+
+            <div class="contact-social-pills">
+              {% for profile in valid_profiles %}
+                {% assign p_title_lower = profile.title | downcase %}
+                {% assign sns_slug = "default" %}
+                {% assign default_icon = "fa fa-external-link" %}
+
+                {% if p_title_lower contains "scholar" %}
+                  {% assign sns_slug = "scholar" %}
+                  {% assign default_icon = "ai ai-google-scholar" %}
+                {% elsif p_title_lower contains "academia" %}
+                  {% assign sns_slug = "academia" %}
+                  {% assign default_icon = "ai ai-academia" %}
+                {% elsif p_title_lower contains "orcid" %}
+                  {% assign sns_slug = "orcid" %}
+                  {% assign default_icon = "ai ai-orcid" %}
+                {% elsif p_title_lower contains "researchgate" %}
+                  {% assign sns_slug = "researchgate" %}
+                  {% assign default_icon = "ai ai-researchgate" %}
+                {% elsif p_title_lower contains "github" %}
+                  {% assign sns_slug = "github" %}
+                  {% assign default_icon = "fa-brands fa-github" %}
+                {% elsif p_title_lower contains "linkedin" %}
+                  {% assign sns_slug = "linkedin" %}
+                  {% assign default_icon = "fa-brands fa-linkedin" %}
+                {% elsif p_title_lower contains "youtube" %}
+                  {% assign sns_slug = "youtube" %}
+                  {% assign default_icon = "fa-brands fa-youtube" %}
+                {% elsif p_title_lower contains "twitter" or p_title_lower contains "x (" or p_title_lower == "x" %}
+                  {% assign sns_slug = "x" %}
+                  {% assign default_icon = "fa-brands fa-x-twitter" %}
+                {% elsif p_title_lower contains "discord" %}
+                  {% assign sns_slug = "discord" %}
+                  {% assign default_icon = "fa-brands fa-discord" %}
+                {% elsif p_title_lower contains "telegram" %}
+                  {% assign sns_slug = "telegram" %}
+                  {% assign default_icon = "fa-brands fa-telegram" %}
+                {% elsif p_title_lower contains "whatsapp" %}
+                  {% assign sns_slug = "whatsapp" %}
+                  {% assign default_icon = "fa-brands fa-whatsapp" %}
+                {% elsif p_title_lower contains "facebook" %}
+                  {% assign sns_slug = "facebook" %}
+                  {% assign default_icon = "fa-brands fa-facebook" %}
+                {% elsif p_title_lower contains "instagram" %}
+                  {% assign sns_slug = "instagram" %}
+                  {% assign default_icon = "fa-brands fa-instagram" %}
+                {% endif %}
+
+                {% assign icon_class = profile.icon | default: default_icon %}
+                {% if icon_class == "" or icon_class == nil %}
+                  {% assign icon_class = default_icon %}
+                {% endif %}
+                {% if icon_class contains "fab " %}
+                  {% assign icon_class = icon_class | replace: "fab ", "fa-brands " %}
+                {% endif %}
+
+                <a href="{{ profile.url }}" target="_blank" rel="noopener noreferrer" class="contact-social-pill sns-{{ sns_slug }}" data-sns="{{ sns_slug }}">
+                  <i class="{{ icon_class }}"></i>
+                  <span>{{ profile.title }}</span>
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+      </div>
+
+      <!-- Campus Map Section Card -->
+      {% if page.map %}
+      {% assign map = page.map %}
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="contact-map-card">
+            <div class="contact-map-header">
+              <h3 class="contact-map-title">
+                <i class="{{ map.icon | default: 'fa fa-map-marker' }}"></i>
+                <span>{{ map.title | default: "Campus Location & Directions" }}</span>
+              </h3>
+              {% if map.map_url %}
+              <div class="contact-map-action">
+                <a href="{{ map.map_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs">
+                  <span>{{ map.button_text | default: "Open in Google Maps" }}</span>
+                  <i class="fa fa-external-link"></i>
+                </a>
+              </div>
+              {% endif %}
+            </div>
+
+            {% if map.embed_url %}
+            <div class="contact-map-frame-wrapper">
+              <iframe
+                title="{{ map.location_name | default: map.title | default: 'Campus Location Map' }}"
+                src="{{ map.embed_url }}"
+                class="contact-map-iframe"
+                allowfullscreen=""
+                loading="lazy">
+              </iframe>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</div>

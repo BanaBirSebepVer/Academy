@@ -170,6 +170,15 @@ ui:
   contact_info: "Contact Information"
   send_message: "Send Message"
   social_profiles: "Academic & Social Networks"
+  institution_phone: "Institution Phone"
+  direct_phone: "Direct Line / Mobile"
+  office_hours: "Office Hours"
+  address: "Address"
+  email: "Email"
+  direct_contact: "Direct Communication & Inquiries"
+  office_address: "Office & Institutional Information"
+  academic_networks: "Academic Networks & Profiles"
+  campus_location: "Campus Location & Directions"
 
   # Academic Network
   network_title: "Academic Network"

@@ -170,6 +170,15 @@ ui:
   contact_info: "İletişim Bilgileri"
   send_message: "Mesaj Gönder"
   social_profiles: "Akademik & Sosyal Ağlar"
+  institution_phone: "Kurum Santral / Telefon"
+  direct_phone: "Doğrudan Telefon / GSM"
+  office_hours: "Görüşme Saatleri"
+  address: "Adres"
+  email: "E-Posta"
+  direct_contact: "Doğrudan İletişim & Başvurular"
+  office_address: "Akademik Ofis & Kurum Bilgileri"
+  academic_networks: "Akademik Ağlar & Topluluklar"
+  campus_location: "Kampüs Konumu & Yol Tarifi"
 
   # Academic Network
   network_title: "Akademik Ağ"

@@ -1,0 +1,56 @@
+/**
+ * Contact Header Styles
+ * Module: assets/css/modules/contact/header.css
+ * Uses design tokens & color variables from color.css
+ */
+
+.contact-page {
+  background-color: var(--bg-page);
+  min-height: 100vh;
+}
+
+.contact-header {
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.contact-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-top: 0;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.contact-header h1 i {
+  color: var(--primary);
+}
+
+.contact-header p.lead {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Intro content: ONLY rendered/styled when actual content exists */
+.contact-intro-content {
+  margin-bottom: 30px;
+  padding: 16px 20px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  color: var(--text-body);
+}
+
+.contact-intro-content:empty {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}

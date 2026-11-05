@@ -21,9 +21,20 @@
     {{ page.title }}
   </h1>
 
-  {% if page.institution %}
+  {% assign inst_parts = "" | split: "" %}
+  {% if page.institution and page.institution != "" %}
+    {% assign inst_parts = inst_parts | push: page.institution %}
+  {% endif %}
+  {% if page.faculty and page.faculty != "" %}
+    {% assign inst_parts = inst_parts | push: page.faculty %}
+  {% endif %}
+  {% if page.department and page.department != "" %}
+    {% assign inst_parts = inst_parts | push: page.department %}
+  {% endif %}
+
+  {% if inst_parts.size > 0 %}
   <p class="lesson-institution single-hero-subtitle">
-    <i class="fa fa-university"></i> {{ page.institution }}
+    <i class="fa fa-university"></i> {{ inst_parts | join: ", " }}
   </p>
   {% endif %}
 

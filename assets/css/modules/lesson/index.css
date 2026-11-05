@@ -1,0 +1,11 @@
+/**
+ * Lesson Module Styles (Aggregator)
+ * Consolidates all course and syllabus related stylesheets:
+ * - content.css: Content typography, syllabus tables, callouts
+ * - panel.css: Sidebar course info widget, instructor card, meta rows
+ * - timetable.css: Timetable bar, scope & goals panel, material CTA card
+ */
+
+@import url("content.css");
+@import url("panel.css");
+@import url("timetable.css");

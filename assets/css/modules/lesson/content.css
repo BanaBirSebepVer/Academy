@@ -1,0 +1,220 @@
+/**
+ * Lesson Content & Syllabus Styles
+ * Handles course content body, headings with emerald accent lines, syllabus tables, and callout boxes
+ * Uses color variables from color.css
+ */
+
+/* ===================================================
+   LESSON PAGE HEADER & CONTAINER
+   =================================================== */
+.lesson-page .lesson-content-body {
+  background-color: var(--bg-body);
+  padding: 40px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-body);
+}
+
+.lesson-page .lesson-content-body .container-fluid {
+  padding: 0;
+}
+
+.lesson-markdown {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-body);
+}
+
+.lesson-markdown p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+/* ===================================================
+   SECTION HEADINGS & ACCENT LINES
+   =================================================== */
+
+/* Major section title (h2) with emerald separator line */
+.lesson-markdown h2 {
+  display: flex;
+  align-items: center;
+  margin: 50px 0 25px 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-main);
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.lesson-markdown h2::after {
+  content: "";
+  flex-grow: 1;
+  height: 2px;
+  background: var(--primary);
+  margin-left: 20px;
+}
+
+/* Sub-section title (h3) with soft border separator */
+.lesson-markdown h3 {
+  display: flex;
+  align-items: center;
+  margin: 35px 0 18px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.lesson-markdown h3::after {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  background: var(--border-main);
+  margin-left: 16px;
+}
+
+/* Small section title (h4) with accent separator line */
+.lesson-markdown h4 {
+  display: flex;
+  align-items: center;
+  margin: 40px 0 18px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: 0.3px;
+  text-transform: none;
+}
+
+.lesson-markdown h4::after {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  border-top: 1px solid var(--danger);
+  margin-left: 18px;
+  opacity: 0.85;
+}
+
+/* ===================================================
+   SYLLABUS TABLES
+   =================================================== */
+.lesson-markdown table {
+  width: 100%;
+  margin: 28px 0 35px 0;
+  border-collapse: collapse;
+  box-shadow: var(--shadow-sm);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.lesson-markdown table th {
+  background-color: var(--dark);
+  color: var(--text-inverse);
+  padding: 13px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  border: 1px solid var(--dark-border);
+  letter-spacing: 0.3px;
+}
+
+.lesson-markdown table td {
+  padding: 12px 16px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-card);
+  font-size: 14px;
+  line-height: 1.6;
+  vertical-align: middle;
+}
+
+.lesson-markdown table td:first-child {
+  font-weight: 700;
+  color: var(--primary);
+  background-color: var(--bg-panel);
+  width: 75px;
+  font-size: 15px;
+}
+
+.lesson-markdown table tr:nth-child(even) td {
+  background: var(--bg-subtle);
+}
+
+.lesson-markdown table tr:nth-child(even) td:first-child {
+  background: var(--bg-hover);
+}
+
+.lesson-markdown table tr:hover td {
+  background: var(--primary-light);
+}
+
+/* ===================================================
+   LESSON CALLOUTS: WARNING & INFORMATION BOXES
+   =================================================== */
+.lesson-markdown blockquote {
+  background: var(--warning-bg);
+  border-left: 4px solid var(--warning);
+  padding: 16px 22px;
+  margin: 25px 0;
+  color: var(--text-muted);
+  border-radius: 0 6px 6px 0;
+  font-style: normal;
+}
+
+.lesson-markdown blockquote.lesson-warning {
+  background-color: var(--danger-bg);
+  border-left: 5px solid var(--danger);
+  border-radius: 6px;
+  padding: 18px 22px;
+  margin: 22px 0;
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-xs);
+  font-style: normal;
+}
+
+.lesson-markdown blockquote.lesson-warning strong {
+  color: var(--danger-hover);
+}
+
+.lesson-markdown blockquote.lesson-warning p {
+  margin-bottom: 0;
+  line-height: 1.7;
+}
+
+.lesson-markdown blockquote.lesson-info {
+  background-color: var(--info-bg);
+  border-left: 5px solid var(--info);
+  border-radius: 6px;
+  padding: 18px 22px;
+  margin: 22px 0;
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-xs);
+  font-style: normal;
+}
+
+.lesson-markdown blockquote.lesson-info strong {
+  color: var(--info-hover);
+}
+
+.lesson-markdown blockquote.lesson-info p:last-child {
+  margin-bottom: 0;
+}
+
+.lesson-markdown blockquote.lesson-info ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 10px 0 0 0;
+}
+
+.lesson-markdown blockquote.lesson-info ul li {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 4px 0 !important;
+  margin-bottom: 6px !important;
+  line-height: 1.6 !important;
+}
+
+.lesson-markdown blockquote.lesson-info ul li:hover {
+  background: transparent !important;
+  padding-left: 0 !important;
+}

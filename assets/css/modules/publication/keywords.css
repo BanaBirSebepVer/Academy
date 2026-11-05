@@ -1,0 +1,254 @@
+/**
+ * Publication Keywords & Keyword Cloud Styles
+ * Handles the keyword cloud, frequency scaling badges, interactive filtering chips,
+ * active filter notification banner, and research interests chips on the homepage
+ * Uses color variables from color.css
+ */
+
+/* ===================================================
+   KEYWORD CLOUD CONTAINER
+   =================================================== */
+.pub-keyword-cloud {
+  background: var(--bg-card);
+  border: 1px solid var(--border-main);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-xs);
+}
+
+.pub-keyword-cloud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.pub-keyword-cloud-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pub-keyword-cloud-title i {
+  color: var(--primary);
+}
+
+.pub-cloud-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ===================================================
+   INTERACTIVE KEYWORD BUTTONS & BADGES
+   =================================================== */
+.kw-cloud-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border-default);
+  background: var(--bg-subtle);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1.4;
+  outline: none;
+}
+
+.kw-cloud-item:hover,
+.kw-cloud-item:focus {
+  background: var(--bg-hover);
+  color: var(--text-main);
+  border-color: var(--text-disabled);
+  transform: translateY(-1px);
+}
+
+.kw-cloud-item.is-active {
+  background: var(--primary) !important;
+  color: var(--text-inverse) !important;
+  border-color: var(--primary-hover) !important;
+  box-shadow: var(--primary-shadow);
+}
+
+.kw-cloud-item .kw-count {
+  font-size: 11px;
+  background: var(--border-divider);
+  color: var(--text-secondary);
+  border-radius: 10px;
+  padding: 0 6px;
+  font-weight: 700;
+}
+
+.kw-cloud-item.is-active .kw-count {
+  background: rgba(255, 255, 255, 0.3);
+  color: var(--text-inverse);
+}
+
+/* Size scaling based on keyword frequency */
+.kw-cloud-item.kw-size-1 {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.kw-cloud-item.kw-size-2 {
+  font-size: 14px;
+  font-weight: 700;
+  background: var(--bg-tag);
+  border-color: var(--border-card);
+  padding: 5px 12px;
+}
+
+.kw-cloud-item.kw-size-3 {
+  font-size: 16px;
+  font-weight: 800;
+  background: var(--bg-hover);
+  border-color: var(--text-disabled);
+  padding: 6px 14px;
+}
+
+/* ===================================================
+   ACTIVE KEYWORD FILTER BANNER
+   =================================================== */
+.pub-active-keyword-banner {
+  margin-top: 14px;
+  padding: 8px 12px;
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.pub-active-kw-label {
+  font-weight: 600;
+  color: var(--success-text);
+}
+
+.pub-active-kw-badge {
+  background: var(--primary);
+  color: var(--text-inverse);
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.pub-reset-kw-inline {
+  color: var(--success-text);
+  font-size: 18px;
+  padding: 0 4px;
+  line-height: 1;
+  text-decoration: none !important;
+}
+
+.pub-clear-kw-btn {
+  color: var(--text-muted);
+  border-color: var(--border-default);
+  background: var(--bg-card);
+}
+
+.pub-clear-kw-btn:hover {
+  background: var(--bg-hover);
+  color: var(--danger-text);
+  border-color: var(--danger-border);
+}
+
+/* ===================================================
+   PUBLICATION CARD & SINGLE PAGE KEYWORDS
+   =================================================== */
+.pub-card-keywords {
+  margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.pub-card-kw-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.pub-card-kw-btn,
+.pub-keyword-tag {
+  display: inline-block;
+  background: var(--bg-tag);
+  color: var(--accent-blue);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: all 0.15s ease;
+}
+
+.pub-card-kw-btn:hover,
+.pub-keyword-tag:hover {
+  background: var(--accent-blue);
+  color: var(--text-inverse);
+  border-color: var(--accent-blue);
+}
+
+.pub-single-keywords-cell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+/* ===================================================
+   HOMEPAGE HERO KEYWORDS CHIPS
+   =================================================== */
+.cv-hero-keywords-cloud {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border-main);
+}
+
+.cv-hero-kw-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-light);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.cv-hero-kw-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cv-hero-kw-chip {
+  display: inline-block;
+  background: var(--bg-tag);
+  color: var(--accent-blue);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.cv-hero-kw-chip:hover {
+  background: var(--primary);
+  color: var(--text-inverse);
+  border-color: var(--primary-hover);
+  transform: translateY(-1px);
+}

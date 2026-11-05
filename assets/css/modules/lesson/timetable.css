@@ -1,0 +1,127 @@
+/**
+ * Lesson Timetable & Single Course Components
+ * Handles the lesson timetable quick navigation bar, schedule links,
+ * scope & goals box, and course material download cards
+ * Uses color variables from color.css
+ */
+
+/* ===================================================
+   LESSON TIMETABLE / QUICK NAV BAR
+   =================================================== */
+.lesson-timetable-bar {
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border-main);
+  padding: 12px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.lesson-timetable-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-right: 5px;
+}
+
+.lesson-timetable-title i {
+  color: var(--primary);
+}
+
+.lesson-timetable-cta {
+  margin-left: auto;
+}
+
+.lesson-timetable-links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.lesson-timetable-links .btn {
+  transition: all 0.2s ease;
+}
+
+.lesson-timetable-links .btn.active,
+.lesson-timetable-bar .btn.active {
+  background-color: var(--primary);
+  color: var(--text-inverse);
+  border-color: var(--primary);
+}
+
+.lesson-timetable-links .btn:hover,
+.lesson-timetable-bar .btn:hover {
+  border-color: var(--primary);
+  color: var(--text-main);
+}
+
+/* ===================================================
+   SCOPE & GOALS PANEL
+   =================================================== */
+.scope-goals-panel {
+  border-radius: 8px;
+  border: 1px solid var(--border-card);
+  margin-bottom: 35px;
+  background: var(--bg-panel);
+}
+
+.scope-goals-panel .panel-heading {
+  background: var(--bg-panel-header);
+  font-weight: 700;
+  color: var(--text-secondary);
+  padding: 12px 20px;
+}
+
+.scope-goals-panel .panel-heading i {
+  color: var(--primary);
+  margin-right: 6px;
+}
+
+.scope-goals-panel .panel-body {
+  padding: 20px;
+}
+
+.scope-goals-list {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.scope-goals-list li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ===================================================
+   MATERIAL CTA BOX
+   =================================================== */
+.material-cta-card {
+  border-radius: 8px;
+  border: 1px solid var(--bg-notice-border);
+  background-color: var(--bg-notice);
+  margin-bottom: 25px;
+  padding: 18px;
+}
+
+.material-cta-card h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-hover);
+}
+
+.material-cta-card h4 i {
+  margin-right: 6px;
+}
+
+.material-cta-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}

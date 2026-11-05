@@ -1,0 +1,13 @@
+/**
+ * Network Module Styles (Aggregator)
+ * Consolidates all Academic Network stylesheets:
+ * - header.css: Header, intro, CTA card, version check card
+ * - filters.css: Search input, filter dropdowns, counter badge, reset button
+ * - cards.css: Cards grid, compact network card, item card, profile header
+ * - empty.css: Empty state notice, SEO hidden elements, mobile responsive rules
+ */
+
+@import url("header.css");
+@import url("filters.css");
+@import url("cards.css");
+@import url("empty.css");

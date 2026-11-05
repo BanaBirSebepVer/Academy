@@ -34,16 +34,15 @@
 @import url("modules/details.css");
 
 /* Page Layouts & Content */
-@import url("modules/homepage.css");
-@import url("modules/lesson.css");
-@import url("modules/lesson-panel.css");
-@import url("modules/publication.css");
+@import url("modules/homepage/index.css");
+@import url("modules/lesson/index.css");
+@import url("modules/publication/index.css");
 @import url("modules/post.css");
-@import url("modules/network.css");
+@import url("modules/network/index.css");
 @import url("modules/gallery.css");
 @import url("modules/contact.css");
-@import url("modules/archive.css");
-@import url("modules/single.css");
+@import url("modules/archive/index.css");
+@import url("modules/single/index.css");
 
 /* Legacy Compatibility */
 @import url("js_composer.min.css");

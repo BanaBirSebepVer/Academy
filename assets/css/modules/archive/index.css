@@ -1,0 +1,13 @@
+/**
+ * Archive Styles (Aggregator)
+ * Consolidates all archive showcase stylesheets:
+ * - header.css: Page wrapper, header, intro
+ * - controls.css: Search input, filter buttons, pill badges
+ * - grid.css: Category group blocks, flex masonry cards, responsive columns
+ * - badges.css: Status badges, empty search alert
+ */
+
+@import url("header.css");
+@import url("controls.css");
+@import url("grid.css");
+@import url("badges.css");

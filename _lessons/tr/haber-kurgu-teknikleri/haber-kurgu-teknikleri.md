@@ -6,7 +6,10 @@ title: "Haber Kurgu Teknikleri"
 course_code: "YMGA252"
 course_order: 11
 category: "Medya Prodüksiyonu"
-institution: "Doğu Akdeniz Üniversitesi İletişim Fakültesi Yeni Medya ve İletişim Bölümü"
+institution: "Doğu Akdeniz Üniversitesi"
+faculty: "İletişim Fakültesi"
+department: "Yeni Medya ve İletişim Bölümü"
+institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
 instructor: "Can Bekcan"
 instructor_title:

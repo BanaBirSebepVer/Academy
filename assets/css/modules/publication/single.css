@@ -1,0 +1,414 @@
+/**
+ * Single Publication Details Styles
+ * Handles the single publication header, thumbnail, metadata table, citation box, and action buttons
+ * Uses color variables from color.css
+ */
+
+/* ===================================================
+   SINGLE PUBLICATION METADATA & THUMBNAIL
+   =================================================== */
+.pub-single-thumb-box {
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  background: var(--bg-card);
+  padding: 8px;
+  border: 1px solid var(--border-light);
+}
+
+.pub-single-thumb-img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.pub-single-badges {
+  margin-top: 12px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pub-single-meta-table {
+  margin-bottom: 15px;
+  font-size: 14px;
+  background: transparent;
+}
+
+.pub-single-meta-table td {
+  border-top: none !important;
+}
+
+.pub-single-meta-label {
+  width: 110px;
+  font-weight: 600;
+  color: var(--text-light);
+  padding-left: 0 !important;
+}
+
+.pub-single-meta-value {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.pub-single-citation-text {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.pub-single-citation-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 6px;
+  padding: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 25px;
+}
+
+/* ===================================================
+   AUTOMATIC CITATION BUTTONS & TOOLTIP WIDGET
+   =================================================== */
+.pub-citation-widget {
+  margin-bottom: 25px;
+}
+
+.pub-cite-instructions {
+  margin-bottom: 10px;
+}
+
+.pub-cite-instructions small {
+  font-size: 11.5px;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pub-cite-instructions i {
+  color: var(--primary);
+}
+
+.pub-cite-buttons-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pub-cite-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 6px;
+  color: var(--text-main);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-xs);
+  text-align: left;
+}
+
+.pub-cite-btn i.fa-quote-left {
+  color: var(--primary);
+  font-size: 11px;
+  margin-right: 8px;
+}
+
+.pub-cite-btn .pub-cite-name {
+  flex-grow: 1;
+}
+
+.pub-cite-btn .pub-cite-action-icon {
+  font-size: 12px;
+  color: var(--text-light);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.pub-cite-btn:hover {
+  background: var(--primary-light);
+  border-color: var(--primary-border);
+  color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.pub-cite-btn:hover .pub-cite-action-icon {
+  color: var(--primary);
+  transform: scale(1.15);
+}
+
+.pub-cite-btn.copied {
+  background: var(--success-bg) !important;
+  border-color: var(--success-border) !important;
+  color: var(--success-text) !important;
+  box-shadow: var(--primary-shadow) !important;
+}
+
+.pub-cite-btn.copied i {
+  color: var(--success-text) !important;
+}
+
+/* Floating Citation Preview Tooltip */
+.pub-cite-tooltip {
+  position: absolute;
+  z-index: 10000;
+  background: var(--dark-hero);
+  color: var(--text-inverse);
+  padding: 14px 16px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  font-size: 12.5px;
+  line-height: 1.6;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+  border: 1px solid var(--dark-border);
+}
+
+.pub-cite-tooltip.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.pub-tooltip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--dark-border);
+}
+
+.pub-tooltip-title {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 13px;
+}
+
+.pub-tooltip-badge {
+  font-size: 10.5px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-inverse-muted);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.pub-tooltip-body {
+  color: var(--text-inverse);
+  font-style: italic;
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+
+.pub-tooltip-hint {
+  font-size: 11px;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+}
+
+/* ===================================================
+   SINGLE PUBLICATION HEADER & COMPATIBILITY
+   =================================================== */
+.pubheader {
+  height: 280px;
+  background-color: var(--dark-surface);
+  background-image: url('../../../images/publication-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-position: center;
+  padding-bottom: 30px;
+}
+
+.pubheader:after {
+  display: none;
+}
+
+.pubheader:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30, 30, 36, 0.88);
+}
+
+.pubheader .section-container,
+.pubheader .header-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.pubheader .title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-left: 190px;
+  border-bottom: none;
+  margin: 0;
+  font-weight: 700;
+  font-size: 24px;
+  padding-right: 10%;
+  line-height: 1.2;
+  color: var(--text-inverse);
+}
+
+.no_thumbnail .pubheader .title {
+  padding-left: 0px;
+}
+
+/* ===================================================
+   LEGACY METADATA & ATTACHMENT
+   =================================================== */
+.pub-single-info {
+  position: relative;
+}
+
+.pub-single-info .description {
+  padding-left: 190px;
+}
+
+.no_thumbnail .pub-single-info .description {
+  padding-left: 0px;
+}
+
+.pub-single-info .attachment {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 160px;
+}
+
+.pub-single-info .attachment .pub-thumb {
+  border-radius: 4px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  max-height: 210px;
+}
+
+.pub-single-info .attachment .pub-thumb img {
+  width: 100%;
+  height: auto;
+}
+
+.pub-single-info ul.cats {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.pub-single-info ul.cats li {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+
+.pub-single-info ul.cats li a {
+  padding: 7px 25px;
+  background-color: var(--bg-card);
+  color: var(--text-body);
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-xs);
+  transition: all 0.25s ease;
+}
+
+.pub-single-info ul.cats li a:hover,
+.pub-single-info ul.cats li a:focus {
+  background-color: var(--dark);
+  color: var(--text-inverse);
+}
+
+/* ===================================================
+   PUBLICATION BUTTONS & ACTIONS
+   =================================================== */
+.pub-single-info .link-buttons {
+  margin-top: 20px;
+}
+
+.pub-single-info .link-buttons > a {
+  padding: 5px 10px;
+  background-color: var(--primary);
+  color: var(--text-inverse);
+  display: inline-block;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  box-shadow: var(--shadow-xs);
+  font-size: 12px;
+}
+
+.pub-single-info .link-buttons > a:hover,
+.pub-single-info .link-buttons > a:focus {
+  background-color: var(--dark);
+  color: var(--text-inverse);
+}
+
+.pub-single-info .link-buttons > a span {
+  margin-left: 3px;
+}
+
+.pub-single-info .link-buttons .download-btn {
+  float: left;
+}
+
+.pub-single-info .link-buttons .external-btn {
+  display: block;
+  margin-left: 38px;
+}
+
+.pub-single-info .link-buttons .external-btn.inline {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.pub-single-info .link-buttons .external-btn.full {
+  margin-left: 0;
+}
+
+.pub-single-info .authors,
+.pub-single-info .citation,
+.pub-single-info .pubyear {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.pub-single-info .authors,
+.pub-single-info .citation {
+  margin-bottom: 5px;
+}
+
+.pubcontents > .section {
+  padding-top: 25px;
+}
+
+.pubcontents .pub-content {
+  margin-top: 80px;
+}
+
+@media (max-width: 768px) {
+  .pubheader .title,
+  .pub-single-info .description {
+    padding-left: 0;
+  }
+  .pub-single-info .attachment {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}

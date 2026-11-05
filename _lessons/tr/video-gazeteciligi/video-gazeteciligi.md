@@ -6,7 +6,10 @@ title: "Video Gazeteciliği"
 course_code: "YMGA321"
 course_order: 13
 category: "Medya Prodüksiyonu"
-institution: "Doğu Akdeniz Üniversitesi İletişim Fakültesi Yeni Medya ve Gazetecilik Bölümü"
+institution: "Doğu Akdeniz Üniversitesi"
+faculty: "İletişim Fakültesi"
+department: "Yeni Medya ve Gazetecilik Bölümü"
+institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
 instructor: "Can Bekcan"
 instructor_title:

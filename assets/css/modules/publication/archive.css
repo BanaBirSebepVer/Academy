@@ -1,0 +1,368 @@
+/**
+ * Publication Archive Styles
+ * Handles the publication list, filtering dropdowns, sort controls, and card layouts
+ * Uses color variables from color.css
+ */
+
+/* ===================================================
+   PUBLICATIONS FILTERS & DROPDOWNS
+   =================================================== */
+#filters, .filters {
+  padding: 20px 0 30px 0 !important;
+}
+
+#filters h3, .filters h3, div#sort {
+  margin-top: 30px;
+}
+
+#sort span {
+  line-height: 30px;
+}
+
+.stuck {
+  position: fixed !important;
+  z-index: 1001;
+  top: 0;
+  right: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+#cd-dropdown {
+  display: none;
+}
+
+.cd-dropdown, .cd-select {
+  position: relative;
+  margin: 20px auto;
+  display: block;
+}
+
+.cd-dropdown > span {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  color: var(--text-subtle);
+  font-weight: 700;
+  font-size: 16px;
+  background: var(--bg-card);
+  display: block;
+  padding: 0 10px 0 30px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: var(--shadow-xs);
+}
+
+.cd-dropdown ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+}
+
+.cd-dropdown ul li {
+  position: absolute;
+  width: 100%;
+}
+
+.cd-active.cd-dropdown > span {
+  color: var(--primary);
+  box-shadow: var(--shadow-xs);
+}
+
+.cd-active.cd-dropdown ul li span {
+  box-shadow: var(--shadow-xs);
+  transition: all 0.2s linear 0s;
+}
+
+.cd-active.cd-dropdown ul li span:hover {
+  background: var(--primary);
+  color: var(--text-inverse);
+}
+
+.cd-dropdown ul li span {
+  width: 100%;
+  background: var(--bg-subtle);
+  line-height: 40px;
+  padding: 0 10px 0 30px;
+  display: block;
+  color: var(--text-disabled);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.cd-dropdown a {
+  color: var(--text-disabled);
+}
+
+/* ===================================================
+   PUBLICATIONS GRID & ITEM CARDS
+   =================================================== */
+#pub-grid .mix {
+  display: none;
+}
+
+#pub-grid .is-paginated .mix {
+  display: block;
+}
+
+.pitems .item {
+  margin-bottom: 20px;
+  width: 100%;
+  font: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.pitems .pubmain {
+  background: var(--bg-alt);
+  padding: 25px 25px 35px 25px;
+  min-height: 130px;
+  position: relative;
+  box-shadow: var(--shadow-xs);
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.pitems .pubmain:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.pitems .pubmain .pubcontents {
+  padding-right: 135px;
+  margin-bottom: 10px;
+}
+
+.pitems .pubmain .pubcontents .label {
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.pitems .compact {
+  min-height: 100px;
+}
+
+.pitems .pubtitle {
+  margin: 0;
+  padding: 0 0 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.pitems .pubtitle a {
+  color: var(--text-body);
+}
+
+.pitems .pubtitle a:hover,
+.pitems .pubtitle a:focus {
+  color: var(--primary);
+}
+
+.pubmain.compact .pubtitle {
+  font-size: 16px;
+}
+
+.pitems .pubmain.pub-has-thumbnail .pub-thumb {
+  float: left;
+}
+
+.pitems .pubmain.pub-has-thumbnail .pub-thumb img {
+  width: 120px;
+  height: auto;
+  border-radius: 4px;
+}
+
+.pitems .pubmain.pub-has-thumbnail .pub-contents {
+  margin-left: 150px;
+}
+
+.pitems .pubmain.pub-has-thumbnail.compact .pub-contents {
+  margin-left: 100px;
+}
+
+.pitems .pubmain div {
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text-secondary);
+}
+
+.pitems .pubmain .label {
+  margin-right: 10px;
+}
+
+.pitems .pubmain .pubassets {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: var(--bg-subtle);
+  text-align: center;
+  border-top: 2px solid var(--primary);
+}
+
+.pitems .pubmain .pubassets a {
+  color: var(--text-subtle);
+  padding: 5px 15px;
+  float: right;
+  font-size: 18px;
+}
+
+.pitems .pubmain .pubassets a:hover,
+.pitems .pubmain .pubassets a:focus,
+.pitems .pubmain .pubassets a.pubcollapse {
+  background: var(--primary);
+  color: var(--text-inverse);
+}
+
+.pitems .pubdetails {
+  background: var(--bg-card);
+  padding: 25px;
+}
+
+.fac-publications .pubmain,
+.pitems.no-toggle .pubmain {
+  padding-bottom: 25px;
+  cursor: initial;
+}
+
+.fac-publications .pitems .pubmain .pubcontents,
+.pitems.no-toggle .pubmain .pubcontents {
+  margin-bottom: 0;
+}
+
+/* ===================================================
+   PUBLICATIONS LIST ARCHIVE ITEM CARDS
+   =================================================== */
+.pub-item-wrapper {
+  margin-bottom: 25px;
+}
+
+.pub-item-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 22px 24px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pub-item-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-border);
+}
+
+.pub-item-card.pub-has-thumb {
+  display: flex;
+  gap: 22px;
+}
+
+.pub-thumb-container {
+  flex: 0 0 110px;
+  max-width: 110px;
+}
+
+.pub-thumb-image {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: var(--shadow-xs);
+  object-fit: cover;
+  border: 1px solid var(--border-light);
+}
+
+.pub-contents-container {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.pub-meta-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.pub-type-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--bg-tag);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+}
+
+.pub-year-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+.pub-item-title {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 10px 0;
+}
+
+.pub-item-title a {
+  color: var(--text-main);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.pub-item-title a:hover {
+  color: var(--primary);
+}
+
+.pub-author-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pub-author-text i {
+  color: var(--primary);
+  font-size: 12px;
+}
+
+.pub-cite-text {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.pub-actions-row {
+  margin-top: 14px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .pub-item-card.pub-has-thumb {
+    flex-direction: column;
+  }
+  .pub-thumb-container {
+    flex: 0 0 auto;
+    max-width: 140px;
+  }
+}

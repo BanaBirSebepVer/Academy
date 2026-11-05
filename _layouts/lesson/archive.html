@@ -147,10 +147,23 @@ layout: default
                         {{ lesson.title }}
                       </a>
                     </h3>
+                    {% assign card_inst_parts = "" | split: "" %}
+                    {% if lesson.institution and lesson.institution != "" %}
+                      {% assign card_inst_parts = card_inst_parts | push: lesson.institution %}
+                    {% endif %}
+                    {% if lesson.faculty and lesson.faculty != "" %}
+                      {% assign card_inst_parts = card_inst_parts | push: lesson.faculty %}
+                    {% endif %}
+                    {% if lesson.department and lesson.department != "" %}
+                      {% assign card_inst_parts = card_inst_parts | push: lesson.department %}
+                    {% endif %}
+
+                    {% if card_inst_parts.size > 0 %}
                     <p class="archive-card-subtitle">
                       <i class="fa fa-university"></i>
-                      {{ lesson.institution }}
+                      {{ card_inst_parts | join: ", " }}
                     </p>
+                    {% endif %}
                     <div class="archive-card-desc">
                       {{ lesson.description | default: "Ders içeriği, haftalık izlence, proje isterleri ve notlandırma kriterleri." }}
                     </div>

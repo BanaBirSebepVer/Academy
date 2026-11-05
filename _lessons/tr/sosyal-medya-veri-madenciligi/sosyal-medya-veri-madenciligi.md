@@ -6,7 +6,10 @@ title: "Sosyal Medya Veri Madenciliği"
 course_code: "YMGA205"
 course_order: 9
 category: "Veri ve Dijital Platformlar"
-institution: "Doğu Akdeniz Üniversitesi İletişim Fakültesi Yeni Medya ve İletişim Bölümü"
+institution: "Doğu Akdeniz Üniversitesi"
+faculty: "İletişim Fakültesi"
+department: "Yeni Medya ve İletişim Bölümü"
+institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
 instructor: "Can Bekcan"
 instructor_title:

@@ -4,10 +4,6 @@ layout: default
 
 {% assign current_lang = page.lang | default: site.default_lang %}
 {% assign locale = site.data.locales[current_lang] %}
-{% assign is_en = false %}
-{% if current_lang == 'en' or page.url contains '/en/' %}
-  {% assign is_en = true %}
-{% endif %}
 {% assign lang_slash = "/" | append: current_lang | append: "/" %}
 
 <div class="fac-page publication-archive-page">
@@ -19,13 +15,11 @@ layout: default
         <h1>
           {{ page.title | default: locale.ui.publications_title | default: "Yayınlar" }}
         </h1>
+        {% if page.description %}
         <p>
-          {% if is_en %}
-            {{ page.description | default: "Book chapters, academic theses, peer-reviewed articles, and scientific research publications." }}
-          {% else %}
-            {{ page.description | default: "Kitap bölümleri, akademik tezler, hakemli dergi makaleleri ve bilimsel araştırma yayınları." }}
-          {% endif %}
+          {{ page.description }}
         </p>
+        {% endif %}
       </div>
 
       <!-- Page Content (if any intro markdown text is provided) -->
@@ -54,6 +48,36 @@ layout: default
       {% assign all_publications = all_publications | sort: "order" %}
       {% assign all_types = all_publications | map: "publication_type" | compact | uniq | sort %}
 
+      {% comment %} --- Calculate Keywords & Frequency-Sorted Cloud --- {% endcomment %}
+      {% assign raw_keywords = "" | split: "" %}
+      {% for pub in all_publications %}
+        {% if pub.keywords %}
+          {% for kw in pub.keywords %}
+            {% assign trimmed_kw = kw | strip %}
+            {% if trimmed_kw != "" %}
+              {% assign raw_keywords = raw_keywords | push: trimmed_kw %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+
+      {% assign unique_keywords = raw_keywords | uniq | sort %}
+      {% assign cloud_sort_keys = "" | split: "" %}
+      {% for ukw in unique_keywords %}
+        {% assign kw_count = 0 %}
+        {% for rkw in raw_keywords %}
+          {% if rkw == ukw %}
+            {% assign kw_count = kw_count | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+        {% assign inv_count = 9999 | minus: kw_count %}
+        {% assign sort_prefix = inv_count %}
+        {% if inv_count < 1000 %}{% assign sort_prefix = "0" | append: inv_count %}{% endif %}
+        {% assign cloud_entry = sort_prefix | append: ":::_:::" | append: kw_count | append: ":::_:::" | append: ukw %}
+        {% assign cloud_sort_keys = cloud_sort_keys | push: cloud_entry %}
+      {% endfor %}
+      {% assign sorted_cloud_keys = cloud_sort_keys | sort %}
+
       <!-- Search & Filter Controls -->
       <div class="publication-controls archive-controls">
         <!-- Search Box -->
@@ -62,9 +86,55 @@ layout: default
             <span class="input-group-addon">
               <i class="fa fa-search"></i>
             </span>
-            <input type="text" id="publicationSearchInput" class="form-control" placeholder="{{ locale.ui.search_publications_placeholder | default: 'Başlık, yazar, atıf veya yıl ile ara...' }}">
+            <input type="text" id="publicationSearchInput" class="form-control" placeholder="{{ locale.ui.search_publications_placeholder | default: 'Başlık, yazar, atıf, yıl veya anahtar kelime ile ara...' }}">
           </div>
         </div>
+
+        <!-- Keyword Cloud Section -->
+        {% if sorted_cloud_keys.size > 0 %}
+        <div class="pub-keyword-cloud" id="pubKeywordCloud">
+          <div class="pub-keyword-cloud-header">
+            <span class="pub-keyword-cloud-title">
+              <i class="fa fa-tags"></i>
+              {{ locale.ui.keywords_cloud_title | default: "Araştırma Alanları & Anahtar Kelime Bulutu" }}
+            </span>
+            <div class="pub-keyword-cloud-actions">
+              <button type="button" id="clearKeywordFilterBtn" class="btn btn-xs btn-default pub-clear-kw-btn" style="display: none;">
+                <i class="fa fa-times"></i> {{ locale.ui.clear_filter | default: "Filtreyi Temizle" }}
+              </button>
+            </div>
+          </div>
+
+          <div class="pub-cloud-tags">
+            {% for item in sorted_cloud_keys %}
+              {% assign parts = item | split: ":::_:::" %}
+              {% assign c_count = parts[1] | plus: 0 %}
+              {% assign c_kw = parts[2] %}
+              {% assign size_class = "kw-size-1" %}
+              {% if c_count >= 3 %}
+                {% assign size_class = "kw-size-3" %}
+              {% elsif c_count == 2 %}
+                {% assign size_class = "kw-size-2" %}
+              {% endif %}
+              <button type="button" class="kw-cloud-item {{ size_class }}" data-keyword="{{ c_kw | escape }}" title="{{ c_kw }} ({{ c_count }})">
+                <span class="kw-text">#{{ c_kw }}</span>
+                <span class="kw-count">{{ c_count }}</span>
+              </button>
+            {% endfor %}
+          </div>
+
+          <div id="activeKeywordBanner" class="pub-active-keyword-banner" style="display: none;">
+            <span class="pub-active-kw-label">
+              <i class="fa fa-filter"></i>
+              {{ locale.ui.filtered_by_keyword | default: "Seçili Anahtar Kelime:" }}
+            </span>
+            <span id="activeKeywordText" class="badge badge-primary pub-active-kw-badge"></span>
+            <button type="button" class="btn btn-link btn-xs pub-reset-kw-inline" id="resetKeywordInline" title="{{ locale.ui.remove_keyword_filter | default: 'Filtreyi kaldır' }}">
+              <i class="fa fa-times"></i>
+            </button>
+          </div>
+        </div>
+        {% endif %}
 
         <!-- Type Filter Buttons -->
         <div id="pubTypeFilterButtons" class="archive-filter-pills">
@@ -93,7 +163,8 @@ layout: default
                  data-title="{{ pub.title | downcase | escape }}"
                  data-author="{{ pub.author | downcase | escape }}"
                  data-year="{{ pub.year }}"
-                 data-cite="{{ pub.citation | downcase | escape }}">
+                 data-cite="{{ pub.citation | downcase | escape }}"
+                 data-keywords="{% if pub.keywords %}{{ pub.keywords | join: ', ' | downcase | escape }}{% endif %}">
               
               <div class="item">
                 <div class="pubmain pub-item-card {% if pub.image %}pub-has-thumb{% endif %}">
@@ -129,12 +200,24 @@ layout: default
                     <div class="pubcontents">
                       <div class="pubauthor pub-author-text">
                         <i class="fa fa-user"></i>
-                        {% if is_en %}{{ pub.author_en | default: pub.author }}{% else %}{{ pub.author }}{% endif %}
+                        {{ pub.author }}
                       </div>
                       <div class="pubcite pub-cite-text">
                         {{ pub.citation }}
                       </div>
                     </div>
+
+                    <!-- Keywords -->
+                    {% if pub.keywords and pub.keywords.size > 0 %}
+                    <div class="pub-card-keywords">
+                      <span class="pub-card-kw-label"><i class="fa fa-key"></i> {{ locale.ui.keywords | default: "Anahtar Kelimeler" }}:</span>
+                      {% for kw in pub.keywords %}
+                        <button type="button" class="pub-card-kw-btn" data-keyword="{{ kw | escape }}" title="{{ kw }}">
+                          #{{ kw }}
+                        </button>
+                      {% endfor %}
+                    </div>
+                    {% endif %}
 
                     <!-- Action Links -->
                     <div class="pub-actions-row">

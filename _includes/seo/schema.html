@@ -1,0 +1,289 @@
+{% comment %}
+  Schema.org Structured Data Module (JSON-LD)
+  Generates fully compliant semantic structured data tailored to each page layout:
+  - Homepage / CV: Person & ProfilePage with affiliation, research interests & sameAs profiles
+  - Publication: ScholarlyArticle, Book, Chapter, or Thesis
+  - Lesson: Course with provider, instructor, and courseCode
+  - Post: BlogPosting with author, datePublished, and keywords
+  - Project: ResearchProject
+  - Archive pages: CollectionPage with ItemList
+  - General pages: WebPage
+{% endcomment %}
+
+{% assign current_lang = page.lang | default: site.default_lang | default: "tr" %}
+{% assign canonical_url = page.url | replace: "index.html", "" | absolute_url %}
+{% assign site_author_name = page.author | default: site.author | default: "Can Bekcan" %}
+{% if page.name and page.name != "index.md" and page.name != "" %}
+  {% assign site_author_name = page.name %}
+{% endif %}
+{% assign raw_image = page.image | default: page.featured_image | default: page.avatar | default: "/assets/images/Can-Bekcan-PADI.jpg" %}
+{% assign seo_image = raw_image | absolute_url %}
+
+{% if page.description and page.description != "" %}
+  {% assign schema_desc = page.description | strip_html | strip_newlines | truncate: 250 %}
+{% elsif page.excerpt and page.excerpt != "" %}
+  {% assign schema_desc = page.excerpt | strip_html | strip_newlines | truncate: 250 %}
+{% elsif page.bio and page.bio != "" %}
+  {% assign schema_desc = page.bio | strip_html | strip_newlines | truncate: 250 %}
+{% else %}
+  {% assign schema_desc = site.description %}
+{% endif %}
+
+<script type="application/ld+json">
+{% if page.layout == "homepage" or page.ref == "home" %}
+{% comment %} --- Homepage / Academic CV Schema (Person + ProfilePage) --- {% endcomment %}
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": "{{ canonical_url }}#profilepage",
+      "url": "{{ canonical_url }}",
+      "name": {{ page.title | default: "Akademik CV" | jsonify }},
+      "description": {{ schema_desc | jsonify }},
+      "inLanguage": "{{ current_lang }}",
+      "mainEntity": {
+        "@id": "{{ canonical_url }}#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "{{ canonical_url }}#person",
+      "name": {{ site_author_name | jsonify }},
+      "url": "{{ canonical_url }}",
+      "image": "{{ seo_image }}",
+      "jobTitle": "Akademisyen & Araştırmacı",
+      "description": {{ schema_desc | jsonify }},
+      "worksFor": {
+        "@type": "EducationalOrganization",
+        "name": {{ page.institution | default: "Doğu Akdeniz Üniversitesi" | jsonify }},
+        "department": {{ page.department | default: "İletişim Fakültesi" | jsonify }}
+      },
+      "sameAs": [
+        {% assign sameas_links = "" | split: "" %}
+        {% if page.social %}
+          {% for soc in page.social %}
+            {% if soc.url and soc.url != "" %}
+              {% assign sameas_links = sameas_links | push: soc.url %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        {% for link in sameas_links %}
+          {{ link | jsonify }}{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ],
+      "knowsAbout": [
+        {% assign pub_knows = "" | split: "" %}
+        {% for p in site.publications %}
+          {% if p.keywords %}
+            {% for kw in p.keywords %}
+              {% assign tkw = kw | strip %}
+              {% if tkw != "" %}
+                {% unless pub_knows contains tkw %}
+                  {% assign pub_knows = pub_knows | push: tkw %}
+                {% endunless %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+        {% for kw in pub_knows %}
+          {{ kw | jsonify }}{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
+  ]
+}
+
+{% elsif page.layout == "publication/single" or page.layout contains "publication" and page.layout != "publication/archive" %}
+{% comment %} --- Publication Schema (ScholarlyArticle / Book / Chapter / Thesis) --- {% endcomment %}
+{% assign pub_type_lower = page.publication_type | downcase %}
+{% if pub_type_lower contains "kitap bölümü" or pub_type_lower contains "chapter" %}
+  {% assign schema_type = "Chapter" %}
+{% elsif pub_type_lower contains "kitap" or pub_type_lower contains "book" %}
+  {% assign schema_type = "Book" %}
+{% elsif pub_type_lower contains "tez" or pub_type_lower contains "thesis" or pub_type_lower contains "dissertation" %}
+  {% assign schema_type = "Thesis" %}
+{% else %}
+  {% assign schema_type = "ScholarlyArticle" %}
+{% endif %}
+{
+  "@context": "https://schema.org",
+  "@type": "{{ schema_type }}",
+  "headline": {{ page.title | jsonify }},
+  "name": {{ page.title | jsonify }},
+  "url": "{{ canonical_url }}",
+  "description": {{ schema_desc | jsonify }},
+  "inLanguage": "{{ current_lang }}",
+  "datePublished": {{ page.date | default: page.year | jsonify }},
+  "author": [
+    {% if page.authors %}
+      {% for auth in page.authors %}
+      {
+        "@type": "Person",
+        "name": {{ auth | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    {% else %}
+      {
+        "@type": "Person",
+        "name": {{ page.author | default: site_author_name | jsonify }}
+      }
+    {% endif %}
+  ],
+  {% if page.journal and page.journal != "" %}
+  "isPartOf": {
+    "@type": "Periodical",
+    "name": {{ page.journal | jsonify }}
+    {% if page.issn and page.issn != "" %},"issn": {{ page.issn | jsonify }}{% endif %}
+  },
+  {% elsif page.book_title and page.book_title != "" %}
+  "isPartOf": {
+    "@type": "Book",
+    "name": {{ page.book_title | jsonify }}
+    {% if page.isbn and page.isbn != "" %},"isbn": {{ page.isbn | jsonify }}{% endif %}
+  },
+  {% elsif page.conference_name and page.conference_name != "" %}
+  "isPartOf": {
+    "@type": "Event",
+    "name": {{ page.conference_name | jsonify }}
+  },
+  {% endif %}
+  {% if page.pages and page.pages != "" %}
+  {% assign p_parts = page.pages | split: "-" %}
+  "pageStart": {{ p_parts.first | strip | jsonify }},
+  {% if p_parts.size > 1 %}"pageEnd": {{ p_parts.last | strip | jsonify }},{% endif %}
+  "pagination": {{ page.pages | jsonify }},
+  {% endif %}
+  {% if page.volume and page.volume != "" %}"volumeNumber": {{ page.volume | jsonify }},{% endif %}
+  {% if page.issue and page.issue != "" %}"issueNumber": {{ page.issue | jsonify }},{% endif %}
+  {% if page.publisher and page.publisher != "" %}
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ page.publisher | jsonify }}
+  },
+  {% elsif page.institution and page.institution != "" %}
+  "publisher": {
+    "@type": "EducationalOrganization",
+    "name": {{ page.institution | jsonify }}
+  },
+  {% endif %}
+  {% if page.keywords and page.keywords.size > 0 %}
+  "keywords": {{ page.keywords | join: ", " | jsonify }},
+  {% endif %}
+  {% if page.doi and page.doi != "" %}
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "DOI",
+    "value": {{ page.doi | jsonify }}
+  },
+  "sameAs": "https://doi.org/{{ page.doi }}",
+  {% elsif page.link and page.link != "" %}
+  "sameAs": {{ page.link | jsonify }},
+  {% endif %}
+  "image": "{{ seo_image }}"
+}
+
+{% elsif page.layout == "lesson/single" or page.layout == "lesson" %}
+{% comment %} --- Course / Lesson Schema --- {% endcomment %}
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": {{ page.title | jsonify }},
+  "description": {{ schema_desc | jsonify }},
+  "url": "{{ canonical_url }}",
+  "inLanguage": "{{ current_lang }}",
+  {% if page.course_code and page.course_code != "" %}
+  "courseCode": {{ page.course_code | jsonify }},
+  {% endif %}
+  "provider": {
+    "@type": "EducationalOrganization",
+    "name": {{ page.institution | default: "Doğu Akdeniz Üniversitesi" | jsonify }},
+    "department": {{ page.faculty | append: ", " | append: page.department | jsonify }}
+    {% if page.institution_url and page.institution_url != "" %},"sameAs": {{ page.institution_url | jsonify }}{% endif %}
+  },
+  "instructor": {
+    "@type": "Person",
+    "name": {{ page.instructor | default: site_author_name | jsonify }}
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "In-Person",
+    "location": {{ page.institution | default: "Doğu Akdeniz Üniversitesi" | jsonify }}
+  }
+}
+
+{% elsif page.layout == "post/single" or page.layout contains "post" and page.layout != "post/archive" %}
+{% comment %} --- Blog Posting / Article Schema --- {% endcomment %}
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ page.title | jsonify }},
+  "name": {{ page.title | jsonify }},
+  "url": "{{ canonical_url }}",
+  "description": {{ schema_desc | jsonify }},
+  "inLanguage": "{{ current_lang }}",
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+  "image": "{{ seo_image }}",
+  {% if page.tags and page.tags.size > 0 %}
+  "keywords": {{ page.tags | join: ", " | jsonify }},
+  {% endif %}
+  "author": {
+    "@type": "Person",
+    "name": {{ page.author | default: site_author_name | jsonify }}
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": {{ site_author_name | jsonify }}
+  }
+}
+
+{% elsif page.layout == "project/single" or page.layout contains "project" and page.layout != "project/archive" %}
+{% comment %} --- Research Project Schema --- {% endcomment %}
+{
+  "@context": "https://schema.org",
+  "@type": "ResearchProject",
+  "name": {{ page.title | jsonify }},
+  "description": {{ schema_desc | jsonify }},
+  "url": "{{ canonical_url }}",
+  "inLanguage": "{{ current_lang }}",
+  "member": {
+    "@type": "Person",
+    "name": {{ site_author_name | jsonify }}
+    {% if page.role and page.role != "" %},"jobTitle": {{ page.role | jsonify }}{% endif %}
+  }
+  {% if page.organization and page.organization != "" %}
+  ,"sponsor": {
+    "@type": "Organization",
+    "name": {{ page.organization | jsonify }}
+  }
+  {% endif %}
+}
+
+{% elsif page.layout contains "archive" %}
+{% comment %} --- Collection / Archive Page Schema with ItemList --- {% endcomment %}
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": {{ page.title | default: site.title | jsonify }},
+  "description": {{ schema_desc | jsonify }},
+  "url": "{{ canonical_url }}",
+  "inLanguage": "{{ current_lang }}",
+  "mainEntity": {
+    "@type": "ItemList",
+    "name": {{ page.title | default: site.title | jsonify }}
+  }
+}
+
+{% else %}
+{% comment %} --- Default WebPage Schema --- {% endcomment %}
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": {{ page.title | default: site.title | jsonify }},
+  "description": {{ schema_desc | jsonify }},
+  "url": "{{ canonical_url }}",
+  "inLanguage": "{{ current_lang }}"
+}
+{% endif %}
+</script>

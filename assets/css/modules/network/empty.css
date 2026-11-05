@@ -1,0 +1,60 @@
+/**
+ * Network Empty States & Responsive Rules
+ * Handles no-search-results state, hidden SEO metadata, and mobile viewports
+ * Uses color variables from color.css
+ */
+
+/* Hidden Information for SEO & Filters */
+.network-hidden-seo {
+  display: none !important;
+}
+
+/* No Results State */
+.network-no-results {
+  display: none;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.network-no-results-panel {
+  background: var(--bg-card);
+  border: 1px dashed var(--border-default);
+  border-radius: 10px;
+  padding: 45px 20px;
+  text-align: center;
+}
+
+.network-no-results-panel i.icon-empty {
+  font-size: 44px;
+  color: var(--text-disabled);
+  margin-bottom: 15px;
+}
+
+.network-no-results-panel h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.network-no-results-panel p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+  .network-cta-card .panel-body {
+    padding: 16px;
+  }
+  .network-controls-card {
+    padding: 16px;
+  }
+  .network-card-body {
+    padding: 16px;
+  }
+  .network-meta-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,237 @@
+/**
+ * Network Header & Top Cards
+ * Handles page header, intro, top row layout, CTA card, and version status card
+ * Uses color variables from color.css
+ */
+
+.network-page {
+  padding-bottom: 50px;
+}
+
+/* Header & Intro */
+.network-header {
+  margin-bottom: 35px;
+}
+
+.network-header h1 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-main);
+}
+
+.network-header h1 i {
+  color: var(--primary);
+  margin-right: 8px;
+}
+
+.network-header p {
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Top Row: CTA (10/12) on Left, Version (2/12) on Right */
+.network-top-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 25px;
+  align-items: stretch;
+}
+
+@media (min-width: 992px) {
+  .network-top-row {
+    grid-template-columns: 10fr 2fr;
+    gap: 16px;
+  }
+}
+
+/* Base Network Card Component */
+.network-card {
+  border-radius: 10px;
+  padding: 16px 20px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  border: 1px solid var(--border-main);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.network-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Call To Action Card (10/12) */
+.network-cta-card {
+  background: var(--bg-card);
+  border-left: 5px solid var(--primary);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px 22px;
+}
+
+.network-cta-content {
+  flex: 1 1 400px;
+}
+
+.network-cta-header {
+  margin-bottom: 0;
+}
+
+.network-cta-title {
+  margin-top: 0;
+  margin-bottom: 6px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.network-cta-title i {
+  color: var(--primary);
+}
+
+.network-cta-desc {
+  color: var(--text-secondary);
+  line-height: 1.5;
+  font-size: 13.5px;
+  margin-bottom: 0;
+}
+
+.network-cta-action {
+  flex-shrink: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.network-cta-btn {
+  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--text-inverse);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.network-cta-btn:hover,
+.network-cta-btn:focus {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  color: var(--text-inverse);
+}
+
+/* Version Information Card (2/12) */
+.version-card {
+  border: 1px solid var(--border-main);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.version-card .version-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  gap: 4px;
+}
+
+.version-card .version-title {
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.version-card .version-status-pill {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.version-card .version-meta {
+  margin: 0 0 6px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 11.5px;
+}
+
+.version-card .version-meta-row {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+}
+
+.version-card .version-meta-label {
+  font-weight: 600;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.version-card .version-badge-val {
+  background: var(--bg-tag);
+  color: var(--text-main);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 11px;
+  border: 1px solid var(--border-main);
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.version-card .version-commit-val {
+  background: var(--bg-subtle);
+  color: var(--text-main);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 11px;
+}
+
+.version-card .version-date-val {
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.version-card .version-status-text {
+  margin-top: auto;
+  padding-top: 6px;
+  border-top: 1px solid var(--border-divider);
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -33,10 +33,21 @@
           <strong class="sidebar-meta-value"><i class="fa fa-user"></i>{{ page.instructor | default: "Can Bekcan" }}</strong>
         </li>
 
-        {% if page.institution %}
+        {% assign inst_parts = "" | split: "" %}
+        {% if page.institution and page.institution != "" %}
+          {% assign inst_parts = inst_parts | push: page.institution %}
+        {% endif %}
+        {% if page.faculty and page.faculty != "" %}
+          {% assign inst_parts = inst_parts | push: page.faculty %}
+        {% endif %}
+        {% if page.department and page.department != "" %}
+          {% assign inst_parts = inst_parts | push: page.department %}
+        {% endif %}
+
+        {% if inst_parts.size > 0 %}
         <li class="sidebar-meta-row">
           <span class="sidebar-meta-label">{{ locale.ui.institution | default: "Kurum" }}:</span>
-          <span class="sidebar-meta-value">{{ page.institution }}</span>
+          <span class="sidebar-meta-value">{{ inst_parts | join: ", " }}</span>
         </li>
         {% endif %}
       </ul>

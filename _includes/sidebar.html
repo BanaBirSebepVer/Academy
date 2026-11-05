@@ -23,10 +23,8 @@
 {% assign profile_image = index_page.image | default: index_page.avatar | default: "/assets/images/Can-Bekcan-PADI.jpg" %}
 {% assign profile_institution = index_page.institution %}
 {% if profile_institution == nil or profile_institution == "" %}
-  {% assign profile_institution = locale.cv.institutions.emu | default: "Doğu Akdeniz Üniversitesi" %}
-{% endif %}
-{% if current_lang == "en" and profile_institution == "Doğu Akdeniz Üniversitesi" %}
-  {% assign profile_institution = locale.cv.institutions.emu | default: "Eastern Mediterranean University" %}
+  {% assign first_lesson = site.lessons | where: "lang", current_lang | first %}
+  {% assign profile_institution = first_lesson.institution | default: site.institution %}
 {% endif %}
 
 {% assign home_url = "/" %}

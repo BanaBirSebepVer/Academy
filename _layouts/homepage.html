@@ -32,6 +32,44 @@ layout: default
             <p><em>{{ page.interests }}</em></p>
           </div>
           {% endif %}
+
+          {% comment %} Dynamic Publication Keywords for Academician Research Interests {% endcomment %}
+          {% assign hero_pub_keywords = "" | split: "" %}
+          {% for p in site.publications %}
+            {% assign match = false %}
+            {% if p.lang == current_lang or p.path contains lang_slash %}
+              {% assign match = true %}
+            {% elsif current_lang == site.default_lang %}
+              {% unless p.path contains "/en/" or p.lang == "en" %}
+                {% assign match = true %}
+              {% endunless %}
+            {% endif %}
+            {% if match and p.keywords %}
+              {% for kw in p.keywords %}
+                {% assign trimmed_kw = kw | strip %}
+                {% if trimmed_kw != "" %}
+                  {% unless hero_pub_keywords contains trimmed_kw %}
+                    {% assign hero_pub_keywords = hero_pub_keywords | push: trimmed_kw %}
+                  {% endunless %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+
+          {% if hero_pub_keywords.size > 0 %}
+          <div class="cv-hero-keywords-cloud">
+            <span class="cv-hero-kw-label"><i class="fa fa-tags"></i> {% if current_lang == "en" %}Research Interests / Publication Keywords:{% else %}Yayınlardan Derlenen Araştırma Alanları:{% endif %}</span>
+            <div class="cv-hero-kw-chips">
+              {% assign pub_page_url = '/yayinlar/' | relative_url %}
+              {% if current_lang == "en" %}{% assign pub_page_url = '/en/publications/' | relative_url %}{% endif %}
+              {% for kw in hero_pub_keywords %}
+                <a href="{{ pub_page_url }}?keyword={{ kw | url_encode }}" class="cv-hero-kw-chip" title="{{ kw }}">
+                  #{{ kw }}
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -154,21 +192,66 @@ layout: default
   {% endfor %}
   {% assign lang_lessons = lang_lessons | sort: "course_order" %}
 
-  {% assign active_tiers = "" | split: "" %}
-  {% for tier in locale.cv.academic_tiers %}
-    {% assign tier_has_lessons = false %}
-    {% for l in lang_lessons %}
-      {% if l.instructor_title contains tier.match %}
-        {% assign tier_has_lessons = true %}
-        {% break %}
+  {% comment %} --- 3. Academic Appointments (Dynamically Built & Chronologically Sorted from Lessons) --- {% endcomment %}
+  {% assign appointment_keys = "" | split: "" %}
+
+  {% for l in lang_lessons %}
+    {% assign l_inst = l.institution | default: "Diğer" | strip %}
+
+    {% if l.appointments and l.appointments.size > 0 %}
+      {% for ap in l.appointments %}
+        {% assign a_title = ap.instructor_title | strip %}
+        {% assign a_dur = ap.instructor_title_duration | default: ap.course_date | strip %}
+        {% if a_title and a_title != "" and a_dur and a_dur != "" %}
+          {% assign dur_parts = a_dur | split: " - " %}
+          {% if dur_parts.size == 1 %}
+            {% assign dur_parts = a_dur | split: "-" %}
+          {% endif %}
+          {% assign sy = dur_parts[0] | strip %}
+          {% assign ey = dur_parts[1] | default: sy | strip %}
+
+          {% assign ey_lower = ey | downcase %}
+          {% if ey_lower == "devam" or ey_lower == "continuing" or ey_lower == "present" %}
+            {% assign sort_weight = "9999_" | append: sy %}
+          {% else %}
+            {% assign sort_weight = ey | append: "_" | append: sy %}
+          {% endif %}
+
+          {% assign appt_key = sort_weight | append: ":::_:::" | append: l_inst | append: ":::_:::" | append: a_title | append: ":::_:::" | append: sy | append: ":::_:::" | append: ey | append: ":::_:::" | append: a_dur %}
+          {% unless appointment_keys contains appt_key %}
+            {% assign appointment_keys = appointment_keys | push: appt_key %}
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {% assign a_title = l.instructor_title | strip %}
+      {% assign a_dur = l.instructor_title_duration | default: l.course_date | strip %}
+      {% if a_title and a_title != "" and a_dur and a_dur != "" %}
+        {% assign dur_parts = a_dur | split: " - " %}
+        {% if dur_parts.size == 1 %}
+          {% assign dur_parts = a_dur | split: "-" %}
+        {% endif %}
+        {% assign sy = dur_parts[0] | strip %}
+        {% assign ey = dur_parts[1] | default: sy | strip %}
+
+        {% assign ey_lower = ey | downcase %}
+        {% if ey_lower == "devam" or ey_lower == "continuing" or ey_lower == "present" %}
+          {% assign sort_weight = "9999_" | append: sy %}
+        {% else %}
+          {% assign sort_weight = ey | append: "_" | append: sy %}
+        {% endif %}
+
+        {% assign appt_key = sort_weight | append: ":::_:::" | append: l_inst | append: ":::_:::" | append: a_title | append: ":::_:::" | append: sy | append: ":::_:::" | append: ey | append: ":::_:::" | append: a_dur %}
+        {% unless appointment_keys contains appt_key %}
+          {% assign appointment_keys = appointment_keys | push: appt_key %}
+        {% endunless %}
       {% endif %}
-    {% endfor %}
-    {% if tier_has_lessons %}
-      {% assign active_tiers = active_tiers | push: tier %}
     {% endif %}
   {% endfor %}
 
-  {% if active_tiers.size > 0 %}
+  {% assign sorted_appt_keys = appointment_keys | sort | reverse %}
+
+  {% if sorted_appt_keys.size > 0 %}
   <section class="cv-section">
     <div class="container-fluid">
       <div class="row">
@@ -177,67 +260,94 @@ layout: default
         </div>
         <div class="col-sm-6 col-md-6">
           <ul class="ul-dates">
-            {% for tier in active_tiers %}
-              <li>
-                <div class="dates">
-                  <span>{{ tier.end_year }}</span>
-                  <span>{{ tier.start_year }}</span>
-                </div>
-                <div class="content">
-                  <h4>{{ tier.title }}</h4>
+            {% for key in sorted_appt_keys %}
+              {% assign parts = key | split: ":::_:::" %}
+              {% assign key_inst = parts[1] %}
+              {% assign key_title = parts[2] %}
+              {% assign key_sy = parts[3] %}
+              {% assign key_ey = parts[4] %}
+              {% assign key_dur = parts[5] %}
 
-                  {% comment %} --- EMU / DAÜ Lessons --- {% endcomment %}
-                  {% assign emu_lessons = "" | split: "" %}
-                  {% for l in lang_lessons %}
-                    {% if l.instructor_title contains tier.match %}
-                      {% if l.institution contains "Doğu Akdeniz" or l.institution contains "DAÜ" or l.institution contains "Eastern Mediterranean" or l.institution contains "EMU" %}
-                        {% if l.category != "Atölye" and l.category != "Workshop" %}
-                          {% assign emu_lessons = emu_lessons | push: l %}
-                        {% endif %}
-                      {% endif %}
-                    {% endif %}
-                  {% endfor %}
+              {% assign appt_lessons = "" | split: "" %}
+              {% assign appt_workshops = "" | split: "" %}
+              {% assign appt_inst_url = nil %}
 
-                  {% if emu_lessons.size > 0 %}
-                    <h3>
-                      <a href="https://fcms.emu.edu.tr/en/about-us/staff/staff-detail?sid=309&amp;n=can-bekcan" target="_blank" rel="noopener noreferrer">
-                        {{ locale.cv.institutions.emu }}
-                      </a>
-                    </h3>
-                    {% for lesson in emu_lessons %}
-                      <h5>
-                        <strong>
-                          {% if lesson.url %}
-                            <a href="{{ lesson.url | relative_url }}">
-                          {% endif %}
-                          {% if lesson.course_code and lesson.course_code != "" %}{{ lesson.course_code }}: {% endif %}{{ lesson.title }}
-                          {% if lesson.url %}
-                            </a>
-                          {% endif %}
-                        </strong>
-                      </h5>
-                      {% if lesson.duties and lesson.duties.size > 0 %}
-                        <ul>
-                          {% for duty in lesson.duties %}
-                            <li>{{ duty }}</li>
-                          {% endfor %}
-                        </ul>
+              {% for l in lang_lessons %}
+                {% assign l_inst = l.institution | default: "Diğer" | strip %}
+                {% if l_inst == key_inst %}
+                  {% assign lesson_matches = false %}
+                  {% if l.appointments and l.appointments.size > 0 %}
+                    {% for ap in l.appointments %}
+                      {% assign a_title = ap.instructor_title | strip %}
+                      {% assign a_dur = ap.instructor_title_duration | default: ap.course_date | strip %}
+                      {% if a_title == key_title and a_dur == key_dur %}
+                        {% assign lesson_matches = true %}
+                        {% break %}
                       {% endif %}
                     {% endfor %}
+                  {% else %}
+                    {% assign a_title = l.instructor_title | strip %}
+                    {% assign a_dur = l.instructor_title_duration | default: l.course_date | strip %}
+                    {% if a_title == key_title and a_dur == key_dur %}
+                      {% assign lesson_matches = true %}
+                    {% endif %}
                   {% endif %}
 
-                  {% comment %} --- Workshops --- {% endcomment %}
-                  {% assign workshops = "" | split: "" %}
-                  {% for l in lang_lessons %}
-                    {% if l.instructor_title contains tier.match %}
-                      {% if l.category == "Atölye" or l.category == "Workshop" %}
-                        {% assign workshops = workshops | push: l %}
-                      {% endif %}
+                  {% if lesson_matches %}
+                    {% if appt_inst_url == nil and l.institution_url and l.institution_url != "" %}
+                      {% assign appt_inst_url = l.institution_url %}
+                    {% endif %}
+                    {% if l.category == "Atölye" or l.category == "Workshop" %}
+                      {% assign appt_workshops = appt_workshops | push: l %}
+                    {% else %}
+                      {% assign appt_lessons = appt_lessons | push: l %}
+                    {% endif %}
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+
+              {% if appt_lessons.size > 0 or appt_workshops.size > 0 %}
+              <li>
+                <div class="dates">
+                  <span>{{ key_ey }}</span>
+                  <span>{{ key_sy }}</span>
+                </div>
+                <div class="content">
+                  <h4>{{ key_title }}</h4>
+                  <h3>
+                    {% if appt_inst_url %}
+                      <a href="{{ appt_inst_url }}" target="_blank" rel="noopener noreferrer">
+                        {{ key_inst }}
+                      </a>
+                    {% else %}
+                      {{ key_inst }}
+                    {% endif %}
+                  </h3>
+
+                  {% for lesson in appt_lessons %}
+                    <h5>
+                      <strong>
+                        {% if lesson.url %}
+                          <a href="{{ lesson.url | relative_url }}">
+                        {% endif %}
+                        {% if lesson.course_code and lesson.course_code != "" %}{{ lesson.course_code }}: {% endif %}{{ lesson.title }}
+                        {% if lesson.url %}
+                          </a>
+                        {% endif %}
+                      </strong>
+                    </h5>
+                    {% if lesson.duties and lesson.duties.size > 0 %}
+                      <ul>
+                        {% for duty in lesson.duties %}
+                          <li>{{ duty }}</li>
+                        {% endfor %}
+                      </ul>
                     {% endif %}
                   {% endfor %}
-                  {% if workshops.size > 0 %}
+
+                  {% if appt_workshops.size > 0 %}
                     <h4><strong>{{ locale.cv.workshops }}:</strong></h4>
-                    {% for ws in workshops %}
+                    {% for ws in appt_workshops %}
                       <h5>
                         {% if ws.url %}<a href="{{ ws.url | relative_url }}">{% endif %}
                         {{ ws.title }}
@@ -246,47 +356,9 @@ layout: default
                     {% endfor %}
                   {% endif %}
 
-                  {% comment %} --- ARUCAD Lessons --- {% endcomment %}
-                  {% assign arucad_lessons = "" | split: "" %}
-                  {% for l in lang_lessons %}
-                    {% if l.instructor_title contains tier.match %}
-                      {% if l.institution contains "Arkın" or l.institution contains "ARUCAD" %}
-                        {% assign arucad_lessons = arucad_lessons | push: l %}
-                      {% endif %}
-                    {% endif %}
-                  {% endfor %}
-
-                  {% if arucad_lessons.size > 0 %}
-                    <hr/>
-                    <h3>
-                      <a href="https://arucad.edu.tr/en/" target="_blank" rel="noopener noreferrer">
-                        {{ locale.cv.institutions.arucad }}
-                      </a>
-                    </h3>
-                    {% for lesson in arucad_lessons %}
-                      <h5>
-                        <strong>
-                          {% if lesson.url %}
-                            <a href="{{ lesson.url | relative_url }}">
-                          {% endif %}
-                          {% if lesson.course_code and lesson.course_code != "" %}{{ lesson.course_code }}: {% endif %}{{ lesson.title }}
-                          {% if lesson.url %}
-                            </a>
-                          {% endif %}
-                        </strong>
-                      </h5>
-                      {% if lesson.duties and lesson.duties.size > 0 %}
-                        <ul>
-                          {% for duty in lesson.duties %}
-                            <li>{{ duty }}</li>
-                          {% endfor %}
-                        </ul>
-                      {% endif %}
-                    {% endfor %}
-                  {% endif %}
-
                 </div>
               </li>
+              {% endif %}
             {% endfor %}
           </ul>
         </div>

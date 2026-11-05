@@ -6,7 +6,10 @@ title: "İnternet Gazeteciliği"
 course_code: "YMGA384"
 course_order: 17
 category: "Veri ve Dijital Platformlar"
-institution: "Doğu Akdeniz Üniversitesi İletişim Fakültesi Yeni Medya ve Gazetecilik Bölümü"
+institution: "Doğu Akdeniz Üniversitesi"
+faculty: "İletişim Fakültesi"
+department: "Yeni Medya ve Gazetecilik Bölümü"
+institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
 instructor: "Can Bekcan"
 instructor_title:

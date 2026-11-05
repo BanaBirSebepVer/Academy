@@ -4,10 +4,10 @@ layout: default
 
 {% assign current_lang = page.lang | default: site.default_lang %}
 {% assign locale = site.data.locales[current_lang] %}
-{% assign is_en = false %}
-{% if current_lang == 'en' or page.url contains '/en/' %}
-  {% assign is_en = true %}
-{% endif %}
+{% assign home_page = site.pages | where: "ref", "home" | where: "lang", current_lang | first %}
+{% assign home_url = home_page.url | default: "/" | relative_url %}
+{% assign pub_page = site.pages | where: "ref", "publications" | where: "lang", current_lang | first %}
+{% assign pub_archive_url = pub_page.url | default: "/yayinlar/" | relative_url %}
 
 <div class="fac-page single-publication-page">
   <div id="inside">
@@ -19,15 +19,9 @@ layout: default
           <div class="col-xs-12">
             <!-- Breadcrumbs -->
             <div class="single-breadcrumb">
-              {% if is_en %}
-              <a href="{{ '/en/' | relative_url }}">Home</a>
+              <a href="{{ home_url }}">{{ locale.ui.home | default: "Anasayfa" }}</a>
               <span class="single-breadcrumb-separator">/</span>
-              <a href="{{ '/en/publications/' | relative_url }}">Publications</a>
-              {% else %}
-              <a href="{{ '/' | relative_url }}">Anasayfa</a>
-              <span class="single-breadcrumb-separator">/</span>
-              <a href="{{ '/yayinlar/' | relative_url }}">Yayınlar</a>
-              {% endif %}
+              <a href="{{ pub_archive_url }}">{{ locale.ui.publications_title | default: "Yayınlar" }}</a>
               {% if page.publication_type %}
               <span class="single-breadcrumb-separator">/</span>
               <span class="single-breadcrumb-current">
@@ -89,13 +83,149 @@ layout: default
                     <!-- Meta Details -->
                     <table class="table pub-single-meta-table">
                       <tbody>
-                        {% if page.author %}
+                        {% if page.author or page.authors %}
                         <tr>
                           <td class="pub-single-meta-label">
-                            {% if is_en %}Author(s):{% else %}Yazar(lar):{% endif %}
+                            {{ locale.ui.author | default: "Yazar(lar)" }}:
                           </td>
                           <td class="pub-single-meta-value">
-                            {{ page.author }}
+                            {% if page.authors %}{{ page.authors | join: ", " }}{% else %}{{ page.author }}{% endif %}
+                          </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if page.editors and page.editors != "" %}
+                        <tr>
+                          <td class="pub-single-meta-label">
+                            {{ locale.ui.editors | default: "Editör(ler)" }}:
+                          </td>
+                          <td class="pub-single-meta-value">
+                            {{ page.editors }}
+                          </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if page.publication_type and page.publication_type != "" %}
+                        <tr>
+                          <td class="pub-single-meta-label">
+                            {{ locale.ui.publication_type | default: "Tür" }}:
+                          </td>
+                          <td class="pub-single-meta-value">
+                            {{ page.publication_type }}
+                          </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if page.journal and page.journal != "" %}
+                        <tr>
+                          <td class="pub-single-meta-label">
+                            {{ locale.ui.journal_label | default: "Dergi" }}:
+                          </td>
+                          <td class="pub-single-meta-value">
+                            <em>{{ page.journal }}</em>
+                          </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if page.book_title and page.book_title != "" %}
+                        <tr>
+                          <td class="pub-single-meta-label">
+                            {{ locale.ui.book_source | default: "Kitap / Kaynak" }}:
+                          </td>
+                          <td class="pub-single-meta-value">
+                            <em>{{ page.book_title }}</em>
+                          </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if page.conference_name and page.conference_name != "" %}
+                        <tr>
+                          <td class="pub-single-meta-label">
+                            {{ locale.ui.conference | default: "Konferans" }}:
+                          </td>
+                          <td class="pub-single-meta-value">
+                            {{ page.conference_name }}
+                            {% if page.conference_location and page.conference_location != "" %} ({{ page.conference_location }}){% endif %}
+                            {% if page.conference_date and page.conference_date != "" %} - {{ page.conference_date }}{% endif %}
+                          </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if page.volume and page.volume != "" %}
+                        <tr>
+                          <td class="pub-single-meta-label">
+                            {{ locale.ui.volume_issue | default: "Cilt / Sayı" }}:
+                          </td>
+                          <td class="pub-single-meta-value">
+                            {{ page.volume }}{% if page.issue and page.issue != "" %}({{ page.issue }}){% endif %}
+                          </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if page.pages and page.pages != "" %}
+                        <tr>
+                          <td class="pub-single-meta-label">
+                            {{ locale.ui.pages | default: "Sayfa" }}:
+                          </td>
+                          <td class="pub-single-meta-value">
+                            {{ page.pages }}
+                          </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if page.degree and page.degree != "" %}
+                        <tr>
+                          <td class="pub-single-meta-label">
+                            {{ locale.ui.degree | default: "Derece" }}:
+                          </td>
+                          <td class="pub-single-meta-value">
+                            {{ page.degree }}
+                          </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if page.institution and page.institution != "" %}
+                        <tr>
+                          <td class="pub-single-meta-label">
+                            {{ locale.ui.institution_label | default: "Kurum / Üniversite" }}:
+                          </td>
+                          <td class="pub-single-meta-value">
+                            {{ page.institution }}
+                            {% if page.faculty and page.faculty != "" %}, {{ page.faculty }}{% endif %}
+                            {% if page.department and page.department != "" %}, {{ page.department }}{% endif %}
+                          </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if page.advisor and page.advisor != "" %}
+                        <tr>
+                          <td class="pub-single-meta-label">
+                            {{ locale.ui.advisor | default: "Tez Danışmanı" }}:
+                          </td>
+                          <td class="pub-single-meta-value">
+                            {{ page.advisor }}
+                          </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if page.publisher and page.publisher != "" %}
+                        <tr>
+                          <td class="pub-single-meta-label">
+                            {{ locale.ui.publisher | default: "Yayınevi" }}:
+                          </td>
+                          <td class="pub-single-meta-value">
+                            {{ page.publisher }}{% if page.publisher_place and page.publisher_place != "" %}, {{ page.publisher_place }}{% endif %}
+                          </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if page.edition and page.edition != "" %}
+                        <tr>
+                          <td class="pub-single-meta-label">
+                            {{ locale.ui.edition | default: "Baskı" }}:
+                          </td>
+                          <td class="pub-single-meta-value">
+                            {{ page.edition }}
                           </td>
                         </tr>
                         {% endif %}
@@ -103,32 +233,54 @@ layout: default
                         {% if page.year %}
                         <tr>
                           <td class="pub-single-meta-label">
-                            {% if is_en %}Year:{% else %}Yıl:{% endif %}
+                            {{ locale.ui.year | default: "Yıl" }}:
                           </td>
                           <td class="pub-single-meta-value">
-                            {{ page.year }}
+                            {{ page.year }}{% if page.date and page.date != "" %} ({{ page.date }}){% endif %}
                           </td>
                         </tr>
                         {% endif %}
 
-                        {% if page.citation %}
-                        <tr>
-                          <td class="pub-single-meta-label">
-                            {% if is_en %}Citation:{% else %}Atıf / Künye:{% endif %}
-                          </td>
-                          <td class="pub-single-citation-text">
-                            {{ page.citation }}
-                          </td>
-                        </tr>
-                        {% endif %}
-
-                        {% if page.doi %}
+                        {% if page.doi and page.doi != "" %}
                         <tr>
                           <td class="pub-single-meta-label">DOI:</td>
-                          <td>
+                          <td class="pub-single-meta-value">
                             <a href="https://doi.org/{{ page.doi }}" target="_blank" rel="noopener noreferrer" class="sidebar-link-anchor">
-                              {{ page.doi }}
+                              https://doi.org/{{ page.doi }}
                             </a>
+                          </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if page.isbn and page.isbn != "" %}
+                        <tr>
+                          <td class="pub-single-meta-label">ISBN:</td>
+                          <td class="pub-single-meta-value">
+                            {{ page.isbn }}
+                          </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if page.issn and page.issn != "" %}
+                        <tr>
+                          <td class="pub-single-meta-label">ISSN:</td>
+                          <td class="pub-single-meta-value">
+                            {{ page.issn }}
+                          </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if page.keywords and page.keywords.size > 0 %}
+                        <tr>
+                          <td class="pub-single-meta-label">
+                            <i class="fa fa-key"></i> {{ locale.ui.keywords | default: "Anahtar Kelimeler" }}:
+                          </td>
+                          <td class="pub-single-meta-value pub-single-keywords-cell">
+                            {% for kw in page.keywords %}
+                              <a href="{{ pub_archive_url }}?keyword={{ kw | url_encode }}" class="pub-keyword-tag" title="{{ kw }}">
+                                #{{ kw }}
+                              </a>
+                            {% endfor %}
                           </td>
                         </tr>
                         {% endif %}
@@ -140,7 +292,7 @@ layout: default
                       {% if page.link %}
                       <a href="{{ page.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-archive-primary">
                         <i class="fa fa-external-link"></i>
-                        {% if is_en %}Read Online / Source{% else %}Orijinal Yayına Git{% endif %}
+                        {{ locale.ui.read_online | default: "Orijinal Yayına Git" }}
                       </a>
                       {% endif %}
                       {% if page.pdf or page.download_url %}
@@ -163,14 +315,14 @@ layout: default
 
             <!-- Footer Navigation & Sharing -->
             <div class="pub-footer-nav single-footer-nav">
-              <a href="{% if is_en %}{{ '/en/publications/' | relative_url }}{% else %}{{ '/yayinlar/' | relative_url }}{% endif %}" class="btn btn-default single-back-btn">
+              <a href="{{ pub_archive_url }}" class="btn btn-default single-back-btn">
                 <i class="fa fa-arrow-left"></i>
-                {% if is_en %}{{ locale.ui.all_publications_nav | default: "All Publications" }}{% else %}{{ locale.ui.all_publications_nav | default: "Tüm Yayınlar" }}{% endif %}
+                {{ locale.ui.all_publications_nav | default: "Tüm Yayınlar" }}
               </a>
 
               <div class="pub-share single-share-bar">
                 <span class="single-share-label">
-                  {% if is_en %}Share:{% else %}Paylaş:{% endif %}
+                  {{ locale.ui.share | default: "Paylaş" }}:
                 </span>
                 <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Twitter / X">
                   <i class="fa-brands fa-x-twitter"></i>
@@ -190,17 +342,60 @@ layout: default
           <div class="col-md-4 col-sm-12">
             <div class="pub-sidebar sidebar-widget-card sidebar-widget-body">
               
-              <!-- Quick Citation Box -->
+              <!-- Academic Citation Widget (Auto-Generated from Metadata) -->
               <h3 class="sidebar-widget-header">
-                <span><i class="fa fa-quote-left"></i> {% if is_en %}How to Cite{% else %}Nasıl Atıf Yapılır?{% endif %}</span>
+                <span><i class="fa fa-quote-left"></i> {{ locale.ui.how_to_cite | default: "Nasıl Atıf Yapılır?" }}</span>
               </h3>
-              <div class="pub-single-citation-box">
-                {{ page.citation | default: page.title }}
+              <div class="pub-citation-widget" id="pubCitationWidget" data-copied-text="{{ locale.ui.copied | default: 'Kopyalandı!' }}" data-hint-text="{{ locale.ui.click_to_copy | default: 'Kopyalamak için butona tıklayın' }}">
+                <div class="pub-cite-instructions">
+                  <small class="text-muted">
+                    <i class="fa fa-info-circle"></i>
+                    {{ locale.ui.cite_instruction | default: "Görmek için üzerine gelin, kopyalamak için tıklayın:" }}
+                  </small>
+                </div>
+                <div class="pub-cite-buttons-group" id="pubCiteButtonsGroup">
+                  <!-- Generated dynamically by citation module (APA, IEEE, Oxford, etc.) -->
+                </div>
               </div>
+
+              <!-- Hidden Publication Metadata for Client-Side Citation Engine -->
+              <script type="application/json" id="publicationMetadata">
+              {
+                "title": {{ page.title | jsonify }},
+                "author": {{ page.author | jsonify }},
+                "authors": {{ page.authors | default: page.author | jsonify }},
+                "year": {{ page.year | jsonify }},
+                "date": {{ page.date | jsonify }},
+                "publication_type": {{ page.publication_type | jsonify }},
+                "journal": {{ page.journal | jsonify }},
+                "volume": {{ page.volume | jsonify }},
+                "issue": {{ page.issue | jsonify }},
+                "pages": {{ page.pages | jsonify }},
+                "article_number": {{ page.article_number | jsonify }},
+                "issn": {{ page.issn | jsonify }},
+                "book_title": {{ page.book_title | jsonify }},
+                "editors": {{ page.editors | jsonify }},
+                "edition": {{ page.edition | jsonify }},
+                "isbn": {{ page.isbn | jsonify }},
+                "conference_name": {{ page.conference_name | jsonify }},
+                "conference_location": {{ page.conference_location | jsonify }},
+                "conference_date": {{ page.conference_date | jsonify }},
+                "degree": {{ page.degree | jsonify }},
+                "institution": {{ page.institution | jsonify }},
+                "faculty": {{ page.faculty | jsonify }},
+                "department": {{ page.department | jsonify }},
+                "advisor": {{ page.advisor | jsonify }},
+                "publisher": {{ page.publisher | jsonify }},
+                "publisher_place": {{ page.publisher_place | jsonify }},
+                "doi": {{ page.doi | jsonify }},
+                "link": {{ page.link | jsonify }},
+                "lang": {{ page.lang | default: site.default_lang | jsonify }}
+              }
+              </script>
 
               <!-- Other Publications -->
               <h3 class="sidebar-widget-header">
-                <span><i class="fa fa-book"></i> {% if is_en %}{{ locale.ui.other_publications | default: "Other Publications" }}{% else %}{{ locale.ui.other_publications | default: "Diğer Yayınlar" }}{% endif %}</span>
+                <span><i class="fa fa-book"></i> {{ locale.ui.other_publications | default: "Diğer Yayınlar" }}</span>
               </h3>
               <ul class="sidebar-link-list">
                 {% assign other_pubs = site.publications | where: "lang", current_lang | sort: "order" %}
@@ -223,7 +418,7 @@ layout: default
 
               <!-- Academic Profiles -->
               <h3 class="sidebar-widget-header">
-                <span><i class="fa fa-graduation-cap"></i> {% if is_en %}Academic Profiles{% else %}Akademik Profiller{% endif %}</span>
+                <span><i class="fa fa-graduation-cap"></i> {{ locale.ui.academic_profiles | default: "Akademik Profiller" }}</span>
               </h3>
               <div class="sidebar-meta-list">
                 <a href="https://scholar.google.com/citations?user=zyPFJ1EAAAAJ&amp;hl=en&amp;authuser=1" target="_blank" rel="noopener noreferrer" class="sidebar-link-anchor">

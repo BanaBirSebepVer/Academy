@@ -1,0 +1,75 @@
+/**
+ * Publication Hero Styles
+ * Handles the hero banner, breadcrumbs, and title for single publication pages
+ * Uses color variables from color.css
+ */
+
+.publication-hero {
+  position: relative;
+  background: linear-gradient(135deg, rgba(30, 30, 36, 0.94) 0%, rgba(38, 38, 48, 0.90) 100%),
+              url('../../../images/publication-bg.jpg') center center / cover no-repeat;
+  color: var(--text-inverse);
+  padding: 42px 35px 35px;
+  border-bottom: 4px solid var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.publication-hero .section-container,
+.publication-hero .header-wrapper {
+  position: relative;
+  max-width: 100%;
+}
+
+.publication-hero .single-breadcrumb {
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: var(--text-inverse-muted);
+}
+
+.publication-hero .single-breadcrumb a {
+  color: var(--text-inverse);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.publication-hero .single-breadcrumb a:hover {
+  color: var(--primary);
+}
+
+.publication-hero .single-breadcrumb-separator {
+  margin: 0 8px;
+  color: var(--text-inverse-subtle);
+}
+
+.publication-hero .single-breadcrumb-current {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.publication-hero .title,
+.publication-hero .publication-hero-title,
+.publication-hero-title {
+  position: static;
+  color: var(--text-inverse);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 5px 0 0 0;
+  padding: 0;
+  border-bottom: none;
+  text-shadow: var(--shadow-xs);
+  letter-spacing: -0.2px;
+}
+
+@media (max-width: 768px) {
+  .publication-hero {
+    padding: 28px 20px 22px;
+  }
+
+  .publication-hero .title,
+  .publication-hero .publication-hero-title,
+  .publication-hero-title {
+    font-size: 22px;
+    line-height: 1.3;
+  }
+}

@@ -1,0 +1,13 @@
+/**
+ * Publication Styles (Aggregator)
+ * Consolidates all publication-related modular stylesheets:
+ * - archive.css: Publication archive cards, filters, and grid
+ * - hero.css: Single publication hero banner and breadcrumbs
+ * - single.css: Single publication metadata, thumbnail box, citation box, download actions
+ * - keywords.css: Keyword cloud, frequency badges, chips, filter banner
+ */
+
+@import url("archive.css");
+@import url("hero.css");
+@import url("single.css");
+@import url("keywords.css");

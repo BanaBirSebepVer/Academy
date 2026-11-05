@@ -67,6 +67,12 @@
   --border-card: #e2e8f0;
   --border-divider: #edf2f7;
   --border-default: #d1d5db;
+  --border-color: var(--border-main);
+
+  /* Common Typography & Color Aliases */
+  --color-heading: var(--text-main);
+  --color-muted: var(--text-muted);
+  --color-text: var(--text-body);
 
   /* Semantic Status Colors */
   --success: #03cc85;

@@ -3,9 +3,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="Jekyll Academy Engine">
-  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
-  <meta name="description" content="{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+  <!-- Semantic SEO & Social Metadata -->
+  {% include seo/meta.html %}
+
+  <!-- Schema.org Structured Data (JSON-LD) -->
+  {% include seo/schema.html %}
 
   {% assign index_page = site.pages | where: "path", "index.md" | first %}
   {% if index_page == nil %}
@@ -46,4 +48,15 @@
 
   <!-- Master Stylesheet -->
   <link rel="stylesheet" href="{{ '/assets/css/master.css' | relative_url }}">
+
+  {% if site.google_analytics and site.google_analytics != "" %}
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics }}');
+  </script>
+  {% endif %}
 </head>

@@ -1,0 +1,13 @@
+/**
+ * Single Article / Page Styles (Aggregator)
+ * Consolidates all single reading page stylesheets:
+ * - header.css: Hero banner, title, metadata bar, breadcrumbs, featured image
+ * - content.css: Article body and layout container
+ * - sidebar.css: Sticky sidebar widgets, profile card, metadata list, channel buttons
+ * - footer.css: Footer navigation and share buttons
+ */
+
+@import url("header.css");
+@import url("content.css");
+@import url("sidebar.css");
+@import url("footer.css");

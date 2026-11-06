@@ -26,7 +26,7 @@ keywords:
   - "Big Data"
 pdf_url: ""
 link: "https://doi.org/10.1000/182"
-image: "/assets/images/publication-bg.jpg"
+image: "https://banabirsebepver.github.io/Academy/assets/images/publication-bg.jpg"
 excerpt: "This article investigates information diffusion in the modern network society through the theoretical foundations of computational communication."
 ---
 

@@ -2,10 +2,10 @@
  * Community Open Analytics & Directory Registration Module
  * (academy.banabirsebepver.com)
  * -------------------------------------------------------------
- * 1. Handles one-time site registration sending profile and index metadata.
- *    Uses local signature caching to guarantee it NEVER repeats.
- * 2. Reports anonymous page views to the central community hub.
- *    Automatically ignores local development/testing environments.
+ * 1. Automatically attaches registration metadata on first visit.
+ * 2. Uses local signature caching to guarantee profile data NEVER repeats.
+ * 3. Reports anonymous page views to the central community hub.
+ * 4. Automatically ignores local development/testing environments.
  */
 
 function computeSignature(str) {
@@ -15,54 +15,6 @@ function computeSignature(str) {
     hash |= 0;
   }
   return 'reg_sig_' + Math.abs(hash);
-}
-
-function handleRegistration(endpoint, registerPath, hostname) {
-  try {
-    const regScript = document.getElementById('academy-registration-data');
-    if (!regScript) return;
-
-    const rawContent = regScript.textContent.trim();
-    if (!rawContent) return;
-
-    const currentSig = computeSignature(rawContent);
-    const storedSig = localStorage.getItem('academy_site_registration_sig');
-
-    // Never repeat registration if signature matches existing stored registration
-    if (storedSig === currentSig) {
-      return;
-    }
-
-    const regData = JSON.parse(rawContent);
-    const payload = {
-      hostname: hostname,
-      registered_at: new Date().toISOString(),
-      profile: regData.profile || {},
-      index_data: regData.index_data || {}
-    };
-
-    const targetUrl = endpoint + registerPath;
-
-    // Send registration payload
-    if (window.fetch) {
-      fetch(targetUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-        keepalive: true,
-        mode: 'no-cors'
-      }).then(function() {
-        localStorage.setItem('academy_site_registration_sig', currentSig);
-      }).catch(function() {
-        localStorage.setItem('academy_site_registration_sig', currentSig);
-      });
-    } else if (navigator.sendBeacon) {
-      navigator.sendBeacon(targetUrl, JSON.stringify(payload));
-      localStorage.setItem('academy_site_registration_sig', currentSig);
-    }
-  } catch (e) {
-    // Non-fatal, fail safely
-  }
 }
 
 export default function initAnalytics() {
@@ -84,14 +36,18 @@ export default function initAnalytics() {
   }
 
   const endpoint = meta.getAttribute('data-endpoint') || 'https://academy.banabirsebepver.com';
-  const trackerPath = meta.getAttribute('data-tracker') || '/api/event';
-  const registerPath = meta.getAttribute('data-register') || '/api/register';
+  const trackerPath = meta.getAttribute('data-tracker') || '/api/event.php';
+  const registerPath = meta.getAttribute('data-register') || '/api/register.php';
 
-  // 1. One-time site registration (guaranteed non-repeating)
-  handleRegistration(endpoint, registerPath, hostname);
+  // Check registration script and signature
+  const regScript = document.getElementById('academy-registration-data');
+  const rawContent = regScript ? regScript.textContent.trim() : '';
+  const currentSig = rawContent ? computeSignature(rawContent) : '';
+  const storageKey = 'academy_site_reg_v3';
+  const isRegistered = Boolean(currentSig && localStorage.getItem(storageKey) === currentSig);
 
-  // 2. Regular anonymous page view event
-  const pagePayload = {
+  // Construct payload
+  const payload = {
     hostname: hostname,
     path: window.location.pathname + window.location.search,
     referrer: document.referrer || '',
@@ -99,22 +55,60 @@ export default function initAnalytics() {
     timestamp: new Date().toISOString()
   };
 
-  try {
-    const targetUrl = endpoint + trackerPath;
-    if (navigator.sendBeacon) {
-      navigator.sendBeacon(targetUrl, JSON.stringify(pagePayload));
-    } else if (window.fetch) {
-      fetch(targetUrl, {
+  // If not yet registered, attach full profile and index metadata
+  let regData = null;
+  if (!isRegistered && rawContent) {
+    try {
+      regData = JSON.parse(rawContent);
+      payload.profile = regData.profile || {};
+      payload.index_data = regData.index_data || {};
+      payload.needs_registration = true;
+    } catch (e) {}
+  }
+
+  // 1. Send to event tracker (which now also auto-registers if profile is attached)
+  const trackerUrl = endpoint + trackerPath;
+  if (window.fetch) {
+    fetch(trackerUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      keepalive: true
+    }).then(function(res) {
+      if (res.ok && payload.needs_registration) {
+        localStorage.setItem(storageKey, currentSig);
+      }
+    }).catch(function() {});
+  } else if (navigator.sendBeacon) {
+    try {
+      const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+      if (navigator.sendBeacon(trackerUrl, blob) && payload.needs_registration) {
+        localStorage.setItem(storageKey, currentSig);
+      }
+    } catch (e) {}
+  }
+
+  // 2. Also send dedicated registration ping if not registered
+  if (!isRegistered && regData) {
+    const regUrl = endpoint + registerPath;
+    const regPayload = {
+      hostname: hostname,
+      registered_at: new Date().toISOString(),
+      profile: regData.profile || {},
+      index_data: regData.index_data || {}
+    };
+
+    if (window.fetch) {
+      fetch(regUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(pagePayload),
-        keepalive: true,
-        mode: 'no-cors'
+        body: JSON.stringify(regPayload),
+        keepalive: true
+      }).then(function(res) {
+        if (res.ok) {
+          localStorage.setItem(storageKey, currentSig);
+        }
       }).catch(function() {});
-    } else {
-      new Image().src = targetUrl + '?h=' + encodeURIComponent(pagePayload.hostname) + '&p=' + encodeURIComponent(pagePayload.path);
     }
-  } catch (err) {
-    // Non-fatal fail-safe
   }
 }

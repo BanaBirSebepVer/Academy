@@ -41,8 +41,8 @@ ai_citation_required: true
 analytics:
   enabled: true
   endpoint: "https://academy.banabirsebepver.com"
-  tracker_path: "/api/event"
-  register_path: "/api/register"
+  tracker_path: "/api/event.php"
+  register_path: "/api/register.php"
   dashboard_url: "https://academy.banabirsebepver.com"
 
 # ==============================================================================

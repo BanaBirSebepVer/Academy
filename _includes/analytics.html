@@ -2,8 +2,8 @@
 <!-- Community Open Analytics Configuration (assets/js/modules/analytics.js) -->
 <meta name="academy-analytics" content="enabled" 
       data-endpoint="{{ site.analytics.endpoint | default: 'https://academy.banabirsebepver.com' }}" 
-      data-tracker="{{ site.analytics.tracker_path | default: '/api/event' }}"
-      data-register="{{ site.analytics.register_path | default: '/api/register' }}">
+      data-tracker="{{ site.analytics.tracker_path | default: '/api/event.php' }}"
+      data-register="{{ site.analytics.register_path | default: '/api/register.php' }}">
 
 {% assign tr_home = site.pages | where: "ref", "home" | where: "lang", "tr" | first %}
 {% assign en_home = site.pages | where: "ref", "home" | where: "lang", "en" | first %}

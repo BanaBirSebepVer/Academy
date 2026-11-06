@@ -7,7 +7,9 @@ layout: default
 {% assign home_page = site.pages | where: "ref", "home" | where: "lang", current_lang | first %}
 {% assign home_url = home_page.url | default: "/" | relative_url %}
 {% assign pub_page = site.pages | where: "ref", "publications" | where: "lang", current_lang | first %}
-{% assign pub_archive_url = pub_page.url | default: "/yayinlar/" | relative_url %}
+{% assign default_pub_url = "/yayinlar/" %}
+{% if current_lang == "en" %}{% assign default_pub_url = "/en/publications/" %}{% endif %}
+{% assign pub_archive_url = pub_page.url | default: default_pub_url | relative_url %}
 
 <div class="fac-page single-publication-page">
   <div id="inside">
@@ -19,9 +21,9 @@ layout: default
           <div class="col-xs-12">
             <!-- Breadcrumbs -->
             <div class="single-breadcrumb">
-              <a href="{{ home_url }}">{{ locale.ui.home | default: "Anasayfa" }}</a>
+              <a href="{{ home_url }}">{{ locale.ui.home | default: "Home" }}</a>
               <span class="single-breadcrumb-separator">/</span>
-              <a href="{{ pub_archive_url }}">{{ locale.ui.publications_title | default: "Yayınlar" }}</a>
+              <a href="{{ pub_archive_url }}">{{ locale.ui.publications_title | default: "Publications" }}</a>
               {% if page.publication_type %}
               <span class="single-breadcrumb-separator">/</span>
               <span class="single-breadcrumb-current">
@@ -86,7 +88,7 @@ layout: default
                         {% if page.author or page.authors %}
                         <tr>
                           <td class="pub-single-meta-label">
-                            {{ locale.ui.author | default: "Yazar(lar)" }}:
+                            {{ locale.ui.author | default: "Author(s)" }}:
                           </td>
                           <td class="pub-single-meta-value">
                             {% if page.authors %}{{ page.authors | join: ", " }}{% else %}{{ page.author }}{% endif %}
@@ -97,7 +99,7 @@ layout: default
                         {% if page.editors and page.editors != "" %}
                         <tr>
                           <td class="pub-single-meta-label">
-                            {{ locale.ui.editors | default: "Editör(ler)" }}:
+                            {{ locale.ui.editors | default: "Editor(s)" }}:
                           </td>
                           <td class="pub-single-meta-value">
                             {{ page.editors }}
@@ -108,7 +110,7 @@ layout: default
                         {% if page.publication_type and page.publication_type != "" %}
                         <tr>
                           <td class="pub-single-meta-label">
-                            {{ locale.ui.publication_type | default: "Tür" }}:
+                            {{ locale.ui.publication_type | default: "Type" }}:
                           </td>
                           <td class="pub-single-meta-value">
                             {{ page.publication_type }}
@@ -119,7 +121,7 @@ layout: default
                         {% if page.journal and page.journal != "" %}
                         <tr>
                           <td class="pub-single-meta-label">
-                            {{ locale.ui.journal_label | default: "Dergi" }}:
+                            {{ locale.ui.journal_label | default: "Journal" }}:
                           </td>
                           <td class="pub-single-meta-value">
                             <em>{{ page.journal }}</em>
@@ -130,7 +132,7 @@ layout: default
                         {% if page.book_title and page.book_title != "" %}
                         <tr>
                           <td class="pub-single-meta-label">
-                            {{ locale.ui.book_source | default: "Kitap / Kaynak" }}:
+                            {{ locale.ui.book_source | default: "Book / Source" }}:
                           </td>
                           <td class="pub-single-meta-value">
                             <em>{{ page.book_title }}</em>
@@ -141,7 +143,7 @@ layout: default
                         {% if page.conference_name and page.conference_name != "" %}
                         <tr>
                           <td class="pub-single-meta-label">
-                            {{ locale.ui.conference | default: "Konferans" }}:
+                            {{ locale.ui.conference | default: "Conference" }}:
                           </td>
                           <td class="pub-single-meta-value">
                             {{ page.conference_name }}
@@ -154,7 +156,7 @@ layout: default
                         {% if page.volume and page.volume != "" %}
                         <tr>
                           <td class="pub-single-meta-label">
-                            {{ locale.ui.volume_issue | default: "Cilt / Sayı" }}:
+                            {{ locale.ui.volume_issue | default: "Volume / Issue" }}:
                           </td>
                           <td class="pub-single-meta-value">
                             {{ page.volume }}{% if page.issue and page.issue != "" %}({{ page.issue }}){% endif %}
@@ -165,7 +167,7 @@ layout: default
                         {% if page.pages and page.pages != "" %}
                         <tr>
                           <td class="pub-single-meta-label">
-                            {{ locale.ui.pages | default: "Sayfa" }}:
+                            {{ locale.ui.pages | default: "Pages" }}:
                           </td>
                           <td class="pub-single-meta-value">
                             {{ page.pages }}
@@ -176,7 +178,7 @@ layout: default
                         {% if page.degree and page.degree != "" %}
                         <tr>
                           <td class="pub-single-meta-label">
-                            {{ locale.ui.degree | default: "Derece" }}:
+                            {{ locale.ui.degree | default: "Degree" }}:
                           </td>
                           <td class="pub-single-meta-value">
                             {{ page.degree }}
@@ -187,7 +189,7 @@ layout: default
                         {% if page.institution and page.institution != "" %}
                         <tr>
                           <td class="pub-single-meta-label">
-                            {{ locale.ui.institution_label | default: "Kurum / Üniversite" }}:
+                            {{ locale.ui.institution_label | default: "Institution / University" }}:
                           </td>
                           <td class="pub-single-meta-value">
                             {{ page.institution }}
@@ -200,7 +202,7 @@ layout: default
                         {% if page.advisor and page.advisor != "" %}
                         <tr>
                           <td class="pub-single-meta-label">
-                            {{ locale.ui.advisor | default: "Tez Danışmanı" }}:
+                            {{ locale.ui.advisor | default: "Advisor / Supervisor" }}:
                           </td>
                           <td class="pub-single-meta-value">
                             {{ page.advisor }}
@@ -211,7 +213,7 @@ layout: default
                         {% if page.publisher and page.publisher != "" %}
                         <tr>
                           <td class="pub-single-meta-label">
-                            {{ locale.ui.publisher | default: "Yayınevi" }}:
+                            {{ locale.ui.publisher | default: "Publisher" }}:
                           </td>
                           <td class="pub-single-meta-value">
                             {{ page.publisher }}{% if page.publisher_place and page.publisher_place != "" %}, {{ page.publisher_place }}{% endif %}
@@ -222,7 +224,7 @@ layout: default
                         {% if page.edition and page.edition != "" %}
                         <tr>
                           <td class="pub-single-meta-label">
-                            {{ locale.ui.edition | default: "Baskı" }}:
+                            {{ locale.ui.edition | default: "Edition" }}:
                           </td>
                           <td class="pub-single-meta-value">
                             {{ page.edition }}
@@ -233,7 +235,7 @@ layout: default
                         {% if page.year %}
                         <tr>
                           <td class="pub-single-meta-label">
-                            {{ locale.ui.year | default: "Yıl" }}:
+                            {{ locale.ui.year | default: "Year" }}:
                           </td>
                           <td class="pub-single-meta-value">
                             {{ page.year }}{% if page.date and page.date != "" %} ({{ page.date }}){% endif %}
@@ -273,7 +275,7 @@ layout: default
                         {% if page.keywords and page.keywords.size > 0 %}
                         <tr>
                           <td class="pub-single-meta-label">
-                            <i class="fa fa-key"></i> {{ locale.ui.keywords | default: "Anahtar Kelimeler" }}:
+                            <i class="fa fa-key"></i> {{ locale.ui.keywords | default: "Keywords" }}:
                           </td>
                           <td class="pub-single-meta-value pub-single-keywords-cell">
                             {% for kw in page.keywords %}
@@ -292,7 +294,7 @@ layout: default
                       {% if page.link %}
                       <a href="{{ page.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-archive-primary">
                         <i class="fa fa-external-link"></i>
-                        {{ locale.ui.read_online | default: "Orijinal Yayına Git" }}
+                        {{ locale.ui.read_online | default: "Read Online / Source" }}
                       </a>
                       {% endif %}
                       {% if page.pdf or page.download_url %}
@@ -317,12 +319,12 @@ layout: default
             <div class="pub-footer-nav single-footer-nav">
               <a href="{{ pub_archive_url }}" class="btn btn-default single-back-btn">
                 <i class="fa fa-arrow-left"></i>
-                {{ locale.ui.all_publications_nav | default: "Tüm Yayınlar" }}
+                {{ locale.ui.all_publications_nav | default: "All Publications" }}
               </a>
 
               <div class="pub-share single-share-bar">
                 <span class="single-share-label">
-                  {{ locale.ui.share | default: "Paylaş" }}:
+                  {{ locale.ui.share | default: "Share" }}:
                 </span>
                 <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Twitter / X">
                   <i class="fa-brands fa-x-twitter"></i>
@@ -344,13 +346,13 @@ layout: default
               
               <!-- Academic Citation Widget (Auto-Generated from Metadata) -->
               <h3 class="sidebar-widget-header">
-                <span><i class="fa fa-quote-left"></i> {{ locale.ui.how_to_cite | default: "Nasıl Atıf Yapılır?" }}</span>
+                <span><i class="fa fa-quote-left"></i> {{ locale.ui.how_to_cite | default: "How to Cite" }}</span>
               </h3>
-              <div class="pub-citation-widget" id="pubCitationWidget" data-copied-text="{{ locale.ui.copied | default: 'Kopyalandı!' }}" data-hint-text="{{ locale.ui.click_to_copy | default: 'Kopyalamak için butona tıklayın' }}">
+              <div class="pub-citation-widget" id="pubCitationWidget" data-copied-text="{{ locale.ui.copied | default: 'Copied!' }}" data-hint-text="{{ locale.ui.click_to_copy | default: 'Click button to copy citation' }}">
                 <div class="pub-cite-instructions">
                   <small class="text-muted">
                     <i class="fa fa-info-circle"></i>
-                    {{ locale.ui.cite_instruction | default: "Görmek için üzerine gelin, kopyalamak için tıklayın:" }}
+                    {{ locale.ui.cite_instruction | default: "Hover to preview, click to copy:" }}
                   </small>
                 </div>
                 <div class="pub-cite-buttons-group" id="pubCiteButtonsGroup">
@@ -395,7 +397,7 @@ layout: default
 
               <!-- Other Publications -->
               <h3 class="sidebar-widget-header">
-                <span><i class="fa fa-book"></i> {{ locale.ui.other_publications | default: "Diğer Yayınlar" }}</span>
+                <span><i class="fa fa-book"></i> {{ locale.ui.other_publications | default: "Other Publications" }}</span>
               </h3>
               <ul class="sidebar-link-list">
                 {% assign other_pubs = site.publications | where: "lang", current_lang | sort: "order" %}

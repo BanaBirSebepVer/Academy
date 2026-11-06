@@ -3,34 +3,36 @@
 {% assign locale = site.data.locales[current_lang] %}
 {% assign lang_slash = "/" | append: current_lang | append: "/" %}
 {% assign lessons_page = site.pages | where: "ref", "lessons" | where: "lang", current_lang | first %}
-{% assign lessons_archive_url = lessons_page.url | default: "/dersler/" | relative_url %}
+{% assign default_lessons_url = "/dersler/" %}
+{% if current_lang == "en" %}{% assign default_lessons_url = "/en/lessons/" %}{% endif %}
+{% assign lessons_archive_url = lessons_page.url | default: default_lessons_url | relative_url %}
 
 <aside class="lesson-sidebar sidebar-sticky-wrap">
 
   <!-- Course Overview Card -->
   <div class="panel panel-default sidebar-widget-card">
     <div class="sidebar-widget-header sidebar-widget-header-dark">
-      <span><i class="fa fa-info-circle"></i> {{ locale.ui.course_info | default: "Ders Bilgileri" }}</span>
+      <span><i class="fa fa-info-circle"></i> {{ locale.ui.course_info | default: "Course Information" }}</span>
     </div>
     <div class="sidebar-widget-body">
       <ul class="sidebar-meta-list">
         {% if page.course_code %}
         <li class="sidebar-meta-row">
-          <span class="sidebar-meta-label">{{ locale.ui.course_code | default: "Ders Kodu" }}:</span>
+          <span class="sidebar-meta-label">{{ locale.ui.course_code | default: "Course Code" }}:</span>
           <strong class="sidebar-meta-value">{{ page.course_code }}</strong>
         </li>
         {% endif %}
 
         {% if page.category %}
         <li class="sidebar-meta-row">
-          <span class="sidebar-meta-label">{{ locale.ui.field_category | default: "Alan" }}:</span>
+          <span class="sidebar-meta-label">{{ locale.ui.field_category | default: "Area" }}:</span>
           <span class="label label-default archive-badge-soft">{{ page.category }}</span>
         </li>
         {% endif %}
 
         <li class="sidebar-meta-row">
-          <span class="sidebar-meta-label">{{ locale.ui.instructor | default: "Öğretim Görevlisi" }}:</span>
-          <strong class="sidebar-meta-value"><i class="fa fa-user"></i>{{ page.instructor | default: site.author | default: "Öğretim Üyesi" }}</strong>
+          <span class="sidebar-meta-label">{{ locale.ui.instructor | default: "Instructor" }}:</span>
+          <strong class="sidebar-meta-value"><i class="fa fa-user"></i>{{ page.instructor | default: site.author | default: "Instructor" }}</strong>
         </li>
 
         {% assign inst_parts = "" | split: "" %}
@@ -46,7 +48,7 @@
 
         {% if inst_parts.size > 0 %}
         <li class="sidebar-meta-row">
-          <span class="sidebar-meta-label">{{ locale.ui.institution | default: "Kurum" }}:</span>
+          <span class="sidebar-meta-label">{{ locale.ui.institution | default: "Institution" }}:</span>
           <span class="sidebar-meta-value">{{ inst_parts | join: ", " }}</span>
         </li>
         {% endif %}
@@ -67,7 +69,7 @@
   {% if has_social %}
   <div class="panel panel-default sidebar-widget-card">
     <div class="sidebar-widget-header">
-      <span><i class="fa fa-comments"></i> {{ locale.ui.course_channels | default: "Ders İletişim Kanalları" }}</span>
+      <span><i class="fa fa-comments"></i> {{ locale.ui.course_channels | default: "Course Channels" }}</span>
     </div>
     <div class="sidebar-widget-body">
       <div class="sidebar-meta-list">
@@ -121,13 +123,13 @@
   {% if page.lecture_notes_url %}
   <div class="panel panel-default material-cta-card">
     <h4>
-      <i class="fa fa-book"></i> {{ locale.ui.lecture_notes | default: "Ders Notları" }}
+      <i class="fa fa-book"></i> {{ locale.ui.lecture_notes | default: "Lecture Notes" }}
     </h4>
     <p>
-      {{ locale.ui.materials_and_notes | default: "Bu derse ait haftalık ders slaytları, okuma metinleri ve dijital materyallere ulaşabilirsiniz." }}
+      {{ locale.ui.materials_and_notes | default: "Lecture notes and materials for this course are available." }}
     </p>
     <a href="{{ page.lecture_notes_url | relative_url }}" class="btn btn-sm btn-block btn-archive-primary">
-      {{ locale.ui.materials_and_notes | default: "Ders Notlarına Git" }} &rarr;
+      {{ locale.ui.go_to_lecture_notes | default: "Go to Lecture Notes" }} &rarr;
     </a>
   </div>
   {% endif %}
@@ -136,7 +138,7 @@
   {% if page.category %}
   <div class="panel panel-default sidebar-widget-card">
     <div class="sidebar-widget-header">
-      <span><i class="fa fa-graduation-cap"></i> {{ locale.ui.related_lessons | default: "Benzer Alandaki Dersler" }}</span>
+      <span><i class="fa fa-graduation-cap"></i> {{ locale.ui.related_lessons | default: "Related Courses" }}</span>
     </div>
     <div class="sidebar-widget-body">
       <ul class="sidebar-link-list">
@@ -165,7 +167,7 @@
       </ul>
       <div class="sidebar-footer-link-wrap">
         <a href="{{ lessons_archive_url }}">
-          {{ locale.ui.view_all_lessons | default: "Tüm Dersleri Gör" }} &rarr;
+          {{ locale.ui.view_all_lessons | default: "View All Courses" }} &rarr;
         </a>
       </div>
     </div>

@@ -39,7 +39,7 @@
       "@type": "ProfilePage",
       "@id": "{{ canonical_url }}#profilepage",
       "url": "{{ canonical_url }}",
-      "name": {{ page.title | default: "Akademik CV" | jsonify }},
+      "name": {{ page.title | default: locale.ui.academic_title | default: "Academic Curriculum Vitae" | jsonify }},
       "description": {{ schema_desc | jsonify }},
       "inLanguage": "{{ current_lang }}",
       "mainEntity": {
@@ -52,12 +52,12 @@
       "name": {{ site_author_name | jsonify }},
       "url": "{{ canonical_url }}",
       "image": "{{ seo_image }}",
-      "jobTitle": "Akademisyen & Araştırmacı",
+      "jobTitle": {{ site.author_role | default: locale.ui.academician_title | default: "Academician & Researcher" | jsonify }},
       "description": {{ schema_desc | jsonify }},
       "worksFor": {
         "@type": "EducationalOrganization",
-        "name": {{ page.institution | default: "Doğu Akdeniz Üniversitesi" | jsonify }},
-        "department": {{ page.department | default: "İletişim Fakültesi" | jsonify }}
+        "name": {{ page.institution | default: site.institution | default: "Sample University" | jsonify }},
+        "department": {{ page.department | default: site.department | default: "Department of Sciences" | jsonify }}
       },
       "sameAs": [
         {% assign sameas_links = "" | split: "" %}
@@ -197,7 +197,7 @@
   {% endif %}
   "provider": {
     "@type": "EducationalOrganization",
-    "name": {{ page.institution | default: "Doğu Akdeniz Üniversitesi" | jsonify }},
+    "name": {{ page.institution | default: site.institution | default: "Sample University" | jsonify }},
     "department": {{ page.faculty | append: ", " | append: page.department | jsonify }}
     {% if page.institution_url and page.institution_url != "" %},"sameAs": {{ page.institution_url | jsonify }}{% endif %}
   },
@@ -208,7 +208,7 @@
   "hasCourseInstance": {
     "@type": "CourseInstance",
     "courseMode": "In-Person",
-    "location": {{ page.institution | default: "Doğu Akdeniz Üniversitesi" | jsonify }}
+    "location": {{ page.institution | default: site.institution | default: "Sample University" | jsonify }}
   }
 }
 

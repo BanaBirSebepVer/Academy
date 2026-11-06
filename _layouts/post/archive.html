@@ -19,10 +19,10 @@ layout: default
           <!-- Page Header Section -->
           <div class="page-header archive-header">
             <h1>
-              {{ page.title | default: locale.ui.posts_title | default: "Yazılar" }}
+              {{ page.title | default: locale.ui.posts_title | default: "Articles" }}
             </h1>
             <p>
-              {{ page.description | default: locale.ui.posts_description | default: "Akademik yazılar, düşünceler, teknoloji ve medya üzerine notlar." }}
+              {{ page.description | default: locale.ui.posts_description | default: "Academic articles, thoughts, technology and research notes." }}
             </p>
           </div>
 
@@ -65,13 +65,13 @@ layout: default
                 <span class="input-group-addon">
                   <i class="fa fa-search"></i>
                 </span>
-                <input type="text" id="postSearchInput" class="form-control" placeholder="{{ locale.ui.search_posts_placeholder | default: 'Yazılarda başlık, konu veya yazar ile ara...' }}">
+                <input type="text" id="postSearchInput" class="form-control" placeholder="{{ locale.ui.search_posts_placeholder | default: 'Search articles by title, topic, or author...' }}">
               </div>
             </div>
             
             <div id="categoryFilter" class="archive-filter-pills">
               <button class="btn btn-sm btn-primary active archive-filter-btn cat-btn" data-cat="all">
-                {{ locale.ui.all_posts | default: "Tümü" }} ({{ all_posts.size }})
+                {{ locale.ui.all_posts | default: "All" }} ({{ all_posts.size }})
               </button>
               {% for category in post_categories %}
                 {% assign cat_count = 0 %}
@@ -91,7 +91,7 @@ layout: default
           {% if all_posts.size == 0 %}
           <div class="archive-empty-state alert alert-info">
             <i class="fa fa-info-circle"></i>
-            {{ locale.ui.empty_posts | default: "Henüz bu dilde yayınlanmış bir yazı bulunmuyor." }}
+            {{ locale.ui.empty_posts | default: "No posts published in this language yet." }}
           </div>
           {% endif %}
 
@@ -156,11 +156,11 @@ layout: default
                     <!-- Footer: Read More & Reading Time -->
                     <div class="archive-card-footer">
                       <a href="{{ post.url | relative_url }}" class="btn btn-sm btn-archive-outline">
-                        {{ locale.ui.read_more | default: "Devamını Oku" }} &rarr;
+                        {{ locale.ui.read_more | default: "Read More" }} &rarr;
                       </a>
                       {% assign words = post.content | number_of_words %}
                       <span class="archive-reading-time">
-                        <i class="fa fa-clock-o"></i> ~{{ words | divided_by: 200 | at_least: 1 }} {% if is_en %}min read{% else %}dk{% endif %}
+                        <i class="fa fa-clock-o"></i> ~{{ words | divided_by: 200 | at_least: 1 }} {{ locale.ui.min_read | default: "min read" }}
                       </span>
                     </div>
 
@@ -173,8 +173,8 @@ layout: default
           <!-- Empty Search Alert -->
           <div id="noPostsMatch" class="archive-no-match">
             <i class="fa fa-newspaper-o"></i>
-            <h4>{{ locale.ui.no_posts_found | default: "Aramanıza uygun yazı bulunamadı." }}</h4>
-            <p>{{ locale.ui.no_posts_found_sub | default: "Lütfen farklı bir arama terimi deneyin veya kategori filtresini temizleyin." }}</p>
+            <h4>{{ locale.ui.no_posts_found | default: "No posts found matching your search." }}</h4>
+            <p>{{ locale.ui.no_posts_found_sub | default: "Please try another search term or clear the category filter." }}</p>
           </div>
 
         </div>

@@ -67,13 +67,15 @@ layout: default
           {% assign sorted_hero_keys = hero_sort_keys | sort %}
 
           {% assign pub_page = site.pages | where: "ref", "publications" | where: "lang", current_lang | first %}
-          {% assign pub_page_url = pub_page.url | default: "/yayinlar/" | relative_url %}
+          {% assign default_pub_url = "/yayinlar/" %}
+          {% if current_lang == "en" %}{% assign default_pub_url = "/en/publications/" %}{% endif %}
+          {% assign pub_page_url = pub_page.url | default: default_pub_url | relative_url %}
 
           {% if sorted_hero_keys.size > 0 %}
           <div class="cv-hero-keywords-cloud">
             <span class="cv-hero-kw-label">
               <i class="fa fa-tags"></i>
-              {{ locale.ui.research_keywords_label | default: "Yayınlardan Derlenen Araştırma Alanları" }}:
+              {{ locale.ui.research_keywords_label | default: "Research Interests / Publication Keywords" }}:
             </span>
             <div class="cv-hero-kw-chips">
               {% for item in sorted_hero_keys limit: 5 %}
@@ -213,7 +215,8 @@ layout: default
   {% assign appointment_keys = "" | split: "" %}
 
   {% for l in lang_lessons %}
-    {% assign l_inst = l.institution | default: "Diğer" | strip %}
+    {% assign default_inst_name = locale.cv.other | default: "Other" %}
+    {% assign l_inst = l.institution | default: default_inst_name | strip %}
 
     {% if l.appointments and l.appointments.size > 0 %}
       {% for ap in l.appointments %}
@@ -290,7 +293,8 @@ layout: default
               {% assign appt_inst_url = nil %}
 
               {% for l in lang_lessons %}
-                {% assign l_inst = l.institution | default: "Diğer" | strip %}
+                {% assign default_inst_name = locale.cv.other | default: "Other" %}
+    {% assign l_inst = l.institution | default: default_inst_name | strip %}
                 {% if l_inst == key_inst %}
                   {% assign lesson_matches = false %}
                   {% if l.appointments and l.appointments.size > 0 %}

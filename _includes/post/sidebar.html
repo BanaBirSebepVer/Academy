@@ -83,24 +83,24 @@
   <!-- Post Details & Metadata Card (from Post itself) -->
   <div class="panel panel-default sidebar-widget-card">
     <div class="sidebar-widget-header">
-      <span><i class="fa fa-info-circle"></i> {{ locale.ui.post_info | default: "Yazı Bilgileri" }}</span>
+      <span><i class="fa fa-info-circle"></i> {{ locale.ui.post_info | default: "Article Information" }}</span>
     </div>
     <div class="sidebar-widget-body">
       <div class="sidebar-meta-list">
         <div>
           <i class="fa fa-calendar-o sidebar-meta-icon"></i>
-          <strong>{{ locale.ui.published_on | default: "Tarih" }}:</strong> {% if is_en %}{{ page.date | date: "%B %d, %Y" }}{% else %}{{ page.date | date: "%d.%m.%Y" }}{% endif %}
+          <strong>{{ locale.ui.published_on | default: "Date" }}:</strong> {% if is_en %}{{ page.date | date: "%B %d, %Y" }}{% else %}{{ page.date | date: "%d.%m.%Y" }}{% endif %}
         </div>
         <div>
           <i class="fa fa-clock-o sidebar-meta-icon"></i>
           {% assign words = page.content | number_of_words %}
           {% assign reading_time = words | divided_by: 200 | at_least: 1 %}
-          <strong>{{ locale.ui.reading_time_label | default: "Okuma Süresi" }}:</strong> ~{{ reading_time }} {{ locale.ui.min_read | default: "dakika" }}
+          <strong>{{ locale.ui.reading_time_label | default: "Reading Time" }}:</strong> ~{{ reading_time }} {{ locale.ui.min_read | default: "min read" }}
         </div>
         {% if page.categories and page.categories.size > 0 %}
         <div>
           <i class="fa fa-folder-open-o sidebar-meta-icon"></i>
-          <strong>{{ locale.ui.category | default: "Kategori" }}:</strong>
+          <strong>{{ locale.ui.category | default: "Category" }}:</strong>
           {% for cat in page.categories %}
           <a href="{{ posts_archive_url | relative_url }}" class="label label-success sidebar-category-badge">{{ cat }}</a>
           {% endfor %}
@@ -109,7 +109,7 @@
         {% if page.tags and page.tags.size > 0 %}
         <div>
           <i class="fa fa-tags sidebar-meta-icon"></i>
-          <strong>{{ locale.ui.tags | default: "Etiketler" }}:</strong>
+          <strong>{{ locale.ui.tags | default: "Tags" }}:</strong>
           <div class="sidebar-tags-container">
             {% for tag in page.tags %}
             <span class="sidebar-tag-item">#{{ tag }}</span>
@@ -128,7 +128,7 @@
     {% if related_posts.size > 0 %}
     <div class="panel panel-default sidebar-widget-card">
       <div class="sidebar-widget-header">
-        <span><i class="fa fa-bookmark-o"></i> {{ locale.ui.related_posts | default: "Benzer Yazılar" }} ({{ primary_cat }})</span>
+        <span><i class="fa fa-bookmark-o"></i> {{ locale.ui.related_posts | default: "Related Posts" }} ({{ primary_cat }})</span>
       </div>
       <div class="sidebar-widget-body">
         <ul class="sidebar-link-list">
@@ -153,7 +153,7 @@
   {% if recent_posts.size > 0 %}
   <div class="panel panel-default sidebar-widget-card">
     <div class="sidebar-widget-header">
-      <span><i class="fa fa-newspaper-o"></i> {{ locale.ui.latest_posts | default: "Son Yazılar" }}</span>
+      <span><i class="fa fa-newspaper-o"></i> {{ locale.ui.latest_posts | default: "Recent Posts" }}</span>
     </div>
     <div class="sidebar-widget-body">
       <ul class="sidebar-link-list">
@@ -193,8 +193,8 @@
   {% if unique_cats.size > 0 %}
   <div class="panel panel-default sidebar-widget-card">
     <div class="sidebar-widget-header">
-      <span><i class="fa fa-folder-open"></i> {{ locale.ui.categories | default: "Kategoriler" }}</span>
-      <a href="{{ posts_archive_url | relative_url }}" class="sidebar-link-anchor">{{ locale.ui.view_all | default: "Tümünü Gör" }} &rarr;</a>
+      <span><i class="fa fa-folder-open"></i> {{ locale.ui.categories | default: "Categories" }}</span>
+      <a href="{{ posts_archive_url | relative_url }}" class="sidebar-link-anchor">{{ locale.ui.view_all | default: "View All" }} &rarr;</a>
     </div>
     <div class="sidebar-widget-body">
       <ul class="sidebar-link-list">

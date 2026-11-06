@@ -15,6 +15,7 @@ cv:
   languages: "Languages"
   workshops: "Workshops"
   pub_year: "Publication year"
+  other: "Other"
   academic_tiers:
     - title: "Lecturer"
       start_year: "2022"
@@ -165,6 +166,18 @@ ui:
   project_role: "Role"
   project_organization: "Organization / Initiative"
   project_period: "Period"
+  project_summary: "Project Overview"
+  all_projects_nav: "All Projects"
+  other_projects: "Other Projects"
+  visit_project: "Visit Project"
+  project_scope_goals: "Project Scope & Objectives"
+  level: "Level"
+  status: "Status"
+  period: "Period"
+  details: "Details"
+  academician_title: "Academician & Researcher"
+  go_to_lecture_notes: "Go to Lecture Notes"
+  lecture_notes_page: "Lecture Notes Page"
 
   # Contact & Profile
   contact_info: "Contact Information"

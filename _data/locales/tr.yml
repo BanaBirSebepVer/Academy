@@ -15,6 +15,7 @@ cv:
   languages: "Lisanlar"
   workshops: "Atölyeler"
   pub_year: "Yayın yılı"
+  other: "Diğer"
   academic_tiers:
     - title: "Öğretim Görevlisi"
       start_year: "2022"
@@ -165,6 +166,18 @@ ui:
   project_role: "Görev"
   project_organization: "Kurum / İnisiyatif"
   project_period: "Dönem"
+  project_summary: "Proje Künyesi"
+  all_projects_nav: "Tüm Projeler"
+  other_projects: "Diğer Projeler"
+  visit_project: "Projeyi Ziyaret Et"
+  project_scope_goals: "Proje Kapsamı ve Hedefleri"
+  level: "Seviye"
+  status: "Durum"
+  period: "Dönem"
+  details: "Bilgiler"
+  academician_title: "Akademisyen & Araştırmacı"
+  go_to_lecture_notes: "Ders Notlarına Git"
+  lecture_notes_page: "Ders Notları Sayfası"
 
   # Contact & Profile
   contact_info: "İletişim Bilgileri"

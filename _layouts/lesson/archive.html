@@ -165,15 +165,15 @@ layout: default
                     </p>
                     {% endif %}
                     <div class="archive-card-desc">
-                      {{ lesson.description | default: "Ders içeriği, haftalık izlence, proje isterleri ve notlandırma kriterleri." }}
+                      {{ lesson.description | default: locale.ui.course_content | default: "Course description, syllabus, and grading criteria." }}
                     </div>
                     <div class="archive-card-footer">
                       <a href="{{ lesson.url | relative_url }}" class="btn btn-sm btn-archive-primary">
-                        {{ locale.ui.view_syllabus | default: "Müfredatı İncele" }} &rarr;
+                        {{ locale.ui.view_syllabus | default: "View Syllabus" }} &rarr;
                       </a>
                       {% if lesson.lecture_notes_url %}
                       <a href="{{ lesson.lecture_notes_url | relative_url }}" class="btn btn-sm btn-default">
-                        <i class="fa fa-book"></i> {{ locale.ui.lecture_notes | default: "Ders Notları" }}
+                        <i class="fa fa-book"></i> {{ locale.ui.lecture_notes | default: "Lecture Notes" }}
                       </a>
                       {% endif %}
                     </div>
@@ -188,8 +188,8 @@ layout: default
 
       <div id="noLessonsMatch" class="archive-no-match">
         <i class="fa fa-graduation-cap"></i>
-        <h4>{{ locale.ui.no_lessons_found | default: "Aramanıza uygun ders bulunamadı." }}</h4>
-        <p>{{ locale.ui.no_lessons_found_sub | default: "Lütfen farklı bir arama terimi deneyin veya filtreleri temizleyin." }}</p>
+        <h4>{{ locale.ui.no_lessons_found | default: "No courses matched your search." }}</h4>
+        <p>{{ locale.ui.no_lessons_found_sub | default: "Please try another search keyword or clear active filters." }}</p>
       </div>
 
     </div>

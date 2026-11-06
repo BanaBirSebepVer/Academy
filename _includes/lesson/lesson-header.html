@@ -2,7 +2,9 @@
 {% assign current_lang = page.lang | default: site.default_lang %}
 {% assign locale = site.data.locales[current_lang] %}
 {% assign lessons_page = site.pages | where: "ref", "lessons" | where: "lang", current_lang | first %}
-{% assign lessons_archive_url = lessons_page.url | default: "/dersler/" | relative_url %}
+{% assign default_lessons_url = "/dersler/" %}
+{% if current_lang == "en" %}{% assign default_lessons_url = "/en/lessons/" %}{% endif %}
+{% assign lessons_archive_url = lessons_page.url | default: default_lessons_url | relative_url %}
 
 <div class="lesson-hero single-hero-header">
   <div class="lesson-breadcrumb single-breadcrumb">
@@ -39,16 +41,16 @@
   {% endif %}
 
   <div class="lesson-meta-bar single-hero-meta-bar">
-    <span><i class="fa fa-user"></i> {{ locale.ui.instructor | default: "Öğretim Görevlisi" }}: <strong>{{ page.instructor | default: site.author | default: "Öğretim Üyesi" }}</strong></span>
+    <span><i class="fa fa-user"></i> {{ locale.ui.instructor | default: "Instructor" }}: <strong>{{ page.instructor | default: site.author | default: "Instructor" }}</strong></span>
     {% if page.category %}
-    <span><i class="fa fa-folder-open"></i> {{ locale.ui.field_category | default: "Alan" }}: {{ page.category }}</span>
+    <span><i class="fa fa-folder-open"></i> {{ locale.ui.field_category | default: "Area" }}: {{ page.category }}</span>
     {% endif %}
     {% if page.term %}
-    <span><i class="fa fa-calendar"></i> {{ locale.ui.term | default: "Dönem" }}: {{ page.term }}</span>
+    <span><i class="fa fa-calendar"></i> {{ locale.ui.term | default: "Semester" }}: {{ page.term }}</span>
     {% endif %}
     {% if page.lecture_notes_url %}
     <a href="{{ page.lecture_notes_url | relative_url }}" class="btn btn-sm btn-archive-primary lesson-timetable-cta">
-      <i class="fa fa-book"></i> {{ locale.ui.materials_and_notes | default: "Ders Notları & Materyalleri" }} &rarr;
+      <i class="fa fa-book"></i> {{ locale.ui.materials_and_notes | default: "Lecture Notes & Materials" }} &rarr;
     </a>
     {% endif %}
   </div>
@@ -66,12 +68,12 @@
   {% if has_social %}
   <div class="lesson-channels-bar">
     <span class="lesson-channels-title">
-      <i class="fa fa-comments"></i> {{ locale.ui.course_channels | default: "İletişim & Ders Kanalları" }}:
+      <i class="fa fa-comments"></i> {{ locale.ui.course_channels | default: "Course Channels" }}:
     </span>
 
     {% if page.discord and page.discord != "" %}
     <a href="{{ page.discord }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-discord">
-      <i class="fa-brands fa-discord"></i> Discord Kanalı
+      <i class="fa-brands fa-discord"></i> Discord
     </a>
     {% endif %}
 
@@ -83,7 +85,7 @@
 
     {% if page.whatsapp and page.whatsapp != "" %}
     <a href="{{ page.whatsapp }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-whatsapp">
-      <i class="fa-brands fa-whatsapp"></i> WhatsApp Grubu
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp
     </a>
     {% endif %}
 
@@ -107,7 +109,7 @@
 
     {% if page.email and page.email != "" %}
     <a href="mailto:{{ page.email }}" class="btn btn-xs btn-channel btn-email">
-      <i class="fa fa-envelope"></i> E-posta
+      <i class="fa fa-envelope"></i> {{ locale.ui.email | default: "Email" }}
     </a>
     {% endif %}
   </div>

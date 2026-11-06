@@ -13,7 +13,7 @@ layout: default
       <!-- Header Section -->
       <div class="page-header archive-header">
         <h1>
-          {{ page.title | default: locale.ui.publications_title | default: "Yayınlar" }}
+          {{ page.title | default: locale.ui.publications_title | default: "Publications" }}
         </h1>
         {% if page.description %}
         <p>
@@ -86,7 +86,7 @@ layout: default
             <span class="input-group-addon">
               <i class="fa fa-search"></i>
             </span>
-            <input type="text" id="publicationSearchInput" class="form-control" placeholder="{{ locale.ui.search_publications_placeholder | default: 'Başlık, yazar, atıf, yıl veya anahtar kelime ile ara...' }}">
+            <input type="text" id="publicationSearchInput" class="form-control" placeholder="{{ locale.ui.search_publications_placeholder | default: 'Search by title, author, year, citation or keyword...' }}">
           </div>
         </div>
 
@@ -96,11 +96,11 @@ layout: default
           <div class="pub-keyword-cloud-header">
             <span class="pub-keyword-cloud-title">
               <i class="fa fa-tags"></i>
-              {{ locale.ui.keywords_cloud_title | default: "Araştırma Alanları & Anahtar Kelime Bulutu" }}
+              {{ locale.ui.keywords_cloud_title | default: "Research Keywords & Topic Cloud" }}
             </span>
             <div class="pub-keyword-cloud-actions">
               <button type="button" id="clearKeywordFilterBtn" class="btn btn-xs btn-default pub-clear-kw-btn" style="display: none;">
-                <i class="fa fa-times"></i> {{ locale.ui.clear_filter | default: "Filtreyi Temizle" }}
+                <i class="fa fa-times"></i> {{ locale.ui.clear_filter | default: "Clear Filter" }}
               </button>
             </div>
           </div>
@@ -126,10 +126,10 @@ layout: default
           <div id="activeKeywordBanner" class="pub-active-keyword-banner" style="display: none;">
             <span class="pub-active-kw-label">
               <i class="fa fa-filter"></i>
-              {{ locale.ui.filtered_by_keyword | default: "Seçili Anahtar Kelime:" }}
+              {{ locale.ui.filtered_by_keyword | default: "Filtered by Keyword:" }}
             </span>
             <span id="activeKeywordText" class="badge badge-primary pub-active-kw-badge"></span>
-            <button type="button" class="btn btn-link btn-xs pub-reset-kw-inline" id="resetKeywordInline" title="{{ locale.ui.remove_keyword_filter | default: 'Filtreyi kaldır' }}">
+            <button type="button" class="btn btn-link btn-xs pub-reset-kw-inline" id="resetKeywordInline" title="{{ locale.ui.remove_keyword_filter | default: 'Remove keyword filter' }}">
               <i class="fa fa-times"></i>
             </button>
           </div>
@@ -139,7 +139,7 @@ layout: default
         <!-- Type Filter Buttons -->
         <div id="pubTypeFilterButtons" class="archive-filter-pills">
           <button class="btn btn-sm btn-primary active archive-filter-btn pub-filter-btn pub-cat-btn" data-type="all">
-            {{ locale.ui.all_publications | default: "Tümü" }} ({{ all_publications.size }})
+            {{ locale.ui.all_publications | default: "All" }} ({{ all_publications.size }})
           </button>
           {% for ptype in all_types %}
             {% assign type_slug = ptype | slugify %}
@@ -210,7 +210,7 @@ layout: default
                     <!-- Keywords -->
                     {% if pub.keywords and pub.keywords.size > 0 %}
                     <div class="pub-card-keywords">
-                      <span class="pub-card-kw-label"><i class="fa fa-key"></i> {{ locale.ui.keywords | default: "Anahtar Kelimeler" }}:</span>
+                      <span class="pub-card-kw-label"><i class="fa fa-key"></i> {{ locale.ui.keywords | default: "Keywords" }}:</span>
                       {% for kw in pub.keywords %}
                         <button type="button" class="pub-card-kw-btn" data-keyword="{{ kw | escape }}" title="{{ kw }}">
                           #{{ kw }}
@@ -222,12 +222,12 @@ layout: default
                     <!-- Action Links -->
                     <div class="pub-actions-row">
                       <a href="{{ pub.url | relative_url }}" class="btn btn-sm btn-archive-primary">
-                        {{ locale.ui.view_publication_details | default: "Detayları İncele" }} &rarr;
+                        {{ locale.ui.view_publication_details | default: "View Details" }} &rarr;
                       </a>
                       {% if pub.link %}
                       <a href="{{ pub.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-default">
                         <i class="fa fa-external-link"></i>
-                        {{ locale.ui.original_link | default: "Orijinal Bağlantı" }}
+                        {{ locale.ui.original_link | default: "Original Link" }}
                       </a>
                       {% endif %}
                       {% if pub.pdf or pub.download_url %}
@@ -253,10 +253,10 @@ layout: default
       <div id="noPubsMatch" class="archive-no-match">
         <i class="fa fa-book"></i>
         <h4>
-          {{ locale.ui.no_publications_found | default: "Aramanıza uygun yayın bulunamadı." }}
+          {{ locale.ui.no_publications_found | default: "No publications found matching your search." }}
         </h4>
         <p>
-          {{ locale.ui.no_publications_found_sub | default: "Lütfen farklı bir arama terimi deneyin veya filtreleri temizleyin." }}
+          {{ locale.ui.no_publications_found_sub | default: "Please try another search term or reset filters." }}
         </p>
       </div>
 

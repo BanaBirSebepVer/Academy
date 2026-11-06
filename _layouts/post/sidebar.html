@@ -59,10 +59,10 @@ layout: default
 
                 <div class="post-footer-nav single-footer-nav">
                   <a href="{{ posts_archive_url | relative_url }}" class="btn btn-default single-back-btn">
-                    <i class="fa fa-arrow-left"></i> {{ locale.ui.all_posts_nav | default: "Tüm Yazılar" }}
+                    <i class="fa fa-arrow-left"></i> {{ locale.ui.all_posts_nav | default: "All Posts" }}
                   </a>
                   <div class="post-share single-share-bar">
-                    <span class="single-share-label">{{ locale.ui.share | default: "Paylaş" }}:</span>
+                    <span class="single-share-label">{{ locale.ui.share | default: "Share" }}:</span>
                     <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
                     <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
                     <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Facebook"><i class="fa-brands fa-facebook"></i></a>

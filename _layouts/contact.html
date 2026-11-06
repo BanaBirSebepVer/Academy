@@ -63,7 +63,7 @@ layout: default
             <div class="contact-icon-wrapper">
               <i class="{{ office.icon | default: 'fa fa-university' }}"></i>
             </div>
-            <h3 class="contact-card-title">{{ office.title | default: "Academic Office & Mailing Address" }}</h3>
+            <h3 class="contact-card-title">{{ office.title | default: locale.ui.office_address | default: "Academic Office & Mailing Address" }}</h3>
             
             <div class="contact-card-text" itemprop="workLocation" itemscope itemtype="https://schema.org/Place">
               {% if office.institution %}
@@ -109,7 +109,7 @@ layout: default
             <div class="contact-icon-wrapper">
               <i class="{{ messaging.icon | default: 'fa fa-comments' }}"></i>
             </div>
-            <h3 class="contact-card-title">{{ messaging.title | default: "Direct Contact & Instant Messaging" }}</h3>
+            <h3 class="contact-card-title">{{ messaging.title | default: locale.ui.direct_contact | default: "Direct Contact & Instant Messaging" }}</h3>
             
             {% if messaging.description %}
             <p class="contact-card-text">{{ messaging.description }}</p>
@@ -157,7 +157,7 @@ layout: default
             <div class="contact-icon-wrapper">
               <i class="{{ email_sec.icon | default: 'fa fa-envelope' }}"></i>
             </div>
-            <h3 class="contact-card-title">{{ email_sec.title | default: "Email & Academic Inquiries" }}</h3>
+            <h3 class="contact-card-title">{{ email_sec.title | default: locale.ui.email | default: "Email & Academic Inquiries" }}</h3>
             
             {% if email_sec.description %}
             <p class="contact-card-text">{{ email_sec.description }}</p>
@@ -264,12 +264,12 @@ layout: default
             <div class="contact-map-header">
               <h3 class="contact-map-title">
                 <i class="{{ map.icon | default: 'fa fa-map-marker' }}"></i>
-                <span>{{ map.title | default: "Campus Location & Directions" }}</span>
+                <span>{{ map.title | default: locale.ui.campus_location | default: "Campus Location & Directions" }}</span>
               </h3>
               {% if map.map_url %}
               <div class="contact-map-action">
                 <a href="{{ map.map_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs">
-                  <span>{{ map.button_text | default: "Open in Google Maps" }}</span>
+                  <span>{{ map.button_text | default: locale.ui.view_online | default: "Open in Google Maps" }}</span>
                   <i class="fa fa-external-link"></i>
                 </a>
               </div>

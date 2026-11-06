@@ -35,6 +35,16 @@ languages: ["tr", "en"]
 # Standard robots.txt with mandatory citation requirements is served at /robots.txt
 ai_citation_required: true
 
+# 5. Community Open Analytics
+# Anonymously shares page visit counts to the public dashboard at academy.banabirsebepver.com.
+# Set enabled: false to disable all tracking.
+analytics:
+  enabled: true
+  endpoint: "https://academy.banabirsebepver.com"
+  tracker_path: "/api/event"
+  register_path: "/api/register"
+  dashboard_url: "https://academy.banabirsebepver.com"
+
 # ==============================================================================
 # FRAMEWORK & ARCHITECTURE SETTINGS (No need to edit below this line)
 # ==============================================================================

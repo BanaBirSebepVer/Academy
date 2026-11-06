@@ -13,6 +13,7 @@ import initArchive, { initFlexMasonry } from './modules/archive.js';
 import initNetwork from './modules/network.js';
 import initSchema from './modules/schema.js';
 import initContact from './modules/contact/index.js';
+import initAnalytics from './modules/analytics.js';
 
 function initAll() {
   if (typeof initNavigation === 'function') initNavigation();
@@ -25,6 +26,7 @@ function initAll() {
   if (typeof initNetwork === 'function') initNetwork();
   if (typeof initSchema === 'function') initSchema();
   if (typeof initContact === 'function') initContact();
+  if (typeof initAnalytics === 'function') initAnalytics();
 }
 
 if (document.readyState === 'loading') {
@@ -44,5 +46,6 @@ export {
   initNetwork,
   initSchema,
   initContact,
+  initAnalytics,
   initFlexMasonry
 };

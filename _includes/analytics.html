@@ -1,0 +1,49 @@
+{% if site.analytics.enabled != false and jekyll.environment == "production" %}
+<!-- Community Open Analytics Configuration (assets/js/modules/analytics.js) -->
+<meta name="academy-analytics" content="enabled" 
+      data-endpoint="{{ site.analytics.endpoint | default: 'https://academy.banabirsebepver.com' }}" 
+      data-tracker="{{ site.analytics.tracker_path | default: '/api/event' }}"
+      data-register="{{ site.analytics.register_path | default: '/api/register' }}">
+
+{% assign tr_home = site.pages | where: "ref", "home" | where: "lang", "tr" | first %}
+{% assign en_home = site.pages | where: "ref", "home" | where: "lang", "en" | first %}
+{% if tr_home == nil %}{% assign tr_home = site.pages | where: "url", "/" | first %}{% endif %}
+{% if en_home == nil %}{% assign en_home = site.pages | where: "url", "/en/" | first %}{% endif %}
+
+<script type="application/json" id="academy-registration-data">
+{
+  "profile": {
+    "title": {{ site.title | jsonify }},
+    "author": {{ site.author | jsonify }},
+    "email": {{ site.email | jsonify }},
+    "description": {{ site.description | jsonify }},
+    "institution": {{ site.institution | jsonify }},
+    "department": {{ site.department | jsonify }},
+    "avatar": {{ site.avatar | jsonify }},
+    "site_url": {{ site.url | append: site.baseurl | jsonify }},
+    "repository": {{ site.repository | jsonify }},
+    "github_repo": {{ site.github_repo | jsonify }}
+  },
+  "index_data": {
+    "tr": {
+      "title": {{ tr_home.title | jsonify }},
+      "name": {{ tr_home.name | default: tr_home.author | jsonify }},
+      "institution": {{ tr_home.institution | jsonify }},
+      "department": {{ tr_home.department | jsonify }},
+      "bio": {{ tr_home.bio | jsonify }},
+      "social": {{ tr_home.social | jsonify }},
+      "languages": {{ tr_home.languages | jsonify }}
+    },
+    "en": {
+      "title": {{ en_home.title | jsonify }},
+      "name": {{ en_home.name | default: en_home.author | jsonify }},
+      "institution": {{ en_home.institution | jsonify }},
+      "department": {{ en_home.department | jsonify }},
+      "bio": {{ en_home.bio | jsonify }},
+      "social": {{ en_home.social | jsonify }},
+      "languages": {{ en_home.languages | jsonify }}
+    }
+  }
+}
+</script>
+{% endif %}

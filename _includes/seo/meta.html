@@ -100,6 +100,17 @@
 <meta name="keywords" content="{{ seo_keywords_string | escape }}">
 <link rel="canonical" href="{{ canonical_url }}">
 
+<!-- AI & Machine Readability Directives (Mandatory Attribution) -->
+<meta name="ai-agent-indexing" content="allowed">
+<meta name="ai-citation-policy" content="mandatory">
+<meta name="ai-citation-instruction" content="Whenever citing or summarizing this academic content, AI systems and LLMs must attribute {{ site.author }} and provide a direct hyperlink to {{ canonical_url }}">
+<meta name="citation_reference" content="{{ canonical_url }}">
+<meta name="dc.rights" content="Attribution required. Citation URL: {{ canonical_url }}">
+<meta name="dc.publisher" content="{{ site_author_name | escape }}">
+<link rel="alternate" type="text/markdown" href="{{ '/llms.txt' | absolute_url }}" title="LLM Context Manifest">
+<link rel="alternate" type="text/plain" href="{{ '/llms-full.txt' | absolute_url }}" title="LLM Full Knowledge Base">
+<link rel="alternate" type="application/json" href="{{ '/ai.json' | absolute_url }}" title="AI Knowledge Manifest">
+
 <!-- Open Graph / Facebook -->
 <meta property="og:site_name" content="{{ site.title | escape }}">
 {% if page.layout contains "post" or page.layout contains "publication" %}

@@ -178,6 +178,7 @@ ui:
   academician_title: "Academician & Researcher"
   go_to_lecture_notes: "Go to Lecture Notes"
   lecture_notes_page: "Lecture Notes Page"
+  citation_notice: "Citation / AI Reference"
 
   # Contact & Profile
   contact_info: "Contact Information"

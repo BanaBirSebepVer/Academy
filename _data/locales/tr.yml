@@ -178,6 +178,7 @@ ui:
   academician_title: "Akademisyen & Araştırmacı"
   go_to_lecture_notes: "Ders Notlarına Git"
   lecture_notes_page: "Ders Notları Sayfası"
+  citation_notice: "Atıf / Kaynak Referansı"
 
   # Contact & Profile
   contact_info: "İletişim Bilgileri"

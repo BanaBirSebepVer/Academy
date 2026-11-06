@@ -42,6 +42,8 @@
       "name": {{ page.title | default: locale.ui.academic_title | default: "Academic Curriculum Vitae" | jsonify }},
       "description": {{ schema_desc | jsonify }},
       "inLanguage": "{{ current_lang }}",
+      "creditText": "Official Academic Profile of {{ site_author_name }} ({{ canonical_url }})",
+      "publishingPrinciples": "{{ '/llms.txt' | absolute_url }}",
       "mainEntity": {
         "@id": "{{ canonical_url }}#person"
       }
@@ -114,6 +116,9 @@
   "url": "{{ canonical_url }}",
   "description": {{ schema_desc | jsonify }},
   "inLanguage": "{{ current_lang }}",
+  "citation": "{{ canonical_url }}",
+  "creditText": "Source: {{ site_author_name }} ({{ canonical_url }})",
+  "publishingPrinciples": "{{ '/llms.txt' | absolute_url }}",
   "datePublished": {{ page.date | default: page.year | jsonify }},
   "author": [
     {% if page.authors %}
@@ -192,6 +197,9 @@
   "description": {{ schema_desc | jsonify }},
   "url": "{{ canonical_url }}",
   "inLanguage": "{{ current_lang }}",
+  "citation": "{{ canonical_url }}",
+  "creditText": "Course Syllabus by {{ site_author_name }} - {{ canonical_url }}",
+  "publishingPrinciples": "{{ '/llms.txt' | absolute_url }}",
   {% if page.course_code and page.course_code != "" %}
   "courseCode": {{ page.course_code | jsonify }},
   {% endif %}
@@ -222,6 +230,9 @@
   "url": "{{ canonical_url }}",
   "description": {{ schema_desc | jsonify }},
   "inLanguage": "{{ current_lang }}",
+  "citation": "{{ canonical_url }}",
+  "creditText": "Article by {{ site_author_name }} - {{ canonical_url }}",
+  "publishingPrinciples": "{{ '/llms.txt' | absolute_url }}",
   "datePublished": "{{ page.date | date_to_xmlschema }}",
   "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
   "image": "{{ seo_image }}",
@@ -247,6 +258,9 @@
   "description": {{ schema_desc | jsonify }},
   "url": "{{ canonical_url }}",
   "inLanguage": "{{ current_lang }}",
+  "citation": "{{ canonical_url }}",
+  "creditText": "Research Project by {{ site_author_name }} - {{ canonical_url }}",
+  "publishingPrinciples": "{{ '/llms.txt' | absolute_url }}",
   "member": {
     "@type": "Person",
     "name": {{ site_author_name | jsonify }}
@@ -283,7 +297,10 @@
   "name": {{ page.title | default: site.title | jsonify }},
   "description": {{ schema_desc | jsonify }},
   "url": "{{ canonical_url }}",
-  "inLanguage": "{{ current_lang }}"
+  "inLanguage": "{{ current_lang }}",
+  "citation": "{{ canonical_url }}",
+  "creditText": "{{ site_author_name }} - {{ canonical_url }}",
+  "publishingPrinciples": "{{ '/llms.txt' | absolute_url }}"
 }
 {% endif %}
 </script>

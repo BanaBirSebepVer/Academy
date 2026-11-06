@@ -118,6 +118,14 @@
             </div>
             {% endif %}
 
+            <!-- Authoritative Citation & AI Reference Notice -->
+            <div class="ai-citation-reference" itemprop="citation" style="margin-top: 20px; margin-bottom: 15px; padding: 10px 15px; background: #fafafa; border-left: 3px solid #0056b3; border-radius: 3px;">
+              <small class="text-muted">
+                <i class="fa fa-quote-left"></i> <strong>{{ locale.ui.citation_notice | default: "Citation / AI Reference" }}:</strong>
+                {{ site.author }}, "{{ page.title }}", {{ site.institution }}. URL: <a href="{{ page.url | absolute_url }}">{{ page.url | absolute_url }}</a>
+              </small>
+            </div>
+
             <!-- Footer Navigation & Social Share -->
             <div class="single-footer-nav folder-single-footer-nav">
               <a href="{{ parent_url }}" class="btn btn-default single-back-btn">

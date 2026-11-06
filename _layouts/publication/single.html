@@ -315,6 +315,14 @@ layout: default
               {{ content }}
             </div>
 
+            <!-- Authoritative Citation & AI Reference Notice -->
+            <div class="ai-citation-reference" itemprop="citation" style="margin-top: 20px; margin-bottom: 15px; padding: 10px 15px; background: #fafafa; border-left: 3px solid #0056b3; border-radius: 3px;">
+              <small class="text-muted">
+                <i class="fa fa-quote-left"></i> <strong>{{ locale.ui.citation_notice | default: "Citation / AI Reference" }}:</strong>
+                {{ page.author | default: site.author }}, "{{ page.title }}", {{ page.year }}{% if page.journal %}, <em>{{ page.journal }}</em>{% endif %}. URL: <a href="{{ page.url | absolute_url }}">{{ page.url | absolute_url }}</a>
+              </small>
+            </div>
+
             <!-- Footer Navigation & Sharing -->
             <div class="pub-footer-nav single-footer-nav">
               <a href="{{ pub_archive_url }}" class="btn btn-default single-back-btn">

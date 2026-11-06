@@ -29,6 +29,12 @@ favicon: "/assets/images/favicon.ico"
 default_lang: "tr"
 languages: ["tr", "en"]
 
+# 4. AI & Machine Readability
+# Automated LLM context manifest is served at /llms.txt and /llms-full.txt
+# Structured AI knowledge endpoint is served at /ai.json
+# Standard robots.txt with mandatory citation requirements is served at /robots.txt
+ai_citation_required: true
+
 # ==============================================================================
 # FRAMEWORK & ARCHITECTURE SETTINGS (No need to edit below this line)
 # ==============================================================================

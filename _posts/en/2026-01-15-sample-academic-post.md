@@ -8,7 +8,7 @@ author: "akademisyen"
 categories: ["Academia", "Open Science"]
 tags: ["Open Access", "Research Methods", "Digital Scholarship"]
 excerpt: "Digital technologies are driving a fundamental paradigm shift in how scholarly knowledge is produced, verified, and shared openly with the global community."
-featured_image: "/assets/images/publication-bg.jpg"
+featured_image: "https://banabirsebepver.github.io/Academy/assets/images/publication-bg.jpg"
 ---
 
 The production and dissemination of academic knowledge in the digital era are rapidly moving from closed subscription models toward an open-access, reproducible research ecosystem.

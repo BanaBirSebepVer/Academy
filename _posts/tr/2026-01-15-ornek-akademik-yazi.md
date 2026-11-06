@@ -8,7 +8,7 @@ author: "akademisyen"
 categories: ["Akademi", "Açık Bilim"]
 tags: ["Açık Erişim", "Araştırma Yöntemleri", "Dijital Akademi"]
 excerpt: "Dijital teknolojiler, akademik bilginin üretimi, doğrulanması ve kamuya açık şekilde paylaşılmasında köklü bir paradigma değişimine öncülük ediyor."
-featured_image: "/assets/images/publication-bg.jpg"
+featured_image: "https://banabirsebepver.github.io/Academy/assets/images/publication-bg.jpg"
 ---
 
 Dijital çağda akademik bilginin üretimi ve dolaşımı, geleneksel kapalı yayıncılık modellerinden hızla açık erişim ve tekrarlanabilir araştırma ekosistemine doğru evrilmektedir. 

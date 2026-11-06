@@ -1,9 +1,11 @@
-{% if site.analytics.enabled != false and jekyll.environment == "production" %}
+{% if site.analytics.enabled != false %}
 <!-- Community Open Analytics Configuration (assets/js/modules/analytics.js) -->
 <meta name="academy-analytics" content="enabled" 
       data-endpoint="{{ site.analytics.endpoint | default: 'https://academy.banabirsebepver.com' }}" 
       data-tracker="{{ site.analytics.tracker_path | default: '/api/event.php' }}"
-      data-register="{{ site.analytics.register_path | default: '/api/register.php' }}">
+      data-register="{{ site.analytics.register_path | default: '/api/register.php' }}"
+      data-baseurl="{{ site.baseurl }}"
+      data-site-url="{{ site.url | append: site.baseurl }}">
 
 {% assign tr_home = site.pages | where: "ref", "home" | where: "lang", "tr" | first %}
 {% assign en_home = site.pages | where: "ref", "home" | where: "lang", "en" | first %}
@@ -13,33 +15,33 @@
 <script type="application/json" id="academy-registration-data">
 {
   "profile": {
-    "title": {{ site.title | jsonify }},
-    "author": {{ site.author | jsonify }},
-    "email": {{ site.email | jsonify }},
-    "description": {{ site.description | jsonify }},
-    "institution": {{ site.institution | jsonify }},
-    "department": {{ site.department | jsonify }},
-    "avatar": {{ site.avatar | jsonify }},
-    "site_url": {{ site.url | append: site.baseurl | jsonify }},
-    "repository": {{ site.repository | jsonify }},
-    "github_repo": {{ site.github_repo | jsonify }}
+    "title": {{ site.title | default: "" | jsonify }},
+    "author": {{ site.author | default: site.title | default: "" | jsonify }},
+    "email": {{ site.email | default: "" | jsonify }},
+    "description": {{ site.description | default: "" | jsonify }},
+    "institution": {{ site.institution | default: "" | jsonify }},
+    "department": {{ site.department | default: "" | jsonify }},
+    "avatar": {{ site.avatar | default: "" | jsonify }},
+    "site_url": {{ site.url | default: "" | append: site.baseurl | jsonify }},
+    "repository": {{ site.repository | default: "" | jsonify }},
+    "github_repo": {{ site.github_repo | default: "" | jsonify }}
   },
   "index_data": {
     "tr": {
-      "title": {{ tr_home.title | jsonify }},
-      "name": {{ tr_home.name | default: tr_home.author | jsonify }},
-      "institution": {{ tr_home.institution | jsonify }},
-      "department": {{ tr_home.department | jsonify }},
-      "bio": {{ tr_home.bio | jsonify }},
+      "title": {{ tr_home.title | default: site.title | jsonify }},
+      "name": {{ tr_home.author | default: tr_home.title | default: site.author | jsonify }},
+      "institution": {{ tr_home.institution | default: site.institution | jsonify }},
+      "department": {{ tr_home.department | default: site.department | jsonify }},
+      "bio": {{ tr_home.bio | default: "" | jsonify }},
       "social": {{ tr_home.social | jsonify }},
       "languages": {{ tr_home.languages | jsonify }}
     },
     "en": {
-      "title": {{ en_home.title | jsonify }},
-      "name": {{ en_home.name | default: en_home.author | jsonify }},
-      "institution": {{ en_home.institution | jsonify }},
-      "department": {{ en_home.department | jsonify }},
-      "bio": {{ en_home.bio | jsonify }},
+      "title": {{ en_home.title | default: site.title | jsonify }},
+      "name": {{ en_home.author | default: en_home.title | default: site.author | jsonify }},
+      "institution": {{ en_home.institution | default: site.institution | jsonify }},
+      "department": {{ en_home.department | default: site.department | jsonify }},
+      "bio": {{ en_home.bio | default: "" | jsonify }},
       "social": {{ en_home.social | jsonify }},
       "languages": {{ en_home.languages | jsonify }}
     }

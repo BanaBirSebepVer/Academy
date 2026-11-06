@@ -11,7 +11,7 @@ whatsapp: ""
 telegram: ""
 slack: ""
 zoom: ""
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 ## Haber Portalı Yaratma
@@ -166,4 +166,4 @@ Bu işlem, veri tabanıyla kodlar arasında bağlantı kurarak yayınladığın�
 
 Site bağlantınız kurulduktan sonra sitenizin bilgilerini gireceğiniz ve kendi kullanıcı adınızla şifrenizi belirleyebileceğiniz sayfa açılacak. Burada kullanıcı adınızı ve şifrenizi siz belirleyeceksiniz.
 
-[Haber Portalı Yaratma](https://www.canbekcan.com/lessons/haber-portali-yaratma/)
+[Haber Portalı Yaratma](/dersler/haber-portali-yaratma/)

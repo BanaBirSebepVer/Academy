@@ -11,7 +11,7 @@ whatsapp: ""
 telegram: ""
 slack: ""
 zoom: ""
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 ## Video ve Ses Yapım Teknikleri 5
@@ -27,4 +27,4 @@ Ders içi uygulama sınavı yapılacak. 4 farklı çerçeveleme ve ekipman kurul
 - Sınava 4’erli gruplar halinde girilecek ve 2 kişi sınav olurken 2 kişi de konu mankeni olarak bulunacaktır. Ardından yer değiştirerek diğer 2 kişi sınavını olacaktır.
 - Sınav esnasında görsel yardım alan öğrenci sınavdan kalacaktır.
 
-[4. Ders](https://www.canbekcan.com/lessons/video-ve-ses-yapim-teknikleri/video-ve-ses-yapim-teknikleri-4/)[6. Ders](https://www.canbekcan.com/lessons/video-ve-ses-yapim-teknikleri/video-ve-ses-yapim-teknikleri-6/)
+[4. Ders](/dersler/video-ve-ses-yapim-teknikleri/video-ve-ses-yapim-teknikleri-4/)[6. Ders](/dersler/video-ve-ses-yapim-teknikleri/video-ve-ses-yapim-teknikleri-6/)

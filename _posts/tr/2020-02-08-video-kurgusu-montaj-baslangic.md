@@ -4,18 +4,18 @@ lang: tr
 layout: post/single
 title: "Video Kurgusu (Montaj) - Başlangıç"
 date: 2020-02-08 23:48:52
-author: "canbekcan"
+author: "akademisyen"
 categories: ["Video"]
 tags: ["editing", "kurgu", "montaj", "video"]
 excerpt: "Videolarınızı motajlamaya başlamadan önce çalışma dosyalarınızı aynı klasörün içine koyduğunuzdan emin olmalısınız. Aksi halde, yanlışlıkla sildiğiniz bir dosya yüzünden projeniz sıkıntıya girebilir."
-featured_image: "https://canbekcan.com/wp-content/uploads/2018/10/filmrole.jpeg"
+featured_image: "/wp-content/uploads/2018/10/filmrole.jpeg"
 ---
 
 Videolarınızı motajlamaya başlamadan önce çalışma dosyalarınızı aynı klasörün içine koyduğunuzdan emin olmalısınız. Aksi halde, yanlışlıkla sildiğiniz bir dosya yüzünden projeniz sıkıntıya girebilir.
 
 Dosyalarınızı aynı klasöre koymanız size çok fayda sağlayacaktır. Bunlardan ilki; her projeniz için farklı bir klasörde çalışıyor olmanız ve arşivleme yönetmine alışmanıza yardımcı olacaktır. İhtiyacınız olduğunda hangi videonun hangi klasör içerisinde olduğunu bilmeniz işinizi kolaylaştıracaktır. Bireysel işlerinizde arşivlemenin bir standardı yoktur, ancak büyük işlerde ‘meta data’ ve ‘keywords’ girildiği görülebilir. Bu yüzden siz de kendi arşivleme yönteminizi geliştirebilirsiniz. Fakat, senelerdir yaptığım bireysel projelerde yukarıda bahsettiğim sistemi uygulamayı daha kolay ve kullanışlı bulduğumu belirtmem gerekiyor.
 
-Hangi programla video kurgulamaya başlayacağınızı bilmiyorsanız [Kurgu Programları](http://www.canbekcan.com/2017/01/kurgu-programlari.html) yazımı okuyabilirsiniz.
+Hangi programla video kurgulamaya başlayacağınızı bilmiyorsanız [Kurgu Programları](/2017/01/kurgu-programlari.html) yazımı okuyabilirsiniz.
 
 ### Kurguya Başlamadan Önce Bilinmesi Gerekenler
 
@@ -35,7 +35,7 @@ Bütün bunlara başlamadan önce **Sergei Eisenstein**‘ın **Kurgu**‘sunu o
 
 ### Kurgu Programları
 
-Ufak bir girişten sonra programlara sıra geldi. Kurgu programlarından 1 tanesini bilmek demek, hepsini bilmek demektir. [Kurgu Programları](https://www.canbekcan.com/blog/2017/01/20/kurgu-programlari/) adlı yazımda yer alan programlardan her hangi birini aktif olarak kullanıyorsanız bir diğerini öğrenebilmeniz için en fazla 3 saat harcarsınız. Bunun sebebi de kullandığınız programdaki alışkanlıklarınızdır. Halbuki, bütün programlar aynı mantıkla çalışmaktadır. O yüzden elinizde olan programı en iyi şekilde kullanmayı bilmeniz size fayda sağlayacaktır.
+Ufak bir girişten sonra programlara sıra geldi. Kurgu programlarından 1 tanesini bilmek demek, hepsini bilmek demektir. [Kurgu Programları](/blog/2017/01/20/kurgu-programlari/) adlı yazımda yer alan programlardan her hangi birini aktif olarak kullanıyorsanız bir diğerini öğrenebilmeniz için en fazla 3 saat harcarsınız. Bunun sebebi de kullandığınız programdaki alışkanlıklarınızdır. Halbuki, bütün programlar aynı mantıkla çalışmaktadır. O yüzden elinizde olan programı en iyi şekilde kullanmayı bilmeniz size fayda sağlayacaktır.
 
 Video formatlarına dikkat.
 

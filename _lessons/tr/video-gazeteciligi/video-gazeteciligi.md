@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: "Yeni Medya ve Gazetecilik Bölümü"
 institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title:
   - "Öğretim Görevlisi"
   - "Araştırma Görevlisi"
@@ -33,7 +33,7 @@ duties:
   - "Araştırmacı görsel habercilik, kamera önünde röportaj teknikleri, görsel etik ve haberlerin zamanında yayınlanmasına odaklanan öğrenci saha projelerini yönetti."
 description: "Mobil gazetecilik (MoJo), saha haberciliği, son dakika kompozisyonu, ışıklandırma ve görsel röportaj teknikleri."
 active_nav: dersler
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 Hızlı gelişen son dakika haber ortamlarında kompozisyon, ışıklandırma ve sesin teknik entegrasyonuna vurgu yaparak, mobil gazetecilik (MoJo) ve saha haberciliği konularında pratik eğitim sağlar.

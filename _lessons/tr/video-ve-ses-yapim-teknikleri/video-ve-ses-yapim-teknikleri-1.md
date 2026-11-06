@@ -11,7 +11,7 @@ whatsapp: ""
 telegram: ""
 slack: ""
 zoom: ""
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 ## Video ve Ses Yapım Teknikleri 1
@@ -75,30 +75,30 @@ xml version="1.0" encoding="UTF-8" standalone="no"?
 
 ![](https://upload.wikimedia.org/wikipedia/commons/e/e4/SSL_SL9000J_%2872ch%29_%40_The_Cutting_Room_Recording_Studios%2C_NYC.jpg)
 
-![](https://canbekcan.com/wp-content/uploads/2022/03/small-sound-mixer.jpg)
+![](/wp-content/uploads/2022/03/small-sound-mixer.jpg)
 
-![](https://canbekcan.com/wp-content/uploads/2022/03/Microphones.jpg)
+![](/wp-content/uploads/2022/03/Microphones.jpg)
 
-![](https://canbekcan.com/wp-content/uploads/2022/03/Microphone-Patterns.png)
+![](/wp-content/uploads/2022/03/Microphone-Patterns.png)
 
 ## Haber Kameramanlığı
 
-![](https://canbekcan.com/wp-content/uploads/2022/03/Cevat-Kelle-1.jpg)
+![](/wp-content/uploads/2022/03/Cevat-Kelle-1.jpg)
 
-![](https://canbekcan.com/wp-content/uploads/2022/03/Cevat-Kelle-2.jpg)
+![](/wp-content/uploads/2022/03/Cevat-Kelle-2.jpg)
 
-![](https://canbekcan.com/wp-content/uploads/2022/03/Cameraman-1.webp)
+![](/wp-content/uploads/2022/03/Cameraman-1.webp)
 
-![](https://canbekcan.com/wp-content/uploads/2022/03/Cameraman-2-scaled-1.jpg)
+![](/wp-content/uploads/2022/03/Cameraman-2-scaled-1.jpg)
 
-![](https://canbekcan.com/wp-content/uploads/2022/03/Cameraman-3.jpg)
+![](/wp-content/uploads/2022/03/Cameraman-3.jpg)
 
-![](https://canbekcan.com/wp-content/uploads/2022/03/Cameraman-4.jpg)
+![](/wp-content/uploads/2022/03/Cameraman-4.jpg)
 
 ## Stüdyo
 
-![](https://canbekcan.com/wp-content/uploads/2022/03/Studyo.jpeg)
+![](/wp-content/uploads/2022/03/Studyo.jpeg)
 
-![](https://canbekcan.com/wp-content/uploads/2022/03/Studyo-2.jpeg)
+![](/wp-content/uploads/2022/03/Studyo-2.jpeg)
 
-[Ders İçeriği](https://www.canbekcan.com/lessons/video-ve-ses-yapim-teknikleri/)[2. Ders](https://www.canbekcan.com/video-ve-ses-yapim-teknikleri-2/)
+[Ders İçeriği](/dersler/video-ve-ses-yapim-teknikleri/)[2. Ders](/video-ve-ses-yapim-teknikleri-2/)

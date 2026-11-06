@@ -4,11 +4,11 @@ lang: tr
 layout: post/single
 title: "Akademi mi, Ticarethane mi?"
 date: 2019-12-27 00:06:52
-author: "canbekcan"
+author: "akademisyen"
 categories: ["Genel"]
 tags: []
 excerpt: "Bir çalışma esnasında edindiğim bilgiler ışığında; akademik hayatta markalaşmanın akademik çalışmalardan daha çok değer görmüş olduğunu görmek hayret verici oldu. Farkında olduğunuz ama söylemeye çeki"
-featured_image: "https://canbekcan.com/wp-content/uploads/2017/05/Thesis-Presentation.jpg"
+featured_image: "/wp-content/uploads/2017/05/Thesis-Presentation.jpg"
 ---
 
 Bir çalışma esnasında edindiğim bilgiler ışığında; akademik hayatta markalaşmanın akademik çalışmalardan daha çok değer görmüş olduğunu görmek hayret verici oldu. Farkında olduğunuz ama söylemeye çekindiğiniz durumlar olur. Bu da onlardan biri…

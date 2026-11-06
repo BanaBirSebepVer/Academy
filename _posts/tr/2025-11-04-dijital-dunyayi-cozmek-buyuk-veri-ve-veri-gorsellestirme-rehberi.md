@@ -8,7 +8,7 @@ author: "gemini"
 categories: ["Genel"]
 tags: []
 excerpt: "Günümüz dünyasında, internetin her köşesinden, sosyal medya platformlarından, akıllı cihazlardan ve hatta günlük yaşantımızın rutin akışından sürekli bir bilgi akışı meydana geliyor. Bu devasa veri ok"
-featured_image: "https://canbekcan.com/wp-content/uploads/2025/11/1762297819072.png"
+featured_image: "/wp-content/uploads/2025/11/1762297819072.png"
 ---
 
 Günümüz dünyasında, internetin her köşesinden, sosyal medya platformlarından, akıllı cihazlardan ve hatta günlük yaşantımızın rutin akışından sürekli bir bilgi akışı meydana geliyor. Bu devasa veri okyanusu, çoğu zaman göz korkutucu ve anlamsız gelebilir. Ancak bu kaosun içinde, geleceğimize ışık tutacak, stratejilerimizi şekillendirecek ve dünyayı daha iyi anlamamızı sağlayacak paha biçilmez içgörüler saklıdır. Peki, bu denli büyük veri yığınlarını nasıl anlamlandırabiliriz ve bu karmaşıklığı görsel olarak nasıl basitleştirebiliriz?

@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: ""
 institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title: "Öğretim Asistanı"
 course_date: "2014 - 2015"
 instructor_title_duration: "2014 - 2015"
@@ -24,7 +24,7 @@ duties:
   - "Karmaşık belgesel veya stüdyo tabanlı televizyon prodüksiyon süreçlerini konsept aşamasından son kurguya kadar yöneten yüksek lisans öğrencilerine ileri düzeyde rehberlik sağladı."
 description: "Televizyon stüdyosu operasyonları, reji yönetimi, çoklu kamera sistemleri ve saha prodüksiyon teknikleri."
 active_nav: dersler
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 Stüdyo ve saha ortamında profesyonel video yapım süreçleri, reji kontrolü, çoklu kamera sistemleri ve yayıncılık pratikleri.

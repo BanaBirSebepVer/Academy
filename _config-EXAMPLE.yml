@@ -6,24 +6,24 @@
 # ==============================================================================
 
 # 1. Personal & Academic Profile
-title: "Akademi | Modern Academic Website"
-author: "Your Name"
-email: "info@example.com"
-description: "Akademik CV & Research Repository"
-institution: "Your University"
-department: "Your Department"
-avatar: "/assets/images/Can-Bekcan-PADI.jpg"
+title: "Dr. Jane Doe"
+author: "Dr. Jane Doe"
+email: "academician@example.edu"
+description: "Academic CV & Research Portfolio - Sample University"
+institution: "Sample University"
+department: "Department of Communication & Information Sciences"
+avatar: "/assets/images/default-avatar.svg"
 
 # 2. Site URL & Hosting
-# - Custom domain (e.g. yourdomain.com): baseurl: ""  | url: "https://yourdomain.com"
-# - Project site (e.g. username.github.io/repo): baseurl: "/repo" | url: "https://username.github.io"
+# - Custom domain (e.g. example.com):            baseurl: ""          | url: "https://example.com"
+# - Project site (e.g. username.github.io/repo): baseurl: "/Academy"  | url: "https://BanaBirSebepVer.github.io"
 baseurl: "/Academy"
 url: "https://BanaBirSebepVer.github.io"
 repository: "BanaBirSebepVer/Academy"
 github_repo: "https://github.com/BanaBirSebepVer/Academy"
 google_analytics: ""
 encoding: utf-8
-favicon: "/favicon.ico"
+favicon: "/assets/images/favicon.ico"
 
 # 3. Multilingual Settings
 default_lang: "tr"

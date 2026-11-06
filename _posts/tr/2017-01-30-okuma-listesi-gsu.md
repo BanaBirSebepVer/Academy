@@ -4,11 +4,11 @@ lang: tr
 layout: post/single
 title: "Okuma Listesi - GSU"
 date: 2017-01-30 01:22:52
-author: "canbekcan"
+author: "akademisyen"
 categories: ["Kitap Listesi"]
 tags: []
 excerpt: "İletişim bilimleri üzerine çalışmalar yapmak isteyenlerin okuması gereken kitap listesi Galatasaray Üniversitesi Sosyal Bilimler Enstitüsü tarafından hazırlanmış. Bu kitaplara ek olarak okunması gerek"
-featured_image: "https://canbekcan.com/wp-content/uploads/2017/01/kitaplistesi.png"
+featured_image: "/wp-content/uploads/2017/01/kitaplistesi.png"
 ---
 
 İletişim bilimleri üzerine çalışmalar yapmak isteyenlerin okuması gereken kitap listesi Galatasaray Üniversitesi Sosyal Bilimler Enstitüsü tarafından hazırlanmış. Bu kitaplara ek olarak okunması gereken bir çok kitap da mevcuttur. Elimden geldiğince sizinle paylaşmaya devam edeceğim.

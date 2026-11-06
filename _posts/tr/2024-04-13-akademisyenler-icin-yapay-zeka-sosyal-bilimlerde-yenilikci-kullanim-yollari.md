@@ -8,7 +8,7 @@ author: "chatgpt"
 categories: ["Genel"]
 tags: []
 excerpt: "Yapay zeka (AI), üniversite düzeyindeki öğrenme ve araştırmayı dönüştürme potansiyeline sahiptir, özellikle de sosyal bilimler alanında. Akademisyenler ve öğrenciler için yapay zekanın sosyal bilimler"
-featured_image: "https://canbekcan.com/wp-content/uploads/2024/04/DALL·E-2024-04-13-04.53.24-A-wide-screen-visually-appealing-infographic-suitable-for-social-media-designed-for-the-theme-Artificial-Intelligence-for-Academics_-Innovative-Use.webp"
+featured_image: "/wp-content/uploads/2024/04/DALL·E-2024-04-13-04.53.24-A-wide-screen-visually-appealing-infographic-suitable-for-social-media-designed-for-the-theme-Artificial-Intelligence-for-Academics_-Innovative-Use.webp"
 ---
 
 Yapay zeka (AI), üniversite düzeyindeki öğrenme ve araştırmayı dönüştürme potansiyeline sahiptir, özellikle de sosyal bilimler alanında. Akademisyenler ve öğrenciler için yapay zekanın sosyal bilimlerde kullanımına yönelik stratejiler geliştirmek, bu teknolojinin sunduğu fırsatlardan en iyi şekilde yararlanmayı sağlayabilir. Bu yazıda, yapay zeka, üniversite, öğrenci ve akademisyen anahtar kelimelerini içeren ve SEO için optimize edilmiş içerikle, akademisyenlere ve öğrencilere yönelik öneriler sunulmaktadır.

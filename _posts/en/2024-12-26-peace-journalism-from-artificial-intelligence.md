@@ -8,7 +8,7 @@ author: "chatgpt"
 categories: ["Academic"]
 tags: ["peace journalism", "media ethics"]
 excerpt: "Peace Journalism is defined as a form of journalism that fosters reconciliation between workers and unions, countries, or large groups."
-featured_image: "https://canbekcan.com/wp-content/uploads/2024/12/Baris-Gazeteciligi-Peace-Journalism-ειρηνευτική-δημοσιογραφία.webp"
+featured_image: "/wp-content/uploads/2024/12/Baris-Gazeteciligi-Peace-Journalism-ειρηνευτική-δημοσιογραφία.webp"
 ---
 
 Peace Journalism is defined as a form of journalism that fosters reconciliation between workers and unions, countries, or large groups. In this sector, an ethical approach is paramount. Journalists must provide accurate information, manage various pressures, uphold freedom of the press, and facilitate understanding of diverse cultural, ethnic, and political perspectives.

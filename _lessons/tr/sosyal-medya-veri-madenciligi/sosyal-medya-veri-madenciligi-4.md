@@ -11,11 +11,11 @@ whatsapp: ""
 telegram: ""
 slack: ""
 zoom: ""
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 ## Sosyal Medya Veri Madenciliği
 
 ### Doğu Akdeniz Üniversitesi İletişim Fakültesi Yeni Medya ve Gazetecilik Bölümü
 
-[Ayıklanacak Veriler](https://www.canbekcan.com/wp-content/uploads/2022/10/Soyagaci-Verileri.xlsx)
+[Ayıklanacak Veriler](/wp-content/uploads/2022/10/Soyagaci-Verileri.xlsx)

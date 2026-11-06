@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: ""
 institution_url: "https://arucad.edu.tr"
 institution_initial: "ARUCAD"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title: "Öğretim Görevlisi"
 course_date: "2022 - 2024"
 instructor_title_duration: "2022 - 2024"
@@ -28,7 +28,7 @@ whatsapp: ""
 telegram: ""
 slack: ""
 zoom: ""
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 Sosyal medya yönetimi dersi, öğrencilere sosyal medyanın temel prensiplerini anlamalarını sağlayarak etkili bir şekilde sosyal medya stratejileri geliştirmelerini ve uygulamalarını hedefler. Ayrıca öğrencilere sosyal medya platformlarının kullanımı, analizi ve yönetimi konularında beceriler kazandırmayı amaçlar.
@@ -131,7 +131,7 @@ Bu dersi tamamlayan öğrenciler, aşağıdaki yetkinliklere sahip olacaktır:
 > 
 > Sorular okuma listesi ve ders anlatımlarından gelecektir.
 > 
-> [Sınav Soruları](https://www.canbekcan.com/lessons/sosyal-medya-yonetimi/sosyal-medya-yonetimi-sinav-sorulari/)
+> [Sınav Soruları](/dersler/sosyal-medya-yonetimi/sosyal-medya-yonetimi-sinav-sorulari/)
 {: .grading-card}
 
 > ### Final Projesi

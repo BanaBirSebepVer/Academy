@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: "Yeni Medya ve Gazetecilik Bölümü"
 institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title:
   - "Öğretim Görevlisi"
   - "Araştırma Görevlisi"
@@ -40,7 +40,7 @@ whatsapp: ""
 telegram: ""
 slack: ""
 zoom: ""
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 ## Ders İçeriği {#ders-icerigi}

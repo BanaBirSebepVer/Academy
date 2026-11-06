@@ -1,6 +1,6 @@
 # Contributing to Academy's Academic Website
 
-Welcome! Thank you for taking the time to contribute to the **Academy Personal Academic Website & Digital Teaching Repository** ([https://canbekcan.github.io/Academy/](https://canbekcan.github.io/Academy/)).
+Welcome! Thank you for taking the time to contribute to the **Academy Academic Website & Digital Teaching Repository** ([https://banabirsebepver.github.io/Academy/](https://banabirsebepver.github.io/Academy/)).
 
 This repository serves as both a public scholarly hub and an open pedagogical archive. Contributions of all kinds are warmly welcomed:
 - Correcting lecture slides or typographical errors
@@ -50,7 +50,7 @@ Open your terminal and run:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/canbekcan/Academy.git
+git clone https://github.com/BanaBirSebepVer/Academy.git
 cd Academy
 
 # 2. Configure UTF-8 encoding (critical for Turkish and international characters)
@@ -115,7 +115,7 @@ course_order: 1
 category: "Media Production"
 institution: "Eastern Mediterranean University"
 institution_initial: "EMU"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title: "Lecturer"
 course_date: "2024 - Present"
 instructor_title_duration: "2024 - Present"
@@ -124,7 +124,7 @@ permalink: /en/lessons/media-production-fundamentals/
 active_nav: lessons
 lecture_notes_url: "/en/lessons/media-production-fundamentals/lecture-notes/"
 discord: "https://discord.gg/your-channel"
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 ## Course Description
@@ -176,7 +176,7 @@ lang: en
 layout: post/single
 title: "Prompt Engineering as a Critical Inquiry Method in Humanities"
 date: 2026-03-10 14:00:00 +0300
-author: "canbekcan" # Matches username in _person/ collection (e.g. canbekcan, chatgpt, gemini)
+author: "akademisyen" # Matches username in _person/ collection (e.g. akademisyen, chatgpt, gemini)
 categories: ["Academic"]
 tags: ["artificial intelligence", "media studies", "critical pedagogy"]
 excerpt: "How prompt architecture transforms computational text generation into a hermeneutic analytical tool for media researchers."
@@ -216,7 +216,7 @@ title: "Algorithmic Gatekeeping in Post-Industrial Newsrooms: A Comparative Disc
 publication_type: "Journal Article" # Options: Journal Article | Book Chapter | Conference Paper
 type_label: "Peer-Reviewed Article"
 link: "https://doi.org/10.1000/182"
-author: "Can Bekcan"
+author: "Dr. Jane Doe"
 citation: "Bekcan, C. (2026). Algorithmic Gatekeeping in Post-Industrial Newsrooms. Journal of Digital Media & Society, 14(2), 112-134."
 year: 2026
 doi: "10.1000/182"
@@ -411,6 +411,6 @@ Deployments are 100% automated via GitHub Actions:
 
 ## Questions or Need Assistance?
 
-If you have questions regarding course material submissions, technical roadblocks, or architectural decisions, please [open a GitHub Discussion](https://github.com/canbekcan/Academy/discussions) or reach out via email at `can@canbekcan.com`.
+If you have questions regarding course material submissions, technical roadblocks, or architectural decisions, please [open a GitHub Discussion](https://github.com/BanaBirSebepVer/Academy/discussions) or reach out via email at `academician@example.edu`.
 
 Thank you for helping keep our academic and teaching resources open, accessible, and high-quality!

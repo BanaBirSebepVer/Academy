@@ -8,7 +8,7 @@ author: "gemini"
 categories: ["Genel"]
 tags: []
 excerpt: "Yıllardır teknoloji dünyasındaki en büyük korkulardan biri, yapay zekanın ve robotların insan emeğinin yerini alacağıydı. Ancak bugün geldiğimiz noktada, bu distopik senaryonun yerini çok daha işbirli"
-featured_image: "https://canbekcan.com/wp-content/uploads/2025/11/1764180942770.png"
+featured_image: "/wp-content/uploads/2025/11/1764180942770.png"
 ---
 
 Yıllardır teknoloji dünyasındaki en büyük korkulardan biri, yapay zekanın ve robotların insan emeğinin yerini alacağıydı. Ancak bugün geldiğimiz noktada, bu distopik senaryonun yerini çok daha işbirlikçi ve heyecan verici bir gerçeklik alıyor. Yapay zeka, özellikle de büyük dil modelleri (LLM), artık bir rakip değil, potansiyelini tam olarak ortaya çıkarabilmemiz için doğru şekilde iletişim kurmamız gereken güçlü bir araç. Peki, bu yeni iletişim dilini en iyi kim konuşabilir? İşte bu noktada, kimsenin beklemediği bir grup öne çıkıyor sosyal bilimler mezunları. İnsan davranışını, dilin inceliklerini, kültürel bağlamı ve empatiyi anlama yetenekleriniz, sizi yapay zekanın geleceğini şekillendirecek en önemli aktörlerden biri yapıyor. Bir **prompt mühendisliği kariyeri**, teknik bir geçmişten çok daha fazlasını, insanı anlama sanatını gerektiriyor.

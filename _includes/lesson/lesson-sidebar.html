@@ -30,7 +30,7 @@
 
         <li class="sidebar-meta-row">
           <span class="sidebar-meta-label">{{ locale.ui.instructor | default: "Öğretim Görevlisi" }}:</span>
-          <strong class="sidebar-meta-value"><i class="fa fa-user"></i>{{ page.instructor | default: "Can Bekcan" }}</strong>
+          <strong class="sidebar-meta-value"><i class="fa fa-user"></i>{{ page.instructor | default: site.author | default: "Öğretim Üyesi" }}</strong>
         </li>
 
         {% assign inst_parts = "" | split: "" %}

@@ -18,28 +18,28 @@ header:
 office:
   icon: "fa fa-university"
   title: "Academic Office & Mailing Address"
-  institution: "Eastern Mediterranean University"
-  faculty: "Faculty of Communication"
-  department: "Department of New Media and Journalism"
+  institution: "Sample University"
+  faculty: "Faculty of Communication & Information Sciences"
+  department: "Department of Computer Science & Communication"
   address_lines:
-    - "Famagusta, North Cyprus"
-    - "via Mersin 10 Turkey"
-  institution_phone: "+90 392 630 2006"
-  office_hours: "Office Hours: By Appointment"
+    - "University Campus, Building B, Office 304"
+    - "Cambridge, MA 02138, United States"
+  institution_phone: "+1 (617) 555-0100"
+  office_hours: "Office Hours: Wednesdays 14:00 - 16:00 (By Appointment)"
 
 messaging:
   icon: "fa fa-comments"
-  title: "Direct Contact & Instant Messaging"
-  description: "For quick and urgent communications, you can connect via WhatsApp, Telegram, or phone:"
-  phone: "+90 538 276 0003"
-  whatsapp: "+905382760003"
-  telegram: "https://t.me/cbekcan"
+  title: "Direct Contact & Advising"
+  description: "For student advising and quick inquiries during office hours:"
+  phone: "+1 (617) 555-0101"
+  whatsapp: ""
+  telegram: ""
 
 email_section:
   icon: "fa fa-envelope"
   title: "Email & Academic Inquiries"
-  description: "Feel free to reach out via email for course inquiries, research collaborations, thesis supervision, or guest speaker invitations."
-  email: "can@canbekcan.com"
+  description: "Feel free to reach out via email for course inquiries, research collaborations, graduate advising, or guest lecture invitations."
+  email: "academician@example.edu"
 
 networks:
   icon: "fa fa-share-alt"
@@ -49,8 +49,6 @@ networks:
 map:
   icon: "fa fa-map-marker"
   title: "Campus Location & Directions"
-  button_text: "Open in Google Maps"
-  location_name: "Eastern Mediterranean University Faculty of Communication"
-  map_url: "https://maps.google.com/?q=35.13909916898466,33.91156142600732"
-  embed_url: "https://maps.google.com/maps?q=35.13909916898466%2C%2033.91156142600732&t=m&z=17&output=embed&iwloc=near"
+  description: "Faculty building is located within 5 minutes walking distance from the main campus entrance."
+  embed_url: ""
 ---

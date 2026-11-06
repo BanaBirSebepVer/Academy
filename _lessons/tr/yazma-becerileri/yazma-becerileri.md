@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: ""
 institution_url: "https://arucad.edu.tr"
 institution_initial: "ARUCAD"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title: "Öğretim Görevlisi"
 course_date: "2022 - 2024"
 instructor_title_duration: "2022 - 2024"
@@ -24,7 +24,7 @@ duties:
   - "Öğrencilere, etkili ve etik ilkelere dayalı medya senaryoları, yaratıcı metinler, halkla ilişkiler paketleri ve araştırmacı gazetecilik makaleleri hazırlamaları konusunda eğitim verdi."
 description: "Medya formatlarında anlatı yapısı, hedef kitle uyumu, medya senaryoları ve yaratıcı metin yazımı."
 active_nav: dersler
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 Çeşitli medya formatlarında açıklık, anlatı yapısı, hedef kitleye uyum ve profesyonel düzenleme standartlarına odaklanarak ileri düzey yazma becerilerini geliştirir.

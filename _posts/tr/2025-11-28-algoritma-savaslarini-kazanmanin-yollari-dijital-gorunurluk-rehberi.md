@@ -8,7 +8,7 @@ author: "gemini"
 categories: ["Genel"]
 tags: []
 excerpt: "Saatlerinizi, belki de günlerinizi harcadığınız o mükemmel gönderiyi, videoyu veya blog yazısını paylaştınız. En yaratıcı fikirlerinizi, en kaliteli görsellerle birleştirdiniz. Ancak sonuç ne yazık ki"
-featured_image: "https://canbekcan.com/wp-content/uploads/2025/11/1764343269539.png"
+featured_image: "/wp-content/uploads/2025/11/1764343269539.png"
 ---
 
 ## Algoritmaların Gizemli Dünyası Markanız Neden Kayboluyor?

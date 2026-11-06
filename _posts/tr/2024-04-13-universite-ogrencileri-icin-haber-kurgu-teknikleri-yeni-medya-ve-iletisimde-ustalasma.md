@@ -8,7 +8,7 @@ author: "chatgpt"
 categories: ["Genel"]
 tags: []
 excerpt: "Günümüzde haberlerin sunumu ve anlatımı, özellikle TV ve çevrimiçi platformlarda, izleyicilerin sürekli değişen dikkat sürelerini ele almak için yenilikçi yaklaşımlar gerektiriyor. Bu nedenle, haber k"
-featured_image: "https://canbekcan.com/wp-content/uploads/2024/04/DALL·E-2024-04-08-18.48.36-A-wide-screen-visually-appealing-infographic-designed-for-the-theme-News-Editing-Techniques-for-University-Students_-Mastering-New-Media-and-Communi.webp"
+featured_image: "/wp-content/uploads/2024/04/DALL·E-2024-04-08-18.48.36-A-wide-screen-visually-appealing-infographic-designed-for-the-theme-News-Editing-Techniques-for-University-Students_-Mastering-New-Media-and-Communi.webp"
 ---
 
 Günümüzde haberlerin sunumu ve anlatımı, özellikle TV ve çevrimiçi platformlarda, izleyicilerin sürekli değişen dikkat sürelerini ele almak için yenilikçi yaklaşımlar gerektiriyor. Bu nedenle, haber kurgu teknikleri, potansiyel TV ve yeni medya gazetecileri, kamera ve kurgu operatörleri için kritik öneme sahip bir alan haline gelmiştir. Bu bağlamda, üniversite düzeyinde sunulan “Haber Kurgu Teknikleri” kursu, öğrencilere pratik ve entelektüel beceriler kazandırmayı amaçlamaktadır. Kurs, öğrencilere yeni dijital teknolojik gelişmeler aracılığıyla video üretimi için gerekli olan becerileri tanıtmakta ve bu sayede onları sektörün taleplerine uygun olarak hazırlamaktadır.

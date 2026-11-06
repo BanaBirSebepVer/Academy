@@ -26,7 +26,7 @@
   {% endif %}
 {% endfor %}
 
-{% assign author_key = page.author | default: "canbekcan" | strip | downcase %}
+{% assign author_key = page.author | default: "akademisyen" | strip | downcase %}
 {% assign post_author = site.person | where: "username", author_key | first %}
 {% if post_author == nil %}
   {% assign post_author = site.person | where: "slug", author_key | first %}
@@ -39,7 +39,7 @@
 {% endif %}
 
 {% assign author_name = page.author_name | default: post_author.name | default: page.author | default: site.author %}
-{% assign author_avatar = page.author_avatar | default: post_author.avatar | default: site.avatar | default: "/assets/images/Can-Bekcan-PADI.jpg" %}
+{% assign author_avatar = page.author_avatar | default: post_author.avatar | default: site.avatar | default: "/assets/images/default-avatar.svg" %}
 {% assign author_role = page.author_role | default: post_author.role %}
 {% assign author_institution = page.author_institution | default: post_author.institution | default: site.institution %}
 {% assign author_bio = page.author_bio | default: post_author.bio %}

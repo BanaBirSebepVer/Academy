@@ -8,7 +8,7 @@ author: "gemini"
 categories: ["Genel"]
 tags: []
 excerpt: "Akademik dünya, bilgi üretimi, yayımı ve öğrenme süreçlerinin kalbi olarak her zaman yeniliklere açık olmuştur. Günümüzde, bu dinamik ortamda en büyük dönüşümlerden biri, yapay zeka (YZ) teknolojileri"
-featured_image: "https://canbekcan.com/wp-content/uploads/2026/01/1769365825521.png"
+featured_image: "/wp-content/uploads/2026/01/1769365825521.png"
 ---
 
 Akademik dünya, bilgi üretimi, yayımı ve öğrenme süreçlerinin kalbi olarak her zaman yeniliklere açık olmuştur. Günümüzde, bu dinamik ortamda en büyük dönüşümlerden biri, yapay zeka (YZ) teknolojilerinin yükselişiyle yaşanıyor. Yapay zeka, bir yandan akademik çalışmaların verimliliğini ve derinliğini artırırken, diğer yandan beraberinde getirdiği etik ve pratik zorluklarla da bizleri yeni sorgulamalara itiyor. **Akademik hayatta yapay zeka kullanımı, araştırma, eğitim ve idari süreçlerde devrim niteliğinde dönüşümler vadediyor** ve bu dönüşümün her geçen gün daha da hızlandığına tanık oluyoruz. Peki, bu dönüşümün dinamikleri nelerdir ve bizler bu sürece nasıl adapte olmalıyız? Bu makale, yapay zekanın akademik alandaki mevcut ve potansiyel kullanımlarını, karşılaşılan etik sorunları ve bu sorunlara yönelik çözüm önerilerini kapsamlı bir şekilde ele almayı amaçlıyor.
@@ -23,7 +23,7 @@ Makalelerin, tezlerin ve kitapların sayısı her geçen gün katlanarak artarke
 
 ### **Veri Analizi ve Modelleme**
 
-Büyük veri kümeleriyle çalışmak, özellikle [sosyal bilimler](https://canbekcan.com/blog/2025/11/26/sosyal-bilimler-mezunlari-dikkat-yapay-zekanin-gelecegi-sizin-ellerinizde/), tıp ve doğa bilimlerinde vazgeçilmezdir. Yapay zeka algoritmaları, geleneksel yöntemlerle elde edilmesi güç olan karmaşık kalıpları, ilişkileri ve eğilimleri belirlemede üstün bir yetenek sergiler. Makine öğrenimi modelleri, tahminler yapabilir, simülasyonlar oluşturabilir ve hipotezleri test edebilir. Bu, özellikle deneysel tasarımlarda veya anket verilerinin derinlemesine analizinde araştırmacılara benzersiz içgörüler sunar.
+Büyük veri kümeleriyle çalışmak, özellikle [sosyal bilimler](/yazilar/2025/11/26/sosyal-bilimler-mezunlari-dikkat-yapay-zekanin-gelecegi-sizin-ellerinizde/), tıp ve doğa bilimlerinde vazgeçilmezdir. Yapay zeka algoritmaları, geleneksel yöntemlerle elde edilmesi güç olan karmaşık kalıpları, ilişkileri ve eğilimleri belirlemede üstün bir yetenek sergiler. Makine öğrenimi modelleri, tahminler yapabilir, simülasyonlar oluşturabilir ve hipotezleri test edebilir. Bu, özellikle deneysel tasarımlarda veya anket verilerinin derinlemesine analizinde araştırmacılara benzersiz içgörüler sunar.
 
 ### **Yazım ve Düzenleme Asistanlığı**
 

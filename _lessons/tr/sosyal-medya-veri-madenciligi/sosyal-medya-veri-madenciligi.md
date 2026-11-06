@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: "Yeni Medya ve İletişim Bölümü"
 institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title:
   - "Öğretim Görevlisi"
   - "Araştırma Görevlisi"
@@ -40,7 +40,7 @@ whatsapp: "https://chat.whatsapp.com/HULSd8RBUhi12qGLl7i9gc"
 telegram: ""
 slack: ""
 zoom: ""
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 İletişim öğrencilerinin modern dijital gazetecilik gereksinimlerine uyum sağlaması amacıyla; bu ders, kod yazmadan (no-code araçlarla) internetteki büyük verileri elde etme, temizleme, analiz etme ve anlamlandırma süreçlerini kapsamaktadır. Yapay zeka asistanları ve otomasyon araçları kullanılarak verilerin nasıl haberleştirileceği uygulamalı örneklerle gösterilecektir.
@@ -137,9 +137,9 @@ Bu ders boyunca sıfır kod mantığıyla bir Veri Gazetecisi gibi çalışacaks
 > 
 > **Uygulamalar:**
 > 
-> - [Soyağacı Hazırlama](https://canbekcan.com/wp-content/uploads/2022/10/Aile-Soy-Agaci-Ornek.xlsx)
-> - [Mevcut Verilerin Hazır Hale Getirilmesi](https://canbekcan.com/wp-content/uploads/2022/10/Soyagaci-Verileri-1.xlsx)
-> - [Proje Konusu Belirleme](https://canbekcan.com/wp-content/uploads/2022/11/Proje-Konusu-Belirleme-Formu.docx)
+> - [Soyağacı Hazırlama](/wp-content/uploads/2022/10/Aile-Soy-Agaci-Ornek.xlsx)
+> - [Mevcut Verilerin Hazır Hale Getirilmesi](/wp-content/uploads/2022/10/Soyagaci-Verileri-1.xlsx)
+> - [Proje Konusu Belirleme](/wp-content/uploads/2022/11/Proje-Konusu-Belirleme-Formu.docx)
 > - Python Kullanımı ve Veri Temizleme
 > - Python – Sosyal Medya Taraması
 > 

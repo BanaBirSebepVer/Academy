@@ -2,7 +2,7 @@
 title: "Executive Board Member | Center of Research and Communication for Peace"
 role: "Executive Board Member"
 institution: "Center of Research and Communication for Peace (CRCP)"
-link: "http://crcp.emu.edu.tr"
+link: "https://example.edu/crcp"
 start_year: "2017"
 end_year: "2021"
 order: 3

@@ -8,7 +8,7 @@ author: "gemini"
 categories: ["Genel"]
 tags: []
 excerpt: "Dijital dünyanın son yıllardaki en hararetli tartışmasının merkezine hoş geldiniz. Bir yanda yıllardır dijital pazarlamanın bel kemiği olan, kuralları ve stratejileriyle web sitelerini arama motorları"
-featured_image: "https://canbekcan.com/wp-content/uploads/2025/12/1764960899597.png"
+featured_image: "/wp-content/uploads/2025/12/1764960899597.png"
 ---
 
 Dijital dünyanın son yıllardaki en hararetli tartışmasının merkezine hoş geldiniz. Bir yanda yıllardır dijital pazarlamanın bel kemiği olan, kuralları ve stratejileriyle web sitelerini arama motorlarının zirvesine taşıyan Arama Motoru Optimizasyonu (SEO). Diğer yanda ise bir anda sahneye çıkarak tüm oyunun kurallarını yeniden yazan, sorularımıza anında ve doğrudan yanıtlar veren üretken yapay zeka. Artık kullanıcılar, bilgiye ulaşmak için linklere tıklamak yerine, sohbet ekranında doğrudan cevabı alıyor. Bu durum, hepimizin zihninde aynı soruyu canlandırıyor: Bu yeni denklemde web sitelerine, içerik üreticilerine ve SEO uzmanlarına yer var mı? **Yapay zeka destekli arama**, bildiğimiz internetin sonunu mu getiriyor, yoksa bu sadece yeni bir evrimin başlangıcı mı? Bu makale, işte bu kritik sorunun yanıtını arıyor.

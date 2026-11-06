@@ -11,10 +11,10 @@ whatsapp: ""
 telegram: ""
 slack: ""
 zoom: ""
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
-Sorular, ders kapsamında okumanız gereken makaleler üzerinden hazırlanmıştır. Makale listesine [buradan](https://www.canbekcan.com/lessons/sosyal-medya-yonetimi/) ulaşabilirsiniz.
+Sorular, ders kapsamında okumanız gereken makaleler üzerinden hazırlanmıştır. Makale listesine [buradan](/dersler/sosyal-medya-yonetimi/) ulaşabilirsiniz.
 
 ## Sınav Soruları
 

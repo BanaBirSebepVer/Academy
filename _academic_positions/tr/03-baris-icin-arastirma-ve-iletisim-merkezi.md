@@ -2,7 +2,7 @@
 title: "Yönetim Kurulu Üyesi | Barış için Araştırma ve İletişim Merkezi"
 role: "Yönetim Kurulu Üyesi"
 institution: "Barış için Araştırma ve İletişim Merkezi"
-link: "http://crcp.emu.edu.tr"
+link: "https://example.edu/crcp"
 start_year: "2017"
 end_year: "2021"
 order: 3

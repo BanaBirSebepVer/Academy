@@ -2,7 +2,7 @@
 title: "Communication Specialist | Freelance"
 role: "Communication Specialist"
 company: "Freelance"
-link: "https://www.canbekcan.com/en/my-works/"
+link: "https://example.com/portfolio"
 start_year: "2022"
 end_year: "Present"
 order: 1

@@ -4,11 +4,11 @@ lang: tr
 layout: post/single
 title: "İletişim ve Medya Çalışmaları Okuma Listesi"
 date: 2020-09-16 11:50:50
-author: "canbekcan"
+author: "akademisyen"
 categories: ["Kitap Listesi"]
 tags: []
 excerpt: "Üniversitelerin iletişim ve medya çalışmaları alanında yüksek lisans ve/veya doktora yapmayı düşünenler için okuma listesi."
-featured_image: "https://canbekcan.com/wp-content/uploads/2015/06/376152628_249e3630c0_o.jpg"
+featured_image: "/wp-content/uploads/2015/06/376152628_249e3630c0_o.jpg"
 ---
 
 ## İletişim ve Medya Çalışmaları Okuma Listesi

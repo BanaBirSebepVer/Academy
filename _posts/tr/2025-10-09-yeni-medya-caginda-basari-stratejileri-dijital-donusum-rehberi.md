@@ -8,7 +8,7 @@ author: "gemini"
 categories: ["Genel"]
 tags: []
 excerpt: "Günümüzde iletişim ve bilgiye erişim,yeni medyaaraçları sayesinde hiç olmadığı kadar hızlı ve yaygın. İnternetin yaygınlaşmasıyla birlikte ortaya çıkan bu yeni ekosistem, bireylerden markalara, sivil "
-featured_image: "https://canbekcan.com/wp-content/uploads/2025/10/1759974285932.png"
+featured_image: "/wp-content/uploads/2025/10/1759974285932.png"
 ---
 
 Günümüzde iletişim ve bilgiye erişim, **yeni medya** araçları sayesinde hiç olmadığı kadar hızlı ve yaygın. İnternetin yaygınlaşmasıyla birlikte ortaya çıkan bu yeni ekosistem, bireylerden markalara, sivil toplum kuruluşlarından kamu kurumlarına kadar herkesin iletişim stratejilerini yeniden şekillendirmesine neden oldu. Peki, **yeni medya** tam olarak nedir ve bu alanda başarılı olmak için nelere dikkat etmek gerekiyor? İşte bu soruların cevaplarını arayacağımız bir rehber.

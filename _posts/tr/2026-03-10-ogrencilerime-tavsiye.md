@@ -4,7 +4,7 @@ lang: tr
 layout: post/single
 title: "Öğrencilerime Tavsiye"
 date: 2026-03-10 18:24:17
-author: "canbekcan"
+author: "akademisyen"
 categories: ["Genel"]
 tags: []
 excerpt: "Bu yazıyı sonuna kadar okumak istemeyecek hatta açmayacak öğrencilerimin olduğunu biliyorum. Fakat, geleceğinizle ilgili kararları vermek için çok geç kaldığınızı düşünüyorum. O sebepten, bu yazımı ok"

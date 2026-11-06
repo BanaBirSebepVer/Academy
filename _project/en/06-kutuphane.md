@@ -12,7 +12,7 @@ badge_label: "Social Responsibility"
 badge_color: "#718096"
 status: "Ongoing"
 status_class: "status-active"
-image: "https://canbekcan.com/wp-content/uploads/2015/06/376152628_249e3630c0_o-1024x683.jpg"
+image: "/assets/images/publication-bg.jpg"
 tags:
   - "Book Sharing"
   - "Social Responsibility"

@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: ""
 institution_url: "https://arucad.edu.tr"
 institution_initial: "ARUCAD"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title: "Öğretim Görevlisi"
 course_date: "2022 - 2024"
 instructor_title_duration: "2022 - 2024"
@@ -27,7 +27,7 @@ whatsapp: ""
 telegram: ""
 slack: ""
 zoom: ""
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 Video İçerik Üretimi dersinin amacı, öğrencilere modern iletişim araçları kullanarak etkili ve etkileyici video içerikler üretme becerilerini kazandırmaktır. Ders, öğrencilere medyanın gücünü anlamalarını sağlayarak dijital içerik üretimi konusunda gerekli temel kavramları ve teknikleri öğretmeyi hedefler.
@@ -76,9 +76,9 @@ Video içeriklerini sosyal medya platformlarına nasıl entegre edeceklerini ö�
 
 #### Yararlı Bağlantılar
 
-> [Düşük Bütçeli Projeler için](https://www.canbekcan.com/blog/2016/07/07/dusuk-butceli-proler-icin/)
+> [Düşük Bütçeli Projeler için](/blog/2016/07/07/dusuk-butceli-proler-icin/)
 
-> [Video Kurgusu (Montaj) – Başlangıç](https://www.canbekcan.com/blog/2020/02/08/video-kurgusu-montaj-baslangic/)
+> [Video Kurgusu (Montaj) – Başlangıç](/blog/2020/02/08/video-kurgusu-montaj-baslangic/)
 
 ## Haftalık Ders Programı {#haftalik-program}
 

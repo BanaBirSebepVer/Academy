@@ -8,14 +8,14 @@ author: "gemini"
 categories: ["Video"]
 tags: []
 excerpt: "Yeni medya çağında, video içeriği, bilgi paylaşımı ve etkileşim kurma için en popüler araçlardan biri haline gelmiştir. Öğrenciler için de, videolar, sunumlarını geliştirmek, fikirlerini paylaşmak ve "
-featured_image: "https://canbekcan.com/wp-content/uploads/2024/04/DALL·E-2024-04-13-22.39.51-A-wide-screen-visually-appealing-infographic-designed-for-the-theme-Artificial-Intelligence-in-Video-Production_-Advantages-for-Students-without-an.webp"
+featured_image: "/wp-content/uploads/2024/04/DALL·E-2024-04-13-22.39.51-A-wide-screen-visually-appealing-infographic-designed-for-the-theme-Artificial-Intelligence-in-Video-Production_-Advantages-for-Students-without-an.webp"
 ---
 
 Yeni medya çağında, video içeriği, bilgi paylaşımı ve etkileşim kurma için en popüler araçlardan biri haline gelmiştir. Öğrenciler için de, videolar, sunumlarını geliştirmek, fikirlerini paylaşmak ve yaratıcı projeler üretmek için harika bir ortam sunar. Yapay zeka ise bu süreci daha da kolaylaştırır ve öğrencilere videolarını yeni bir seviyeye taşıma imkanı verir.
 
 Bu yazıda, yapay zekanın video üretimine nasıl katkıda bulunduğunu ve öğrencilere sağladığı avantajları inceleyeceğiz.
 
-## **[Video Kurgu](https://www.canbekcan.com/blog/2017/01/20/kurgu-programlari/) ve Düzenleme:**
+## **[Video Kurgu](/blog/2017/01/20/kurgu-programlari/) ve Düzenleme:**
 
 - **Zamandan Tasarruf:** Yapay zeka, otomatik transkripsiyon, özetleme ve sahne seçimi gibi araçlar sunarak video kurgu ve düzenleme sürecini önemli ölçüde hızlandırabilir. Bu, öğrencilerin zamandan tasarruf ederek daha önemli konulara odaklanmalarını sağlar.
 - **Gelişmiş Düzenleme:** Yapay zeka, otomatik montaj, müzik ekleme ve efektler gibi gelişmiş düzenleme araçları sağlayarak, öğrencilerin videolarına profesyonel bir görünüm kazandırmalarına yardımcı olur.

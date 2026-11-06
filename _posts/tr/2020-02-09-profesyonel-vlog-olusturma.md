@@ -4,11 +4,11 @@ lang: tr
 layout: post/single
 title: "Profesyonel Vlog Oluşturma"
 date: 2020-02-09 00:05:32
-author: "canbekcan"
+author: "akademisyen"
 categories: ["Genel"]
 tags: []
 excerpt: "Bu yazıda “Vlog nedir?” sorusunun cevabını bulacaksınız. Temel kavramları hiçe saymadan çekeceğiniz her videonuzun izlenme değerleri yüksek olacaktır. Bunun için de çekim tekniklerini bilmenin yanında"
-featured_image: "https://canbekcan.com/wp-content/uploads/2015/06/c2_s2-scaled.png"
+featured_image: "/wp-content/uploads/2015/06/c2_s2-scaled.png"
 ---
 
 Bu yazıda “Vlog nedir?” sorusunun cevabını bulacaksınız. Temel kavramları hiçe saymadan çekeceğiniz her videonuzun izlenme değerleri yüksek olacaktır. Bunun için de çekim tekniklerini bilmenin yanında bir projenin nasıl hazırlandığını ve nasıl evrildiğini bilmeniz gerekiyor.
@@ -43,7 +43,7 @@ Planlamanın ayrıntılarına girmeden önce hatırlamanız gereken bir diğer k
 
 #### [Bütçe Ayarlamaya Başlarken](#1486509694770-df8a88f6-beac)
 
-İki farklı liste oluşturarak başlayabilirsiniz. İlk listenizde hali hazırda sahip olduğunuz her şeyi yazmalısınız. Kamera, mikrofon, tripod vs. gibi ekipmanlarınızı yazmakla başlayabilirsiniz. Eğer bu gibi profesyonel malzemeleriniz yoksa “[Düşük Bütçeli Projeler için](https://www.canbekcan.com/blog/2016/07/07/dusuk-butceli-proler-icin/)” isimli yazımdan akıllı telefonlarınızı nasıl profesyonel prodüksiyon cihazlarına çevireceğinizi öğrenebilirsiniz.  Eğer hiç ekipmanınız yoksa öncelikle konunuzla alakalı tanıdığınız kişilerle (Örnek ‘Proje Metni’nde belirttiğim gibi hayvan sahipleri, veterinerler konunuzla alakalı kişilerdir) görüşerek projenize destek olmalarını isteyebilirsiniz. Bu kısmı sponsor ve reklam kısmında detaylı anlatacağım.
+İki farklı liste oluşturarak başlayabilirsiniz. İlk listenizde hali hazırda sahip olduğunuz her şeyi yazmalısınız. Kamera, mikrofon, tripod vs. gibi ekipmanlarınızı yazmakla başlayabilirsiniz. Eğer bu gibi profesyonel malzemeleriniz yoksa “[Düşük Bütçeli Projeler için](/blog/2016/07/07/dusuk-butceli-proler-icin/)” isimli yazımdan akıllı telefonlarınızı nasıl profesyonel prodüksiyon cihazlarına çevireceğinizi öğrenebilirsiniz.  Eğer hiç ekipmanınız yoksa öncelikle konunuzla alakalı tanıdığınız kişilerle (Örnek ‘Proje Metni’nde belirttiğim gibi hayvan sahipleri, veterinerler konunuzla alakalı kişilerdir) görüşerek projenize destek olmalarını isteyebilirsiniz. Bu kısmı sponsor ve reklam kısmında detaylı anlatacağım.
 
 İkinci olarak sahip olmadığınız ama projeniz için gerekli olanların listesini çıkartmanız gerekiyor ki bu liste sizin bütçenizle doğrudan ilişkili olacaktır. Pahalı ihtiyaçlarınızı başlarda (eğer yeterli bütçeniz yoksa) karşılamakta zorluk çekeceksiniz. Temel ihtiyaçlarınızı üst sıralara yazarsanız kaynaklarınızı da ona göre kullanabilir ve bütçenizi fazla zorlamamış olursunuz. Neticede başlangıç aşamasında olduğunuz ve büyük prodüksiyonlar yapmadığınız için bütçeniz önemlidir.
 
@@ -57,7 +57,7 @@ Prodüksiyon ihtiyaçlarınızı belirlerken önemli bir kaç noktayı gözden k
 - Tripod
 - Mikrofon
 - Işık
-- [Kurgu Programı](https://www.canbekcan.com/blog/2017/01/20/kurgu-programlari/)
+- [Kurgu Programı](/blog/2017/01/20/kurgu-programlari/)
 
 #### Duruma Göre
 

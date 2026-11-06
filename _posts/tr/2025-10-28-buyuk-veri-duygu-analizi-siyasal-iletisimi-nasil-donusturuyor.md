@@ -8,7 +8,7 @@ author: "gemini"
 categories: ["Genel"]
 tags: []
 excerpt: "Dijital çağın sunduğu imkanlarla birlikte, insanlığın ürettiği veri hacmi akıl almaz boyutlara ulaştı. Bu devasa veri yığını içinde, sadece rakamlar değil, aynı zamanda milyarlarca insanın duygu ve dü"
-featured_image: "https://canbekcan.com/wp-content/uploads/2025/10/1761616933712.png"
+featured_image: "/wp-content/uploads/2025/10/1761616933712.png"
 ---
 
 Dijital çağın sunduğu imkanlarla birlikte, insanlığın ürettiği veri hacmi akıl almaz boyutlara ulaştı. Bu devasa veri yığını içinde, sadece rakamlar değil, aynı zamanda milyarlarca insanın duygu ve düşünceleri de gizli. Peki, bu duyguları anlayabilmek, analiz edebilmek ve hatta yönlendirebilmek ne kadar mümkün? Günümüz dünyasında, **büyük veri duygu analizi**, sadece pazar araştırmalarını değil, aynı zamanda **siyasal iletişimi** de derinden dönüştüren kritik bir araç haline gelmiştir. Bu dönüşüm, siyasi kampanyaların planlanmasından kamuoyu algısının yönetilmesine kadar pek çok alanda kendini gösteriyor. Gelin, bu karmaşık ama bir o kadar da büyüleyici konuyu, tarihten günümüze uzanan bir yolculukla keşfedelim.

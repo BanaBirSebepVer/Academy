@@ -8,7 +8,7 @@ author: "gemini"
 categories: ["Genel"]
 tags: []
 excerpt: "Günümüzde internetin ve sosyal medyanın yaygınlaşmasıyla birlikte, bireylerin ve kurumların dijital itibarı her zamankinden daha önemli hale geldi. Dijital itibar, bir kişi veya kuruluş hakkında inter"
-featured_image: "https://canbekcan.com/wp-content/uploads/2025/10/1760609012232.png"
+featured_image: "/wp-content/uploads/2025/10/1760609012232.png"
 ---
 
 ## Dijital İtibarın Önemi ve İnşası

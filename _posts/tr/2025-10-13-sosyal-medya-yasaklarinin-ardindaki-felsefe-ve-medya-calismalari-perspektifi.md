@@ -8,7 +8,7 @@ author: "gemini"
 categories: ["Genel"]
 tags: []
 excerpt: "Sosyal medya platformları, modern toplumun ayrılmaz bir parçası haline geldi. Haber almaktan sosyalleşmeye, eğitimden ticarete kadar pek çok alanda hayatımızı kolaylaştırıyor. Ancak, bazı hükümetler v"
-featured_image: "https://canbekcan.com/wp-content/uploads/2025/10/1760364199910.png"
+featured_image: "/wp-content/uploads/2025/10/1760364199910.png"
 ---
 
 ## Sosyal Medya Yasaklarının Felsefi Temelleri

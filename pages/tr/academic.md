@@ -267,7 +267,7 @@ active_nav: academic
                 <span class="archive-card-tag">Prompt Mühendisliği</span>
               </div>
               <div class="archive-card-footer">
-                <a href="mailto:can@canbekcan.com" class="btn btn-xs btn-default" style="font-weight: 600;">
+                <a href="mailto:academician@example.edu" class="btn btn-xs btn-default" style="font-weight: 600;">
                   İş Birliği İletişimi <i class="fa fa-envelope"></i>
                 </a>
               </div>

@@ -4,11 +4,11 @@ lang: tr
 layout: post/single
 title: "Kısa Videolarla Adobe Illustrator"
 date: 2024-07-30 20:27:36
-author: "canbekcan"
+author: "akademisyen"
 categories: ["Genel"]
 tags: []
 excerpt: "Tasarımcıların Adobe Illustrator ile yaptıkları çalışmaların nasıl yapıldığını gösteren videolar listesi. Aynı tasarımların birden farklı yöntemle yapılabildiğini de görebileceğiniz bu videoları sizle"
-featured_image: "https://canbekcan.com/wp-content/uploads/2024/07/illustrator.png"
+featured_image: "/wp-content/uploads/2024/07/illustrator.png"
 ---
 
 Tasarımcıların Adobe Illustrator ile yaptıkları çalışmaların nasıl yapıldığını gösteren videolar listesi. Aynı tasarımların birden farklı yöntemle yapılabildiğini de görebileceğiniz bu videoları sizler için derledim.

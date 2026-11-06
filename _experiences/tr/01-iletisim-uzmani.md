@@ -2,7 +2,7 @@
 title: "İletişim Uzmanı | Serbest Çalışan"
 role: "İletişim Uzmanı"
 company: "Serbest Çalışan"
-link: "https://www.canbekcan.com/en/my-works/"
+link: "https://example.com/portfolio"
 start_year: "2022"
 end_year: "Devam"
 order: 1

@@ -3,7 +3,7 @@ title: "Civil Disobedience in Spain: Comparison of BBC’s and TRT’s Represent
 conference: "5. Uluslararası İletişim ve Medya Çalışmaları Konferansı"
 conference_url: "http://crcp.emu.edu.tr"
 year: "2018"
-author: "Can Bekcan"
+author: "Dr. Jane Doe"
 order: 1
 ---
 
@@ -11,5 +11,5 @@ order: 1
 
 - **Konferans:** 5. Uluslararası İletişim ve Medya Çalışmaları Konferansı (*5th International Conference in Communication and Media Studies*)
 - **Yıl:** 2018
-- **Bağlantı:** [CRCP](http://crcp.emu.edu.tr)
-- **Yazar:** Can Bekcan
+- **Bağlantı:** [CRCP](https://example.edu/crcp)
+- **Yazar:** Dr. Jane Doe

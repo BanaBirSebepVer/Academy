@@ -98,13 +98,13 @@ layout: default
           <!-- Posts Archive Grid (Flex Masonry) -->
           <div class="row flex-masonry-grid" id="postsGrid">
             {% for post in all_posts %}
-              {% assign a_key = post.author | default: "canbekcan" | strip | downcase %}
+              {% assign a_key = post.author | default: "akademisyen" | strip | downcase %}
               {% assign p_author = site.person | where: "username", a_key | first %}
               {% if p_author == nil %}{% assign p_author = site.person | where: "slug", a_key | first %}{% endif %}
               {% if p_author == nil %}{% assign p_author = site.person | where: "name", post.author | first %}{% endif %}
               {% if p_author == nil %}{% assign p_author = site.person | first %}{% endif %}
               {% assign author_display_name = post.author_name | default: p_author.name | default: post.author %}
-              {% assign author_display_avatar = post.author_avatar | default: p_author.avatar | default: "/assets/images/Can-Bekcan-PADI.jpg" %}
+              {% assign author_display_avatar = post.author_avatar | default: p_author.avatar | default: site.avatar | default: "/assets/images/default-avatar.svg" %}
 
               <div class="col-md-6 col-sm-12 archive-card-col post-card-item flex-masonry-item" data-title="{{ post.title | downcase | escape }}" data-author="{{ author_display_name | downcase | escape }}" data-categories="{% for c in post.categories %}{{ c | slugify }} {% endfor %}">
                 <div class="archive-card">

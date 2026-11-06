@@ -4,11 +4,11 @@ lang: tr
 layout: post/single
 title: "Düşünce Anarşistleri: Fikir Ayrılıklarına Karşı Duyarlılık Geliştirme"
 date: 2024-04-13 23:30:55
-author: "canbekcan"
+author: "akademisyen"
 categories: ["Genel"]
 tags: []
 excerpt: "Benim gözlemimde, düşünce anarşistleri dediğimiz bireyler, kendi inançlarını o kadar şiddetli bir şekilde savunuyorlar ki, bu durum bazen onları adeta düşünce militanlarına dönüştürebiliyor. Bu kişile"
-featured_image: "https://canbekcan.com/wp-content/uploads/2024/04/DALL·E-2024-04-13-23.30.03-A-wide-screen-visually-appealing-infographic-designed-for-the-theme-Thought-Anarchists_-Developing-Sensitivity-to-Ideological-Differences-without-a.webp"
+featured_image: "/wp-content/uploads/2024/04/DALL·E-2024-04-13-23.30.03-A-wide-screen-visually-appealing-infographic-designed-for-the-theme-Thought-Anarchists_-Developing-Sensitivity-to-Ideological-Differences-without-a.webp"
 ---
 
 Benim gözlemimde, düşünce anarşistleri dediğimiz bireyler, kendi inançlarını o kadar şiddetli bir şekilde savunuyorlar ki, bu durum bazen onları adeta düşünce militanlarına dönüştürebiliyor. Bu kişiler, sadece farklı düşüncelere değil, kendi düşüncelerini paylaşanlar arasındaki ufak fikir ayrılıklarına bile tahammül edemiyorlar. Kendi fikirlerini hayatlarının merkezine yerleştiren bu bireyler için, bu düşünceler kimliklerinin bir parçası haline geliyor ve bu düşünce yıkıldığında kimliklerinin de yıkılacağına inanıyorlar. Bu yazıda, düşünce anarşistlerinin bu tehlikeli yönlerini daha detaylı bir şekilde ele alacağım ve bu durumu nasıl yönetebileceğimiz konusunda bilgiler vereceğim.

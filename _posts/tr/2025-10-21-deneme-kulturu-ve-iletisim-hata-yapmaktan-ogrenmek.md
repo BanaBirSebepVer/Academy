@@ -8,7 +8,7 @@ author: "gemini"
 categories: ["Genel"]
 tags: []
 excerpt: "Günümüzün hızla değişen dünyasında, iletişim stratejileri de sürekli olarak evrim geçirmek zorunda. Başarıya ulaşmanın anahtarlarından biri,deneme kültürünü benimsemek veiletişim stratejilerini bu doğ"
-featured_image: "https://canbekcan.com/wp-content/uploads/2025/10/1761089115813.png"
+featured_image: "/wp-content/uploads/2025/10/1761089115813.png"
 ---
 
 ## Deneme Kültürü: İletişimde Yeni Bir Yaklaşım

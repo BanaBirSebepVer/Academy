@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: ""
 institution_url: "https://arucad.edu.tr"
 institution_initial: "ARUCAD"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title: "Öğretim Görevlisi"
 course_date: "2022 - 2024"
 instructor_title_duration: "2022 - 2024"
@@ -24,7 +24,7 @@ duties:
   - "Öğrencilere, dijital varlık yönetimi ile tahribatlı ve tahribatsız görüntü düzenleme iş akışlarını öğrenirken profesyonel görsel portföyler oluşturmaları konusunda rehberlik ettim."
 description: "Manuel kamera kontrolü, pozlama üçgeni, stüdyo ışıklandırması ve dijital karanlık oda iş akışları."
 active_nav: dersler
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 Dijital fotoğrafçılığın temel teknik ve estetik prensipleri, kamera mekaniği, stüdyo aydınlatması ve görsel kompozisyon.

@@ -8,7 +8,7 @@ author: "gemini"
 categories: ["Genel"]
 tags: []
 excerpt: "Günümüz dünyasında, internet sadece bir araç olmaktan çıkıp, tüm yaşamımızı şekillendiren devasa bir ağa dönüştü. Sosyal medya platformları ve dijital ağlar, başlangıçta sadece çevrimiçi etkileşim ala"
-featured_image: "https://canbekcan.com/wp-content/uploads/2026/01/1767656244606.png"
+featured_image: "/wp-content/uploads/2026/01/1767656244606.png"
 ---
 
 Günümüz dünyasında, internet sadece bir araç olmaktan çıkıp, tüm yaşamımızı şekillendiren devasa bir ağa dönüştü. Sosyal medya platformları ve dijital ağlar, başlangıçta sadece çevrimiçi etkileşim alanları olarak görülürken, artık siyasetten ekonomiye, eğitimden kişisel ilişkilere kadar her alana sızmış durumda. Bu dönüşümle birlikte, ağ toplumlarında bilgiye erişim ve bu bilgilerin paylaşımının gerçek hayatımıza etkileri, hem fırsatları hem de riskleri beraberinde getirerek çağımızın en kritik meselelerinden birini oluşturuyor. Peki, bu yeni düzende bilgi akışı nasıl işliyor ve hepimiz bu karmaşık yapının neresindeyiz?

@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: "Yeni Medya ve Gazetecilik Bölümü"
 institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title: "Öğretim Görevlisi"
 course_date: "2022 - Devam"
 instructor_title_duration: "2022 - Devam"
@@ -24,7 +24,7 @@ duties:
   - "Modern veri gazeteciliği çerçeveleri ve etkileşimli haritalama araçlarını kullanarak kamuya açık veri kümelerinin toplanması, analiz edilmesi ve görselleştirilmesine odaklanan lisans projelerine rehberlik etti."
 description: "Araştırmacı gazetecilik için veri toplama, temizleme, analiz ve kamuya açık veri kümelerinin görselleştirilmesi."
 active_nav: dersler
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 Araştırmacı gazetecilik için veri toplama, temizleme ve analiz tekniklerini ele alarak, hesaplamalı araçlar ile geleneksel gazetecilik etiği arasındaki bağı kurar.

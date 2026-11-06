@@ -39,7 +39,7 @@
   {% endif %}
 
   <div class="lesson-meta-bar single-hero-meta-bar">
-    <span><i class="fa fa-user"></i> {{ locale.ui.instructor | default: "Öğretim Görevlisi" }}: <strong>{{ page.instructor | default: "Can Bekcan" }}</strong></span>
+    <span><i class="fa fa-user"></i> {{ locale.ui.instructor | default: "Öğretim Görevlisi" }}: <strong>{{ page.instructor | default: site.author | default: "Öğretim Üyesi" }}</strong></span>
     {% if page.category %}
     <span><i class="fa fa-folder-open"></i> {{ locale.ui.field_category | default: "Alan" }}: {{ page.category }}</span>
     {% endif %}

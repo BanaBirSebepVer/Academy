@@ -8,7 +8,7 @@ author: "gemini"
 categories: ["Genel"]
 tags: []
 excerpt: "Günümüzde yapay zeka (YZ), hayatımızın her alanında olduğu gibi yeni medya sektöründe de adından sıkça söz ettiriyor. Özellikle son yıllarda YZ teknolojilerindeki hızlı gelişmeler, içerik üretiminden "
-featured_image: "https://canbekcan.com/wp-content/uploads/2025/10/1759973893909.png"
+featured_image: "/wp-content/uploads/2025/10/1759973893909.png"
 ---
 
 ## Yapay Zeka ve Yeni Medya: Dönüşümün Eşiğinde miyiz?

@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: ""
 institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title: "Öğretim Asistanı"
 course_date: "2014 - 2015"
 instructor_title_duration: "2014 - 2015"
@@ -24,7 +24,7 @@ duties:
   - "Dönem sonu öğrenci görsel portföylerini ve fakülte galeri alanlarında düzenlenen dijital fotoğraf sergilerini küratörlüğünü üstlendi ve organize etti."
 description: "İleri düzey ticari aydınlatma, stüdyo ve dış mekan çekim teknikleri, makro fotoğrafçılık ve profesyonel portfolyo kürasyonu."
 active_nav: dersler
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 İleri düzey stüdyo fotoğrafçılığı, aydınlatma teknikleri, makro çekimler ve profesyonel portföy hazırlığı konularına odaklanan uygulamalı ders.

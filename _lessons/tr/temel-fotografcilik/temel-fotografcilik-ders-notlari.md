@@ -11,12 +11,12 @@ whatsapp: ""
 telegram: ""
 slack: ""
 zoom: ""
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 ## İlk Fotoğraf - 1826
 
-![](https://canbekcan.com/wp-content/uploads/2023/10/The-First-Photo.jpg)
+![](/wp-content/uploads/2023/10/The-First-Photo.jpg)
 
 ## İlk Selfie (Özçekim) - 1839
 
@@ -36,11 +36,11 @@ email: "can@canbekcan.com"
 
 ## Objektif (Lens) Çeşitleri
 
-![](https://canbekcan.com/wp-content/uploads/2023/10/Camera-Lense-Angles.png)
+![](/wp-content/uploads/2023/10/Camera-Lense-Angles.png)
 
 ## DSLR Kameralar
 
-![](https://canbekcan.com/wp-content/uploads/2023/10/DSLR.jpg)
+![](/wp-content/uploads/2023/10/DSLR.jpg)
 
 ## Aynasız Kameralar
 
@@ -52,27 +52,27 @@ email: "can@canbekcan.com"
 
 ## Kompakt Kameralar
 
-![](https://canbekcan.com/wp-content/uploads/2023/10/Compact-Camera.jpg)
+![](/wp-content/uploads/2023/10/Compact-Camera.jpg)
 
 ## Filmli Kameralar
 
-![](https://canbekcan.com/wp-content/uploads/2023/10/SLR.jpg)
+![](/wp-content/uploads/2023/10/SLR.jpg)
 
 ## Aksiyon Kameralar
 
-![](https://canbekcan.com/wp-content/uploads/2023/10/Action-Camera.jpg)
+![](/wp-content/uploads/2023/10/Action-Camera.jpg)
 
 ## 360 Kameralar
 
-![](https://canbekcan.com/wp-content/uploads/2023/10/360-Camera.png)
+![](/wp-content/uploads/2023/10/360-Camera.png)
 
 ## Akıllı Telefon Kameraları
 
-![](https://canbekcan.com/wp-content/uploads/2023/10/Smartphone-Camera.jpg)
+![](/wp-content/uploads/2023/10/Smartphone-Camera.jpg)
 
 ## Şipşak Kameralar
 
-![](https://canbekcan.com/wp-content/uploads/2023/10/Instant-Camera.webp.jpeg)
+![](/wp-content/uploads/2023/10/Instant-Camera.webp.jpeg)
 
 ## Orta Format Kameralar
 
@@ -80,7 +80,7 @@ email: "can@canbekcan.com"
 
 ## Temel Fotoğraf Makinası Ayarları
 
-![](https://canbekcan.com/wp-content/uploads/2023/10/Settings.png)
+![](/wp-content/uploads/2023/10/Settings.png)
 
 [Alan Derinliği ve Işık](#id2)
 

@@ -4,11 +4,11 @@ lang: tr
 layout: post/single
 title: "Okuma Listesi - KU"
 date: 2017-01-04 17:57:00
-author: "canbekcan"
+author: "akademisyen"
 categories: ["Kitap Listesi"]
 tags: ["iletişim çalışmaları", "kitap listesi", "medya çalışmaları"]
 excerpt: "İletişim bilimleri üzerine çalışmalar yapmak isteyenlerin okuması gereken kitap listesiKocaeli Üniversitesi İletişim Bilimleri Ana Bilim Dalıtarafından hazırlanmış. Bu kitaplara ek olarak okunması ger"
-featured_image: "https://canbekcan.com/wp-content/uploads/2017/01/kitaplistesi.png"
+featured_image: "/wp-content/uploads/2017/01/kitaplistesi.png"
 ---
 
 İletişim bilimleri üzerine çalışmalar yapmak isteyenlerin okuması gereken kitap listesi [Kocaeli Üniversitesi İletişim Bilimleri Ana Bilim Dalı](http://sbe.kocaeli.edu.tr/?p=programs&abd=22) tarafından hazırlanmış. Bu kitaplara ek olarak okunması gereken bir çok kitap da mevcut, ancak başlangıç olarak bu kitapları okumanızı öneririm.

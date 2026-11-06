@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: ""
 institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title: "Öğretim Görevlisi"
 course_date: "2022 - Devam"
 instructor_title_duration: "2022 - Devam"
@@ -21,7 +21,7 @@ appointments:
     instructor_title_duration: "2022 - Devam"
 description: "Farklı kültürel bağlamlar, değerler ve küresel çevrelerde kişilerarası ve medya etkileşimleri dinamikleri."
 active_nav: dersler
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 Kültürlerarası iletişimin dinamiklerini inceleyerek; farklı kültürel geçmişlerin, değerlerin ve küresel ortamların kişilerarası ve medya etkileşimlerine etkisini ele alır.

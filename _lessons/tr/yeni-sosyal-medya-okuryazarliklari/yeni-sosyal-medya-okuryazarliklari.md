@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: ""
 institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title: "Öğretim Asistanı"
 course_date: "2014 - 2015"
 instructor_title_duration: "2014 - 2015"
@@ -24,7 +24,7 @@ duties:
   - "Kullanıcı davranışını, dijital yankı odalarını ve sosyal ağ platformlarının sosyo-politik etkisini inceleyen lisansüstü düzeyindeki araştırma önerilerini değerlendirdi."
 description: "Dijital vatandaşlık, algoritmik farkındalık, dezenformasyon ve sosyal ağların sosyo-politik etkileri."
 active_nav: dersler
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 Dijital medya ekosisteminde yeni okuryazarlıklar, platform algoritmaları, bilgi kirliliği ve ağ toplumu dinamikleri.

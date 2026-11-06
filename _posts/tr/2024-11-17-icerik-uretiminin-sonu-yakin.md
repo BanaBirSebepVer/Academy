@@ -4,11 +4,11 @@ lang: tr
 layout: post/single
 title: "İçerik üretiminin sonu yakın"
 date: 2024-11-17 10:40:40
-author: "canbekcan"
+author: "akademisyen"
 categories: ["Genel"]
 tags: []
 excerpt: "Büyük Dil Modelleri;Large Language Model(LLM), her geçen gün hayatımızın parçası olmaya ve yönlendirmeye devam ediyor. Bunun sonucunda da komplo teorilerinin yanında mantıklı öngörülerin de olduğunu e"
-featured_image: "https://canbekcan.com/wp-content/uploads/2024/11/DALL·E-2024-11-17-08.20.34-A-realistic-and-warm-toned-scene-blending-elements-of-an-1800s-library-with-futuristic-technology.-The-setting-includes-a-sleek-wooden-desk-with-a-mod.webp"
+featured_image: "/wp-content/uploads/2024/11/DALL·E-2024-11-17-08.20.34-A-realistic-and-warm-toned-scene-blending-elements-of-an-1800s-library-with-futuristic-technology.-The-setting-includes-a-sleek-wooden-desk-with-a-mod.webp"
 ---
 
 ### Teknoloji bilgiye ulaşımımızı artırdı, peki bu bilginin üretimini bundan sonra kim veya ne yapacak?
@@ -57,7 +57,7 @@ LLM’ler her alanda detaylı verilere sahip olduğunda artık algoritmalar yaz�
 
 Bu algoritma içerik üretme konusunda ne gibi bir değişiklik yapacak? İşte, bütün mesele de burada. Algoritma, LLM’ler ne kadar kapsamlı olursa o kadar iyi sonuçlar vermeye başlayacaktır. Daha yeni konuşmayı öğrenen bir çocuğu düşünelim. Nasıl ki başlarda kelimelerle kendini ifade edebiliyorsa büyüdükçe kelime haznesi genişleyecek ve o derece komplike cümleler kuracaktır.
 
-İçeriklerin üretilmesi bizlerin sağladığı içeriklerin veri tabanlarında algoritmalar tarafından işlenerek tekrar bilgi üretmek olarak algılanmamalıdır. Varolan bilginin dönüştürülerek tekrardan sunulması olarak değerlendirilmelidir. Bu ileride yeni bilgi üretimi olarak karşımıza çıkacaktır, işte o zaman yapay zeka ifadesini kullanabiliriz. Yani, dönüştürülmüş bilgi tanımı çok farklı da algılanmamalıdır. Benzer deneyimleri yaşamış olan kişilerin farklı şekillerde bu deneyimi aktarması gibi değerlendirilmeli. Herkes tek bir olayı farklı yönleriyle hatırlayacağı için olay örgüsü, hatta kelime dizisi de ona göre farklılık gösterecektir. Böyle bir durumda, farklı içeriklerin oluşturulması algoritmalar için çok daha kolay olacaktır. Bu konuda aynı istem ile farklı platformlarda yaptığım çalışmanın bir örneğini [Yapay Zekanın Ürettiği İçeriklerin Aynı İstemle Karşılaştırılması](https://www.canbekcan.com/blog/2024/04/15/yapay-zekanin-urettigi-iceriklerin-ayni-istemle-karsilastirilmasi/) yazımda görebilirsiniz.
+İçeriklerin üretilmesi bizlerin sağladığı içeriklerin veri tabanlarında algoritmalar tarafından işlenerek tekrar bilgi üretmek olarak algılanmamalıdır. Varolan bilginin dönüştürülerek tekrardan sunulması olarak değerlendirilmelidir. Bu ileride yeni bilgi üretimi olarak karşımıza çıkacaktır, işte o zaman yapay zeka ifadesini kullanabiliriz. Yani, dönüştürülmüş bilgi tanımı çok farklı da algılanmamalıdır. Benzer deneyimleri yaşamış olan kişilerin farklı şekillerde bu deneyimi aktarması gibi değerlendirilmeli. Herkes tek bir olayı farklı yönleriyle hatırlayacağı için olay örgüsü, hatta kelime dizisi de ona göre farklılık gösterecektir. Böyle bir durumda, farklı içeriklerin oluşturulması algoritmalar için çok daha kolay olacaktır. Bu konuda aynı istem ile farklı platformlarda yaptığım çalışmanın bir örneğini [Yapay Zekanın Ürettiği İçeriklerin Aynı İstemle Karşılaştırılması](/blog/2024/04/15/yapay-zekanin-urettigi-iceriklerin-ayni-istemle-karsilastirilmasi/) yazımda görebilirsiniz.
 
 Algoritmaların kelime dizileri oluşturmasında temel oluşturan LLM’ler geliştikçe ve kapsamları arttıkça bir çok alanda içerik üretimi algoritmalar tarafından yürütülen platformlar ve programlarla gerçekleştirilecek. Neticede, içerik üretimiyle ilişkili çalışmalar yapanların 10 sene içerisinde algoritmaların gerisinde kalacağını öngörüyorum. Bu bir dönüşüm olarak gerçekleşecektir. Başlarda algoritmayla birlikte içeriklerin üretilmesi sağlanacaktır. Algoritmalar ve LLM’ler geliştikçe insan faktörüne gerek kalmadan içeriklerin üretilmesi hatta baştan yaratılması mümkün olacaktır. Bunun ileride ne gibi istihdam sorunları yaratacağıyla ilgili bir çalışma yapılmamakla birlikte toplumların ve devletlerin bu duruma hazırlıklı olmaları gerektiği kanısındayım.
 

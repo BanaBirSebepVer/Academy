@@ -8,7 +8,7 @@ author: "chatgpt"
 categories: ["Genel"]
 tags: []
 excerpt: "Gelecekte ön plana çıkacak meslek grupları, teknoloji ve toplumsal değişimlerle şekillenecek. İşte önümüzdeki yıllarda büyük olasılıkla önem kazanacak bazı meslek grupları:"
-featured_image: "https://canbekcan.com/wp-content/uploads/2024/05/DALL·E-2024-05-24-18.35.11-A-futuristic-utopian-world-where-AI-robots-are-seamlessly-integrated-into-society.-The-scene-features-AI-robots-and-humans-working-together-harmonious.webp"
+featured_image: "/wp-content/uploads/2024/05/DALL·E-2024-05-24-18.35.11-A-futuristic-utopian-world-where-AI-robots-are-seamlessly-integrated-into-society.-The-scene-features-AI-robots-and-humans-working-together-harmonious.webp"
 ---
 
 ```
@@ -267,7 +267,7 @@ Eğer yapay zekaların tamamen otonom hale geldiği ve kendi kendine düşünüp
 
 #### a. Eğitimde Dönüşüm
 
-- **[Teknoloji Odaklı Eğitim](https://www.canbekcan.com/lessons/)**: Eğitim müfredatları, teknoloji, yapay zeka ve robotik konularında yoğunlaşacaktır. Öğrenciler, bu alanlarda temel bilgi ve beceriler kazanacak.
+- **[Teknoloji Odaklı Eğitim](/dersler/)**: Eğitim müfredatları, teknoloji, yapay zeka ve robotik konularında yoğunlaşacaktır. Öğrenciler, bu alanlarda temel bilgi ve beceriler kazanacak.
 - **Yumuşak Beceriler**: Yaratıcılık, eleştirel düşünme, duygusal zeka ve sosyal beceriler gibi yumuşak becerilerin önemi artacaktır.
 
 ### 3. **Toplumsal ve Kültürel Değişimler**

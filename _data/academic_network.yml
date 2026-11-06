@@ -2,32 +2,32 @@
 # Academic Network Registry
 # Community of scholars, courses, and institutions powered by the Academy Engine
 # ==============================================================================
-- name: "Dr. Can Bekcan"
-  institution: "Eastern Mediterranean University"
-  faculty: "Faculty of Communication and Media Studies"
-  fields: "Communication Studies"
-  keywords: ["Communication Studies", "Media Studies", "Digital Media", "Social Media"]
-  url: "https://canbekcan.com"
-  country: "Cyprus"
+- name: "Dr. Jane Doe"
+  institution: "Sample University"
+  faculty: "Faculty of Communication & Information Sciences"
+  fields: "Computational Communication"
+  keywords: ["Computational Methods", "Digital Media", "Network Analysis"]
+  url: "https://example.edu/janedoe"
+  country: "United States"
   verified: true
-  avatar: "https://canbekcan.github.io/Academy/assets/images/Can-Bekcan-PADI.jpg"
+  avatar: "/assets/images/default-avatar.svg"
 
-- name: "Communication Studies Lab (CSLab)"
+- name: "Communication & Media Lab"
   institution: "Sample Partner University"
   faculty: "Department of New Media"
-  fields: "Journalism & Media"
-  keywords: ["Journalism", "Data Journalism", "Digital Media"]
+  fields: "Journalism & Media Studies"
+  keywords: ["Data Journalism", "Digital Media", "Public Interest Tech"]
   url: "https://example.edu/lab"
   country: "Turkey"
   verified: true
   avatar: ""
 
-- name: "Computational Media Research Group"
-  institution: "Arkın University of Creative Arts and Design"
-  faculty: "Faculty of Communication"
-  fields: "Computational Media"
-  keywords: ["Visual Design", "Media Studies", "Artificial Intelligence"]
-  url: "https://example.edu/arucad-lab"
-  country: "Cyprus"
+- name: "Computational Science Research Group"
+  institution: "Sample Technology Institute"
+  faculty: "Faculty of Computer Science"
+  fields: "Computational Social Science"
+  keywords: ["Machine Learning", "Open Science", "Reproducible Research"]
+  url: "https://example.edu/cs-lab"
+  country: "United Kingdom"
   verified: true
   avatar: ""

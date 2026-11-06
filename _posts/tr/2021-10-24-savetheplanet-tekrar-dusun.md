@@ -4,11 +4,11 @@ lang: tr
 layout: post/single
 title: "SaveThePlanet - Tekrar Düşün"
 date: 2021-10-24 23:05:18
-author: "canbekcan"
+author: "akademisyen"
 categories: ["SaveThePlanet"]
 tags: []
 excerpt: "Kullanmakta olduğumuz plastiklere gerçekten ihtiyacımız var mı, yoksa bu tamamen uydurulmuş bir ihtiyaç mı?"
-featured_image: "https://canbekcan.com/wp-content/uploads/2021/10/Facebook-Cover-4@3x-scaled.png"
+featured_image: "/wp-content/uploads/2021/10/Facebook-Cover-4@3x-scaled.png"
 ---
 
 ## Tekrar Düşün
@@ -25,8 +25,8 @@ Plastik kaplardan uzak durabilirsiniz. Bunun yerine cam kaplara yönelmeniz daha
 
 #### **Sizlerin de önerileri olursa lütfen yorum kısmına yazın. Daha sağlam adımlar atılabilmesi için her fikir önemli…**
 
-![Save The Planet](https://canbekcan.com/wp-content/uploads/2021/10/Facebook-Cover-4_Transparent@3x-300x114.png)
+![Save The Planet](/wp-content/uploads/2021/10/Facebook-Cover-4_Transparent@3x-300x114.png)
 
 Proje hakkında bilgi almak, sizlerden gelen önerileri görmek ve aktivitelere ulaşarak destek olmak için sayfayı ziyaret ediniz.
 
-[Save The Planet](https://www.canbekcan.com/savetheplanet)
+[Save The Planet](/savetheplanet)

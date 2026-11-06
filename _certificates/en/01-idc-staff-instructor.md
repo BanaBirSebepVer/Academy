@@ -1,17 +1,17 @@
 ---
-title: "IDC Staff Instructor"
-certificate: "IDC Staff Instructor"
-issuer: "PADI"
-link: "https://www.canbekcan.com/en/scuba/"
-issuer_link: "http://padi.canbekcan.com"
-start_year: "2016"
-end_year: "Present"
+title: "Data Science and Advanced Analytics Certificate"
+certificate: "Data Science and Advanced Analytics"
+issuer: "Stanford Online"
+link: "https://example.edu/certificate"
+issuer_link: "https://example.edu"
+start_year: "2021"
+end_year: "2021"
 order: 1
 ---
 
-### IDC Staff Instructor | PADI (2016 – Present)
+### Data Science and Advanced Analytics | Stanford Online (2021)
 
-- **Certificate:** IDC Staff Instructor
-- **Issuer:** PADI
-- **Certificate Link:** https://www.canbekcan.com/en/scuba/
-- **Issuer Link:** http://padi.canbekcan.com
+- **Certificate:** Data Science and Advanced Analytics
+- **Issuer:** Stanford Online
+- **Certificate Link:** [Verification Link](https://example.edu/certificate)
+- **Issuer Link:** [Stanford Online](https://example.edu)

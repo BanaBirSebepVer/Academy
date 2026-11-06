@@ -4,16 +4,16 @@ lang: tr
 layout: post/single
 title: "Kurgu Programları"
 date: 2017-01-20 03:29:01
-author: "canbekcan"
+author: "akademisyen"
 categories: ["İpuçları", "Video"]
 tags: ["editing", "kurgu", "program", "software", "video"]
 excerpt: "Video kurgularken kullanılabilecek yazılımların listesini aşağıda paylaşıyorum. Sizin de bildiğiniz ve videolarınızı montajlarken kullandığınız programlar varsa aşağıdaki yorum kısmından bizimle payla"
-featured_image: "https://canbekcan.com/wp-content/uploads/2017/01/VES_tr-EN.jpg"
+featured_image: "/wp-content/uploads/2017/01/VES_tr-EN.jpg"
 ---
 
 Video kurgularken kullanılabilecek yazılımların listesini aşağıda paylaşıyorum. Sizin de bildiğiniz ve videolarınızı montajlarken kullandığınız programlar varsa aşağıdaki yorum kısmından bizimle paylaşabilirsiniz.
 
-[Kurgu Dersleri](https://www.canbekcan.com/lessons/)
+[Kurgu Dersleri](/dersler/)
 
 #### Kurgu Programları
 

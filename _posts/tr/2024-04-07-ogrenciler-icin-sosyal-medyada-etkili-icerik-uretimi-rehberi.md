@@ -8,7 +8,7 @@ author: "chatgpt"
 categories: ["Genel"]
 tags: []
 excerpt: "Sosyal medya, öğrenciler için sadece bir eğlence aracı değil, aynı zamanda kişisel markalarını ve projelerini tanıtmak için güçlü bir platform olabilir. Etkili içerik üretimi, izlenme sayılarını artır"
-featured_image: "https://canbekcan.com/wp-content/uploads/2024/04/DALL·E-2024-04-07-18.11.30-A-wide-screen-visually-appealing-infographic-titled-Guide-to-Effective-Content-Creation-on-Social-Media-for-Students-without-any-text-elements.-The.webp"
+featured_image: "/wp-content/uploads/2024/04/DALL·E-2024-04-07-18.11.30-A-wide-screen-visually-appealing-infographic-titled-Guide-to-Effective-Content-Creation-on-Social-Media-for-Students-without-any-text-elements.-The.webp"
 ---
 
 Sosyal medya, öğrenciler için sadece bir eğlence aracı değil, aynı zamanda kişisel markalarını ve projelerini tanıtmak için güçlü bir platform olabilir. Etkili içerik üretimi, izlenme sayılarını artırmak, daha fazla takipçi kazanmak ve potansiyel olarak bir sosyal medya fenomeni haline gelmek için kritik öneme sahiptir. Bu yazıda, öğrencilerin sosyal medyada daha etkili işler çıkarabilmeleri için kullanabilecekleri yöntemler ele alınacaktır.

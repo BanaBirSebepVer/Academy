@@ -3,7 +3,7 @@ title: "Civil Disobedience in Spain: Comparison of BBC’s and TRT’s Represent
 conference: "5th International Conference in Communication and Media Studies"
 conference_url: "http://crcp.emu.edu.tr"
 year: "2018"
-author: "Can Bekcan"
+author: "Dr. Jane Doe"
 order: 1
 ---
 
@@ -11,5 +11,5 @@ order: 1
 
 - **Conference:** 5th International Conference in Communication and Media Studies
 - **Year:** 2018
-- **Link:** [CRCP](http://crcp.emu.edu.tr)
-- **Author:** Can Bekcan
+- **Link:** [CRCP](https://example.edu/crcp)
+- **Author:** Dr. Jane Doe

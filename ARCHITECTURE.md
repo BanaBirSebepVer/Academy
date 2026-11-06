@@ -1,6 +1,6 @@
 # System Architecture & Dependency Impact Graph
 
-This document serves as the **Single Source of Truth (SSOT)** for the architecture, component dependencies, and change blast radius of the **Can Bekcan Personal Academic Website**.
+This document serves as the **Single Source of Truth (SSOT)** for the architecture, component dependencies, and change blast radius of the **Academy Academic Website Engine**.
 
 Use this guide before refactoring, renaming, or modifying any template, configuration setting, collection, or localization dictionary to prevent 404 routing errors, broken layouts, or Jekyll build failures.
 

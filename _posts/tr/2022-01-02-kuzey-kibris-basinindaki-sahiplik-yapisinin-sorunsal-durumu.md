@@ -4,11 +4,11 @@ lang: tr
 layout: post/single
 title: "Kuzey Kıbrıs Basınındaki Sahiplik Yapısının Sorunsal Durumu"
 date: 2022-01-02 10:30:50
-author: "canbekcan"
+author: "akademisyen"
 categories: ["Akademik", "Çalışma"]
 tags: []
 excerpt: "Şeffaf yönetim anlayışı çerçevesinde medyanın sahiplik yapısının toplum tarafından ulaşılabilir olmasının önemli olmasının yanında gündem belirlemesinde rol oynadığı da bilinmektedir. Farklı sektörler"
-featured_image: "https://canbekcan.com/wp-content/uploads/2018/05/Kibris-Medyasi-Sahiplik-Yapisi-scaled.png"
+featured_image: "/wp-content/uploads/2018/05/Kibris-Medyasi-Sahiplik-Yapisi-scaled.png"
 ---
 
 ## Kıbrıs Basınındaki Sahiplik Yapısının Sorunsal Durumu
@@ -17,4 +17,4 @@ featured_image: "https://canbekcan.com/wp-content/uploads/2018/05/Kibris-Medyasi
 
 **Anahtar Kelimeler:** KKTC, medya sahiplik yapısı, veri kazımacılığı
 
-![Kıbrıs Medyası Sahiplik Yapısı](https://canbekcan.com/wp-content/uploads/2018/05/Kibris-Medyasi-Sahiplik-Yapisi-scaled.png)
+![Kıbrıs Medyası Sahiplik Yapısı](/wp-content/uploads/2018/05/Kibris-Medyasi-Sahiplik-Yapisi-scaled.png)

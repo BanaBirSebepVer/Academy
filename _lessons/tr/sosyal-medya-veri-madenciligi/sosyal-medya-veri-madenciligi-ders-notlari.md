@@ -11,7 +11,7 @@ whatsapp: ""
 telegram: ""
 slack: ""
 zoom: ""
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 ## Haber Portalı Yaratma
@@ -36,7 +36,7 @@ Bir formüle başlamadan önce eşittir işareti kullanmayı unutmayın.
 
 ## Proje Belirleme Formu
 
-Yapacağınız çalışmalarda kullanmak üzere [proje belirleme formu](https://canbekcan.com/wp-content/uploads/2022/11/Proje-Konusu-Belirleme-Formu.docx)nu doldurmanız gerekmektedir.
+Yapacağınız çalışmalarda kullanmak üzere [proje belirleme formu](/wp-content/uploads/2022/11/Proje-Konusu-Belirleme-Formu.docx)nu doldurmanız gerekmektedir.
 
 ## GitHub Kodları
 

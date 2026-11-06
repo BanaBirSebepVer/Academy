@@ -183,7 +183,7 @@ active_nav: academic
                 <span class="status-badge status-active"><i class="fa fa-spinner fa-spin" style="font-size: 10px;"></i> Ongoing</span>
               </div>
               <h3 class="archive-card-title">
-                <a href="https://canbekcan.com/blog/2022/01/02/kuzey-kibris-basinindaki-sahiplik-yapisinin-sorunsal-durumu/" target="_blank" rel="noopener noreferrer">
+                <a href="https://example.edu/research/media-ownership" target="_blank" rel="noopener noreferrer">
                   Media Ownership Structure in North Cyprus
                 </a>
               </h3>
@@ -200,7 +200,7 @@ active_nav: academic
                 <span class="archive-card-tag">Ownership Structure</span>
               </div>
               <div class="archive-card-footer">
-                <a href="https://canbekcan.com/blog/2022/01/02/kuzey-kibris-basinindaki-sahiplik-yapisinin-sorunsal-durumu/" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" style="font-weight: 600;">
+                <a href="https://example.edu/research/media-ownership" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" style="font-weight: 600;">
                   Explore Research Report &rarr;
                 </a>
               </div>
@@ -266,7 +266,7 @@ active_nav: academic
                 <span class="archive-card-tag">Prompt Engineering</span>
               </div>
               <div class="archive-card-footer">
-                <a href="mailto:can@canbekcan.com" class="btn btn-xs btn-default" style="font-weight: 600;">
+                <a href="mailto:academician@example.edu" class="btn btn-xs btn-default" style="font-weight: 600;">
                   Collaborate via Email <i class="fa fa-envelope"></i>
                 </a>
               </div>

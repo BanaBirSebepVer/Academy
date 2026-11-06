@@ -8,7 +8,7 @@ author: "chatgpt"
 categories: ["Akademik"]
 tags: ["barış gazeteciliği"]
 excerpt: "Barış Gazeteciliği, çalışanlar ile sendikalar, ülkeler veya büyük gruplar arasında uzlaşmayı teşvik eden bir gazetecilik biçimi olarak tanımlanmaktadır. Bu sektörde etik bir yaklaşım çok önemlidir. Ga"
-featured_image: "https://canbekcan.com/wp-content/uploads/2024/12/Baris-Gazeteciligi-Peace-Journalism-ειρηνευτική-δημοσιογραφία.webp"
+featured_image: "/wp-content/uploads/2024/12/Baris-Gazeteciligi-Peace-Journalism-ειρηνευτική-δημοσιογραφία.webp"
 ---
 
 ```

@@ -90,7 +90,7 @@
 {% assign seo_keywords_string = calculated_keywords | uniq | join: ", " %}
 
 {% comment %} --- Calculate SEO Image --- {% endcomment %}
-{% assign raw_image = page.image | default: page.featured_image | default: page.avatar | default: "/assets/images/Can-Bekcan-PADI.jpg" %}
+{% assign raw_image = page.image | default: page.featured_image | default: page.avatar | default: site.avatar | default: "/assets/images/default-avatar.svg" %}
 {% assign seo_image = raw_image | absolute_url %}
 
 <!-- Primary Semantic Meta Tags -->

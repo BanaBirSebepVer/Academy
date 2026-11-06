@@ -11,7 +11,7 @@ whatsapp: ""
 telegram: ""
 slack: ""
 zoom: ""
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 ## Video ve Ses Yapım Teknikleri 4
@@ -38,4 +38,4 @@ xml version="1.0" encoding="utf-8"?
 
 xml version="1.0" encoding="utf-8"?
 
-[3. Ders](https://www.canbekcan.com/lessons/video-ve-ses-yapim-teknikleri/video-ve-ses-yapim-teknikleri-3/)[5. Ders](https://www.canbekcan.com/lessons/video-ve-ses-yapim-teknikleri/video-ve-ses-yapim-teknikleri-5/)
+[3. Ders](/dersler/video-ve-ses-yapim-teknikleri/video-ve-ses-yapim-teknikleri-3/)[5. Ders](/dersler/video-ve-ses-yapim-teknikleri/video-ve-ses-yapim-teknikleri-5/)

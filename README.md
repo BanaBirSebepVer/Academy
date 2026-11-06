@@ -1,20 +1,20 @@
 # Academy — Academic Portfolio, Course Hub & Research Archive
 
-[![Deploy to GitHub Pages](https://github.com/BanaBirSebepVer/Academy/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/canbekcan/Academy/actions/workflows/deploy.yml)
+[![Deploy to GitHub Pages](https://github.com/BanaBirSebepVer/Academy/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/BanaBirSebepVer/Academy/actions/workflows/deploy.yml)
 [![Jekyll Engine](https://img.shields.io/badge/Jekyll-4.0.23-CC0000.svg?style=flat-square&logo=jekyll&logoColor=white)](https://jekyllrb.com/)
 [![Ruby Version](https://img.shields.io/badge/Ruby-%3E%3D%203.0-ruby.svg?style=flat-square&logo=ruby)](https://www.ruby-lang.org/)
 [![License: MIT](https://img.shields.io/badge/Code%20License-MIT-blue.svg?style=flat-square)](./LICENSE)
 [![Content License: CC BY-NC-SA 4.0](https://img.shields.io/badge/Content-CC%20BY--NC--SA%204.0-lightgrey.svg?style=flat-square&logo=creative-commons)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-[![Multilingual](https://img.shields.io/badge/Language-TR%20%7C%20EN-success.svg?style=flat-square)](https://canbekcan.com/en/)
+[![Multilingual](https://img.shields.io/badge/Language-TR%20%7C%20EN-success.svg?style=flat-square)](/en/)
 
-> **Live Production Website**: [**https://canbekcan.github.io/Academy/**](https://canbekcan.github.io/Academy/) (English Portal: [https://canbekcan.github.io/Academy/en/](https://canbekcan.github.io/Academy/en/))  
+> **Live Production Website**: [**https://banabirsebepver.github.io/Academy/**](https://banabirsebepver.github.io/Academy/) (English Portal: [https://banabirsebepver.github.io/Academy/en/](https://banabirsebepver.github.io/Academy/en/))  
 > **Automated Deployments**: Continuous integration and deployment is fully automated via GitHub Actions ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)) on every push to `main`.
 
 ---
  
 ## 1. Project Overview & Mission
 
-This repository contains the complete source code, course materials, publication records, and digital essays for the personal academic platform of **Can Bekcan** — Lecturer and Researcher in New Media, Journalism, and Computational Communication at Eastern Mediterranean University (*Doğu Akdeniz Üniversitesi*).
+This repository contains the complete source code, course materials, publication records, and digital essays for **Academy** — an open-source, bilingual static academic website engine designed for scholars, professors, and researchers.
 
 ### The Core Mission
 1. **Open Courseware & Pedagogical Transparency**: Empower university students and independent learners with open access to semester syllabi, weekly reading lists, hands-on lab manuals, software tutorials, and sample exam questions.
@@ -149,7 +149,7 @@ Follow these steps to preview and test the website locally on your computer.
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/canbekcan/Academy.git
+git clone https://github.com/BanaBirSebepVer/Academy.git
 cd Academy
 
 # 2. Configure UTF-8 encoding (critical for Turkish and international characters)
@@ -208,13 +208,9 @@ This repository operates under a dual-licensing model:
 
 ---
 
-## 8. Academic Profiles & Contact
+## 8. Academic Configuration & Deployment
 
-- **Institutional Website**: [emu.edu.tr](https://www.emu.edu.tr)
-- **Email**: [`can@canbekcan.com`](mailto:can@canbekcan.com) &bull; [`can.bekcan@emu.edu.tr`](mailto:can.bekcan@emu.edu.tr)
-- **ORCID**: [0000-0003-4786-8870](https://orcid.org/0000-0003-4786-8870)
-- **Google Scholar**: [Can Bekcan Citations](https://scholar.google.com/citations?user=zyPFJ1EAAAAJ&hl=en&authuser=1)
-- **Academia.edu**: [emu.academia.edu/CanBEKCAN](https://emu.academia.edu/CanBEKCAN)
-- **GitHub**: [@CanBekcan](https://github.com/CanBekcan)
-- **LinkedIn**: [linkedin.com/in/canbekcan](https://www.linkedin.com/in/canbekcan/)
-- **X (Twitter)**: [@canbekcan](https://twitter.com/canbekcan)
+- **Custom Domain**: Set your domain in `_config.yml` (`url: "https://yourdomain.com"` and `baseurl: ""`).
+- **GitHub Pages Subpath**: If hosting on `username.github.io/repo`, set `baseurl: "/repo"` and `url: "https://username.github.io"`.
+- **Personal Information**: Edit the top section of `_config.yml` and `pages/tr/index.md` / `pages/en/index.md`.
+- **License**: MIT License - free to use, modify, and distribute.

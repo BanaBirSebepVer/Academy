@@ -49,7 +49,7 @@ jobs:
           # Calculate commit distance from primary upstream repository
           BEHIND_COUNT=0
           CURRENT_REPO="${GITHUB_REPOSITORY}"
-          UPSTREAM_REPO="canbekcan/Academy"
+          UPSTREAM_REPO="BanaBirSebepVer/Academy"
 
           if [ -n "${CURRENT_REPO}" ] && [ "${CURRENT_REPO}" != "${UPSTREAM_REPO}" ]; then
             echo "[INFO] Running on fork/clone: ${CURRENT_REPO}. Checking distance from ${UPSTREAM_REPO}..."

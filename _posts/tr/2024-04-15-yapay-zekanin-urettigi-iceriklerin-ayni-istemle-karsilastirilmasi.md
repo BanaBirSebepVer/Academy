@@ -4,11 +4,11 @@ lang: tr
 layout: post/single
 title: "Yapay Zekanın Ürettiği İçeriklerin Aynı İstemle Karşılaştırılması"
 date: 2024-04-15 03:35:19
-author: "canbekcan"
+author: "akademisyen"
 categories: ["Genel"]
 tags: []
 excerpt: "Yapay zeka, LLM (Large Language Modal – Büyük Dil Modeli) üzerindeki gelişmelerin farklı platformlarda nasıl çalıştığına örnek olarakGoogle GeminiveChatGPTçalışmaları tek istem üzerinden verilmiştir. "
-featured_image: "https://canbekcan.com/wp-content/uploads/2024/04/DALL·E-2024-04-15-03.33.40-A-wide-screen-visually-appealing-infographic-designed-for-the-theme-Comparing-AI-Generated-Content-with-the-Same-Prompt-without-any-text-elements.-.webp"
+featured_image: "/wp-content/uploads/2024/04/DALL·E-2024-04-15-03.33.40-A-wide-screen-visually-appealing-infographic-designed-for-the-theme-Comparing-AI-Generated-Content-with-the-Same-Prompt-without-any-text-elements.-.webp"
 ---
 
 Yapay zeka, LLM (Large Language Modal – Büyük Dil Modeli) üzerindeki gelişmelerin farklı platformlarda nasıl çalıştığına örnek olarak *[Google Gemini](https://gemini.google.com/app)* ve *[ChatGPT](https://chat.openai.com/)* çalışmaları tek istem üzerinden verilmiştir. Gemini ve ChatGPT arasındaki farklılık gözle görülür şekilde fark ediliyor. Gemini internet üzerinden verileri aktif olarak alırken ChatGPT kendisine ulaşan bilgiler üzerinden geri dönüş veriyor. Bu şekilde Gemini şimdilik daha etkili bir yapay zeka olarak görünüyor, ancak ChatGPT içerisinde çalıştırdığı farklı uygulamalarla genel kullanımda daha önde bir LLM olduğunu kanıtlıyor.
@@ -69,7 +69,7 @@ Günümüzde üniversiteler, bilgi üretmenin, bilimsel araştırmaların yapıl
 
 Üniversite eğitimi, yüzyıllar boyunca bilgi ve kültürün merkezi olarak hizmet vermiş ve toplumların şekillenmesinde kritik bir rol oynamıştır. Bu yazıda, üniversite eğitiminin nasıl olması gerektiğine, tarihsel süreç içerisinde nasıl şekillendiğine ve günümüzde internet üzerinden nasıl ifade edildiğine dair bir inceleme yapacağız. Bu inceleme, üniversite, akademi ve üniversite seçim anahtar kelimeleri etrafında şekillenecek.
 
-### Üniversite [Eğitim](https://www.canbekcan.com/lessons/)inin İdeal Yapısı
+### Üniversite [Eğitim](/dersler/)inin İdeal Yapısı
 
 Üniversite eğitiminin ideal yapısı, zaman içinde değişiklik gösterse de temel amacı her zaman için bireylerin hem mesleki hem de kişisel gelişimini maksimize etmek olmuştur. İdeal üniversite eğitimi, öğrencilere sadece akademik bilgi sağlamakla kalmaz, aynı zamanda eleştirel düşünme, problem çözme ve bağımsız öğrenme gibi beceriler kazandırır. Ayrıca, öğrencilerin sosyal sorumluluklarını anlamalarını ve küresel vatandaşlar olarak dünyaya katkıda bulunmalarını teşvik eder.
 

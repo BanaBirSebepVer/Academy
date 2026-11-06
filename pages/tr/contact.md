@@ -19,28 +19,28 @@ header:
 office:
   icon: "fa fa-university"
   title: "Akademik Ofis & Posta Adresi"
-  institution: "Doğu Akdeniz Üniversitesi"
+  institution: "Örnek Üniversitesi"
   faculty: "İletişim Fakültesi"
-  department: "Yeni Medya ve Gazetecilik Bölümü"
+  department: "Bilgisayar Bilimleri & İletişim Bölümü"
   address_lines:
-    - "Gazimağusa, Kuzey Kıbrıs Türk Cumhuriyeti"
-    - "Mersin 10 Turkey"
-  institution_phone: "+90 392 630 2006"
-  office_hours: "Ofis Görüşmeleri: Randevu ile"
+    - "Üniversite Kampüsü, Blok B, Ofis 304"
+    - "34000 İstanbul, Türkiye"
+  institution_phone: "+90 (212) 555-0100"
+  office_hours: "Ofis Görüşmeleri: Çarşamba 14:00 - 16:00 (Randevu ile)"
 
 messaging:
   icon: "fa fa-comments"
   title: "Doğrudan İletişim & Mesajlaşma"
-  description: "Acil ve hızlı iletişimleriniz için WhatsApp, Telegram veya doğrudan telefon hattı üzerinden ulaşabilirsiniz:"
-  phone: "+90 538 276 0003"
-  whatsapp: "+905382760003"
-  telegram: "https://t.me/cbekcan"
+  description: "Öğrenci danışmanlığı ve akademik sorularınız için ofis saatleri içinde ulaşabilirsiniz:"
+  phone: "+90 (212) 555-0101"
+  whatsapp: ""
+  telegram: ""
 
 email_section:
   icon: "fa fa-envelope"
   title: "E-Posta & Akademik Başvurular"
-  description: "Ders içerikleri, araştırma projeleri, tez danışmanlığı veya konuşmacı davetleri için e-posta yoluyla iletişime geçebilirsiniz."
-  email: "can@canbekcan.com"
+  description: "Ders içerikleri, araştırma projeleri, lisansüstü danışmanlığı veya davetli konuşma talepleri için e-posta yoluyla iletişime geçebilirsiniz."
+  email: "academician@example.edu"
 
 networks:
   icon: "fa fa-share-alt"
@@ -49,9 +49,7 @@ networks:
 
 map:
   icon: "fa fa-map-marker"
-  title: "Kampüs Konumu & Yol Tarifi"
-  button_text: "Google Haritalarda Aç"
-  location_name: "Doğu Akdeniz Üniversitesi İletişim Fakültesi"
-  map_url: "https://maps.google.com/?q=35.13909916898466,33.91156142600732"
-  embed_url: "https://maps.google.com/maps?q=35.13909916898466%2C%2033.91156142600732&t=m&z=17&output=embed&iwloc=near"
+  title: "Kampüs Konumu & Ulaşım"
+  description: "Fakülte binası ana kampüs girişine 5 dakikalık yürüme mesafesindedir."
+  embed_url: ""
 ---

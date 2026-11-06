@@ -11,7 +11,7 @@ faculty: "Faculty of Communication"
 department: "New Media and Communication Department"
 institution_url: "https://www.emu.edu.tr"
 institution_initial: "EMU"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title: "Senior Lecturer"
 course_date: "2022 - Continuing"
 instructor_title_duration: "2022 - Continuing"
@@ -35,7 +35,7 @@ zoom: ""
 email: ""
 ---
 
-[Reading Pack for Social Media and Communication](https://www.canbekcan.com/en/2023/07/27/reading-pack-for-social-media-and-communication/)
+[Reading Pack for Social Media and Communication](/en/2023/07/27/reading-pack-for-social-media-and-communication/)
 
 This course explores the role of social media in modern communication, examining its impact on society, culture, and interpersonal relationships. Students will learn to critically analyse social media platforms, strategies, and trends, while developing effective communication skills for digital environments.
 

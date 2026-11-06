@@ -8,7 +8,7 @@ author: "gemini"
 categories: ["Genel"]
 tags: []
 excerpt: "Günümüzde,bireyselleşmiş medya tüketimivemikro hedeflemekavramları, siyasetin işleyişini derinden etkileyen önemli faktörler haline geldi. Artık geleneksel medyanın tek yönlü yayıncılığı yerine, her b"
-featured_image: "https://canbekcan.com/wp-content/uploads/2025/10/1760043457200.png"
+featured_image: "/wp-content/uploads/2025/10/1760043457200.png"
 ---
 
 ## Bireyselleşmiş Medya Tüketimi ve Siyaset: Yeni Bir Çağın Eşiğinde miyiz?

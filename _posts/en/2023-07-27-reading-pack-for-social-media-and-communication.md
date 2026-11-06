@@ -4,7 +4,7 @@ lang: en
 layout: post/single
 title: "Reading Pack for Social Media and Communication"
 date: 2023-07-27 12:00:00
-author: "canbekcan"
+author: "akademisyen"
 categories: ["Academic", "Syllabus"]
 tags: ["social media", "communication", "reading pack"]
 excerpt: "Core literature, academic readings, and theoretical frameworks for the Social Media and Communication curriculum."

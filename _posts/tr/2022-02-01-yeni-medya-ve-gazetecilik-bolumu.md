@@ -4,11 +4,11 @@ lang: tr
 layout: post/single
 title: "Yeni Medya ve Gazetecilik Bölümü"
 date: 2022-02-01 10:30:41
-author: "canbekcan"
+author: "akademisyen"
 categories: ["Genel"]
 tags: []
 excerpt: "Dönüşen medya sektöründe yeni olan her türlü bilginin öğretildiği bölümlerdir. Genellikle, sosyal medya yöneticiliğinin öğretildiği yer olarak görülen bu bölümler aslında mevcut olan her türlü medya a"
-featured_image: "https://canbekcan.com/wp-content/uploads/2019/02/Yeni-Medya-ve-Gazetecilik-Bolumu.png"
+featured_image: "/wp-content/uploads/2019/02/Yeni-Medya-ve-Gazetecilik-Bolumu.png"
 ---
 
 ## Yeni Medya ve Gazetecilik Bölümü İçeriği
@@ -17,7 +17,7 @@ Dönüşen medya sektöründe yeni olan her türlü bilginin öğretildiği böl
 
 ### Site Kurulumu
 
-Açık kaynak kodlu yazılımları kullanarak kendi sitelerinizi kurmayı ve bunları yönetmeyi öğrenirsiniz. Özellikle, kendi [haber portalını kurmak isteyenler](https://www.canbekcan.com/lessons/haber-portali-yaratma-1/) için önemli bir konudur. İletişim fakültelerinde genellikle kodlama dersleri verilmez. Bunun sebebi; bu fakültelerin genellikle sosyal bilimler üzerinde ağırlıklı olmasıdır. Site kurulumun açık kaynak yazılımlarla yapılmasının sebebi de bu yüzden önemli ve zamandan tasarruf olarak değerlendirilebilir.
+Açık kaynak kodlu yazılımları kullanarak kendi sitelerinizi kurmayı ve bunları yönetmeyi öğrenirsiniz. Özellikle, kendi [haber portalını kurmak isteyenler](/dersler/haber-portali-yaratma-1/) için önemli bir konudur. İletişim fakültelerinde genellikle kodlama dersleri verilmez. Bunun sebebi; bu fakültelerin genellikle sosyal bilimler üzerinde ağırlıklı olmasıdır. Site kurulumun açık kaynak yazılımlarla yapılmasının sebebi de bu yüzden önemli ve zamandan tasarruf olarak değerlendirilebilir.
 
 ### İçerik Sağlama
 

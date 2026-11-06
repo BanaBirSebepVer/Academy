@@ -8,10 +8,10 @@ author: "chatgpt"
 categories: ["Genel"]
 tags: []
 excerpt: "Sosyal medya, günümüz gençlerinin yaşamında önemli bir yer tutuyor. İletişimden eğlenceye, bilgi edinmeden kendini ifade etmeye kadar pek çok işlevi yerine getiriyor. Ancak sosyal medyanın hem faydalı"
-featured_image: "https://canbekcan.com/wp-content/uploads/2024/04/DALL·E-2024-04-06-15.52.19-A-visually-engaging-wide-screen-infographic-without-any-text-illustrating-the-good-and-bad-sides-of-social-media-use-for-young-people-through-symboli.webp"
+featured_image: "/wp-content/uploads/2024/04/DALL·E-2024-04-06-15.52.19-A-visually-engaging-wide-screen-infographic-without-any-text-illustrating-the-good-and-bad-sides-of-social-media-use-for-young-people-through-symboli.webp"
 ---
 
-Sosyal medya, günümüz gençlerinin yaşamında önemli bir yer tutuyor. İletişimden eğlenceye, bilgi edinmeden kendini ifade etmeye kadar pek çok işlevi yerine getiriyor. Ancak sosyal medyanın hem faydalı hem de zararlı yönleri bulunuyor. Bu yazıda, [sosyal medya kullanımı](https://www.canbekcan.com/blog/2024/04/07/ogrenciler-icin-sosyal-medyada-etkili-icerik-uretimi-rehberi/)nın iyi ve kötü yanları üzerine gençlere yönelik tavsiyelerde bulunacağız.
+Sosyal medya, günümüz gençlerinin yaşamında önemli bir yer tutuyor. İletişimden eğlenceye, bilgi edinmeden kendini ifade etmeye kadar pek çok işlevi yerine getiriyor. Ancak sosyal medyanın hem faydalı hem de zararlı yönleri bulunuyor. Bu yazıda, [sosyal medya kullanımı](/blog/2024/04/07/ogrenciler-icin-sosyal-medyada-etkili-icerik-uretimi-rehberi/)nın iyi ve kötü yanları üzerine gençlere yönelik tavsiyelerde bulunacağız.
 
 ## Sosyal Medyanın İyi Yanları
 

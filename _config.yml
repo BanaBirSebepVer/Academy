@@ -6,24 +6,24 @@
 # ==============================================================================
 
 # 1. Personal & Academic Profile
-title: "Can Bekcan"
-author: "Can Bekcan"
-email: "can@canbekcan.com"
-description: "Akademik CV - Can Bekcan - Doğu Akdeniz Üniversitesi İletişim Fakültesi"
-institution: "Doğu Akdeniz Üniversitesi"
-department: "İletişim Fakültesi"
-avatar: "/assets/images/Can-Bekcan-PADI.jpg"
+title: "Dr. Jane Doe"
+author: "Dr. Jane Doe"
+email: "academician@example.edu"
+description: "Academic CV & Research Portfolio - Sample University"
+institution: "Sample University"
+department: "Department of Communication & Information Sciences"
+avatar: "/assets/images/default-avatar.svg"
 
 # 2. Site URL & Hosting
-# - Custom domain (e.g. github.canbekcan.com):  baseurl: ""  | url: "https://github.canbekcan.com"
-# - Project site (e.g. username.github.io/repo): baseurl: "/Academy" | url: "https://username.github.io"
+# - Custom domain (e.g. example.com):            baseurl: ""          | url: "https://example.com"
+# - Project site (e.g. username.github.io/repo): baseurl: "/Academy"  | url: "https://BanaBirSebepVer.github.io"
 baseurl: "/Academy"
 url: "https://BanaBirSebepVer.github.io"
 repository: "BanaBirSebepVer/Academy"
 github_repo: "https://github.com/BanaBirSebepVer/Academy"
 google_analytics: ""
 encoding: utf-8
-favicon: "/favicon.ico"
+favicon: "/assets/images/favicon.ico"
 
 # 3. Multilingual Settings
 default_lang: "tr"

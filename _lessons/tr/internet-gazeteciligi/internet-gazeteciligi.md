@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: "Yeni Medya ve Gazetecilik Bölümü"
 institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title:
   - "Öğretim Görevlisi"
   - "Araştırma Görevlisi"
@@ -33,7 +33,7 @@ duties:
   - "Öğrencilere haberler için arama motoru optimizasyonu (SEO) stratejileri, dijital kitle analitiği takibi ve çevrimiçi haber odalarına özgü etik standartlar konusunda eğitim verildi."
 description: "Web tabanlı habercilik, gerçek zamanlı haber sunumu, hiperlink mimarileri, haber SEO'su ve kitle analitiği."
 active_nav: dersler
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 Web tabanlı haberciliğin gelişimini, temel çerçevelerini ve mesleki uygulamalarını ele alarak, gerçek zamanlı haber sunumu, hiperlink yapıları ve etkileşimli multimedya sunumlarına odaklanır.

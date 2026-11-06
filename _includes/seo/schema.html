@@ -16,7 +16,7 @@
 {% if page.name and page.name != "index.md" and page.name != "" %}
   {% assign site_author_name = page.name %}
 {% endif %}
-{% assign raw_image = page.image | default: page.featured_image | default: page.avatar | default: site.avatar | default: "/assets/images/Can-Bekcan-PADI.jpg" %}
+{% assign raw_image = page.image | default: page.featured_image | default: page.avatar | default: site.avatar | default: "/assets/images/default-avatar.svg" %}
 {% assign seo_image = raw_image | absolute_url %}
 
 {% if page.description and page.description != "" %}

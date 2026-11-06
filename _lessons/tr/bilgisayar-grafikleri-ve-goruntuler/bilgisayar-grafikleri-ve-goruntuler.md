@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: ""
 institution_url: "https://arucad.edu.tr"
 institution_initial: "ARUCAD"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title: "Öğretim Görevlisi"
 course_date: "2022 - 2024"
 instructor_title_duration: "2022 - 2024"
@@ -24,7 +24,7 @@ duties:
   - "Öğrencileri, yaratıcı mizanpajlar ve markalaşma projeleri için karmaşık görsel öğeleri düzenlemek, optimize etmek ve birleştirmek üzere endüstri standardı grafik tasarım yazılımlarını kullanma konusunda eğittim."
 description: "Dijital görüntüleme, vektör ve bitmap işleme, yaratıcı mizanpajlar ve görsel varlık hazırlama."
 active_nav: dersler
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 Dijital görüntüleme, bilgisayar grafikleri üretimi, vektör/bitmap işleme ve çeşitli medya çıktıları için görsel varlık hazırlama konularındaki teori ve uygulamaları ele alır.

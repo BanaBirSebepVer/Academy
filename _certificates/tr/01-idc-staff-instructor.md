@@ -1,17 +1,17 @@
 ---
-title: "IDC Staff Instructor"
-certificate: "IDC Staff Instructor"
-issuer: "PADI"
-link: "https://www.canbekcan.com/en/scuba/"
-issuer_link: "http://padi.canbekcan.com"
-start_year: "2016"
-end_year: "Devam"
+title: "Veri Bilimi ve İleri Analitik Sertifikası"
+certificate: "Veri Bilimi ve İleri Analitik"
+issuer: "Stanford Online"
+link: "https://example.edu/certificate"
+issuer_link: "https://example.edu"
+start_year: "2021"
+end_year: "2021"
 order: 1
 ---
 
-### IDC Staff Instructor | PADI (2016 – Devam)
+### Veri Bilimi ve İleri Analitik | Stanford Online (2021)
 
-- **Sertifika:** IDC Staff Instructor
-- **Kurum:** PADI
-- **Sertifika Bağlantısı:** https://www.canbekcan.com/en/scuba/
-- **Kurum Bağlantısı:** http://padi.canbekcan.com
+- **Sertifika:** Veri Bilimi ve İleri Analitik
+- **Kurum:** Stanford Online
+- **Sertifika Bağlantısı:** [Doğrulama Bağlantısı](https://example.edu/certificate)
+- **Kurum Bağlantısı:** [Stanford Online](https://example.edu)

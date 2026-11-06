@@ -8,7 +8,7 @@ author: "gemini"
 categories: ["Genel"]
 tags: []
 excerpt: "Yapay zeka araçları, hayatımızın her alanına sızarken onlarla kurduğumuz iletişimin kalitesi, elde ettiğimiz sonuçları doğrudan belirliyor. Artık mesele sadece bir arama kutusuna birkaç kelime yazmak "
-featured_image: "https://canbekcan.com/wp-content/uploads/2025/11/1763784274361.png"
+featured_image: "/wp-content/uploads/2025/11/1763784274361.png"
 ---
 
 Yapay zeka araçları, hayatımızın her alanına sızarken onlarla kurduğumuz iletişimin kalitesi, elde ettiğimiz sonuçları doğrudan belirliyor. Artık mesele sadece bir arama kutusuna birkaç kelime yazmak değil; bir makineye ne istediğimizi, hangi bağlamda, hangi tonda ve hangi formatta istediğimizi anlatabilme becerisi. İşte bu noktada, son zamanlarda sıkça duyduğumuz **prompt mühendisliği** kavramı devreye giriyor. Bu, yalnızca teknoloji uzmanlarını ilgilendiren teknik bir jargon olmaktan çıkıp, iletişimciler, pazarlamacılar, gazeteciler ve özellikle sosyal bilimciler için yeni bir temel yetkinlik haline geliyor. Peki, bir yapay zeka modeline doğru soruları sorma sanatı, araştırma ve anlam üretme biçimlerimizi nasıl kökten değiştirebilir? Bu yeni dil, sosyal dünyayı anlama çabamızda bize ne gibi kapılar aralayabilir?

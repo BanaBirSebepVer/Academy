@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: ""
 institution_url: "https://arucad.edu.tr"
 institution_initial: "ARUCAD"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title: "Öğretim Görevlisi"
 course_date: "2022 - 2024"
 instructor_title_duration: "2022 - 2024"
@@ -24,7 +24,7 @@ duties:
   - "Öğrencilere, modern görsel ve teknik web standartlarına uygun, erişilebilir ve kullanıcı dostu web sitelerinin planlanması, geliştirilmesi ve devreye alınmasından oluşan tüm yaşam döngüsü boyunca rehberlik etti."
 description: "Semantik HTML5, duyarlı CSS3, standart web barındırma protokolleri ve kullanıcı dostu web siteleri geliştirme."
 active_nav: dersler
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 World Wide Web'in temel teknik bileşenlerini tanıtarak, anlamsal HTML5 mimarileri, duyarlı CSS3 stil uygulamaları ve standart web barındırma protokollerine odaklanır.

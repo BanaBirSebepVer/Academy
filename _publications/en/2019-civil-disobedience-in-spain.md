@@ -9,12 +9,12 @@ layout: publication/single
 title: "Civil Disobedience in Spain: Comparison of BBC’s and TRT’s Representation of Catalan Autonomy"
 publication_type: "Book Chapter"
 type_label: "Book Chapter"
-type_url: "https://canbekcan.com/blog/pubtype/kitap-bolumu/"
+type_url: "/yazilar/pubtype/kitap-bolumu/"
 
 # Authors & Contributors
-author: "Can Bekcan"
+author: "Dr. Jane Doe"
 authors:
-  - "Can Bekcan"
+  - "Dr. Jane Doe"
 editors: "M. Ersoy, N. Türksoy, B. Özad, Ü. Kutoğlu Kuruç, A. Arsoy, E. Aluç, & C. Bekcan"
 
 # Source Details (Journal, Book, Conference, Thesis)
@@ -61,8 +61,8 @@ keywords:
   - "Peace Journalism"
 
 # Visual & Sorting
-image: "https://canbekcan.com/wp-content/uploads/2019/09/TR-Info-214x300.png"
-image_srcset: "https://canbekcan.com/wp-content/uploads/2019/09/TR-Info-214x300.png 214w, https://canbekcan.com/wp-content/uploads/2019/09/TR-Info-732x1024.png 732w, https://canbekcan.com/wp-content/uploads/2019/09/TR-Info-768x1074.png 768w, https://canbekcan.com/wp-content/uploads/2019/09/TR-Info.png 872w"
+image: "/wp-content/uploads/2019/09/TR-Info-214x300.png"
+image_srcset: "/wp-content/uploads/2019/09/TR-Info-214x300.png 214w, /wp-content/uploads/2019/09/TR-Info-732x1024.png 732w, /wp-content/uploads/2019/09/TR-Info-768x1074.png 768w, /wp-content/uploads/2019/09/TR-Info.png 872w"
 image_width: 214
 image_height: 300
 order: 1

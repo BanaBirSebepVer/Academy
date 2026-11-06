@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: ""
 institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title: "Öğretim Görevlisi"
 course_date: "2022 - Devam"
 instructor_title_duration: "2022 - Devam"
@@ -28,7 +28,7 @@ whatsapp: ""
 telegram: ""
 slack: ""
 zoom: ""
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 Temel Fotoğrafçılık kursu, öğrencilere fotoğrafçılığın ilkeleri ve uygulamalarına kapsamlı bir giriş sunar. Pratik alıştırmalar, yaratıcı projeler ve teorik tartışmaların birleşimi yoluyla öğrenciler fotoğrafçılıkta temel bilgi ve becerileri kazanacaklardır. Bu kurs özellikle fotoğrafçılık konusunda çok az deneyimi olan veya hiç deneyimi olmayan yeni başlayanlar için tasarlanmıştır ve görüntüler yakalama ve iletişim kurma sanatını ve bilimini anlamak için sağlam bir temel sağlar.
@@ -106,7 +106,7 @@ Temel Fotoğrafçılık dersi teorik ve pratik olarak işlenecektir. Teoriler pr
 > 
 > Dijital olarak teslim edilecek fotoğraflar **ham** (**RAW**) olarak teslim edilmelidir. JPG kabul edilmeyecektir.
 > 
-> [Seçilen Fotoğrafların Listesi](https://www.canbekcan.com/fotograflar-photos/)
+> [Seçilen Fotoğrafların Listesi](/fotograflar-photos/)
 > 
 > **Değerlendirme Kriterleri:**
 > 

@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: ""
 institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title: "Öğretim Görevlisi"
 course_date: "2022 - Devam"
 instructor_title_duration: "2022 - Devam"
@@ -21,7 +21,7 @@ appointments:
     instructor_title_duration: "2022 - Devam"
 description: "Sözel ve sözel olmayan iletişim, etkin dinleme, çatışma çözümü ve profesyonel ekip içi iletişim becerileri."
 active_nav: dersler
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 İkili etkileşimin temel teorilerini ve pratik tekniklerini ele alarak; sözel ve sözel olmayan iletişim, etkin dinleme, çatışma çözümü ve ilişki kurma becerilerini geliştirmeyi amaçlar.

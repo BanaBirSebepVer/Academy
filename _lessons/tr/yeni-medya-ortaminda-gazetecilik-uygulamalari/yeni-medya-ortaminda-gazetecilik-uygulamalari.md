@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: "Yeni Medya ve İletişim Bölümü"
 institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title: "Öğretim Görevlisi"
 course_date: "2022 - Devam"
 instructor_title_duration: "2022 - Devam"
@@ -27,7 +27,7 @@ whatsapp: ""
 telegram: ""
 slack: ""
 zoom: ""
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 Bu ders, çağdaş haberciliğin ve haberciliğin değişen formlarının dijital teknolojinin gelişiminden bağımsız olarak incelenemeyeceği anlayışından yola çıkar. Gazetecilerin ve sosyal medya kullanıcılarının yeni rollerini mercek altına alarak, yeni medya teknolojilerinin gazetecilik ve diğer pratikler üzerindeki etkileri tartışılacaktır.
@@ -85,7 +85,7 @@ Bu dersin sonunda öğrenciler:
 
 | Hafta | Konu | Kapsam ve Başlıklar | Açıklama ve Materyaller |
 | :---: | :--- | :--- | :--- |
-| **1** | Yeni Medya ve Gazeteciliğin Evrimi | Dijital gazetecilik temel kavramları | Geleneksel ve yeni medya farkları, içerik üretim süreçleri ve [1. Hafta Sunumu](https://www.canbekcan.com/wp-content/uploads/2025/03/YMGA218-1.-Sunum.pptx). |
+| **1** | Yeni Medya ve Gazeteciliğin Evrimi | Dijital gazetecilik temel kavramları | Geleneksel ve yeni medya farkları, içerik üretim süreçleri ve [1. Hafta Sunumu](/wp-content/uploads/2025/03/YMGA218-1.-Sunum.pptx). |
 | **2** | Sosyal Medya ve Mobil Gazetecilik | Haber toplama, yayma ve Mojo | Akıllı telefonla haber üretimi, sosyal medyanın haber süreçlerine etkisi ve vaka analizleri. |
 | **3** | Veri Gazeteciliği ve Görselleştirme | Veri madenciliği ve görselleştirme | Açık veri kaynakları, veri analizi ve etkileşimli grafik araçları. |
 | **4** | Dijital İçerik ve SEO Stratejileri | Arama motoru optimizasyonu | SEO uyumlu haber yazımı, anahtar kelime seçimi ve tıklama oranı optimizasyonu. |

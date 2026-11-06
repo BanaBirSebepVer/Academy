@@ -12,7 +12,7 @@ badge_label: "Visual Culture"
 badge_color: "#4299e1"
 status: "Visual Archive"
 status_class: "status-archive"
-image: "https://canbekcan.com/wp-content/uploads/2015/06/post-card_2308963b.jpg"
+image: "/assets/images/publication-bg.jpg"
 tags:
   - "Visual Memory"
   - "Postcards"

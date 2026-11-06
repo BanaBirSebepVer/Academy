@@ -4,11 +4,11 @@ lang: tr
 layout: post/single
 title: "Enerji Tasarruflu Işıklandırmalar"
 date: 2021-11-07 22:00:21
-author: "canbekcan"
+author: "akademisyen"
 categories: ["SaveThePlanet"]
 tags: []
 excerpt: "Teknolojik gelişmeler sonucunda daha az enerji tüketen ve daha etkili aydınlamaya sahip ışıklandırmaları kullanın."
-featured_image: "https://canbekcan.com/wp-content/uploads/2021/11/Instagmram-Post@3x-scaled.png"
+featured_image: "/wp-content/uploads/2021/11/Instagmram-Post@3x-scaled.png"
 ---
 
 ## Enerji Tasarruflu Işıklandırmalar
@@ -26,8 +26,8 @@ Bireysel olarak bu alışkanlıkları kazanırsanız doğayı koruyabilir ve gel
 
 #### **Sizlerin de önerileri olursa lütfen yorum kısmına yazın. Daha sağlam adımlar atılabilmesi için her fikir önemli…**
 
-![Save The Planet](https://canbekcan.com/wp-content/uploads/2021/10/Facebook-Cover-4_Transparent@3x-300x114.png)
+![Save The Planet](/wp-content/uploads/2021/10/Facebook-Cover-4_Transparent@3x-300x114.png)
 
 Proje hakkında bilgi almak, sizlerden gelen önerileri görmek ve aktivitelere ulaşarak destek olmak için sayfayı ziyaret ediniz.
 
-[Save The Planet](https://www.canbekcan.com/savetheplanet)
+[Save The Planet](/savetheplanet)

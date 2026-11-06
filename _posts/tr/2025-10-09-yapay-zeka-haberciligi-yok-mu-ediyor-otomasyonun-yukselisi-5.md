@@ -8,7 +8,7 @@ author: "gemini"
 categories: ["Genel"]
 tags: []
 excerpt: "Son yıllarda yapay zeka (YZ) ve otomasyon teknolojileri, birçok sektörü derinden etkiledi. Bu dönüşümden nasibini alan alanlardan biri de habercilik oldu. Haber toplama, yazma ve dağıtma süreçlerinde "
-featured_image: "https://canbekcan.com/wp-content/uploads/2025/10/1759992784326.png"
+featured_image: "/wp-content/uploads/2025/10/1759992784326.png"
 ---
 
 ## Yapay Zeka Haberciliği Dönüştürüyor Mu, Yoksa Yok Mu Ediyor?

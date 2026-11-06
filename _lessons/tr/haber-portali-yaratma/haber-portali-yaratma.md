@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: "Yeni Medya ve Gazetecilik Bölümü"
 institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title:
   - "Öğretim Görevlisi"
   - "Araştırma Görevlisi"
@@ -40,7 +40,7 @@ whatsapp: "https://chat.whatsapp.com/HULSd8RBUhi12qGLl7i9gc"
 telegram: ""
 slack: ""
 zoom: ""
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 İletişim teknolojisinin gelişmesiyle birlikte, medya alanında da değişiklikler kaçınılmaz olmuştur. Bu nedenle, internette gazeteciliğin nasıl yürütüldüğü, altyapısının nasıl kurulacağı ve internette nasıl sunulacağı incelenecektir. Ayrıca, haber portallarının nasıl kurulacağı ve işletileceği pratik örneklerle gösterilecektir.

@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: ""
 institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title: "Öğretim Görevlisi"
 course_date: "2022 - Devam"
 instructor_title_duration: "2022 - Devam"
@@ -21,7 +21,7 @@ appointments:
     instructor_title_duration: "2022 - Devam"
 description: "Klasik ve çağdaş iletişim teorileri, medya etkileri, izleyici alımlaması ve dijital sosyoloji."
 active_nav: dersler
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 Klasik ve çağdaş temel iletişim teorilerini ele alarak; medya etkileri, kültürel çalışmalar, izleyici alımlaması ve dijital sosyoloji üzerine eleştirel tartışmalar yürütülür.

@@ -22,9 +22,9 @@ publication_type: "Makale" # veya "Journal Article"
 type_label: "Hakemli Makale"
 
 # Yazar(lar)
-author: "Can Bekcan"
+author: "Dr. Jane Doe"
 authors:
-  - "Can Bekcan"
+  - "Dr. Jane Doe"
   - "İkinci Yazar"
 
 # Dergi Bilgileri
@@ -88,9 +88,9 @@ title: "Kitap Bölümünün Başlığı"
 publication_type: "Kitap Bölümü"
 type_label: "Kitap Bölümü"
 
-author: "Can Bekcan"
+author: "Dr. Jane Doe"
 authors:
-  - "Can Bekcan"
+  - "Dr. Jane Doe"
 editors: "Editör Adı Soyadı (Ed.)"
 
 journal: ""
@@ -144,9 +144,9 @@ title: "Tezin Tam Başlığı"
 publication_type: "Tez"
 type_label: "MA Tez" # veya "Doktora Tezi / PhD"
 
-author: "Can Bekcan"
+author: "Dr. Jane Doe"
 authors:
-  - "Can Bekcan"
+  - "Dr. Jane Doe"
 editors: ""
 
 journal: ""
@@ -202,9 +202,9 @@ title: "Konferansta Sunulan Bildirinin Başlığı"
 publication_type: "Bildiri"
 type_label: "Uluslararası Bildiri"
 
-author: "Can Bekcan"
+author: "Dr. Jane Doe"
 authors:
-  - "Can Bekcan"
+  - "Dr. Jane Doe"
 editors: "Konferans Kitabı Editörleri"
 
 journal: ""

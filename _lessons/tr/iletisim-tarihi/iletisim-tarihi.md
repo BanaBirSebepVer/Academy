@@ -11,7 +11,7 @@ faculty: "İletişim Fakültesi"
 department: ""
 institution_url: "https://www.emu.edu.tr"
 institution_initial: "DAÜ"
-instructor: "Can Bekcan"
+instructor: "Dr. Jane Doe"
 instructor_title: "Öğretim Görevlisi"
 course_date: "2022 - Devam"
 instructor_title_duration: "2022 - Devam"
@@ -21,7 +21,7 @@ appointments:
     instructor_title_duration: "2022 - Devam"
 description: "Matbaadan dijital çağa iletişim teknolojilerinin evrimi ve toplumsal yapılar üzerindeki etkileri."
 active_nav: dersler
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 İletişim teknolojilerinin matbaadan dijital çağa kadar olan tarihsel evrimini ele alarak, değişen medya paradigmalarının toplumsal yapıları nasıl yeniden şekillendirdiğini incelemektedir.

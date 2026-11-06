@@ -4,11 +4,11 @@ lang: tr
 layout: post/single
 title: "eDergi'nin Bilinmeyenleri"
 date: 2015-07-17 15:45:18
-author: "canbekcan"
+author: "akademisyen"
 categories: ["eDergi"]
 tags: ["dergi", "eDergi", "medya", "yayın"]
 excerpt: "eDergi kavramı bir kaç senedir gündemde olmasına karşın toplum tarafından tam olarak ne olduğu bilinmemekte. Öncelikle eDergi’nin ne olduğunu, nasıl işlediğini ve hangi koşullarda hazırlanan materyali"
-featured_image: "https://canbekcan.com/wp-content/uploads/2015/07/E-Magazine-Banner.jpg"
+featured_image: "/wp-content/uploads/2015/07/E-Magazine-Banner.jpg"
 ---
 
 eDergi kavramı bir kaç senedir gündemde olmasına karşın toplum tarafından tam olarak ne olduğu bilinmemekte. Öncelikle eDergi’nin ne olduğunu, nasıl işlediğini ve hangi koşullarda hazırlanan materyalin eDergi kapsamına alındığını açıklamak gerekiyor diye düşünüyorum.
@@ -37,6 +37,6 @@ olarak da sunulabilir.
 >
 >
 >
-> [eDergi Hazırlama Aşamaları](https://www.canbekcan.com/blog/2015/07/19/edergi-hazirlama-asamalari/) isimli yazıyı okuyabilirsiniz.
+> [eDergi Hazırlama Aşamaları](/blog/2015/07/19/edergi-hazirlama-asamalari/) isimli yazıyı okuyabilirsiniz.
 
 **Not** : Eğer takip ettiğiniz eDergiler varsa benimle paylaşabilirsiniz.

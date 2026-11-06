@@ -4,11 +4,11 @@ lang: tr
 layout: post/single
 title: "Sinema Kitapları Kütüphanesi"
 date: 2017-05-18 20:02:35
-author: "canbekcan"
+author: "akademisyen"
 categories: ["Kitap Listesi", "Sinema"]
 tags: ["kitap listesi", "kitaplar", "sinema"]
 excerpt: "Sinema üzerine yazılmış kitapların listesini buradan bulabilir ve listeye eklememi istediğiniz kitaplar varsa yorum kısmına yazabilirsiniz."
-featured_image: "https://canbekcan.com/wp-content/uploads/2017/01/kitaplistesi.png"
+featured_image: "/wp-content/uploads/2017/01/kitaplistesi.png"
 ---
 
 Sinema üzerine yazılmış kitapların listesini buradan bulabilir ve listeye eklememi istediğiniz kitaplar varsa yorum kısmına yazabilirsiniz.

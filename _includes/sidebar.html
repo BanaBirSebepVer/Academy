@@ -20,7 +20,7 @@
 {% if profile_name == nil or profile_name == '' or profile_name == 'index.md' %}
   {% assign profile_name = site.author | default: site.title %}
 {% endif %}
-{% assign profile_image = index_page.image | default: index_page.avatar | default: site.avatar | default: "/assets/images/Can-Bekcan-PADI.jpg" %}
+{% assign profile_image = index_page.image | default: index_page.avatar | default: site.avatar | default: "/assets/images/default-avatar.svg" %}
 {% assign profile_institution = index_page.institution | default: site.institution %}
 {% if profile_institution == nil or profile_institution == "" %}
   {% assign first_lesson = site.lessons | where: "lang", current_lang | first %}
@@ -83,22 +83,17 @@
               {% endfor %}
             {% else %}
               <li>
-                <a href="https://emu.academia.edu/CanBEKCAN" target="_blank" rel="noopener noreferrer" title="Academia">
-                  <i class="ai ai-academia"></i>
-                </a>
-              </li>
-              <li>
-                <a href="https://scholar.google.com/citations?user=zyPFJ1EAAAAJ&amp;hl=en&amp;authuser=1" target="_blank" rel="noopener noreferrer" title="Google Scholar">
+                <a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer" title="Google Scholar">
                   <i class="ai ai-google-scholar"></i>
                 </a>
               </li>
               <li>
-                <a href="https://orcid.org/0000-0003-4786-8870" target="_blank" rel="noopener noreferrer" title="ORCID">
+                <a href="https://orcid.org" target="_blank" rel="noopener noreferrer" title="ORCID">
                   <i class="ai ai-orcid"></i>
                 </a>
               </li>
               <li>
-                <a href="https://github.com/canbekcan" target="_blank" rel="noopener noreferrer" title="GitHub">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub">
                   <i class="fa-brands fa-github"></i>
                 </a>
               </li>

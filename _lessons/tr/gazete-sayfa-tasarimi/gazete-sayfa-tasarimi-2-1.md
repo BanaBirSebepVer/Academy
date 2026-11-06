@@ -11,11 +11,11 @@ whatsapp: ""
 telegram: ""
 slack: ""
 zoom: ""
-email: "can@canbekcan.com"
+email: "academician@example.edu"
 ---
 
 ## Gazete Sayfa Tasarımı
 
 ### Doğu Akdeniz Üniversitesi İletişim Fakültesi Yeni Medya ve Gazetecilik Bölümü
 
-[Ders Notları](https://www.canbekcan.com/gazete-sayfa-tasarimi/gazete-sayfa-tasarimi-ders-notlari/)[CMYK](https://www.canbekcan.com/gazete-sayfa-tasarimi/gazete-sayfa-tasarimi-2-2/)
+[Ders Notları](/gazete-sayfa-tasarimi/gazete-sayfa-tasarimi-ders-notlari/)[CMYK](/gazete-sayfa-tasarimi/gazete-sayfa-tasarimi-2-2/)

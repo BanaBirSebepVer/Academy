@@ -8,8 +8,13 @@ date: 2026-01-10
 category: "methodology"
 order: 1
 tags: ["Text Analytics", "Big Data", "Natural Language Processing"]
+badge_label: "Methodology"
+badge_color: "#3182ce"
+status: "Active Lab"
 excerpt: "A methodological framework for deploying text mining and natural language processing models on large-scale scholarly datasets."
 permalink: /en/research/big-data-and-text-analytics/
+nav_exclude: true
+active_nav: research-hub
 ---
 
 ## 1. Introduction & Theoretical Framework

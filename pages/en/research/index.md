@@ -8,7 +8,7 @@ nav_order: 5
 permalink: /en/research/
 redirect_from:
   - /research/
-active_nav: research
+active_nav: research-hub
 header_icon: "fa fa-flask"
 description: "Archive of interdisciplinary research projects, field studies, and laboratory reports."
 search_placeholder: "Search research projects or topics..."

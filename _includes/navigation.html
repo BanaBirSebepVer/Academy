@@ -10,6 +10,12 @@
 <div id="main-nav">
   <ul id="navigation">
     {% for item in top_pages %}
+      {% assign rel_path = item.path | remove_first: folder_prefix %}
+      {% if rel_path contains "/" %}
+        {% unless rel_path contains "index." %}
+          {% continue %}
+        {% endunless %}
+      {% endif %}
       {% assign item_ref = item.ref %}
       {% assign children = lang_pages | where_exp: "c", "c.parent == item_ref" | sort: "nav_order" %}
 

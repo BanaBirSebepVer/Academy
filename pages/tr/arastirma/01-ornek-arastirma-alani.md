@@ -8,8 +8,13 @@ date: 2026-01-10
 category: "methodology"
 order: 1
 tags: ["Metin Analitiği", "Büyük Veri", "Doğal Dil İşleme"]
+badge_label: "Yöntembilim"
+badge_color: "#3182ce"
+status: "Aktif Laboratuvar"
 excerpt: "Büyük ölçekli veri setleri üzerinde metin madenciliği ve doğal dil işleme modellerinin uygulanmasına yönelik metodolojik çerçeve."
 permalink: /arastirma/buyuk-veri-ve-metin-analitigi/
+nav_exclude: true
+active_nav: research-hub
 ---
 
 ## 1. Giriş ve Kuramsal Çerçeve

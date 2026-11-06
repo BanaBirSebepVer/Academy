@@ -8,7 +8,7 @@ nav_order: 5
 permalink: /arastirma/
 redirect_from:
   - /tr/arastirma/
-active_nav: research
+active_nav: research-hub
 header_icon: "fa fa-flask"
 description: "Disiplinlerarası araştırma projeleri, saha çalışmaları ve laboratuvar raporları arşivi."
 search_placeholder: "Araştırma konusu veya proje ara..."

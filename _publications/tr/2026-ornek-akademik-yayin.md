@@ -26,7 +26,7 @@ keywords:
   - "Büyük Veri"
 pdf_url: ""
 link: "https://doi.org/10.1000/182"
-image: "/assets/images/publication-bg.jpg"
+image: "https://banabirsebepver.github.io/Academy/assets/images/publication-bg.jpg"
 excerpt: "Bu makale, modern ağ toplumunda enformasyon akışını ve hesaplamalı sosyal bilim yaklaşımlarının kuramsal temellerini incelemektedir."
 ---
 

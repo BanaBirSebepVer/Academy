@@ -40,7 +40,7 @@ description: "Public visitor analytics and transparent traffic metrics."
 
       <div class="stats-embed-wrapper" style="position: relative; width: 100%; min-height: 800px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); overflow: hidden;">
         <iframe
-          src="{{ analytics_dashboard }}/share/{{ site.repository | replace: '/', '-' }}?theme=light"
+          src="{{ analytics_dashboard }}"
           style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
           loading="lazy"
           title="{{ page.title }}">

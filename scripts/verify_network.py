@@ -159,8 +159,8 @@ def main():
 
     registry_files = find_registry_files()
     if not registry_files:
-        print("[ERROR] No _data/academic_network.yml file found.")
-        sys.exit(1)
+        print("[INFO] No _data/academic_network.yml file found. Academic network is now dynamically managed via central database API.")
+        sys.exit(0)
 
     primary_file = registry_files[0]
     print(f"[INFO] Reading registry from: {primary_file}")

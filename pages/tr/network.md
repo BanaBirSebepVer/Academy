@@ -14,56 +14,9 @@ active_nav: network
 
 {% assign current_lang = page.lang | default: "tr" %}
 {% assign locale = site.data.locales[current_lang] %}
+{% assign network_api = site.analytics.endpoint | default: 'https://academy.banabirsebepver.com' | append: '/api/network.php' %}
 
-{% assign countries_str = "" %}
-{% assign institutions_str = "" %}
-{% assign fields_str = "" %}
-{% assign keywords_str = "" %}
-
-{% for node in site.data.academic_network %}
-  {% if node.country and node.country != "" %}
-    {% assign countries_str = countries_str | append: node.country | append: "|||" %}
-  {% endif %}
-  {% if node.institution and node.institution != "" %}
-    {% assign institutions_str = institutions_str | append: node.institution | append: "|||" %}
-  {% endif %}
-  {% if node.fields and node.fields != "" %}
-    {% assign fields_str = fields_str | append: node.fields | append: "|||" %}
-  {% endif %}
-  {% if node.keywords %}
-    {% for kw in node.keywords %}
-      {% if kw and kw != "" %}
-        {% assign keywords_str = keywords_str | append: kw | append: "|||" %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-{% endfor %}
-
-{% assign raw_countries = countries_str | split: "|||" | sort %}
-{% assign unique_countries = "" | split: "" %}
-{% for c in raw_countries %}
-  {% if c != "" and unique_countries contains c %}{% else %}{% if c != "" %}{% assign unique_countries = unique_countries | push: c %}{% endif %}{% endif %}
-{% endfor %}
-
-{% assign raw_institutions = institutions_str | split: "|||" | sort %}
-{% assign unique_institutions = "" | split: "" %}
-{% for i in raw_institutions %}
-  {% if i != "" and unique_institutions contains i %}{% else %}{% if i != "" %}{% assign unique_institutions = unique_institutions | push: i %}{% endif %}{% endif %}
-{% endfor %}
-
-{% assign raw_fields = fields_str | split: "|||" | sort %}
-{% assign unique_fields = "" | split: "" %}
-{% for f in raw_fields %}
-  {% if f != "" and unique_fields contains f %}{% else %}{% if f != "" %}{% assign unique_fields = unique_fields | push: f %}{% endif %}{% endif %}
-{% endfor %}
-
-{% assign raw_keywords = keywords_str | split: "|||" | sort %}
-{% assign unique_keywords = "" | split: "" %}
-{% for k in raw_keywords %}
-  {% if k != "" and unique_keywords contains k %}{% else %}{% if k != "" %}{% assign unique_keywords = unique_keywords | push: k %}{% endif %}{% endif %}
-{% endfor %}
-
-<div class="fac-page network-page">
+<div class="fac-page network-page" data-endpoint="{{ network_api }}" data-lang="{{ current_lang }}">
   <div class="archive-page-container">
     <div class="container-fluid">
 
@@ -98,7 +51,7 @@ active_nav: network
             </p>
           </div>
           <div class="network-cta-action">
-            <a href="https://github.com/BanaBirSebepVer/Academy/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" class="btn btn-success network-cta-btn">
+            <a href="https://github.com/BanaBirSebepVer/Academy" target="_blank" rel="noopener noreferrer" class="btn btn-success network-cta-btn">
               <i class="fa fa-github"></i> {{ locale.ui.submit_site_button | default: locale.ui.network_cta_btn }}
             </a>
           </div>
@@ -163,9 +116,6 @@ active_nav: network
             </label>
             <select id="networkFilterCountry" class="form-control network-filter-select">
               <option value="all">{{ locale.ui.all_countries | default: 'Tüm Ülkeler' }}</option>
-              {% for c in unique_countries %}
-              <option value="{{ c | downcase | escape }}">{{ c }}</option>
-              {% endfor %}
             </select>
           </div>
 
@@ -176,9 +126,6 @@ active_nav: network
             </label>
             <select id="networkFilterInstitution" class="form-control network-filter-select">
               <option value="all">{{ locale.ui.all_universities | default: 'Tüm Üniversiteler' }}</option>
-              {% for inst in unique_institutions %}
-              <option value="{{ inst | downcase | escape }}">{{ inst }}</option>
-              {% endfor %}
             </select>
           </div>
 
@@ -189,9 +136,6 @@ active_nav: network
             </label>
             <select id="networkFilterField" class="form-control network-filter-select">
               <option value="all">{{ locale.ui.all_fields | default: 'Tüm Alanlar' }}</option>
-              {% for fld in unique_fields %}
-              <option value="{{ fld | downcase | escape }}">{{ fld }}</option>
-              {% endfor %}
             </select>
           </div>
 
@@ -202,9 +146,6 @@ active_nav: network
             </label>
             <select id="networkFilterKeyword" class="form-control network-filter-select">
               <option value="all">{{ locale.ui.all_keywords | default: 'Tüm Anahtar Kelimeler' }}</option>
-              {% for kw in unique_keywords %}
-              <option value="{{ kw | downcase | escape }}">{{ kw }}</option>
-              {% endfor %}
             </select>
           </div>
         </div>
@@ -213,7 +154,7 @@ active_nav: network
         <div class="network-meta-bar">
           <div class="network-counter-wrap">
             <span class="network-counter-badge">
-              <span id="networkCurrentCount">{{ site.data.academic_network.size }}</span> / <span id="networkTotalCount">{{ site.data.academic_network.size }}</span>
+              <span id="networkCurrentCount">0</span> / <span id="networkTotalCount">0</span>
             </span>
             <span>{{ locale.ui.members_count_suffix | default: 'kayıt gösteriliyor' }}</span>
           </div>
@@ -225,7 +166,7 @@ active_nav: network
       </div>
 
       <!-- No Results State -->
-      <div id="networkNoResults" class="network-no-results">
+      <div id="networkNoResults" class="network-no-results" style="display: none;">
         <div class="network-no-results-panel">
           <i class="fa fa-search-minus icon-empty"></i>
           <h4>{{ locale.ui.no_network_found | default: 'Aramanızla eşleşen kurum veya araştırmacı bulunamadı.' }}</h4>
@@ -236,44 +177,12 @@ active_nav: network
         </div>
       </div>
 
-      <!-- Network Cards Grid -->
-      <div class="row network-grid">
-        {% for item in site.data.academic_network %}
-        {% assign node = item %}
-        <div class="col-md-4 col-sm-6 col-xs-12 network-card-col"
-             data-country="{{ item.country | downcase | escape }}"
-             data-country-raw="{{ item.country | escape }}"
-             data-institution="{{ item.institution | downcase | escape }}"
-             data-institution-raw="{{ item.institution | escape }}"
-             data-fields="{{ item.fields | downcase | escape }}"
-             data-fields-raw="{{ item.fields | escape }}"
-             data-keywords="{{ item.keywords | join: ',' | downcase | escape }}"
-             data-keywords-raw="{{ item.keywords | join: ',' | escape }}"
-             data-search="{{ item.name }} {{ item.institution }} {{ item.faculty }} {{ item.fields }} {{ item.keywords | join: ' ' }} {{ item.country }} {{ item.url | replace: 'https://', '' | replace: 'http://', '' }}">
-          <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="network-compact-card" itemscope itemtype="https://schema.org/Person">
-            <div class="network-compact-avatar">
-              {% assign node_avatar = item.avatar %}
-              {% if node_avatar == nil or node_avatar == "" %}
-                {% assign node_avatar = "/assets/images/default-avatar.svg" | relative_url %}
-              {% endif %}
-              <img src="{{ node_avatar }}" onerror="this.onerror=null;this.src='{{ '/assets/images/default-avatar.svg' | relative_url }}';" alt="{{ item.name | default: item.institution }}" itemprop="image">
-            </div>
-            <div class="network-compact-info">
-              <h4 class="network-compact-name" itemprop="name">{{ item.name | default: item.institution }}</h4>
-              <p class="network-compact-inst" itemprop="worksFor">{{ item.institution }}</p>
-            </div>
-
-            <!-- Hidden for Visual UI, Preserved for SEO & Filters -->
-            <div class="network-hidden-seo">
-              {% if item.faculty %}<span itemprop="department">{{ item.faculty }}</span>{% endif %}
-              {% if item.fields %}<span itemprop="knowsAbout">{{ item.fields }}</span>{% endif %}
-              {% if item.country %}<span itemprop="addressCountry">{{ item.country }}</span>{% endif %}
-              {% if item.keywords %}<span itemprop="keywords">{{ item.keywords | join: ", " }}</span>{% endif %}
-              <link itemprop="url" href="{{ item.url }}">
-            </div>
-          </a>
+      <!-- Network Cards Grid (Dynamically Populated from Database API) -->
+      <div class="row network-grid" id="networkGrid">
+        <div id="networkLoading" class="network-loading-state text-center" style="padding: 50px 15px; width: 100%;">
+          <i class="fa fa-spinner fa-spin fa-2x" style="color: #2563eb; margin-bottom: 12px; display: inline-block;"></i>
+          <p class="text-muted" style="margin-bottom: 0;">Akademik ağ üyeleri yükleniyor...</p>
         </div>
-        {% endfor %}
       </div>
 
     </div>

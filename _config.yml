@@ -11,7 +11,11 @@ author: "Dr. Jane Doe"
 email: "academician@example.edu"
 description: "Academic CV & Research Portfolio - Sample University"
 institution: "Sample University"
+faculty: "Faculty of Communication and Media Studies"
 department: "Department of Communication & Information Sciences"
+fields: "New Media and Information Sciences"
+keywords: ["Computational Methods", "Digital Media", "Network Analysis"]
+country: "Turkey"
 avatar: "/assets/images/default-avatar.svg"
 
 # 2. Site URL & Hosting

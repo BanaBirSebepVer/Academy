@@ -21,8 +21,7 @@ avatar: "/assets/images/default-avatar.svg"
 # 2. Site URL & Hosting
 # - Custom domain or user site (e.g. username.github.io):  baseurl: ""          | url: "https://example.com"
 # - Project site (e.g. username.github.io/repo):           baseurl: "/Academy"  | url: "https://BanaBirSebepVer.github.io"
-# Note: When deploying via GitHub Actions (deploy.yml), configure-pages sets baseurl automatically.
-baseurl: ""
+baseurl: "/Academy"
 url: "https://BanaBirSebepVer.github.io"
 repository: "BanaBirSebepVer/Academy"
 github_repo: "https://github.com/BanaBirSebepVer/Academy"

@@ -6,7 +6,8 @@
  *    and upon every site rebuild / settings update.
  * 2. Uses build-aware signature caching to guarantee data is refreshed when
  *    settings or builds change, while keeping routine pageviews lightweight.
- * 3. Reports anonymous page views to the central community hub.
+ * 3. Self-heals: if the central database ever misses profile data for this site,
+ *    it detects the server signal and immediately submits full registration.
  * 4. Resolves fully-qualified avatar and canonical URLs across all hosting providers.
  * 5. Automatically ignores local development/testing environments.
  */
@@ -24,7 +25,7 @@ function resolveFullUrl(urlStr, baseUrl) {
   if (!urlStr) return '';
   if (urlStr.startsWith('http://') || urlStr.startsWith('https://')) {
     // If referencing template demo on an adopter domain, correct it
-    if (urlStr.includes('BanaBirSebepVer.github.io') && !window.location.hostname.includes('banabirsebepver')) {
+    if (urlStr.toLowerCase().includes('banabirsebepver.github.io') && !window.location.hostname.toLowerCase().includes('banabirsebepver')) {
       try {
         const u = new URL(urlStr);
         return window.location.origin + u.pathname;
@@ -63,6 +64,7 @@ export default function initAnalytics() {
   const metaBaseurl = (meta.getAttribute('data-baseurl') || '').trim();
   const metaSiteUrl = (meta.getAttribute('data-site-url') || '').trim();
   const metaBuildId = (meta.getAttribute('data-build-id') || '').trim();
+  const metaBuildDate = (meta.getAttribute('data-build-date') || '').trim();
 
   // Compute unique per-site storage key so different repos never block each other
   let detectedSubpath = '';
@@ -77,7 +79,7 @@ export default function initAnalytics() {
 
   // Canonical site URL: auto-correct if _config.yml still points to template repository
   let canonicalSiteUrl = metaSiteUrl;
-  if (!canonicalSiteUrl || !canonicalSiteUrl.includes(hostname)) {
+  if (!canonicalSiteUrl || !canonicalSiteUrl.toLowerCase().includes(hostname.toLowerCase())) {
     canonicalSiteUrl = window.location.origin + (detectedSubpath ? '/' + detectedSubpath : '');
   }
 
@@ -104,6 +106,7 @@ export default function initAnalytics() {
   let profile = null;
   let indexData = null;
   let buildId = metaBuildId;
+  let buildTime = metaBuildDate || '';
 
   if (rawContent) {
     try {
@@ -111,8 +114,9 @@ export default function initAnalytics() {
       profile = parsed.profile || {};
       indexData = parsed.index_data || {};
       buildId = parsed.build_id || metaBuildId;
+      buildTime = parsed.build_time || metaBuildDate;
     } catch (e) {
-      console.warn('[Academy Analytics] Could not parse registration JSON, synthesizing from DOM', e);
+      console.warn('[Academy Analytics] Could not parse registration JSON', e);
     }
   }
 
@@ -125,53 +129,20 @@ export default function initAnalytics() {
     };
   } else {
     // If site_url in profile points to template on an adopter site, update it
-    if (!profile.site_url || !profile.site_url.includes(hostname)) {
+    if (!profile.site_url || !profile.site_url.toLowerCase().includes(hostname.toLowerCase())) {
       profile.site_url = canonicalSiteUrl;
     }
     // Ensure avatar is a fully-qualified URL
     profile.avatar = resolveFullUrl(profile.avatar || '/assets/images/default-avatar.svg', canonicalSiteUrl);
   }
 
-  if (!isUpToDate) {
-    payload.profile = profile;
-    payload.index_data = indexData || {};
-    payload.build_id = buildId;
-    payload.needs_registration = true;
-    console.info('[Academy Analytics] Submitting updated site metadata for:', (profile.author || hostname), '(' + canonicalSiteUrl + ')');
-  }
-
-  // 1. Send to event tracker (which also auto-registers/updates profile if attached)
-  const trackerUrl = endpoint + trackerPath;
-  if (window.fetch) {
-    fetch(trackerUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      keepalive: true
-    }).then(function(res) {
-      if (res.ok && payload.needs_registration) {
-        localStorage.setItem(storageKey, currentSig);
-        console.info('[Academy Analytics] Site metadata synced via event collector.');
-      }
-    }).catch(function(err) {
-      console.warn('[Academy Analytics] Event tracking failed:', err);
-    });
-  } else if (navigator.sendBeacon) {
-    try {
-      const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
-      if (navigator.sendBeacon(trackerUrl, blob) && payload.needs_registration) {
-        localStorage.setItem(storageKey, currentSig);
-      }
-    } catch (e) {}
-  }
-
-  // 2. Also send dedicated registration/sync ping if rebuilt or settings changed
-  if (!isUpToDate) {
+  function sendFullRegistration() {
     const regUrl = endpoint + registerPath;
     const regPayload = {
       hostname: hostname,
       site_url: canonicalSiteUrl,
       build_id: buildId,
+      build_time: buildTime,
       registered_at: new Date().toISOString(),
       profile: profile,
       index_data: indexData || {}
@@ -192,5 +163,53 @@ export default function initAnalytics() {
         console.warn('[Academy Analytics] Register request failed:', err);
       });
     }
+  }
+
+  if (!isUpToDate) {
+    payload.profile = profile;
+    payload.index_data = indexData || {};
+    payload.build_id = buildId;
+    payload.build_time = buildTime;
+    payload.needs_registration = true;
+    console.info('[Academy Analytics] Submitting updated site metadata for:', (profile.author || hostname), '(' + canonicalSiteUrl + ')');
+  }
+
+  // 1. Send to event tracker (which also auto-registers/updates profile if attached)
+  const trackerUrl = endpoint + trackerPath;
+  if (window.fetch) {
+    fetch(trackerUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      keepalive: true
+    }).then(function(res) {
+      if (res.ok) {
+        return res.json().catch(function() { return {}; });
+      }
+      return {};
+    }).then(function(data) {
+      if (data && data.needs_profile) {
+        console.info('[Academy Analytics] Central directory requested profile sync, self-healing...');
+        localStorage.removeItem(storageKey);
+        sendFullRegistration();
+      } else if (payload.needs_registration) {
+        localStorage.setItem(storageKey, currentSig);
+        console.info('[Academy Analytics] Site metadata synced via event collector.');
+      }
+    }).catch(function(err) {
+      console.warn('[Academy Analytics] Event tracking failed:', err);
+    });
+  } else if (navigator.sendBeacon) {
+    try {
+      const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+      if (navigator.sendBeacon(trackerUrl, blob) && payload.needs_registration) {
+        localStorage.setItem(storageKey, currentSig);
+      }
+    } catch (e) {}
+  }
+
+  // 2. Also send dedicated registration/sync ping if rebuilt or settings changed
+  if (!isUpToDate) {
+    sendFullRegistration();
   }
 }

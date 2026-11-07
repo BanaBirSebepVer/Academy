@@ -1,6 +1,10 @@
 {% if site.analytics.enabled != false %}
 <!-- Community Open Analytics & Directory Configuration (assets/js/modules/analytics.js) -->
-{% assign build_id = site.data.version.commit | default: site.time | date: '%s' %}
+{% assign build_commit = site.data.version.commit | default: "v1" %}
+{% assign build_epoch = site.time | date: "%s" %}
+{% assign build_date = site.time | date_to_xmlschema %}
+{% assign build_id = build_commit | append: "_" | append: build_epoch %}
+
 {% assign tr_home = site.pages | where: "ref", "home" | where: "lang", "tr" | first %}
 {% assign en_home = site.pages | where: "ref", "home" | where: "lang", "en" | first %}
 {% if tr_home == nil %}{% assign tr_home = site.pages | where: "url", "/" | first %}{% endif %}
@@ -19,12 +23,13 @@
       data-register="{{ site.analytics.register_path | default: '/api/register.php' }}"
       data-baseurl="{{ site.baseurl }}"
       data-site-url="{{ site.url | default: '' | append: site.baseurl }}"
-      data-build-id="{{ build_id }}">
+      data-build-id="{{ build_id }}"
+      data-build-date="{{ build_date }}">
 
 <script type="application/json" id="academy-registration-data">
 {
   "build_id": {{ build_id | jsonify }},
-  "build_time": {{ site.time | date_to_xmlschema | jsonify }},
+  "build_time": {{ build_date | jsonify }},
   "profile": {
     "title": {{ site.title | default: "" | jsonify }},
     "author": {{ site.author | default: site.title | default: "" | jsonify }},
@@ -38,8 +43,11 @@
     "keywords": {{ site.keywords | default: tr_home.keywords | jsonify }},
     "avatar": {{ full_avatar | jsonify }},
     "site_url": {{ site.url | default: "" | append: site.baseurl | jsonify }},
-    "repository": {{ site.repository | default: "" | jsonify }},
-    "github_repo": {{ site.github_repo | default: "" | jsonify }}
+    "repository": {{ site.repository | default: site.github_repo | default: "" | jsonify }},
+    "github_repo": {{ site.github_repo | default: "" | jsonify }},
+    "bio_tr": {{ tr_home.bio | default: "" | jsonify }},
+    "bio_en": {{ en_home.bio | default: "" | jsonify }},
+    "social": {{ en_home.social | default: tr_home.social | jsonify }}
   },
   "index_data": {
     "tr": {

@@ -6,6 +6,9 @@ Thank you for your interest in contributing to **Academy** ([https://banabirsebe
 
 ## Target Audience Guide
 
+> [!TIP]
+> **First-time academic user?** If you are an academician setting up your website or creating content for the first time without Git or command-line experience, check out the step-by-step **[Academician's Tutorial (TUTORIAL.md)](./TUTORIAL.md)**.
+
 | Contributor Group | Primary Activities | Key Sections to Focus On |
 | :--- | :--- | :--- |
 | **Teaching Assistants, Students & Scholars** | Authoring course modules, updating syllabi, adding publications, fixing typos, publishing lecture notes. | [3. Content Authoring Workflows](#3-content-authoring-workflows)<br>[4. Media & Asset Standards](#4-media--asset-standards)<br>[6. Pre-Flight Verification](#6-pre-flight-verification--ci-checks) |

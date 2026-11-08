@@ -10,6 +10,7 @@ Before filing an issue or asking for support, explore the comprehensive reposito
 
 | Document | Primary Focus |
 |:---|:---|
+| **[TUTORIAL.md](../TUTORIAL.md)** | Step-by-step academician's onboarding guide: browser editing, courses, publications, CV, and printing. |
 | **[README.md](../README.md)** | Engine overview, features, directory layout, local setup, and CLI verification tools. |
 | **[CONTRIBUTING.md](../CONTRIBUTING.md)** | Contribution standards, YAML front-matter schemas (modular courses, publications, posts), asset rules, and Git workflow. |
 | **[ARCHITECTURE.md](../ARCHITECTURE.md)** | Deep architectural blueprint, 4-tier execution layer, Liquid includes, and layout hierarchies. |

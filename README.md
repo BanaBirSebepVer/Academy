@@ -10,6 +10,7 @@
 
 > **Live Production Website**: [**https://banabirsebepver.github.io/Academy/**](https://banabirsebepver.github.io/Academy/)  
 > **English Portal**: [**https://banabirsebepver.github.io/Academy/en/**](https://banabirsebepver.github.io/Academy/en/)  
+> **Step-by-Step Tutorial for Academics**: New to Jekyll, Markdown, or GitHub? Read the complete [**Academician's Guide & Tutorial (TUTORIAL.md)**](./TUTORIAL.md) to set up and manage your site without writing code!  
 > **Automated Deployments**: Continuous integration and deployment is fully automated via GitHub Actions on every push to `main`.
 
 ---
@@ -276,6 +277,7 @@ To configure Academy for your own academic profile:
 
 ## 7. Companion Documentation Hub
 
+- 🎓 [**`TUTORIAL.md`**](./TUTORIAL.md) — *The Academician's Guide: A friendly, step-by-step tutorial for non-programmers to set up, edit, and manage their academic site in a web browser.*
 - 🗺️ [**`ARCHITECTURE.md`**](./ARCHITECTURE.md) — *Detailed system design, Liquid helper hierarchy, and component blast radius matrix.*
 - ✍️ [**`CONTRIBUTING.md`**](./CONTRIBUTING.md) — *Step-by-step authoring schemas for courses, publications, essays, and Git workflow.*
 - 💬 [**`SUPPORT.md`**](./SUPPORT.md) — *Community guidelines, troubleshooting solutions, and bug reporting procedures.*

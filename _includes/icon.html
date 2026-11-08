@@ -1,0 +1,26 @@
+{%- assign raw_name = include.name | default: include.icon | default: include.default | default: "external-link" -%}
+{%- assign clean_name = raw_name | remove: "fa-brands " | remove: "fab " | remove: "fas " | remove: "far " | remove: "fa " | remove: "ai " | remove: "fa-" | remove: "ai-" | strip -%}
+{%- case clean_name -%}
+  {%- when "envelope-o", "envelope" -%}{%- assign icon_id = "envelope" -%}
+  {%- when "calendar-o", "calendar" -%}{%- assign icon_id = "calendar" -%}
+  {%- when "calendar-check-o", "calendar-check" -%}{%- assign icon_id = "calendar-check" -%}
+  {%- when "folder-open-o", "folder-open" -%}{%- assign icon_id = "folder-open" -%}
+  {%- when "folder-o", "folder" -%}{%- assign icon_id = "folder" -%}
+  {%- when "check-circle-o", "check-circle" -%}{%- assign icon_id = "check-circle" -%}
+  {%- when "check-square-o", "check-square" -%}{%- assign icon_id = "check-square" -%}
+  {%- when "bookmark-o", "bookmark" -%}{%- assign icon_id = "bookmark" -%}
+  {%- when "file-o", "file-text-o", "file-text", "file-pdf-o", "newspaper-o" -%}{%- assign icon_id = "file-text" -%}
+  {%- when "twitter", "x-twitter" -%}{%- assign icon_id = "x-twitter" -%}
+  {%- when "building", "university" -%}{%- assign icon_id = "university" -%}
+  {%- when "code-fork", "code-branch" -%}{%- assign icon_id = "code-branch" -%}
+  {%- when "phone-square", "phone" -%}{%- assign icon_id = "phone" -%}
+  {%- when "clone", "copy" -%}{%- assign icon_id = "copy" -%}
+  {%- when "refresh", "spinner" -%}{%- assign icon_id = "spinner" -%}
+  {%- when "clock-o", "clock" -%}{%- assign icon_id = "clock" -%}
+  {%- when "zoom", "video-camera" -%}{%- assign icon_id = "video-camera" -%}
+  {%- when "teams", "microsoft" -%}{%- assign icon_id = "microsoft" -%}
+  {%- when "tag", "tags" -%}{%- assign icon_id = "tags" -%}
+  {%- when "sitemap", "network-wired" -%}{%- assign icon_id = "network-wired" -%}
+  {%- else -%}{%- assign icon_id = clean_name -%}
+{%- endcase -%}
+<svg class="icon{% if include.class %} {{ include.class }}{% endif %}"{% if include.style %} style="{{ include.style }}"{% endif %} aria-hidden="true"><use href="#icon-{{ icon_id }}"></use></svg>

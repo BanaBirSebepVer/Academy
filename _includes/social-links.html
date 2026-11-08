@@ -1,0 +1,224 @@
+<!-- Reusable Centralized Social & Academic Links Include -->
+{% assign style = include.style | default: "icons-only" %}
+{% assign platforms = "orcid,google_scholar,researchgate,academia,scopus,web_of_science,github,gitlab,linkedin,x,youtube,bluesky,mastodon,email,website" | split: "," %}
+
+{% if style == "badges" %}
+<div class="social-links contact-social-pills">
+  {% for key in platforms %}
+    {% assign val = site.data.socials[key] %}
+    {% if val and val != "" %}
+      {% assign title = key | replace: "_", " " | capitalize %}
+      {% assign icon_name = "globe" %}
+      {% assign is_external = true %}
+      {% assign link_url = val %}
+
+      {% if key == "orcid" %}
+        {% assign title = "ORCID" %}
+        {% assign icon_name = "orcid" %}
+        {% unless val contains "http" %}
+          {% assign link_url = "https://orcid.org/" | append: val %}
+        {% endunless %}
+      {% elsif key == "google_scholar" %}
+        {% assign title = "Google Scholar" %}
+        {% assign icon_name = "google-scholar" %}
+      {% elsif key == "researchgate" %}
+        {% assign title = "ResearchGate" %}
+        {% assign icon_name = "researchgate" %}
+      {% elsif key == "academia" %}
+        {% assign title = "Academia.edu" %}
+        {% assign icon_name = "academia" %}
+      {% elsif key == "scopus" %}
+        {% assign title = "Scopus" %}
+        {% assign icon_name = "scopus" %}
+      {% elsif key == "web_of_science" %}
+        {% assign title = "Web of Science" %}
+        {% assign icon_name = "web-of-science" %}
+      {% elsif key == "github" %}
+        {% assign title = "GitHub" %}
+        {% assign icon_name = "github" %}
+      {% elsif key == "gitlab" %}
+        {% assign title = "GitLab" %}
+        {% assign icon_name = "gitlab" %}
+      {% elsif key == "linkedin" %}
+        {% assign title = "LinkedIn" %}
+        {% assign icon_name = "linkedin" %}
+      {% elsif key == "x" %}
+        {% assign title = "X (Twitter)" %}
+        {% assign icon_name = "x-twitter" %}
+      {% elsif key == "youtube" %}
+        {% assign title = "YouTube" %}
+        {% assign icon_name = "youtube" %}
+      {% elsif key == "bluesky" %}
+        {% assign title = "Bluesky" %}
+        {% assign icon_name = "bluesky" %}
+      {% elsif key == "mastodon" %}
+        {% assign title = "Mastodon" %}
+        {% assign icon_name = "mastodon" %}
+      {% elsif key == "email" %}
+        {% assign title = "Email" %}
+        {% assign icon_name = "envelope" %}
+        {% assign is_external = false %}
+        {% unless val contains "mailto:" %}
+          {% assign link_url = "mailto:" | append: val %}
+        {% endunless %}
+      {% elsif key == "website" %}
+        {% assign title = "Website" %}
+        {% assign icon_name = "globe" %}
+      {% endif %}
+
+      <a href="{{ link_url }}" {% if is_external %}target="_blank" rel="noopener noreferrer"{% endif %} class="contact-social-pill sns-{{ key }}" data-sns="{{ key }}" aria-label="{{ title }}" title="{{ title }}">
+        {% include icon.html name=icon_name %}
+        <span>{{ title }}</span>
+      </a>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% elsif style == "list" %}
+<ul class="social-links social-links-list">
+  {% for key in platforms %}
+    {% assign val = site.data.socials[key] %}
+    {% if val and val != "" %}
+      {% assign title = key | replace: "_", " " | capitalize %}
+      {% assign icon_name = "globe" %}
+      {% assign is_external = true %}
+      {% assign link_url = val %}
+
+      {% if key == "orcid" %}
+        {% assign title = "ORCID" %}
+        {% assign icon_name = "orcid" %}
+        {% unless val contains "http" %}
+          {% assign link_url = "https://orcid.org/" | append: val %}
+        {% endunless %}
+      {% elsif key == "google_scholar" %}
+        {% assign title = "Google Scholar" %}
+        {% assign icon_name = "google-scholar" %}
+      {% elsif key == "researchgate" %}
+        {% assign title = "ResearchGate" %}
+        {% assign icon_name = "researchgate" %}
+      {% elsif key == "academia" %}
+        {% assign title = "Academia.edu" %}
+        {% assign icon_name = "academia" %}
+      {% elsif key == "scopus" %}
+        {% assign title = "Scopus" %}
+        {% assign icon_name = "scopus" %}
+      {% elsif key == "web_of_science" %}
+        {% assign title = "Web of Science" %}
+        {% assign icon_name = "web-of-science" %}
+      {% elsif key == "github" %}
+        {% assign title = "GitHub" %}
+        {% assign icon_name = "github" %}
+      {% elsif key == "gitlab" %}
+        {% assign title = "GitLab" %}
+        {% assign icon_name = "gitlab" %}
+      {% elsif key == "linkedin" %}
+        {% assign title = "LinkedIn" %}
+        {% assign icon_name = "linkedin" %}
+      {% elsif key == "x" %}
+        {% assign title = "X (Twitter)" %}
+        {% assign icon_name = "x-twitter" %}
+      {% elsif key == "youtube" %}
+        {% assign title = "YouTube" %}
+        {% assign icon_name = "youtube" %}
+      {% elsif key == "bluesky" %}
+        {% assign title = "Bluesky" %}
+        {% assign icon_name = "bluesky" %}
+      {% elsif key == "mastodon" %}
+        {% assign title = "Mastodon" %}
+        {% assign icon_name = "mastodon" %}
+      {% elsif key == "email" %}
+        {% assign title = "Email" %}
+        {% assign icon_name = "envelope" %}
+        {% assign is_external = false %}
+        {% unless val contains "mailto:" %}
+          {% assign link_url = "mailto:" | append: val %}
+        {% endunless %}
+      {% elsif key == "website" %}
+        {% assign title = "Website" %}
+        {% assign icon_name = "globe" %}
+      {% endif %}
+
+      <li class="social-list-item">
+        <a href="{{ link_url }}" {% if is_external %}target="_blank" rel="noopener noreferrer"{% endif %} aria-label="{{ title }}" title="{{ title }}">
+          {% include icon.html name=icon_name %}
+          <span>{{ title }}</span>
+        </a>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+{% else %}
+{% comment %} Default: style="icons-only" {% endcomment %}
+<ul class="social-links-icons">
+  {% for key in platforms %}
+    {% assign val = site.data.socials[key] %}
+    {% if val and val != "" %}
+      {% assign title = key | replace: "_", " " | capitalize %}
+      {% assign icon_name = "globe" %}
+      {% assign is_external = true %}
+      {% assign link_url = val %}
+
+      {% if key == "orcid" %}
+        {% assign title = "ORCID" %}
+        {% assign icon_name = "orcid" %}
+        {% unless val contains "http" %}
+          {% assign link_url = "https://orcid.org/" | append: val %}
+        {% endunless %}
+      {% elsif key == "google_scholar" %}
+        {% assign title = "Google Scholar" %}
+        {% assign icon_name = "google-scholar" %}
+      {% elsif key == "researchgate" %}
+        {% assign title = "ResearchGate" %}
+        {% assign icon_name = "researchgate" %}
+      {% elsif key == "academia" %}
+        {% assign title = "Academia.edu" %}
+        {% assign icon_name = "academia" %}
+      {% elsif key == "scopus" %}
+        {% assign title = "Scopus" %}
+        {% assign icon_name = "scopus" %}
+      {% elsif key == "web_of_science" %}
+        {% assign title = "Web of Science" %}
+        {% assign icon_name = "web-of-science" %}
+      {% elsif key == "github" %}
+        {% assign title = "GitHub" %}
+        {% assign icon_name = "github" %}
+      {% elsif key == "gitlab" %}
+        {% assign title = "GitLab" %}
+        {% assign icon_name = "gitlab" %}
+      {% elsif key == "linkedin" %}
+        {% assign title = "LinkedIn" %}
+        {% assign icon_name = "linkedin" %}
+      {% elsif key == "x" %}
+        {% assign title = "X (Twitter)" %}
+        {% assign icon_name = "x-twitter" %}
+      {% elsif key == "youtube" %}
+        {% assign title = "YouTube" %}
+        {% assign icon_name = "youtube" %}
+      {% elsif key == "bluesky" %}
+        {% assign title = "Bluesky" %}
+        {% assign icon_name = "bluesky" %}
+      {% elsif key == "mastodon" %}
+        {% assign title = "Mastodon" %}
+        {% assign icon_name = "mastodon" %}
+      {% elsif key == "email" %}
+        {% assign title = "Email" %}
+        {% assign icon_name = "envelope" %}
+        {% assign is_external = false %}
+        {% unless val contains "mailto:" %}
+          {% assign link_url = "mailto:" | append: val %}
+        {% endunless %}
+      {% elsif key == "website" %}
+        {% assign title = "Website" %}
+        {% assign icon_name = "globe" %}
+      {% endif %}
+
+      <li>
+        <a href="{{ link_url }}" {% if is_external %}target="_blank" rel="noopener noreferrer"{% endif %} aria-label="{{ title }}" title="{{ title }}">
+          {% include icon.html name=icon_name %}
+        </a>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+{% endif %}

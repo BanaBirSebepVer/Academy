@@ -1,0 +1,16 @@
+/**
+ * Single Page Content Styles
+ * Handles the content container and article layout
+ * Uses color variables from color.css
+ */
+
+.single-content-body {
+  padding: 40px 30px 60px;
+  background: var(--bg-body);
+}
+
+@media (max-width: 768px) {
+  .single-content-body {
+    padding: 25px 15px 40px;
+  }
+}

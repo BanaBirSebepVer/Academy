@@ -1,0 +1,75 @@
+/**
+ * Contact Campus Map Styles
+ * Module: assets/css/modules/contact/map.css
+ * Uses design tokens & color variables from color.css
+ */
+
+.contact-map-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+  margin-bottom: 40px;
+}
+
+.contact-map-header {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border-divider);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: var(--bg-card);
+}
+
+.contact-map-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-map-title i {
+  color: var(--primary);
+  font-size: 18px;
+}
+
+.contact-map-action .btn {
+  font-weight: 600;
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 4px;
+  background-color: var(--bg-body);
+  border: 1px solid var(--border-default);
+  color: var(--text-main);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.contact-map-action .btn:hover {
+  background-color: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.contact-map-frame-wrapper {
+  width: 100%;
+  height: 420px;
+  position: relative;
+  background-color: var(--bg-hover);
+}
+
+.contact-map-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}

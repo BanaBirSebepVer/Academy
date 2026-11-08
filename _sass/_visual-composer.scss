@@ -1,0 +1,76 @@
+/**
+ * Legacy Visual Composer Compatibility Styles
+ * Preserves legacy component styling and deduplicated page-specific rules
+ */
+
+/* ===================================================
+   VISUAL COMPOSER ELEMENT STYLES
+   =================================================== */
+.vc_do_btn { margin-bottom: 22px; }
+.vc_do_cta3 { padding: 28px; margin-bottom: 35px; }
+.vc_do_custom_heading { margin-bottom: 0.625rem; margin-top: 0; }
+.vc_do_icon { margin-bottom: 35px; }
+.vc_do_message { padding: 1em 1em 1em 4em; margin-bottom: 22px; }
+.vc_do_toggle { margin-bottom: 22px; }
+
+/* ===================================================
+   ACTIVE PAGE-SPECIFIC VISUAL COMPOSER STYLES
+   =================================================== */
+.vc_custom_1469272786787 { margin: 0px !important; border-width: 0px !important; padding: 0px !important; }
+.vc_custom_1469272795350 { margin: 0px !important; border-width: 0px !important; padding: 0px !important; }
+.vc_custom_1542311463166 { padding: 10px !important; }
+.vc_custom_1542315396988 { padding-right: 20px !important; padding-left: 20px !important; }
+.vc_custom_1542316246267 { padding: 10px !important; }
+.vc_custom_1542316260679 { padding: 10px !important; }
+.vc_custom_1542316269636 { padding: 10px !important; }
+.vc_custom_1542316278459 { padding: 10px !important; }
+.vc_custom_1542316319053 { padding: 10px !important; }
+.vc_custom_1629081803408 { margin-right: 10px !important; margin-left: 10px !important; }
+.vc_custom_1630335767866 { margin: 0px !important; padding: 10px 0 !important; background-color: rgba(11,33,59,0.97) !important; }
+.vc_custom_1630335781149 { margin: 0px !important; }
+.vc_custom_1631292586959 { margin-right: 10px !important; margin-left: 10px !important; }
+.vc_custom_1631615491894 { margin: 0px !important; padding: 0px !important; background-color: #0084d6 !important; }
+.vc_custom_1631615514761 { margin: 0px !important; padding: 0px !important; }
+.vc_custom_1667085893425 { margin-top: 60px !important; padding-right: 60px !important; padding-left: 60px !important; }
+.vc_custom_1667085989719 { margin-top: 60px !important; padding-right: 60px !important; padding-left: 60px !important; }
+.vc_custom_1667086002559 { margin-top: 60px !important; padding-right: 60px !important; padding-left: 60px !important; }
+.vc_custom_1667086023956 { margin-top: 60px !important; padding-right: 60px !important; padding-left: 60px !important; }
+.vc_custom_1667086034625 { margin-top: 60px !important; padding-right: 60px !important; padding-left: 60px !important; }
+.vc_custom_1667086074167 { margin-top: 60px !important; padding-right: 60px !important; padding-left: 60px !important; }
+.vc_custom_1667087792909 { padding-top: 60px !important; padding-bottom: 60px !important; }
+.vc_custom_1667089750203 { margin-top: 60px !important; padding: 60px !important; background-color: var(--bg-hover) !important; }
+.vc_custom_1694889614806 { margin-top: 10px !important; margin-bottom: 0px !important; border-bottom-width: 0px !important; padding: 40px !important; }
+.vc_custom_1694889662204 { margin: 0px !important; padding: 0px !important; }
+.vc_custom_1694890029127 { margin: 0px !important; padding: 0px !important; }
+.vc_custom_1718511648443 { padding: 20px !important; background-color: #0084d6 !important; }
+.vc_custom_1719849937260 { margin-bottom: 0px !important; }
+.vc_custom_1719850214927 { padding: 30px !important; background-color: var(--dark-hero) !important; }
+.vc_custom_1719850254105 { margin-bottom: 0px !important; }
+.vc_custom_1719850467835 { margin-bottom: 0px !important; }
+.vc_custom_1719850500347 { padding: 30px !important; background-position: 0 0 !important; background-repeat: repeat !important; }
+.vc_custom_1719851701642 { margin-bottom: 0px !important; padding: 10px !important; }
+.vc_custom_1719851752329 { margin-bottom: 0px !important; padding: 10px !important; }
+.vc_custom_1719851767729 { margin-bottom: 0px !important; padding: 10px !important; }
+.vc_custom_1719852506197 { margin-top: 0px !important; margin-bottom: 0px !important; padding: 20px !important; }
+.vc_custom_1719853927376 { margin-bottom: 0px !important; padding: 10px !important; background-color: #2490e2 !important; }
+.vc_custom_1719853951060 { background-color: #186096 !important; }
+.vc_custom_1719853977066 { background-color: #2490e2 !important; }
+.vc_custom_1719854047505 { background-color: #134a74 !important; }
+.vc_custom_1719854069248 { background-color: rgba(255,2,2,0.7) !important; }
+.vc_custom_1719854337128 { background-color: rgba(255,2,2,0.7) !important; }
+.vc_custom_1719854387613 { background-color: rgba(10,0,0,0.7) !important; }
+.vc_custom_1719854400756 { margin-bottom: 0px !important; padding: 10px !important; }
+.vc_custom_1719854410322 { background-color: rgba(10,0,0,0.7) !important; }
+.vc_custom_1719854423337 { margin-bottom: 0px !important; padding: 10px !important; }
+.vc_custom_1719854604033 { margin-bottom: 0px !important; padding: 10px !important; }
+.vc_custom_1719854649647 { background-color: var(--bg-hover) !important; }
+.vc_custom_1719854852181 { border-bottom-width: 2px !important; border-bottom-style: dotted !important; border-radius: 4px !important; border-color: var(--border-default) !important; }
+.vc_custom_1719854896471 { margin-bottom: 0px !important; padding: 10px !important; }
+.vc_custom_1719860453898 { margin-top: 0px !important; margin-bottom: 0px !important; padding: 20px !important; }
+.vc_custom_1719861437678 { margin-top: 0px !important; margin-bottom: 0px !important; background-color: var(--bg-hover) !important; }
+.vc_custom_1723806966484 { padding: 40px !important; }
+.vc_custom_1739247912823 { margin-right: 20px !important; margin-left: 20px !important; }
+.vc_custom_1766808892672 { margin: 0px !important; padding: 0px !important; background-color: var(--dark-surface) !important; }
+.vc_custom_1788260492300 { margin-bottom: 0px !important; border-bottom-width: 0px !important; border-bottom-style: solid !important; }
+.vc_custom_1788263620234 { margin: 0px !important; padding: 0px !important; }
+.vc_custom_1788263965227 { border-bottom-width: 0px !important; border-bottom-style: solid !important; }

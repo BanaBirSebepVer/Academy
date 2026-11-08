@@ -1,0 +1,265 @@
+---
+layout: default
+---
+
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign lang_slash = "/" | append: current_lang | append: "/" %}
+
+<div class="fac-page publication-archive-page">
+  <div id="inside" class="archive-page-container">
+    <div class="container-fluid">
+
+      <!-- Header Section -->
+      <div class="page-header archive-header">
+        <h1>
+          {{ page.title | default: locale.ui.publications_title | default: "Publications" }}
+        </h1>
+        {% if page.description %}
+        <p>
+          {{ page.description }}
+        </p>
+        {% endif %}
+      </div>
+
+      <!-- Page Content (if any intro markdown text is provided) -->
+      {% if content and content != "" %}
+      <div class="archive-intro-content markdown-body">
+        {{ content }}
+      </div>
+      {% endif %}
+
+      <!-- Dynamic publication collection filtered by language -->
+      {% assign all_publications = "" | split: "" %}
+      {% for pub in site.publications %}
+        {% assign match = false %}
+        {% if pub.lang == current_lang or pub.path contains lang_slash %}
+          {% assign match = true %}
+        {% elsif current_lang == site.default_lang %}
+          {% unless pub.path contains "/en/" or pub.lang == "en" %}
+            {% assign match = true %}
+          {% endunless %}
+        {% endif %}
+        {% if match %}
+          {% assign all_publications = all_publications | push: pub %}
+        {% endif %}
+      {% endfor %}
+
+      {% assign all_publications = all_publications | sort: "order" %}
+      {% assign all_types = all_publications | map: "publication_type" | compact | uniq | sort %}
+
+      {% comment %} --- Calculate Keywords & Frequency-Sorted Cloud --- {% endcomment %}
+      {% assign raw_keywords = "" | split: "" %}
+      {% for pub in all_publications %}
+        {% if pub.keywords %}
+          {% for kw in pub.keywords %}
+            {% assign trimmed_kw = kw | strip %}
+            {% if trimmed_kw != "" %}
+              {% assign raw_keywords = raw_keywords | push: trimmed_kw %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+
+      {% assign unique_keywords = raw_keywords | uniq | sort %}
+      {% assign cloud_sort_keys = "" | split: "" %}
+      {% for ukw in unique_keywords %}
+        {% assign kw_count = 0 %}
+        {% for rkw in raw_keywords %}
+          {% if rkw == ukw %}
+            {% assign kw_count = kw_count | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+        {% assign inv_count = 9999 | minus: kw_count %}
+        {% assign sort_prefix = inv_count %}
+        {% if inv_count < 1000 %}{% assign sort_prefix = "0" | append: inv_count %}{% endif %}
+        {% assign cloud_entry = sort_prefix | append: ":::_:::" | append: kw_count | append: ":::_:::" | append: ukw %}
+        {% assign cloud_sort_keys = cloud_sort_keys | push: cloud_entry %}
+      {% endfor %}
+      {% assign sorted_cloud_keys = cloud_sort_keys | sort %}
+
+      <!-- Search & Filter Controls -->
+      <div class="publication-controls archive-controls">
+        <!-- Search Box -->
+        <div class="archive-search-box">
+          <div class="input-group">
+            <span class="input-group-addon">
+              {% include icon.html name="search" %}
+            </span>
+            <input type="text" id="publicationSearchInput" class="form-control" placeholder="{{ locale.ui.search_publications_placeholder | default: 'Search by title, author, year, citation or keyword...' }}">
+          </div>
+        </div>
+
+        <!-- Keyword Cloud Section -->
+        {% if sorted_cloud_keys.size > 0 %}
+        <div class="pub-keyword-cloud" id="pubKeywordCloud">
+          <div class="pub-keyword-cloud-header">
+            <span class="pub-keyword-cloud-title">
+              {% include icon.html name="tags" %}
+              {{ locale.ui.keywords_cloud_title | default: "Research Keywords & Topic Cloud" }}
+            </span>
+            <div class="pub-keyword-cloud-actions">
+              <button type="button" id="clearKeywordFilterBtn" class="btn btn-xs btn-default pub-clear-kw-btn" style="display: none;">
+                {% include icon.html name="times" %} {{ locale.ui.clear_filter | default: "Clear Filter" }}
+              </button>
+            </div>
+          </div>
+
+          <div class="pub-cloud-tags">
+            {% for item in sorted_cloud_keys %}
+              {% assign parts = item | split: ":::_:::" %}
+              {% assign c_count = parts[1] | plus: 0 %}
+              {% assign c_kw = parts[2] %}
+              {% assign size_class = "kw-size-1" %}
+              {% if c_count >= 3 %}
+                {% assign size_class = "kw-size-3" %}
+              {% elsif c_count == 2 %}
+                {% assign size_class = "kw-size-2" %}
+              {% endif %}
+              <button type="button" class="kw-cloud-item {{ size_class }}" data-keyword="{{ c_kw | escape }}" title="{{ c_kw }} ({{ c_count }})">
+                <span class="kw-text">#{{ c_kw }}</span>
+                <span class="kw-count">{{ c_count }}</span>
+              </button>
+            {% endfor %}
+          </div>
+
+          <div id="activeKeywordBanner" class="pub-active-keyword-banner" style="display: none;">
+            <span class="pub-active-kw-label">
+              {% include icon.html name="filter" %}
+              {{ locale.ui.filtered_by_keyword | default: "Filtered by Keyword:" }}
+            </span>
+            <span id="activeKeywordText" class="badge badge-primary pub-active-kw-badge"></span>
+            <button type="button" class="btn btn-link btn-xs pub-reset-kw-inline" id="resetKeywordInline" title="{{ locale.ui.remove_keyword_filter | default: 'Remove keyword filter' }}">
+              {% include icon.html name="times" %}
+            </button>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Type Filter Buttons -->
+        <div id="pubTypeFilterButtons" class="archive-filter-pills">
+          <button class="btn btn-sm btn-primary active archive-filter-btn pub-filter-btn pub-cat-btn" data-type="all">
+            {{ locale.ui.all_publications | default: "All" }} ({{ all_publications.size }})
+          </button>
+          {% for ptype in all_types %}
+            {% assign type_slug = ptype | slugify %}
+            {% assign type_count = all_publications | where: "publication_type", ptype | size %}
+            <button class="btn btn-sm btn-default archive-filter-btn pub-filter-btn pub-cat-btn" data-type="{{ type_slug }}">
+              {{ ptype }} ({{ type_count }})
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Publications List / Cards -->
+      <div class="fac-publications" id="publicationsList">
+        <div class="pitems">
+          <div class="row">
+            {% for pub in all_publications %}
+            {% assign ptype = pub.publication_type %}
+            {% assign ptype_slug = ptype | slugify %}
+            <div class="col-xs-12 pub-item-wrapper publication-card-wrapper"
+                 data-type="{{ ptype_slug }}"
+                 data-title="{{ pub.title | downcase | escape }}"
+                 data-author="{{ pub.author | downcase | escape }}"
+                 data-year="{{ pub.year }}"
+                 data-cite="{{ pub.citation | downcase | escape }}"
+                 data-keywords="{% if pub.keywords %}{{ pub.keywords | join: ', ' | downcase | escape }}{% endif %}">
+              
+              <div class="item">
+                <div class="pubmain pub-item-card {% if pub.image %}pub-has-thumb{% endif %}">
+                  
+                  {% if pub.image %}
+                  <div class="pub-thumb pub-thumb-container">
+                    <a href="{{ pub.url | relative_url }}">
+                      <img src="{{ pub.image }}" alt="{{ pub.title }}" class="pub-thumb-image">
+                    </a>
+                  </div>
+                  {% endif %}
+
+                  <div class="pub-contents pub-contents-container">
+                    
+                    <!-- Top Meta: Type & Year -->
+                    <div class="pub-meta-top">
+                      <span class="label label-primary archive-badge-primary">
+                        {{ pub.type_label | default: pub.publication_type }}
+                      </span>
+                      <span class="pub-year-text">
+                        {% include icon.html name="calendar" %} {{ pub.year }}
+                      </span>
+                    </div>
+
+                    <!-- Title -->
+                    <h3 class="pubtitle pub-item-title">
+                      <a href="{{ pub.url | relative_url }}">
+                        {{ pub.title }}
+                      </a>
+                    </h3>
+
+                    <!-- Author & Citation -->
+                    <div class="pubcontents">
+                      <div class="pubauthor pub-author-text">
+                        {% include icon.html name="user" %}
+                        {{ pub.author }}
+                      </div>
+                      <div class="pubcite pub-cite-text">
+                        {{ pub.citation }}
+                      </div>
+                    </div>
+
+                    <!-- Keywords -->
+                    {% if pub.keywords and pub.keywords.size > 0 %}
+                    <div class="pub-card-keywords">
+                      <span class="pub-card-kw-label">{% include icon.html name="key" %} {{ locale.ui.keywords | default: "Keywords" }}:</span>
+                      {% for kw in pub.keywords %}
+                        <button type="button" class="pub-card-kw-btn" data-keyword="{{ kw | escape }}" title="{{ kw }}">
+                          #{{ kw }}
+                        </button>
+                      {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <!-- Action Links -->
+                    <div class="pub-actions-row">
+                      <a href="{{ pub.url | relative_url }}" class="btn btn-sm btn-archive-primary">
+                        {{ locale.ui.view_publication_details | default: "View Details" }} &rarr;
+                      </a>
+                      {% if pub.link %}
+                      <a href="{{ pub.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-default">
+                        {% include icon.html name="external-link" %}
+                        {{ locale.ui.original_link | default: "Original Link" }}
+                      </a>
+                      {% endif %}
+                      {% if pub.pdf or pub.download_url %}
+                      <a href="{{ pub.pdf | default: pub.download_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-default">
+                        {% include icon.html name="file-pdf-o" %}
+                        PDF
+                      </a>
+                      {% endif %}
+                    </div>
+
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <!-- No Results Box -->
+      <div id="noPubsMatch" class="archive-no-match">
+        {% include icon.html name="book" %}
+        <h4>
+          {{ locale.ui.no_publications_found | default: "No publications found matching your search." }}
+        </h4>
+        <p>
+          {{ locale.ui.no_publications_found_sub | default: "Please try another search term or reset filters." }}
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>

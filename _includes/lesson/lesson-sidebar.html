@@ -1,0 +1,183 @@
+<!-- Lesson Sidebar Widget -->
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign lang_slash = "/" | append: current_lang | append: "/" %}
+{% assign lessons_page = site.pages | where: "ref", "lessons" | where: "lang", current_lang | first %}
+{% assign default_lessons_url = "/dersler/" %}
+{% if current_lang == "en" %}{% assign default_lessons_url = "/en/lessons/" %}{% endif %}
+{% assign lessons_archive_url = lessons_page.url | default: default_lessons_url | relative_url %}
+
+<aside class="lesson-sidebar sidebar-sticky-wrap">
+
+  <!-- Course Overview Card -->
+  <div class="panel panel-default sidebar-widget-card">
+    <div class="sidebar-widget-header sidebar-widget-header-dark">
+      <span>{% include icon.html name="info-circle" %} {{ locale.ui.course_info | default: "Course Information" }}</span>
+    </div>
+    <div class="sidebar-widget-body">
+      <ul class="sidebar-meta-list">
+        {% if page.course_code %}
+        <li class="sidebar-meta-row">
+          <span class="sidebar-meta-label">{{ locale.ui.course_code | default: "Course Code" }}:</span>
+          <strong class="sidebar-meta-value">{{ page.course_code }}</strong>
+        </li>
+        {% endif %}
+
+        {% if page.category %}
+        <li class="sidebar-meta-row">
+          <span class="sidebar-meta-label">{{ locale.ui.field_category | default: "Area" }}:</span>
+          <span class="label label-default archive-badge-soft">{{ page.category }}</span>
+        </li>
+        {% endif %}
+
+        <li class="sidebar-meta-row">
+          <span class="sidebar-meta-label">{{ locale.ui.instructor | default: "Instructor" }}:</span>
+          <strong class="sidebar-meta-value">{% include icon.html name="user" %}{{ page.instructor | default: site.author | default: "Instructor" }}</strong>
+        </li>
+
+        {% assign inst_parts = "" | split: "" %}
+        {% if page.institution and page.institution != "" %}
+          {% assign inst_parts = inst_parts | push: page.institution %}
+        {% endif %}
+        {% if page.faculty and page.faculty != "" %}
+          {% assign inst_parts = inst_parts | push: page.faculty %}
+        {% endif %}
+        {% if page.department and page.department != "" %}
+          {% assign inst_parts = inst_parts | push: page.department %}
+        {% endif %}
+
+        {% if inst_parts.size > 0 %}
+        <li class="sidebar-meta-row">
+          <span class="sidebar-meta-label">{{ locale.ui.institution | default: "Institution" }}:</span>
+          <span class="sidebar-meta-value">{{ inst_parts | join: ", " }}</span>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Course Communication Channels (if defined) -->
+  {% assign has_social = false %}
+  {% if page.discord and page.discord != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.teams and page.teams != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.whatsapp and page.whatsapp != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.telegram and page.telegram != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.slack and page.slack != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.zoom and page.zoom != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.email and page.email != "" %}{% assign has_social = true %}{% endif %}
+
+  {% if has_social %}
+  <div class="panel panel-default sidebar-widget-card">
+    <div class="sidebar-widget-header">
+      <span>{% include icon.html name="comments" %} {{ locale.ui.course_channels | default: "Course Channels" }}</span>
+    </div>
+    <div class="sidebar-widget-body">
+      <div class="sidebar-meta-list">
+        {% if page.discord and page.discord != "" %}
+        <a href="{{ page.discord }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-channel-block btn-channel-discord">
+          {% include icon.html name="discord" %} Discord
+        </a>
+        {% endif %}
+
+        {% if page.teams and page.teams != "" %}
+        <a href="{{ page.teams }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-channel-block btn-channel-teams">
+          {% include icon.html name="microsoft" %} Microsoft Teams
+        </a>
+        {% endif %}
+
+        {% if page.whatsapp and page.whatsapp != "" %}
+        <a href="{{ page.whatsapp }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-channel-block btn-channel-whatsapp">
+          {% include icon.html name="whatsapp" %} WhatsApp
+        </a>
+        {% endif %}
+
+        {% if page.telegram and page.telegram != "" %}
+        <a href="{{ page.telegram }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-channel-block btn-channel-telegram">
+          {% include icon.html name="telegram" %} Telegram
+        </a>
+        {% endif %}
+
+        {% if page.slack and page.slack != "" %}
+        <a href="{{ page.slack }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-channel-block btn-channel-slack">
+          {% include icon.html name="slack" %} Slack
+        </a>
+        {% endif %}
+
+        {% if page.zoom and page.zoom != "" %}
+        <a href="{{ page.zoom }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-channel-block btn-channel-zoom">
+          {% include icon.html name="video-camera" %} Zoom
+        </a>
+        {% endif %}
+
+        {% if page.email and page.email != "" %}
+        <a href="mailto:{{ page.email }}" class="btn btn-xs btn-channel btn-channel-block btn-channel-email">
+          {% include icon.html name="envelope" %} {{ page.email }}
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Course Materials CTA (if available) -->
+  {% if page.lecture_notes_url %}
+  <div class="panel panel-default material-cta-card">
+    <h4>
+      {% include icon.html name="book" %} {{ locale.ui.lecture_notes | default: "Lecture Notes" }}
+    </h4>
+    <p>
+      {{ locale.ui.materials_and_notes | default: "Lecture notes and materials for this course are available." }}
+    </p>
+    <a href="{{ page.lecture_notes_url | relative_url }}" class="btn btn-sm btn-block btn-archive-primary">
+      {{ locale.ui.go_to_lecture_notes | default: "Go to Lecture Notes" }} &rarr;
+    </a>
+  </div>
+  {% endif %}
+
+  <!-- Related Lessons in Same Category -->
+  {% if page.category %}
+  <div class="panel panel-default sidebar-widget-card">
+    <div class="sidebar-widget-header">
+      <span>{% include icon.html name="graduation-cap" %} {{ locale.ui.related_lessons | default: "Related Courses" }}</span>
+    </div>
+    <div class="sidebar-widget-body">
+      <ul class="sidebar-link-list">
+        {% assign related_count = 0 %}
+        {% for other in site.lessons %}
+          {% assign other_match = false %}
+          {% if other.lang == current_lang or other.path contains lang_slash %}
+            {% assign other_match = true %}
+          {% elsif current_lang == site.default_lang %}
+            {% unless other.path contains "/en/" or other.lang == "en" %}
+              {% assign other_match = true %}
+            {% endunless %}
+          {% endif %}
+          {% assign is_other_main = false %}
+          {% if other.layout == "lesson" or other.layout == "lesson/single" %}
+            {% if other.section_type == nil or other.course_code != nil %}
+              {% assign is_other_main = true %}
+            {% endif %}
+          {% endif %}
+          {% if other_match and other.category == page.category and other.url != page.url and is_other_main %}
+            {% assign related_count = related_count | plus: 1 %}
+            {% if related_count <= 4 %}
+            <li class="sidebar-link-item">
+              <a href="{{ other.url | relative_url }}" class="sidebar-link-anchor">
+                <span class="label label-default archive-badge-soft">{{ other.course_code }}</span>
+                <span>{{ other.title }}</span>
+              </a>
+            </li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <div class="sidebar-footer-link-wrap">
+        <a href="{{ lessons_archive_url }}">
+          {{ locale.ui.view_all_lessons | default: "View All Courses" }} &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+</aside>

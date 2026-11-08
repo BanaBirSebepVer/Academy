@@ -1,0 +1,65 @@
+/**
+ * Archive Controls & Filter Pills Styles
+ * Handles the search bar, filter buttons, active states, and pill badges
+ * Uses color variables from color.css
+ */
+
+.archive-controls {
+  margin-bottom: 35px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.archive-search-box {
+  flex: 1;
+  min-width: 260px;
+  max-width: 440px;
+}
+
+.archive-search-box .input-group-addon {
+  background: var(--bg-card);
+  border-right: none;
+}
+
+.archive-search-box .input-group-addon i {
+  color: var(--text-subtle);
+}
+
+.archive-search-box .form-control {
+  border-left: none;
+}
+
+.archive-filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.archive-filter-btn {
+  border-radius: 5px !important;
+  padding: 6px 14px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+
+.archive-filter-btn.btn-primary {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: var(--text-inverse) !important;
+  box-shadow: 0 2px 6px var(--primary-shadow) !important;
+}
+
+.archive-filter-btn.btn-default {
+  background-color: var(--bg-alt) !important;
+  border-color: var(--border-card) !important;
+  color: var(--text-muted) !important;
+}
+
+.archive-filter-btn.btn-default:hover {
+  background-color: var(--bg-hover) !important;
+  color: var(--text-main) !important;
+}

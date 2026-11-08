@@ -1,0 +1,183 @@
+---
+layout: default
+---
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign home_page = site.pages | where: "ref", "home" | where: "lang", current_lang | first %}
+{% assign home_url = home_page.url | default: "/" | relative_url %}
+{% assign projects_page = site.pages | where: "ref", "projects" | where: "lang", current_lang | first %}
+{% assign default_projects_url = "/projeler/" %}
+{% if current_lang == "en" %}{% assign default_projects_url = "/en/projects/" %}{% endif %}
+{% assign projects_url = projects_page.url | default: default_projects_url | relative_url %}
+{% assign projects_title = projects_page.title | default: locale.ui.projects_title | default: "Projects" %}
+
+<div class="fac-page single-project-page">
+  <div id="inside">
+
+    <!-- Project Header -->
+    <div class="project-header single-hero-header">
+      <div class="section-container">
+        <!-- Breadcrumbs -->
+        <div class="single-breadcrumb">
+          <a href="{{ home_url }}">{{ locale.ui.home | default: "Home" }}</a>
+          <span class="single-breadcrumb-separator">/</span>
+          <a href="{{ projects_url }}">{{ projects_title }}</a>
+          <span class="single-breadcrumb-separator">/</span>
+          <span class="single-breadcrumb-current">{{ page.title }}</span>
+        </div>
+
+        <div class="single-hero-meta-bar">
+          {% if page.badge_label %}
+          <span class="label archive-badge-primary">
+            {{ page.badge_label }}
+          </span>
+          {% endif %}
+          {% if page.status %}
+          <span class="status-badge {{ page.status_class | default: 'status-active' }}">
+            {{ page.status }}
+          </span>
+          {% endif %}
+          {% if page.start_year %}
+          <span>
+            {% include icon.html name="calendar-o" %} {{ page.start_year }} {% if page.end_year %}– {{ page.end_year }}{% endif %}
+          </span>
+          {% endif %}
+        </div>
+
+        <h1 class="title single-hero-title">
+          {{ page.title }}
+        </h1>
+        {% if page.subtitle %}
+        <p class="single-hero-subtitle">
+          {{ page.subtitle }}
+        </p>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Project Content Section -->
+    <div class="pagecontents color-1 single-content-body">
+      <div class="section-container">
+        <div class="row">
+          
+          <div class="col-md-8 col-sm-12">
+            {% if page.image and page.image != "" %}
+            <div class="single-featured-image-box">
+              <img src="{{ page.image }}" alt="{{ page.title }}">
+            </div>
+            {% endif %}
+
+            <div class="entry-content article-body">
+              {{ content }}
+            </div>
+
+            {% if page.details and page.details.size > 0 %}
+            <div class="panel panel-default scope-goals-panel">
+              <div class="panel-heading">
+                {% include icon.html name="check-square-o" %} {{ locale.ui.project_scope_goals | default: "Project Scope & Objectives" }}
+              </div>
+              <div class="panel-body">
+                <ul class="scope-goals-list">
+                  {% for item in page.details %}
+                  <li>{{ item }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- Authoritative Citation & AI Reference Notice -->
+            <div class="ai-citation-reference" itemprop="citation" style="margin-top: 20px; margin-bottom: 15px; padding: 10px 15px; background: #fafafa; border-left: 3px solid #0056b3; border-radius: 3px;">
+              <small class="text-muted">
+                {% include icon.html name="quote-left" %} <strong>{{ locale.ui.citation_notice | default: "Citation / AI Reference" }}:</strong>
+                {{ site.author }}, "{{ page.title }}", {{ site.institution }}. URL: <a href="{{ page.url | absolute_url }}">{{ page.url | absolute_url }}</a>
+              </small>
+            </div>
+
+            <!-- Footer Navigation & Sharing -->
+            <div class="project-footer-nav single-footer-nav">
+              <a href="{{ projects_url }}" class="btn btn-default single-back-btn">
+                {% include icon.html name="arrow-left" %} {{ locale.ui.all_projects_nav | default: locale.ui.projects_all | default: projects_title }}
+              </a>
+
+              <div class="project-share single-share-bar">
+                <span class="single-share-label">{{ locale.ui.share | default: "Share" }}:</span>
+                <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Twitter">{% include icon.html name="x-twitter" %}</a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="LinkedIn">{% include icon.html name="linkedin" %}</a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Facebook">{% include icon.html name="facebook" %}</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column / Meta Sidebar -->
+          <div class="col-md-4 col-sm-12">
+            <div class="panel panel-default sidebar-widget-card">
+              <div class="sidebar-widget-header">
+                <span>{% include icon.html name="info-circle" %} {{ locale.ui.project_summary | default: "Project Overview" }}</span>
+              </div>
+
+              <div class="sidebar-widget-body">
+                <div class="sidebar-meta-list">
+                  {% if page.role %}
+                  <div>
+                    <strong class="sidebar-meta-label">{{ locale.ui.project_role | default: "Role" }}:</strong>
+                    <span class="sidebar-meta-value">{{ page.role }}</span>
+                  </div>
+                  {% endif %}
+
+                  {% if page.organization %}
+                  <div>
+                    <strong class="sidebar-meta-label">{{ locale.ui.project_organization | default: "Organization / Initiative" }}:</strong>
+                    <span class="sidebar-meta-value">{{ page.organization }}</span>
+                  </div>
+                  {% endif %}
+
+                  {% if page.start_year %}
+                  <div>
+                    <strong class="sidebar-meta-label">{{ locale.ui.project_period | default: "Period" }}:</strong>
+                    <span class="sidebar-meta-value">{{ page.start_year }} {% if page.end_year %}– {{ page.end_year }}{% endif %}</span>
+                  </div>
+                  {% endif %}
+
+                  {% if page.tags and page.tags.size > 0 %}
+                  <div>
+                    <strong class="sidebar-meta-label">{{ locale.ui.tags | default: "Tags" }}:</strong>
+                    <div class="sidebar-tags-container">
+                      {% for tag in page.tags %}
+                      <span class="sidebar-tag-item">#{{ tag }}</span>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  {% endif %}
+                </div>
+
+                {% if page.link and page.link != "" %}
+                <div class="project-sidebar-cta-wrap">
+                  <a href="{{ page.link | relative_url }}" {% if page.link contains 'http' %}target="_blank" rel="noopener noreferrer"{% endif %} class="btn btn-block btn-archive-primary">
+                    {{ page.link_text | default: locale.ui.visit_project | default: "Visit Project" }}
+                    {% if page.link_icon %}
+                      {% include icon.html name=page.link_icon %}
+                    {% else %}
+                      &rarr;
+                    {% endif %}
+                  </a>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="panel panel-default sidebar-widget-card">
+              <div class="sidebar-widget-body text-center">
+                <a href="{{ projects_url }}" class="btn btn-block btn-default single-back-btn">
+                  {% include icon.html name="folder-open-o" %} {{ locale.ui.all_projects_nav | default: locale.ui.projects_all | default: "View All Projects" }}
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

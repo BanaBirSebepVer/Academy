@@ -1,0 +1,124 @@
+/**
+ * Social Media & Academic Profile Icons
+ * Handles social icons list in sidebar footer, hover animations, and centralized social-links components
+ */
+
+/* ===================================================
+   CENTRALIZED SOCIAL LINKS COMPONENT
+   =================================================== */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      opacity: 0.75;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+.social-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  li a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}
+
+/* ===================================================
+   SIDEBAR FOOTER SOCIAL ICONS CONTAINER
+   =================================================== */
+.social-icons {
+  text-align: center;
+}
+
+.social-icons ul,
+.social-links-icons {
+  padding: 0 15px;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.social-icons li,
+.social-links-icons li {
+  padding: 5px;
+  text-align: center;
+  display: inline-block;
+}
+
+/* ===================================================
+   SOCIAL LINKS & HOVER STATES
+   =================================================== */
+.social-icons a,
+.social-links-icons a {
+  color: var(--text-disabled);
+  display: inline-block;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover,
+.social-icons a:focus,
+.social-links-icons a:hover,
+.social-links-icons a:focus {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.social-icons .icon,
+.social-links-icons .icon {
+  font-size: 16px;
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+/* ===================================================
+   LEGACY SPRITE ICONS (BACKWARD COMPATIBILITY)
+   =================================================== */
+i.academia,
+i.researchgate {
+  background-repeat: no-repeat;
+  background-position: top;
+  width: 18px;
+  height: 15px;
+  display: block;
+  position: relative;
+  top: 8px;
+  margin: 0 auto;
+}
+
+i.academia {
+  background: url(../img/i-academia.png);
+}
+
+i.researchgate {
+  background: url(../img/i-researchgate.png);
+}
+
+.social-icons a:hover i.academia,
+.social-icons a:hover i.researchgate {
+  background-position: bottom;
+}

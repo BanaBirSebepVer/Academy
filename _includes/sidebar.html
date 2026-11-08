@@ -1,0 +1,82 @@
+{% assign current_lang = page.lang | default: site.default_lang | default: "tr" %}
+{% if page.url contains "/en/" %}
+  {% assign current_lang = "en" %}
+{% endif %}
+{% assign locale = site.data.locales[current_lang] %}
+
+{% assign index_page = site.pages | where: "ref", "home" | where: "lang", current_lang | first %}
+{% if index_page == nil %}
+  {% if current_lang == "en" %}
+    {% assign index_page = site.pages | where: "url", "/en/" | first %}
+  {% else %}
+    {% assign index_page = site.pages | where: "url", "/" | first %}
+  {% endif %}
+{% endif %}
+{% if index_page == nil %}
+  {% assign index_page = site.pages | where: "name", "index.md" | first %}
+{% endif %}
+
+{% assign profile_name = index_page.name | default: index_page.author %}
+{% if profile_name == nil or profile_name == '' or profile_name == 'index.md' %}
+  {% assign profile_name = site.author | default: site.title %}
+{% endif %}
+{% assign profile_image = index_page.image | default: index_page.avatar | default: site.avatar | default: "/assets/images/default-avatar.svg" %}
+{% assign profile_institution = index_page.institution | default: site.institution %}
+{% if profile_institution == nil or profile_institution == "" %}
+  {% assign first_lesson = site.lessons | where: "lang", current_lang | first %}
+  {% assign profile_institution = first_lesson.institution %}
+{% endif %}
+
+{% assign home_url = "/" %}
+{% if current_lang == "en" %}
+  {% assign home_url = "/en/" %}
+{% endif %}
+
+<a class="mobilemenu" href="#sidebar" aria-label="Toggle Navigation">
+  {% include icon.html name="bars" %}
+</a>
+
+<div id="sidebar">
+  <div id="sidebar-wrapper">
+    <div id="sidebar-inner">
+      <!-- Profile/logo section-->
+      <div id="profile" class="clearfix">
+        <div class="portrate">
+          <a href="{{ home_url | relative_url }}">
+            <img src="{{ profile_image | relative_url }}" alt="{{ profile_name }}">
+          </a>
+        </div>
+        <div class="title">
+          <h2>{{ profile_name }}</h2>
+          {% if profile_institution %}
+          <h3>{{ profile_institution }}</h3>
+          {% endif %}
+        </div>
+      </div>
+      <!-- /Profile/logo section-->
+
+      <!-- Main navigation-->
+      {% include navigation.html %}
+      <!-- /Main navigation-->
+
+      <!-- Sidebar footer -->
+      <div id="sidebar-footer">
+        
+        <!-- Multilingual Language Tools -->
+        <div class="nav-multilingual-tools">
+          {% include language-switcher.html %}
+        </div>
+        <div class="social-icons">
+          {% include social-links.html style="icons-only" %}
+        </div>
+        <div id="copyright">
+          <p>
+            &copy; {{ site.time | date: '%Y' }} {{ site.title | default: site.author }}. {{ locale.ui.all_rights_reserved | default: "All rights reserved." }}
+          </p>
+        </div>
+      </div>
+      <!-- /Sidebar footer -->
+    </div>
+  </div>
+</div>
+<div id="overlay"></div>

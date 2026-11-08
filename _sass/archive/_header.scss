@@ -1,0 +1,42 @@
+/**
+ * Archive Header & Layout Styles
+ * Handles the general archive page wrapper and top introduction header
+ * Uses color variables from color.css
+ */
+
+.archive-page-container {
+  padding: 40px 35px;
+}
+
+@media (max-width: 768px) {
+  .archive-page-container {
+    padding: 25px 18px;
+  }
+}
+
+.archive-header {
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 20px;
+  margin-bottom: 35px;
+}
+
+.archive-header h1 {
+  margin: 0 0 10px;
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 32px;
+}
+
+.archive-header p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.archive-intro-content {
+  margin-bottom: 30px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}

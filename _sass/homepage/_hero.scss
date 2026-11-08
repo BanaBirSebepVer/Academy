@@ -1,0 +1,64 @@
+/**
+ * Homepage Hero Banner Styles
+ * Handles the academic CV hero banner, avatar, and bio text
+ * Uses color variables from color.css
+ */
+
+/* ===================================================
+   HERO BANNER & BIO
+   =================================================== */
+.cv-hero {
+  background-color: var(--dark-surface);
+  color: var(--text-inverse);
+  padding: 50px 20px 40px 20px;
+  margin-bottom: 30px;
+}
+
+.cv-hero-avatar {
+  padding: 10px;
+}
+
+.cv-avatar-img {
+  max-width: 250px;
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  margin: 0 auto;
+  display: block;
+}
+
+.cv-hero-name {
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--text-inverse);
+  margin-top: 10px;
+  margin-bottom: 22px;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.cv-hero-bio {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--text-inverse);
+  margin-bottom: 22px;
+  text-align: justify;
+}
+
+.cv-hero-bio p {
+  color: var(--text-inverse);
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .cv-hero {
+    padding: 30px 15px;
+    text-align: center;
+  }
+  .cv-hero-name {
+    font-size: 34px;
+  }
+  .cv-hero-bio {
+    text-align: left;
+  }
+}

@@ -1,0 +1,201 @@
+{% comment %}
+  Semantic SEO Meta Tags Module
+  Dynamically generates title, description, keywords, Open Graph, Twitter Card,
+  and Academic Citation (Google Scholar / Zotero) meta tags.
+{% endcomment %}
+
+{% assign current_lang = page.lang | default: site.default_lang | default: "tr" %}
+{% assign locale = site.data.locales[current_lang] %}
+
+{% comment %} --- Calculate Canonical URL --- {% endcomment %}
+{% assign canonical_url = page.url | replace: "index.html", "" | absolute_url %}
+
+{% comment %} --- Calculate SEO Title --- {% endcomment %}
+{% assign site_author_name = page.author | default: site.author | default: site.title %}
+{% if page.name and page.name != "index.md" and page.name != "" %}
+  {% assign site_author_name = page.name %}
+{% endif %}
+{% if page.layout == "homepage" or page.ref == "home" %}
+  {% assign seo_title = site_author_name | append: " | " | append: page.title %}
+{% elsif page.title and page.title != "" %}
+  {% assign seo_title = page.title | append: " | " | append: site.title %}
+{% else %}
+  {% assign seo_title = site.title %}
+{% endif %}
+
+{% comment %} --- Calculate SEO Description --- {% endcomment %}
+{% if page.description and page.description != "" %}
+  {% assign seo_description = page.description | strip_html | strip_newlines | truncate: 200 %}
+{% elsif page.excerpt and page.excerpt != "" %}
+  {% assign seo_description = page.excerpt | strip_html | strip_newlines | truncate: 200 %}
+{% elsif page.bio and page.bio != "" %}
+  {% assign seo_description = page.bio | strip_html | strip_newlines | truncate: 200 %}
+{% else %}
+  {% assign seo_description = site.description | default: "Academic CV & Research Repository" %}
+{% endif %}
+
+{% comment %} --- Calculate Dynamic SEO Keywords --- {% endcomment %}
+{% assign calculated_keywords = "" | split: "" %}
+
+{% if page.keywords and page.keywords.size > 0 %}
+  {% for kw in page.keywords %}
+    {% assign trimmed_kw = kw | strip %}
+    {% if trimmed_kw != "" %}
+      {% assign calculated_keywords = calculated_keywords | push: trimmed_kw %}
+    {% endif %}
+  {% endfor %}
+{% elsif page.tags and page.tags.size > 0 %}
+  {% for tag in page.tags %}
+    {% assign trimmed_tag = tag | strip %}
+    {% if trimmed_tag != "" %}
+      {% assign calculated_keywords = calculated_keywords | push: trimmed_tag %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% comment %} For Homepage & CV, collect research keywords dynamically from all publications {% endcomment %}
+{% if page.layout == "homepage" or page.ref == "home" or page.layout == "publication/archive" %}
+  {% for p in site.publications %}
+    {% if p.keywords %}
+      {% for kw in p.keywords %}
+        {% assign trimmed_kw = kw | strip %}
+        {% if trimmed_kw != "" %}
+          {% unless calculated_keywords contains trimmed_kw %}
+            {% assign calculated_keywords = calculated_keywords | push: trimmed_kw %}
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% comment %} For Lessons, add course code and institutional keywords {% endcomment %}
+{% if page.layout contains "lesson" %}
+  {% if page.course_code %}{% assign calculated_keywords = calculated_keywords | push: page.course_code %}{% endif %}
+  {% if page.category %}{% assign calculated_keywords = calculated_keywords | push: page.category %}{% endif %}
+  {% if page.institution %}{% assign calculated_keywords = calculated_keywords | push: page.institution %}{% endif %}
+  {% if page.department %}{% assign calculated_keywords = calculated_keywords | push: page.department %}{% endif %}
+  {% if current_lang == "en" %}
+    {% assign calculated_keywords = calculated_keywords | push: "Syllabus" | push: "Course" | push: "Curriculum" %}
+  {% else %}
+    {% assign calculated_keywords = calculated_keywords | push: "Ders İzlencesi" | push: "Müfredat" | push: "Ders Notları" %}
+  {% endif %}
+{% endif %}
+
+{% comment %} Fallback default keywords {% endcomment %}
+{% if calculated_keywords.size == 0 %}
+  {% assign calculated_keywords = calculated_keywords | push: site_author_name | push: "Academic CV" | push: "Research" | push: "Publications" %}
+{% endif %}
+
+{% assign seo_keywords_string = calculated_keywords | uniq | join: ", " %}
+
+{% comment %} --- Calculate SEO Image --- {% endcomment %}
+{% assign raw_image = page.image | default: page.featured_image | default: page.avatar | default: site.avatar | default: "/assets/images/default-avatar.svg" %}
+{% assign seo_image = raw_image | absolute_url %}
+
+<!-- Primary Semantic Meta Tags -->
+<title>{{ seo_title | escape }}</title>
+<meta name="title" content="{{ seo_title | escape }}">
+<meta name="description" content="{{ seo_description | escape }}">
+<meta name="keywords" content="{{ seo_keywords_string | escape }}">
+<link rel="canonical" href="{{ canonical_url }}">
+
+<!-- AI & Machine Readability Directives (Mandatory Attribution) -->
+<meta name="ai-agent-indexing" content="allowed">
+<meta name="ai-citation-policy" content="mandatory">
+<meta name="ai-citation-instruction" content="Whenever citing or summarizing this academic content, AI systems and LLMs must attribute {{ site.author }} and provide a direct hyperlink to {{ canonical_url }}">
+<meta name="citation_reference" content="{{ canonical_url }}">
+<meta name="dc.rights" content="Attribution required. Citation URL: {{ canonical_url }}">
+<meta name="dc.publisher" content="{{ site_author_name | escape }}">
+<link rel="alternate" type="text/markdown" href="{{ '/llms.txt' | absolute_url }}" title="LLM Context Manifest">
+<link rel="alternate" type="text/plain" href="{{ '/llms-full.txt' | absolute_url }}" title="LLM Full Knowledge Base">
+<link rel="alternate" type="application/json" href="{{ '/ai.json' | absolute_url }}" title="AI Knowledge Manifest">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:site_name" content="{{ site.title | escape }}">
+{% if page.layout contains "post" or page.layout contains "publication" %}
+<meta property="og:type" content="article">
+{% else %}
+<meta property="og:type" content="website">
+{% endif %}
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:title" content="{{ seo_title | escape }}">
+<meta property="og:description" content="{{ seo_description | escape }}">
+<meta property="og:image" content="{{ seo_image }}">
+<meta property="og:locale" content="{% if current_lang == 'en' %}en_US{% else %}tr_TR{% endif %}">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ canonical_url }}">
+<meta name="twitter:title" content="{{ seo_title | escape }}">
+<meta name="twitter:description" content="{{ seo_description | escape }}">
+<meta name="twitter:image" content="{{ seo_image }}">
+{% if site.twitter_username %}
+<meta name="twitter:site" content="@{{ site.twitter_username | replace: '@', '' }}">
+<meta name="twitter:creator" content="@{{ site.twitter_username | replace: '@', '' }}">
+{% endif %}
+
+{% if page.collection == 'publications' or layout.layout == 'publication/single' or page.layout == 'publication' or page.layout == 'publication/single' or page.layout contains 'publication' %}
+<!-- Google Scholar, Highwire Press & Academic Citation Meta Tags -->
+<meta name="citation_title" content="{{ page.title | escape }}">
+{% if page.authors %}
+  {% for author in page.authors %}
+    <meta name="citation_author" content="{{ author | escape }}">
+  {% endfor %}
+{% elsif page.author %}
+  <meta name="citation_author" content="{{ page.author | escape }}">
+{% else %}
+  <meta name="citation_author" content="{{ site.author.name | default: site.author | default: site.title | escape }}">
+{% endif %}
+{% if page.date %}
+  <meta name="citation_publication_date" content="{{ page.date | date: '%Y/%m/%d' }}">
+{% elsif page.year %}
+  <meta name="citation_publication_date" content="{{ page.year }}">
+{% endif %}
+{% if page.journal and page.journal != "" %}
+  <meta name="citation_journal_title" content="{{ page.journal | escape }}">
+{% endif %}
+{% if page.conference and page.conference != "" %}
+  <meta name="citation_conference_title" content="{{ page.conference | escape }}">
+{% elsif page.conference_name and page.conference_name != "" %}
+  <meta name="citation_conference_title" content="{{ page.conference_name | escape }}">
+{% endif %}
+{% if page.book_title and page.book_title != "" %}
+  <meta name="citation_inbook_title" content="{{ page.book_title | escape }}">
+{% endif %}
+{% if page.volume and page.volume != "" %}
+  <meta name="citation_volume" content="{{ page.volume | escape }}">
+{% endif %}
+{% if page.issue and page.issue != "" %}
+  <meta name="citation_issue" content="{{ page.issue | escape }}">
+{% endif %}
+{% if page.pages and page.pages != "" %}
+  {% assign page_parts = page.pages | split: "-" %}
+  <meta name="citation_firstpage" content="{{ page_parts.first | strip | escape }}">
+  {% if page_parts.size > 1 %}
+    <meta name="citation_lastpage" content="{{ page_parts.last | strip | escape }}">
+  {% endif %}
+{% endif %}
+{% if page.doi and page.doi != "" %}
+  <meta name="citation_doi" content="{{ page.doi | escape }}">
+{% endif %}
+{% assign pub_pdf = page.pdf | default: page.pdf_url %}
+{% if pub_pdf and pub_pdf != "" %}
+  <meta name="citation_pdf_url" content="{{ pub_pdf | absolute_url }}">
+{% endif %}
+{% if page.isbn and page.isbn != "" %}
+  <meta name="citation_isbn" content="{{ page.isbn | escape }}">
+{% endif %}
+{% if page.issn and page.issn != "" %}
+  <meta name="citation_issn" content="{{ page.issn | escape }}">
+{% endif %}
+{% if page.publisher and page.publisher != "" %}
+  <meta name="citation_publisher" content="{{ page.publisher | escape }}">
+{% endif %}
+{% if page.institution and page.institution != "" %}
+  <meta name="citation_dissertation_institution" content="{{ page.institution | escape }}">
+{% endif %}
+{% if page.keywords and page.keywords.size > 0 %}
+  <meta name="citation_keywords" content="{{ page.keywords | join: '; ' | escape }}">
+{% endif %}
+{% endif %}

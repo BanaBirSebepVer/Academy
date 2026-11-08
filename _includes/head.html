@@ -1,0 +1,65 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Jekyll Academy Engine">
+  <!-- Semantic SEO & Social Metadata -->
+  {% include seo/meta.html %}
+
+  <!-- Schema.org Structured Data (JSON-LD) -->
+  {% include seo/schema.html %}
+
+  {% assign index_page = site.pages | where: "path", "index.md" | first %}
+  {% if index_page == nil %}
+    {% assign index_page = site.pages | where: "name", "index.md" | first %}
+  {% endif %}
+  {% if index_page == nil %}
+    {% assign index_page = site.pages | where: "url", "/" | first %}
+  {% endif %}
+  {% assign site_favicon = page.favicon | default: index_page.favicon %}
+  {% if site_favicon %}
+    {% assign favicon_ext = site_favicon | split: '?' | first | split: '.' | last | downcase %}
+    {% case favicon_ext %}
+      {% when 'ico' %}
+        {% assign favicon_type = 'image/x-icon' %}
+      {% when 'png' %}
+        {% assign favicon_type = 'image/png' %}
+      {% when 'svg' %}
+        {% assign favicon_type = 'image/svg+xml' %}
+      {% when 'jpg', 'jpeg' %}
+        {% assign favicon_type = 'image/jpeg' %}
+      {% when 'webp' %}
+        {% assign favicon_type = 'image/webp' %}
+      {% when 'gif' %}
+        {% assign favicon_type = 'image/gif' %}
+      {% else %}
+        {% assign favicon_type = nil %}
+    {% endcase %}
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{ site_favicon | relative_url }}"{% if favicon_type %} type="{{ favicon_type }}"{% endif %}>
+  <link rel="icon" href="{{ site_favicon | relative_url }}"{% if favicon_type %} type="{{ favicon_type }}"{% endif %}>
+  <link rel="apple-touch-icon" href="{{ site_favicon | relative_url }}">
+  {% endif %}
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="{{ '/assets/css/master.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+
+  {% if site.google_analytics and site.google_analytics != "" %}
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics }}');
+  </script>
+  {% endif %}
+
+  <!-- Community Open Analytics -->
+  {% include analytics.html %}
+</head>

@@ -1,0 +1,19 @@
+<!-- Hidden Week Content Store for Interactive Syllabus Table Accordion -->
+<div class="lesson-week-content-store" style="display: none;" aria-hidden="true">
+  {% assign path_parts = page.path | split: "/" %}
+  {% assign parts_count = path_parts.size %}
+  {% assign last_idx = parts_count | minus: 1 %}
+  {% assign dir_parts = "" | split: "" %}
+  {% for p in path_parts %}
+    {% if forloop.index0 < last_idx %}
+      {% assign dir_parts = dir_parts | push: p %}
+    {% endif %}
+  {% endfor %}
+  {% assign course_dir = dir_parts | join: "/" | append: "/" %}
+  {% assign week_mods = site.lessons | where_exp: "item", "item.path contains course_dir" | where: "section_type", "week" | sort: "order" %}
+  {% for w in week_mods %}
+    <div id="week-content-{{ w.order }}" data-order="{{ w.order }}">
+      {{ w.content | markdownify }}
+    </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,133 @@
+<!-- Lesson Header / Hero Section -->
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign lessons_page = site.pages | where: "ref", "lessons" | where: "lang", current_lang | first %}
+{% assign default_lessons_url = "/dersler/" %}
+{% if current_lang == "en" %}{% assign default_lessons_url = "/en/lessons/" %}{% endif %}
+{% assign lessons_archive_url = lessons_page.url | default: default_lessons_url | relative_url %}
+
+<!-- Print-Only University Course Syllabus Header -->
+<div class="syllabus-header lesson-print-only" aria-hidden="true">
+  {% if page.institution %}
+    <div class="course-institution">{{ page.institution }}{% if page.faculty %} &bull; {{ page.faculty }}{% endif %}{% if page.department %} &bull; {{ page.department }}{% endif %}</div>
+  {% endif %}
+  {% if page.course_code %}
+    <div class="course-code">{{ page.course_code }}</div>
+  {% endif %}
+  <h1 class="course-title">{{ page.title }}</h1>
+  <div class="course-meta">
+    <span>{{ locale.ui.instructor | default: "Instructor" }}: <strong>{{ page.instructor | default: site.author }}</strong></span>
+    {% if page.term %}<span> &bull; {{ locale.ui.term | default: "Semester" }}: {{ page.term }}</span>{% endif %}
+    {% if page.category %}<span> &bull; {{ locale.ui.field_category | default: "Area" }}: {{ page.category }}</span>{% endif %}
+  </div>
+</div>
+
+<div class="lesson-hero single-hero-header">
+  <div class="lesson-breadcrumb single-breadcrumb">
+    <a href="{{ '/' | relative_url }}">{% include icon.html name="home" %}</a>
+    <span class="single-breadcrumb-separator">/</span>
+    <a href="{{ lessons_archive_url }}">{{ locale.ui.lessons_title | default: "Lessons" }}</a>
+    <span class="single-breadcrumb-separator">/</span>
+    <span class="single-breadcrumb-current">{{ page.title }}</span>
+  </div>
+
+  {% if page.course_code %}
+  <span class="label label-success archive-badge-primary">{{ page.course_code }}</span>
+  {% endif %}
+
+  <h1 class="lesson-title single-hero-title">
+    {{ page.title }}
+  </h1>
+
+  {% assign inst_parts = "" | split: "" %}
+  {% if page.institution and page.institution != "" %}
+    {% assign inst_parts = inst_parts | push: page.institution %}
+  {% endif %}
+  {% if page.faculty and page.faculty != "" %}
+    {% assign inst_parts = inst_parts | push: page.faculty %}
+  {% endif %}
+  {% if page.department and page.department != "" %}
+    {% assign inst_parts = inst_parts | push: page.department %}
+  {% endif %}
+
+  {% if inst_parts.size > 0 %}
+  <p class="lesson-institution single-hero-subtitle">
+    {% include icon.html name="university" %} {{ inst_parts | join: ", " }}
+  </p>
+  {% endif %}
+
+  <div class="lesson-meta-bar single-hero-meta-bar">
+    <span>{% include icon.html name="user" %} {{ locale.ui.instructor | default: "Instructor" }}: <strong>{{ page.instructor | default: site.author | default: "Instructor" }}</strong></span>
+    {% if page.category %}
+    <span>{% include icon.html name="folder-open" %} {{ locale.ui.field_category | default: "Area" }}: {{ page.category }}</span>
+    {% endif %}
+    {% if page.term %}
+    <span>{% include icon.html name="calendar" %} {{ locale.ui.term | default: "Semester" }}: {{ page.term }}</span>
+    {% endif %}
+    {% if page.lecture_notes_url %}
+    <a href="{{ page.lecture_notes_url | relative_url }}" class="btn btn-sm btn-archive-primary lesson-timetable-cta">
+      {% include icon.html name="book" %} {{ locale.ui.materials_and_notes | default: "Lecture Notes & Materials" }} &rarr;
+    </a>
+    {% endif %}
+  </div>
+
+  <!-- Social / Communication Channels in Hero (Only active if link is defined) -->
+  {% assign has_social = false %}
+  {% if page.discord and page.discord != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.teams and page.teams != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.whatsapp and page.whatsapp != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.telegram and page.telegram != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.slack and page.slack != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.zoom and page.zoom != "" %}{% assign has_social = true %}{% endif %}
+  {% if page.email and page.email != "" %}{% assign has_social = true %}{% endif %}
+
+  {% if has_social %}
+  <div class="lesson-channels-bar">
+    <span class="lesson-channels-title">
+      {% include icon.html name="comments" %} {{ locale.ui.course_channels | default: "Course Channels" }}:
+    </span>
+
+    {% if page.discord and page.discord != "" %}
+    <a href="{{ page.discord }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-discord">
+      {% include icon.html name="discord" %} Discord
+    </a>
+    {% endif %}
+
+    {% if page.teams and page.teams != "" %}
+    <a href="{{ page.teams }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-teams">
+      {% include icon.html name="microsoft" %} Microsoft Teams
+    </a>
+    {% endif %}
+
+    {% if page.whatsapp and page.whatsapp != "" %}
+    <a href="{{ page.whatsapp }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-whatsapp">
+      {% include icon.html name="whatsapp" %} WhatsApp
+    </a>
+    {% endif %}
+
+    {% if page.telegram and page.telegram != "" %}
+    <a href="{{ page.telegram }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-telegram">
+      {% include icon.html name="telegram" %} Telegram
+    </a>
+    {% endif %}
+
+    {% if page.slack and page.slack != "" %}
+    <a href="{{ page.slack }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-slack">
+      {% include icon.html name="slack" %} Slack
+    </a>
+    {% endif %}
+
+    {% if page.zoom and page.zoom != "" %}
+    <a href="{{ page.zoom }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-channel btn-zoom">
+      {% include icon.html name="video-camera" %} Zoom
+    </a>
+    {% endif %}
+
+    {% if page.email and page.email != "" %}
+    <a href="mailto:{{ page.email }}" class="btn btn-xs btn-channel btn-email">
+      {% include icon.html name="envelope" %} {{ locale.ui.email | default: "Email" }}
+    </a>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>

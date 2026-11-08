@@ -1,0 +1,241 @@
+/**
+ * Card Components
+ * Handles education/awards cards (ul-card), boxed cards, syllabus list cards, and grading cards
+ */
+
+/* ===================================================
+   EDUCATION & AWARDS CARDS (UL-CARD)
+   =================================================== */
+ul.ul-card {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+ul.ul-card li {
+  position: relative;
+  padding: 50px 15px 20px 15px;
+  background-color: var(--bg-card);
+  margin-bottom: 15px;
+  box-shadow: 0px 3px 3px -3px rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  margin-left: 10px;
+  color: var(--text-body);
+}
+
+/* Badge box for degree and year */
+ul.ul-card li .dy {
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  border-radius: 0px;
+  padding: 0;
+  color: var(--text-inverse);
+}
+
+ul.ul-card li .dy span {
+  padding: 7px 10px;
+  line-height: 20px;
+  margin: 0;
+  display: inline-block;
+}
+
+ul.ul-card li .dy .degree {
+  background-color: var(--secondary);
+}
+
+ul.ul-card li .dy .year {
+  background-color: var(--primary);
+  box-shadow: -3px 0px 7px -3px rgba(68, 68, 68, 0.5);
+  margin-left: -5px !important;
+}
+
+/* Content details inside card */
+ul.ul-card li .description p {
+  font-size: 16px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+ul.ul-card li .description p.where {
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ===================================================
+   BOXED CARDS (UL-BOXED)
+   =================================================== */
+.ul-boxed {
+  list-style: none;
+  padding: 0;
+}
+
+.ul-boxed li {
+  padding: 7px 12px;
+  background-color: var(--bg-card);
+  margin-bottom: 10px;
+  box-shadow: 0px 3px 3px -3px rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+  border-left: 5px solid var(--primary);
+}
+
+/* ===================================================
+   SYLLABUS WEEKLY SCHEDULE CARDS
+   =================================================== */
+.lesson-markdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lesson-markdown ul li {
+  position: relative;
+  padding: 12px 18px;
+  margin-bottom: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--primary);
+  border-radius: 4px;
+  line-height: 1.65;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+}
+
+.lesson-markdown ul li:hover {
+  background: var(--primary-light);
+  border-left-color: var(--primary-hover);
+  padding-left: 22px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ===================================================
+   DETAILED GRADING CARDS (SIDE BY SIDE GRID)
+   =================================================== */
+.lesson-markdown .grading-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 20px;
+  margin: 28px 0 35px 0;
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .lesson-markdown .grading-grid {
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+.lesson-markdown .grading-card,
+.lesson-markdown blockquote.grading-card {
+  flex: 1 1 0;
+  min-width: 0;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-card) !important;
+  border-top: 4px solid var(--primary) !important;
+  border-radius: 8px !important;
+  padding: 24px 20px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-top-color 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-style: normal !important;
+  margin: 0 !important;
+}
+
+.lesson-markdown .grading-card:hover,
+.lesson-markdown blockquote.grading-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Accent top border & badge variations */
+.lesson-markdown .grading-card:nth-child(1),
+.lesson-markdown blockquote.grading-card:nth-child(1) {
+  border-top-color: var(--primary) !important;
+}
+.lesson-markdown .grading-card:nth-child(1) .grading-percent,
+.lesson-markdown .grading-card:nth-child(1) h4 {
+  color: var(--primary);
+  background: var(--primary-light);
+  border-color: var(--primary-border);
+}
+
+.lesson-markdown .grading-card:nth-child(2),
+.lesson-markdown blockquote.grading-card:nth-child(2) {
+  border-top-color: var(--accent-blue) !important;
+}
+.lesson-markdown .grading-card:nth-child(2) .grading-percent,
+.lesson-markdown .grading-card:nth-child(2) h4 {
+  color: var(--accent-blue);
+  background: var(--accent-blue-bg);
+  border-color: var(--accent-blue-border);
+}
+
+.lesson-markdown .grading-card:nth-child(3),
+.lesson-markdown blockquote.grading-card:nth-child(3) {
+  border-top-color: var(--accent-purple) !important;
+}
+.lesson-markdown .grading-card:nth-child(3) .grading-percent,
+.lesson-markdown .grading-card:nth-child(3) h4 {
+  color: var(--accent-purple);
+  background: var(--accent-purple-bg);
+  border-color: var(--accent-purple-border);
+}
+
+.lesson-markdown .grading-card:nth-child(4),
+.lesson-markdown blockquote.grading-card:nth-child(4) {
+  border-top-color: var(--warning) !important;
+}
+.lesson-markdown .grading-card:nth-child(4) .grading-percent,
+.lesson-markdown .grading-card:nth-child(4) h4 {
+  color: var(--accent-amber);
+  background: var(--accent-amber-bg);
+  border-color: var(--accent-amber-border);
+}
+
+/* Card titles & percentage labels */
+.lesson-markdown .grading-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark-hero);
+  margin: 0 0 10px 0;
+  padding: 0;
+  border: none !important;
+}
+
+.lesson-markdown .grading-card h3::after {
+  display: none !important;
+}
+
+.lesson-markdown .grading-card .grading-percent,
+.lesson-markdown .grading-card h4 {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 20px;
+  font-weight: 800;
+  padding: 4px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--primary-border);
+  margin: 0 0 14px 0;
+  line-height: 1.2;
+}
+
+.lesson-markdown .grading-card h4::after {
+  display: none !important;
+}
+
+.lesson-markdown .grading-card p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.lesson-markdown .grading-card li {
+  list-style: none;
+}

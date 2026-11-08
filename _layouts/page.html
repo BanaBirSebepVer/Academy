@@ -1,0 +1,19 @@
+---
+layout: default
+---
+{% assign path_parts = page.path | split: "/" %}
+{% assign last_part = path_parts | last %}
+{% assign is_subfolder_item = false %}
+{% if path_parts.size > 3 and page.title and page.layout != "folder-page" and page.layout != "contact" and page.layout != "homepage" %}
+  {% unless last_part contains "index." %}
+    {% assign is_subfolder_item = true %}
+  {% endunless %}
+{% endif %}
+
+{% if is_subfolder_item %}
+  {% include page/single-body.html %}
+{% else %}
+  <div class="fac-page">
+    {{ content }}
+  </div>
+{% endif %}

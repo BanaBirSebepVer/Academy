@@ -1,0 +1,485 @@
+/**
+ * Academic Print Stylesheet
+ * ----------------------------------------------------------------------------
+ * Optimizes the site for Black & White (BW) physical printing and PDF export.
+ * Formats:
+ *   - Homepage (`/` or `/{lang}/`): Standard US Academic Curriculum Vitae (CV)
+ *   - Lessons (`_layouts/lesson/single.html`): Official University Course Syllabus
+ */
+
+// Screen fallback: hide print-only blocks
+.cv-print-only,
+.lesson-print-only {
+  display: none !important;
+}
+
+@media print {
+  // ==========================================================================
+  // 1. Global Reset & Black and White Enforcement
+  // ==========================================================================
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+
+  @page {
+    margin: 1.5cm 1.5cm 1.5cm 1.5cm;
+    size: letter portrait; // Standard US academic document format
+  }
+
+  html,
+  body {
+    width: 100% !important;
+    background: #fff !important;
+    font-family: "Times New Roman", Times, Georgia, "Liberation Serif", serif !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+    color: #000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #wrapper,
+  #main,
+  #inside,
+  .container,
+  .container-fluid,
+  .row {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+  }
+
+  // ==========================================================================
+  // 2. Hide Non-Print Elements
+  // ==========================================================================
+  header.site-header,
+  footer,
+  nav,
+  .navbar,
+  .site-navigation,
+  .language-switcher,
+  .sidebar,
+  #sidebar,
+  #sidebar-footer,
+  .btn,
+  .button,
+  .citation-actions,
+  .publication-citation-actions,
+  .accordion-toggle,
+  .no-print,
+  .cv-hero-avatar,
+  .cv-hero-keywords-cloud,
+  .cv-separator,
+  .lesson-breadcrumb,
+  .single-breadcrumb,
+  .lesson-timetable-bar,
+  .lesson-sidebar,
+  .lesson-footer,
+  .social-icons,
+  .nav-multilingual-tools,
+  .lesson-hero-social,
+  .lesson-timetable-cta,
+  svg.icon,
+  .icon,
+  .modal,
+  .tooltip {
+    display: none !important;
+  }
+
+  // Prevent awkward breaks across pages
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    break-after: avoid;
+    color: #000 !important;
+  }
+
+  table,
+  figure,
+  .card,
+  .timeline-item,
+  .lesson-week-block,
+  .cv-section,
+  tr,
+  li {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  // ==========================================================================
+  // 3. Links Formatting
+  // ==========================================================================
+  a {
+    text-decoration: none !important;
+    color: #000 !important;
+  }
+
+  .contact-url::after {
+    content: " (" attr(href) ")";
+    font-size: 85%;
+  }
+
+  // Reveal print-only elements
+  .cv-print-only,
+  .lesson-print-only {
+    display: block !important;
+  }
+
+  // ==========================================================================
+  // 4. US Academic CV Styles (Triggered on Homepage)
+  // ==========================================================================
+  body.layout-homepage,
+  .homepage-container,
+  .cv-homepage {
+    .cv-hero {
+      display: none !important; // Replaced by .cv-header print block
+    }
+
+    .cv-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 1.5pt solid #000;
+      padding-bottom: 0.5rem;
+
+      h1 {
+        font-size: 18pt !important;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 0 0 0.25rem 0;
+        letter-spacing: 0.5px;
+      }
+
+      .cv-contact-info {
+        font-size: 9.5pt;
+        line-height: 1.35;
+
+        p {
+          margin: 0 0 2px 0;
+        }
+
+        .cv-affiliation {
+          font-style: italic;
+          font-weight: bold;
+        }
+
+        .cv-contact-details {
+          span {
+            display: inline-block;
+          }
+        }
+      }
+    }
+
+    .cv-section {
+      margin-bottom: 1rem;
+      page-break-inside: avoid;
+      break-inside: avoid;
+
+      .col-sm-3,
+      .col-md-3,
+      .col-sm-6,
+      .col-md-6,
+      .col-sm-9,
+      .col-md-9 {
+        width: 100% !important;
+        float: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+    }
+
+    .cv-section-title {
+      font-size: 12pt !important;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-bottom: 0.75pt solid #000;
+      margin: 1.25rem 0 0.5rem 0;
+      padding-bottom: 2px;
+      letter-spacing: 0.5px;
+    }
+
+    .cv-item {
+      margin-bottom: 0.5rem;
+
+      .cv-item-header {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+      }
+
+      .cv-item-sub {
+        font-style: italic;
+      }
+    }
+
+    // Education entries
+    .ul-card {
+      list-style: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        page-break-inside: avoid;
+        break-inside: avoid;
+
+        .dy {
+          order: 2;
+          text-align: right;
+          font-weight: bold;
+          font-size: 10pt;
+        }
+
+        .description {
+          order: 1;
+          .what {
+            font-weight: bold;
+            margin: 0;
+          }
+          .where {
+            font-style: italic;
+            margin: 0;
+          }
+        }
+      }
+    }
+
+    // Appointments, Honors, Experience, Projects entries
+    .ul-dates {
+      list-style: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+
+      li {
+        margin-bottom: 0.6rem;
+        page-break-inside: avoid;
+        break-inside: avoid;
+
+        .dates {
+          float: right;
+          text-align: right;
+          font-weight: bold;
+          font-size: 10pt;
+        }
+
+        .content {
+          margin-right: 120px;
+
+          h4 {
+            font-size: 11pt !important;
+            font-weight: bold;
+            margin: 0 0 2px 0;
+          }
+
+          h3 {
+            font-size: 10.5pt !important;
+            font-style: italic;
+            font-weight: normal;
+            margin: 0 0 2px 0;
+          }
+
+          h5 {
+            font-size: 10.5pt !important;
+            font-weight: bold;
+            margin: 4px 0 2px 0;
+          }
+
+          p, ul {
+            font-size: 10pt;
+            margin: 2px 0;
+          }
+
+          ul {
+            padding-left: 18px;
+          }
+        }
+      }
+    }
+
+    // Publications on CV
+    .fac-publications {
+      margin-bottom: 0.6rem;
+      page-break-inside: avoid;
+      break-inside: avoid;
+
+      h2 {
+        display: none !important; // Hide subcategory labels
+      }
+
+      .pub-thumb,
+      .label {
+        display: none !important;
+      }
+
+      .pubtitle {
+        font-size: 11pt !important;
+        font-weight: bold;
+        margin: 0 0 2px 0;
+      }
+
+      .pubauthor {
+        font-size: 10pt;
+        margin-bottom: 2px;
+      }
+
+      .pubcite {
+        font-size: 10pt;
+        font-style: italic;
+      }
+
+      .pubyear {
+        font-size: 9.5pt;
+      }
+    }
+
+    // Languages list
+    .cv-languages-list {
+      padding: 0 !important;
+      list-style: none !important;
+
+      li {
+        display: inline-block;
+        margin-right: 1.5rem;
+        font-size: 10pt;
+
+        strong {
+          display: none !important; // Hide scroll icon
+        }
+      }
+    }
+  }
+
+  // ==========================================================================
+  // 5. University Course Syllabus Styles (Triggered on Lessons)
+  // ==========================================================================
+  body.layout-lesson-single,
+  .lesson-container,
+  .lesson-page {
+    .lesson-hero {
+      display: none !important; // Replaced by .syllabus-header print block
+    }
+
+    .syllabus-header {
+      text-align: center;
+      border-bottom: 2pt solid #000;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.25rem;
+
+      .course-institution {
+        font-size: 10.5pt;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 2px;
+      }
+
+      .course-code {
+        font-size: 14pt;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-top: 2px;
+      }
+
+      .course-title {
+        font-size: 16pt;
+        font-weight: bold;
+        margin: 0.25rem 0;
+      }
+
+      .course-meta {
+        font-size: 10pt;
+        margin-top: 0.25rem;
+        font-style: italic;
+      }
+    }
+
+    .syllabus-section-title,
+    h2,
+    h3,
+    h4 {
+      font-size: 12pt !important;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-bottom: 1pt solid #000;
+      margin: 1.25rem 0 0.5rem 0;
+      padding-bottom: 2px;
+      letter-spacing: 0.5px;
+    }
+
+    .lesson-content-body {
+      .col-md-8,
+      .col-sm-12 {
+        width: 100% !important;
+        float: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .col-md-4,
+      .lesson-sidebar {
+        display: none !important;
+      }
+    }
+
+    // Weekly breakdown table and grading tables
+    table,
+    table.grading-table {
+      width: 100% !important;
+      border-collapse: collapse !important;
+      margin: 0.75rem 0 !important;
+      page-break-inside: avoid;
+      break-inside: avoid;
+
+      th,
+      td {
+        border: 0.75pt solid #000 !important;
+        padding: 4pt 6pt !important;
+        font-size: 10pt !important;
+        text-align: left !important;
+      }
+
+      th {
+        font-weight: bold !important;
+        background: #f0f0f0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+
+    // Weekly breakdown list fallback
+    .lesson-modules-wrapper {
+      .module-block {
+        border-bottom: 0.5pt solid #ccc;
+        padding: 0.5rem 0;
+
+        .module-title {
+          font-weight: bold;
+        }
+
+        .module-topic {
+          font-style: italic;
+        }
+      }
+    }
+
+    // Callout policies and notices in print
+    blockquote,
+    .lesson-info,
+    .lesson-warning {
+      border-left: 2pt solid #000 !important;
+      background: transparent !important;
+      padding: 4pt 8pt !important;
+      margin: 0.5rem 0 !important;
+      font-style: italic !important;
+    }
+  }
+}

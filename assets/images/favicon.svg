@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#03cc85" />
+      <stop offset="100%" stop-color="#029a64" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#primaryGrad)"/>
+  <text x="50%" y="54%" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="800" font-size="230" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" letter-spacing="-6">CB</text>
+</svg>

@@ -1,0 +1,23 @@
+---
+name: "Dr. Akademisyen Adı"
+username: "akademisyen"
+slug: "akademisyen"
+role: "Doç. Dr. / Öğretim Üyesi"
+institution: "Örnek Üniversitesi"
+department: "Bilgisayar Bilimleri & İletişim Bölümü"
+avatar: "/assets/images/default-avatar.svg"
+bio: "Hesaplamalı sosyal bilimler, veri analitiği, yeni medya ve yapay zeka üzerine akademik araştırmalar ve eğitimler."
+social:
+  - title: "Google Scholar"
+    url: "https://scholar.google.com"
+    icon: "ai ai-google-scholar"
+  - title: "ORCID"
+    url: "https://orcid.org"
+    icon: "ai ai-orcid"
+  - title: "GitHub"
+    url: "https://github.com"
+    icon: "fa-brands fa-github"
+  - title: "Email"
+    url: "mailto:akademisyen@example.edu"
+    icon: "fa fa-envelope"
+---

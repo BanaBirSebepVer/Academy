@@ -1,0 +1,139 @@
+/**
+ * Flags & Language Switcher Styling
+ * Vector-sharp flag icons (embedded data SVGs) and multilingual switcher styling
+ */
+
+/* ===================================================
+   BASE FLAG ICON
+   =================================================== */
+.flag-icon {
+  position: relative;
+  display: inline-block;
+  width: 1.33333333em;
+  height: 1em;
+  line-height: 1em;
+  vertical-align: -0.15em;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 2px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+}
+
+/* Sizing Modifiers */
+.flag-icon-sm {
+  width: 16px;
+  height: 12px;
+}
+
+.flag-icon-md {
+  width: 20px;
+  height: 15px;
+}
+
+.flag-icon-lg {
+  width: 28px;
+  height: 21px;
+}
+
+.flag-icon-circle {
+  width: 1.1em;
+  height: 1.1em;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+/* ===================================================
+   VECTOR FLAG DEFINITIONS (DATA SVGs)
+   =================================================== */
+
+/* Turkish Flag (TR) */
+.flag-icon-tr {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%201200%20800%27%3E%3Crect%20width%3D%271200%27%20height%3D%27800%27%20fill%3D%27%23e30a17%27/%3E%3Ccircle%20cx%3D%27425%27%20cy%3D%27400%27%20r%3D%27200%27%20fill%3D%27%23ffffff%27/%3E%3Ccircle%20cx%3D%27475%27%20cy%3D%27400%27%20r%3D%27160%27%20fill%3D%27%23e30a17%27/%3E%3Cpolygon%20points%3D%27583.33%2C400%20706.87%2C440.14%20659.8%2C314.9%20659.8%2C485.1%20706.87%2C359.86%27%20fill%3D%27%23ffffff%27/%3E%3C/svg%3E");
+}
+
+/* English / UK Flag (EN / GB) */
+.flag-icon-en,
+.flag-icon-gb {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2060%2030%27%3E%3CclipPath%20id%3D%27t%27%3E%3Cpath%20d%3D%27M0%2C0%20L60%2C30%20M60%2C0%20L0%2C30%27/%3E%3C/clipPath%3E%3Cpath%20d%3D%27M0%2C0%20v30%20h60%20v-30%20z%27%20fill%3D%27%23012169%27/%3E%3Cpath%20d%3D%27M0%2C0%20L60%2C30%20M60%2C0%20L0%2C30%27%20stroke%3D%27%23fff%27%20stroke-width%3D%276%27/%3E%3Cpath%20d%3D%27M0%2C0%20L60%2C30%20M60%2C0%20L0%2C30%27%20clip-path%3D%27url%28%2523t%29%27%20stroke%3D%27%23c8102e%27%20stroke-width%3D%274%27/%3E%3Cpath%20d%3D%27M30%2C0%20v30%20M0%2C15%20h60%27%20stroke%3D%27%23fff%27%20stroke-width%3D%2710%27/%3E%3Cpath%20d%3D%27M30%2C0%20v30%20M0%2C15%20h60%27%20stroke%3D%27%23c8102e%27%20stroke-width%3D%276%27/%3E%3C/svg%3E");
+}
+
+/* United States Flag (US) */
+.flag-icon-us {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%207410%203900%27%3E%3Crect%20width%3D%277410%27%20height%3D%273900%27%20fill%3D%27%23b22234%27/%3E%3Cpath%20d%3D%27M0%2C450H7410M0%2C1050H7410M0%2C1650H7410M0%2C2250H7410M0%2C2850H7410M0%2C3450H7410%27%20stroke%3D%27%23fff%27%20stroke-width%3D%27300%27/%3E%3Crect%20width%3D%272964%27%20height%3D%272100%27%20fill%3D%27%233c3b6e%27/%3E%3C/svg%3E");
+}
+
+/* German Flag (DE) */
+.flag-icon-de {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%205%203%27%3E%3Crect%20width%3D%275%27%20height%3D%273%27%20fill%3D%27%23000%27/%3E%3Crect%20width%3D%275%27%20height%3D%272%27%20y%3D%271%27%20fill%3D%27%23dd0000%27/%3E%3Crect%20width%3D%275%27%20height%3D%271%27%20y%3D%272%27%20fill%3D%27%23ffce00%27/%3E%3C/svg%3E");
+}
+
+/* French Flag (FR) */
+.flag-icon-fr {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%203%202%27%3E%3Crect%20width%3D%271%27%20height%3D%272%27%20fill%3D%27%230055a5%27/%3E%3Crect%20width%3D%271%27%20height%3D%272%27%20x%3D%271%27%20fill%3D%27%23ffffff%27/%3E%3Crect%20width%3D%271%27%20height%3D%272%27%20x%3D%272%27%20fill%3D%27%23ef4135%27/%3E%3C/svg%3E");
+}
+
+/* Spanish Flag (ES) */
+.flag-icon-es {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20750%20500%27%3E%3Crect%20width%3D%27750%27%20height%3D%27500%27%20fill%3D%27%23aa151b%27/%3E%3Crect%20width%3D%27750%27%20height%3D%27250%27%20y%3D%27125%27%20fill%3D%27%23f1bf00%27/%3E%3C/svg%3E");
+}
+
+/* ===================================================
+   LANGUAGE SWITCHER COMPONENT STYLING
+   =================================================== */
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.language-switcher .lang-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  color: var(--text-disabled, #a0aec0);
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.language-switcher .lang-item:hover {
+  color: var(--text-inverse, #ffffff);
+  background: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+.language-switcher .lang-item.active {
+  color: var(--text-inverse, #ffffff);
+  background: var(--primary, #03cc85);
+  box-shadow: 0 2px 6px rgba(3, 204, 133, 0.35);
+  cursor: default;
+}
+
+.language-switcher .lang-code {
+  letter-spacing: 0.5px;
+}
+
+.language-switcher .lang-separator {
+  display: none;
+}
+
+/* Nav Multilingual Container (in Sidebar) */
+.nav-multilingual-tools {
+  margin: 10px 20px 10px 20px;
+  padding-top: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}

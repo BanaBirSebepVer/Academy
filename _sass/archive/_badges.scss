@@ -1,0 +1,66 @@
+/**
+ * Archive Status Badges & Empty Notice Styles
+ * Handles status badges (active, recruiting, completed, archive) and no-match search states
+ * Uses color variables from color.css
+ */
+
+/* ===================================================
+   EMPTY MATCH ALERT
+   =================================================== */
+.archive-no-match {
+  display: none;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-subtle);
+}
+
+.archive-no-match i {
+  font-size: 48px;
+  margin-bottom: 15px;
+  color: var(--text-disabled);
+}
+
+.archive-no-match h4 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.archive-no-match p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ===================================================
+   STATUS BADGES
+   =================================================== */
+.status-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+
+.status-badge.status-active {
+  background-color: var(--success-bg);
+  color: var(--success-text);
+}
+
+.status-badge.status-recruiting {
+  background-color: var(--warning-bg);
+  color: var(--warning-text);
+}
+
+.status-badge.status-completed {
+  background-color: var(--bg-hover);
+  color: var(--text-secondary);
+}
+
+.status-badge.status-archive {
+  background-color: var(--bg-subtle);
+  color: var(--text-light);
+  border: 1px solid var(--border-card);
+}

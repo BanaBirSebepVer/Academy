@@ -1,0 +1,47 @@
+---
+---
+
+@charset "UTF-8";
+
+/**
+ * Master Stylesheet
+ * Compiled by Jekyll Native Sass/SCSS Engine
+ */
+
+/* 1. Core Design System & Base */
+@import "color";
+@import "grid";
+@import "typography";
+@import "layout";
+@import "forms";
+
+/* 4. Common UI Components & Navigation */
+@import "sidebar";
+@import "profile";
+@import "navigation";
+@import "flags";
+@import "social";
+@import "footer";
+@import "card";
+@import "dates";
+@import "timeline";
+@import "details";
+
+/* 5. Page-Specific Modules */
+@import "homepage/index";
+@import "lesson/index";
+@import "publication/index";
+@import "post";
+@import "network/index";
+@import "gallery";
+@import "contact/index";
+@import "archive/index";
+@import "folder-page";
+@import "single/index";
+
+/* 6. Legacy Compatibility */
+@import "visual-composer";
+
+/* 7. Academic Print Stylesheet (BW US Academic CV & University Course Syllabus) */
+@import "print";
+

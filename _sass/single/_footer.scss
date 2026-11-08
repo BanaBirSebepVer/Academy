@@ -1,0 +1,38 @@
+/**
+ * Single Page Footer Navigation & Social Share Bar
+ * Handles back button, share bar, and bottom navigation
+ * Uses color variables from color.css
+ */
+
+.single-footer-nav {
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px solid var(--border-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.single-back-btn {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.single-back-btn i {
+  margin-right: 6px;
+}
+
+.single-share-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.single-share-label {
+  font-size: 13px;
+  color: var(--text-light);
+  font-weight: 600;
+  margin-right: 5px;
+}

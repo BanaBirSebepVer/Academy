@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "💬 Ask a Setup Question"
+    url: https://github.com/BanaBirSebepVer/Academy/discussions
+    about: Please ask general setup, customization, and usage questions here.
+  - name: "📖 Read the Support Guide"
+    url: https://github.com/BanaBirSebepVer/Academy/blob/main/.github/SUPPORT.md
+    about: Check troubleshooting steps before opening an issue.

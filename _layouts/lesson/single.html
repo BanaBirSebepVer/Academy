@@ -1,0 +1,66 @@
+---
+layout: default
+---
+{% if page.section_type and page.course_code == nil %}
+  {% assign path_parts = page.path | split: "/" %}
+  {% assign parts_count = path_parts.size %}
+  {% assign last_idx = parts_count | minus: 1 %}
+  {% assign dir_parts = "" | split: "" %}
+  {% for p in path_parts %}
+    {% if forloop.index0 < last_idx %}
+      {% assign dir_parts = dir_parts | push: p %}
+    {% endif %}
+  {% endfor %}
+  {% assign course_dir = dir_parts | join: "/" | append: "/" %}
+  {% assign parent_course = site.lessons | where_exp: "item", "item.path contains course_dir" | where_exp: "item", "item.course_code != nil" | first %}
+  {% assign mod_slug = page.path | split: "/" | last | remove: ".md" %}
+  <div class="fac-page lesson-page lesson-container">
+    <div id="inside" class="container-fluid" style="padding: 60px 20px; text-align: center;">
+      {% if parent_course %}
+        <meta http-equiv="refresh" content="0; url={{ parent_course.url | relative_url }}#{{ mod_slug }}">
+        <p>Redirecting to <a href="{{ parent_course.url | relative_url }}#{{ mod_slug }}">{{ parent_course.title }} &rarr; {{ page.title }}</a>...</p>
+      {% else %}
+        <div class="markdown-body lesson-markdown">
+          {{ content }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% else %}
+<div class="fac-page lesson-page lesson-container">
+  <div id="inside">
+
+    <!-- Lesson Header Component -->
+    {% include lesson/lesson-header.html %}
+
+    <!-- Lesson Timetable / Quick Navigation Component -->
+    {% include lesson/lesson-timetable.html %}
+
+    <!-- Lesson Content Body with Sidebar -->
+    <div class="lesson-content-body">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- Main Syllabus Content (8 columns) -->
+          <div class="col-md-8 col-sm-12">
+            <div class="markdown-body lesson-markdown">
+              {{ content }}
+
+              <!-- Assembled Modular Course Sections -->
+              {% include lesson/lesson-modules.html %}
+            </div>
+          </div>
+
+          <!-- Lesson Sidebar Widget (4 columns) -->
+          <div class="col-md-4 col-sm-12">
+            {% include lesson/lesson-sidebar.html %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Lesson Footer Navigation Component -->
+      {% include lesson/lesson-footer.html %}
+    </div>
+
+  </div>
+</div>
+{% endif %}

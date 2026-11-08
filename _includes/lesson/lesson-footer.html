@@ -1,0 +1,33 @@
+<!-- Lesson Footer Navigation -->
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign lessons_page = site.pages | where: "ref", "lessons" | where: "lang", current_lang | first %}
+{% assign default_lessons_url = "/dersler/" %}
+{% if current_lang == "en" %}{% assign default_lessons_url = "/en/lessons/" %}{% endif %}
+{% assign lessons_archive_url = lessons_page.url | default: default_lessons_url | relative_url %}
+
+<div class="ai-citation-reference" itemprop="citation" style="margin-top: 15px; margin-bottom: 15px; padding: 10px 15px; background: #fafafa; border-left: 3px solid #0056b3; border-radius: 3px;">
+  <small class="text-muted">
+    {% include icon.html name="quote-left" %} <strong>{{ locale.ui.citation_notice | default: "Citation / AI Reference" }}:</strong>
+    {{ page.instructor | default: site.author }}, "{{ page.title }}{% if page.course_code %} ({{ page.course_code }}){% endif %}", {{ page.institution | default: site.institution }}. URL: <a href="{{ page.url | absolute_url }}">{{ page.url | absolute_url }}</a>
+  </small>
+</div>
+
+<div class="lesson-footer-nav single-footer-nav">
+  <a href="{{ lessons_archive_url }}" class="btn btn-default single-back-btn">
+    {% include icon.html name="arrow-left" %} {{ locale.ui.back_to_lessons | default: "Back to All Courses" }}
+  </a>
+
+  <div class="lesson-share single-share-bar">
+    <span class="single-share-label">{{ locale.ui.share_lesson | default: "Share Course" }}:</span>
+    <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Twitter">{% include icon.html name="x-twitter" %}</a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="LinkedIn">{% include icon.html name="linkedin" %}</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="Facebook">{% include icon.html name="facebook" %}</a>
+  </div>
+
+  {% if page.lecture_notes_url %}
+  <a href="{{ page.lecture_notes_url | relative_url }}" class="btn btn-archive-primary">
+    {{ locale.ui.materials_and_notes | default: "Lecture Notes & Materials" }} {% include icon.html name="arrow-right" %}
+  </a>
+  {% endif %}
+</div>

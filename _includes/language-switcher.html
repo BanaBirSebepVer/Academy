@@ -1,0 +1,149 @@
+{% assign current_lang = page.lang | default: site.default_lang | default: 'tr' %}
+{% if current_lang == 'tr' %}
+  {% assign default_target_lang = 'en' %}
+{% else %}
+  {% assign default_target_lang = 'tr' %}
+{% endif %}
+
+<div class="language-switcher">
+  {% for lang in site.languages %}
+    {% if lang == current_lang %}
+      <span class="lang-item active" aria-current="page">
+        <span class="flag-icon flag-icon-{{ lang }}"></span>
+        <span class="lang-code">{{ lang | upcase }}</span>
+      </span>
+    {% else %}
+      {% assign target_lang = lang | default: default_target_lang %}
+      {% assign target_url = nil %}
+
+      <!-- 1. Explicit Translation URL -->
+      {% if page.translation_url and page.translation_url != "" %}
+        {% assign target_url = page.translation_url %}
+      {% endif %}
+
+      <!-- 2. Smart Counterpart URL Matching -->
+      {% if target_url == nil or target_url == "" %}
+        {% assign match = nil %}
+
+        <!-- 2a. Match by 'ref' (Preferred bilingual pairing in Academy) -->
+        {% if page.ref and page.ref != "" %}
+          {% if page.collection and match == nil %}
+            {% assign match = site[page.collection] | where: "ref", page.ref | where: "lang", target_lang | first %}
+          {% endif %}
+          {% if match == nil %}
+            {% assign match = site.pages | where: "ref", page.ref | where: "lang", target_lang | first %}
+          {% endif %}
+          {% if match == nil %}
+            {% assign match = site.publications | where: "ref", page.ref | where: "lang", target_lang | first %}
+          {% endif %}
+          {% if match == nil %}
+            {% assign match = site.lessons | where: "ref", page.ref | where: "lang", target_lang | first %}
+          {% endif %}
+          {% if match == nil %}
+            {% assign match = site.posts | where: "ref", page.ref | where: "lang", target_lang | first %}
+          {% endif %}
+        {% endif %}
+
+        <!-- 2b. Match by 'slug' / 'translation_slug' -->
+        {% if match == nil %}
+          {% assign match_slug = page.translation_slug | default: page.slug %}
+          {% if match_slug and match_slug != "" %}
+            {% if page.collection and match == nil %}
+              {% assign match = site[page.collection] | where: "slug", match_slug | where: "lang", target_lang | first %}
+            {% endif %}
+            {% if match == nil %}
+              {% assign match = site.pages | where: "slug", match_slug | where: "lang", target_lang | first %}
+            {% endif %}
+            {% if match == nil %}
+              {% assign match = site.publications | where: "slug", match_slug | where: "lang", target_lang | first %}
+            {% endif %}
+            {% if match == nil %}
+              {% assign match = site.lessons | where: "slug", match_slug | where: "lang", target_lang | first %}
+            {% endif %}
+            {% if match == nil %}
+              {% assign match = site.posts | where: "slug", match_slug | where: "lang", target_lang | first %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+
+        <!-- 2c. Match by 'title' -->
+        {% if match == nil and page.title and page.title != "" %}
+          {% if page.collection and match == nil %}
+            {% assign match = site[page.collection] | where: "title", page.title | where: "lang", target_lang | first %}
+          {% endif %}
+          {% if match == nil %}
+            {% assign match = site.pages | where: "title", page.title | where: "lang", target_lang | first %}
+          {% endif %}
+          {% if match == nil %}
+            {% assign match = site.publications | where: "title", page.title | where: "lang", target_lang | first %}
+          {% endif %}
+          {% if match == nil %}
+            {% assign match = site.lessons | where: "title", page.title | where: "lang", target_lang | first %}
+          {% endif %}
+          {% if match == nil %}
+            {% assign match = site.posts | where: "title", page.title | where: "lang", target_lang | first %}
+          {% endif %}
+        {% endif %}
+
+        {% if match %}
+          {% assign target_url = match.url %}
+        {% endif %}
+      {% endif %}
+
+      <!-- 3. Graceful Section Fallbacks (Prevent 404) -->
+      {% if target_url == nil or target_url == "" %}
+        {% assign is_pub = false %}
+        {% if page.collection == "publications" or page.layout contains "publication" or page.path contains "publication" or page.url contains "publication" or page.url contains "yayinlar" or page.active_nav == "publications" %}
+          {% assign is_pub = true %}
+        {% endif %}
+
+        {% assign is_lesson = false %}
+        {% if page.collection == "lessons" or page.layout contains "lesson" or page.path contains "lesson" or page.url contains "lesson" or page.url contains "dersler" or page.active_nav == "lessons" %}
+          {% assign is_lesson = true %}
+        {% endif %}
+
+        {% assign is_post = false %}
+        {% if page.collection == "posts" or page.layout contains "post" or page.path contains "post" or page.url contains "post" or page.url contains "yazilar" or page.active_nav == "post" %}
+          {% assign is_post = true %}
+        {% endif %}
+
+        {% assign is_research = false %}
+        {% if page.path contains "research" or page.path contains "arastirma" or page.url contains "research" or page.url contains "arastirma" or page.active_nav == "research-hub" or page.ref == "research-hub" %}
+          {% assign is_research = true %}
+        {% endif %}
+
+        {% if target_lang == "en" %}
+          {% if is_pub %}
+            {% assign target_url = "/en/publications/" %}
+          {% elsif is_lesson %}
+            {% assign target_url = "/en/lessons/" %}
+          {% elsif is_post %}
+            {% assign target_url = "/en/post/" %}
+          {% elsif is_research %}
+            {% assign target_url = "/en/research/" %}
+          {% else %}
+            {% assign target_url = "/en/" %}
+          {% endif %}
+        {% else %}
+          {% if is_pub %}
+            {% assign target_url = "/tr/yayinlar/" %}
+          {% elsif is_lesson %}
+            {% assign target_url = "/tr/dersler/" %}
+          {% elsif is_post %}
+            {% assign target_url = "/tr/yazilar/" %}
+          {% elsif is_research %}
+            {% assign target_url = "/tr/arastirma/" %}
+          {% else %}
+            {% assign target_url = "/tr/" %}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+
+      <a href="{{ target_url | relative_url }}" class="lang-item" title="{{ site.data.locales[target_lang].ui.current_language | default: target_lang | upcase }}">
+        <span class="flag-icon flag-icon-{{ target_lang }}"></span>
+        <span class="lang-code">{{ target_lang | upcase }}</span>
+      </a>
+    {% endif %}
+    {% unless forloop.last %}<span class="lang-separator">|</span>{% endunless %}
+  {% endfor %}
+</div>

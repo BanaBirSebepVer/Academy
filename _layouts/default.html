@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.default_lang | default: 'tr' }}">
+{% include head.html %}
+<body class="layout-{{ page.layout | slugify | default: 'default' }}">
+  {% include icons-sprite.svg %}
+  <div id="wrapper" class="academy-engine">
+    {% include sidebar.html %}
+    <div id="main">
+      {{ content }}
+      {% include footer.html %}
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+/**
+ * Homepage Styles (Aggregator)
+ * Consolidates homepage CV stylesheets:
+ * - hero.css: Avatar, bio, name
+ * - sections.css: CV section headers, separators, accordion, language list
+ */
+
+@import "hero";
+@import "sections";

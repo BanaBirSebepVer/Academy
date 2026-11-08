@@ -1,0 +1,211 @@
+/**
+ * Navigation & Menu Styles
+ * Handles sidebar menus, submenus, dropdown toggles, active indicators, and mobile button
+ */
+
+/* ===================================================
+   NAVIGATION CONTAINERS
+   =================================================== */
+#nav-container {
+  position: relative;
+  padding-bottom: 85px;
+}
+
+#main-nav {
+  position: relative;
+  text-align: left;
+  width: 100%;
+  padding-bottom: 0;
+}
+
+/* ===================================================
+   PRIMARY NAVIGATION LIST
+   =================================================== */
+ul#navigation {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+ul#navigation > li {
+  display: block;
+  float: none;
+  clear: both;
+  background: var(--dark-nav-item);
+  border-top: 1px solid var(--dark-nav-border-top);
+  border-bottom: 1px solid var(--dark-nav-border-bottom);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+ul#navigation > li > a {
+  color: var(--text-disabled);
+  font-size: 14px;
+  line-height: 45px;
+  margin-left: 15px;
+  display: block;
+  transition: color 0.2s ease;
+}
+
+/* Hover and focus states */
+ul#navigation > li:hover,
+ul#navigation > li:focus {
+  background: var(--dark-nav-hover);
+}
+
+ul#navigation > li:hover > a,
+ul#navigation > li:focus > a {
+  color: var(--text-inverse);
+}
+
+/* Current / Active menu item */
+ul#navigation > li.current-menu-item,
+ul#navigation > li.current-menu-parent {
+  font-weight: bold;
+  background: var(--dark-nav-hover);
+  border-top: 1px solid var(--dark-border);
+  border-bottom: 1px solid var(--dark-footer);
+}
+
+ul#navigation > li.current-menu-item > a,
+ul#navigation > li.current-menu-parent > a {
+  color: var(--text-inverse);
+}
+
+ul#navigation li.external:hover .icon,
+ul#navigation li.current-menu-item .icon,
+ul#navigation li.external:hover > a .fa, 
+ul#navigation li.current-menu-item > a .fa,
+ul#navigation li.current-menu-parent > a .fa {
+  color: var(--primary);
+}
+
+/* Icons within navigation items */
+ul#navigation > li > a > .fa {
+  float: left;
+  line-height: 45px;
+  width: 50px;
+  text-align: center;
+  font-size: 18px;
+  position: relative;
+  left: -15px;
+}
+
+ul#navigation > li > a > .fontawesome-text {
+  padding-left: 5%;
+  margin-left: -15px;
+  line-height: 45px;
+  display: inline-block;
+  box-shadow: -3px 0 5px -4px rgba(0, 0, 0, 0.5);
+}
+
+/* ===================================================
+   SUB-MENUS & ACCORDION DROPDOWNS
+   =================================================== */
+ul#navigation .sub-menu {
+  margin: 0;
+  padding: 0;
+  background-color: var(--dark-submenu);
+  display: none;
+  list-style: none;
+}
+
+ul#navigation .sub-menu > li {
+  padding-left: 20px;
+  margin: 0;
+}
+
+ul#navigation .sub-menu > li a {
+  display: block;
+  font-size: 12px;
+  color: var(--text-subtle);
+  line-height: 40px;
+  transition: all 0.25s ease;
+}
+
+ul#navigation .sub-menu > li a:hover,
+ul#navigation .sub-menu > li a:focus,
+ul#navigation .current-menu-parent li.current-menu-item a {
+  color: var(--text-inverse-muted);
+  margin-left: 5px;
+}
+
+ul#navigation .sub-menu .fa {
+  padding: 0 8px 0 0;
+}
+
+/* Trigger buttons for expandable items */
+ul#navigation .menu-item-has-children {
+  position: relative;
+}
+
+#navigation .submenu-trigger {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-disabled);
+  cursor: pointer;
+}
+
+#navigation .sub-menu .submenu-trigger {
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px;
+}
+
+#navigation .menu-item-has-children .submenu-trigger:after {
+  content: "+";
+  display: block;
+}
+
+#navigation .menu-item-has-children.active > .submenu-trigger:after,
+#navigation .menu-item-has-children.open > .submenu-trigger:after {
+  content: "–" !important;
+}
+
+ul#navigation li.open > .sub-menu {
+  display: block !important;
+}
+
+@media (min-width: 992px) {
+  ul#navigation li.menu-item-has-children:hover > .sub-menu {
+    display: block !important;
+  }
+}
+
+/* ===================================================
+   MOBILE MENU TOGGLE BUTTON (HAMBURGER)
+   =================================================== */
+.mobilemenu {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .mobilemenu {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: fixed !important;
+    top: 15px !important;
+    right: 15px !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: var(--primary) !important;
+    color: var(--text-inverse) !important;
+    border-radius: 4px !important;
+    font-size: 20px !important;
+    z-index: 2100 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+    text-decoration: none !important;
+  }
+
+  .mobilemenu:hover,
+  .mobilemenu:focus {
+    color: var(--text-inverse) !important;
+  }
+}

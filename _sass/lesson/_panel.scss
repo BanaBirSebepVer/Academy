@@ -1,0 +1,147 @@
+/**
+ * Lesson Panel & Sidebar Widget Styling
+ * Styles for course info card, metadata rows, and sidebar widget components
+ * Uses color variables from color.css
+ */
+
+/* ===================================================
+   PANEL CONTAINER
+   =================================================== */
+.sidebar-widget-card,
+.panel.panel-default.sidebar-widget-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-main);
+  border-radius: 8px;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 25px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.sidebar-widget-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* ===================================================
+   PANEL HEADER
+   =================================================== */
+.sidebar-widget-header {
+  background-color: var(--bg-panel);
+  border-bottom: 1px solid var(--border-light);
+  padding: 12px 18px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-body);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-widget-header i {
+  color: var(--primary);
+  margin-right: 8px;
+}
+
+.sidebar-widget-header-dark {
+  background-color: var(--dark);
+  color: var(--text-inverse);
+  padding: 14px 18px;
+  font-weight: 700;
+  font-size: 15px;
+  border-bottom: none;
+}
+
+.sidebar-widget-header-dark span {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-inverse);
+}
+
+.sidebar-widget-header-dark i {
+  color: var(--primary);
+  margin-right: 8px;
+  font-size: 15px;
+}
+
+/* ===================================================
+   PANEL BODY & META LIST
+   =================================================== */
+.sidebar-widget-body {
+  padding: 18px 20px;
+}
+
+.sidebar-meta-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.sidebar-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sidebar-meta-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.sidebar-meta-label {
+  color: var(--text-light);
+  font-weight: 600;
+  font-size: 13px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.sidebar-meta-value {
+  color: var(--text-secondary);
+  text-align: right;
+  word-break: break-word;
+}
+
+.sidebar-meta-value strong,
+strong.sidebar-meta-value {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.sidebar-meta-value i {
+  color: var(--primary);
+  margin-right: 6px;
+}
+
+/* Soft category pill badge inside meta list */
+.sidebar-meta-row .archive-badge-soft,
+.archive-badge-soft {
+  background-color: var(--bg-alt);
+  color: var(--text-body);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.2px;
+  display: inline-block;
+  line-height: 1.2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .sidebar-meta-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .sidebar-meta-value {
+    text-align: left;
+  }
+}

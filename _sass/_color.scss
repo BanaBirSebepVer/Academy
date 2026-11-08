@@ -1,0 +1,244 @@
+/**
+ * Color System & Variables
+ * Central color definitions and CSS custom properties (variables)
+ * Used across all CSS stylesheets via var(--variable-name)
+ */
+
+/* ===================================================
+   COLOR VARIABLES ROOT TEMPLATE
+   =================================================== */
+:root {
+  /* Brand / Primary Accent (Emerald Green) */
+  --primary: #03cc85;
+  --primary-hover: #029a64;
+  --primary-active: #028a59;
+  --primary-light: #e6faf2;
+  --primary-border: #c3fae8;
+  --primary-rgb: 3, 204, 133;
+  --primary-shadow: rgba(3, 204, 133, 0.25);
+
+  /* Secondary Accent (Sea Green) */
+  --secondary: #03bb7a;
+  --secondary-hover: #029f68;
+  --secondary-rgb: 3, 187, 122;
+
+  /* Dark Theme & Hero Surfaces (Sidebar, Banner, Dark Cards) */
+  --dark: #2b2b36;
+  --dark-hero: #1e1e24;
+  --dark-surface: #262630;
+  --dark-border: #3c3c4a;
+  --dark-footer: #202020;
+  --dark-footer-border: #1a1a1a;
+  --dark-nav-item: #2b2b36;
+  --dark-nav-hover: #363636;
+  --dark-nav-border-top: #373737;
+  --dark-nav-border-bottom: #2b2b2b;
+  --dark-submenu: #2b2b36;
+
+  /* Text Colors */
+  --text-main: #2b2b36;
+  --text-body: #333333;
+  --text-secondary: #4a5568;
+  --text-muted: #666666;
+  --text-light: #718096;
+  --text-subtle: #888888;
+  --text-disabled: #a0aec0;
+  --text-inverse: #ffffff;
+  --text-inverse-muted: #cbd5e0;
+  --text-inverse-subtle: #a0aec0;
+
+  /* Surfaces & Backgrounds */
+  --bg-body: #ffffff;
+  --bg-page: #fafbfc;
+  --bg-alt: #f7f9fa;
+  --bg-card: #ffffff;
+  --bg-panel: #fafbfc;
+  --bg-panel-header: #f1f5f9;
+  --bg-hover: #edf2f7;
+  --bg-tag: #f1f5f9;
+  --bg-subtle: #f8fafc;
+  --bg-notice: #f3fbf7;
+  --bg-notice-border: #c3f0dc;
+
+  /* Borders & Dividers */
+  --border-main: #e5e8ec;
+  --border-light: #eef0f2;
+  --border-subtle: #f2f3f5;
+  --border-card: #e2e8f0;
+  --border-divider: #edf2f7;
+  --border-default: #d1d5db;
+  --border-color: var(--border-main);
+
+  /* Common Typography & Color Aliases */
+  --color-heading: var(--text-main);
+  --color-muted: var(--text-muted);
+  --color-text: var(--text-body);
+
+  /* Semantic Status Colors */
+  --success: #03cc85;
+  --success-hover: #029a64;
+  --success-bg: #e6faf2;
+  --success-text: #028a59;
+  --success-border: #c3fae8;
+
+  --info: #3182ce;
+  --info-hover: #2b6cb0;
+  --info-bg: #ebf8ff;
+  --info-text: #2b6cb0;
+  --info-border: #bee3f8;
+
+  --warning: #dd6b20;
+  --warning-hover: #c05621;
+  --warning-bg: #fff8e6;
+  --warning-text: #b7791f;
+  --warning-border: #feebc8;
+
+  --danger: #e53e3e;
+  --danger-hover: #c53030;
+  --danger-bg: #fff5f5;
+  --danger-text: #c53030;
+  --danger-border: #fed7d7;
+
+  /* Accent Color Palette */
+  --accent-purple: #8b5cf6;
+  --accent-purple-bg: #f5f3ff;
+  --accent-purple-border: #ddd6fe;
+  --accent-blue: #0284c7;
+  --accent-blue-bg: #f0f9ff;
+  --accent-blue-border: #bae6fd;
+  --accent-amber: #d97706;
+  --accent-amber-bg: #fffbeb;
+  --accent-amber-border: #fef3c7;
+
+  /* Neutral Badges & Backdrops */
+  --badge-gray: #bbbbbb;
+  --badge-gray-dark: #979797;
+  --bg-page-backdrop: #4d4d4d;
+
+  /* Communication Channels */
+  --channel-discord: #5865f2;
+  --channel-teams: #464eb8;
+  --channel-whatsapp: #25d366;
+  --channel-telegram: #0088cc;
+  --channel-slack: #4a154b;
+  --channel-zoom: #2d8cff;
+  --channel-email: #e67e22;
+
+  /* Social & Academic Networks (SNS) Brand Colors */
+  --sns-scholar: #4285f4;
+  --sns-academia: #1b75bb;
+  --sns-orcid: #a6ce39;
+  --sns-researchgate: #00ccbb;
+  --sns-github: #24292e;
+  --sns-linkedin: #0a66c2;
+  --sns-youtube: #ff0000;
+  --sns-twitter: #1da1f2;
+  --sns-x: #000000;
+  --sns-discord: #5865f2;
+  --sns-telegram: #229ed9;
+  --sns-whatsapp: #25d366;
+  --sns-facebook: #1877f2;
+  --sns-instagram: #e1306c;
+  --sns-medium: #00ab6c;
+  --sns-default: var(--primary, #03cc85);
+
+  /* Version Status Tokens */
+  --version-status-uptodate: var(--primary, #03cc85);
+  --version-status-uptodate-bg: #f0fdf7;
+  --version-status-uptodate-border: #a7f3d0;
+  --version-status-uptodate-text: #065f46;
+
+  --version-status-warning: #f59e0b;
+  --version-status-warning-bg: #fffbeb;
+  --version-status-warning-border: #fde68a;
+  --version-status-warning-text: #92400e;
+
+  --version-status-critical: #ef4444;
+  --version-status-critical-bg: #fef2f2;
+  --version-status-critical-border: #fecaca;
+  --version-status-critical-text: #991b1b;
+
+  /* Elevation Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 3px 10px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* ===================================================
+   COLOR UTILITY CLASSES
+   =================================================== */
+.text-primary { color: var(--primary) !important; }
+.text-secondary { color: var(--secondary) !important; }
+.text-dark { color: var(--dark) !important; }
+.text-muted { color: var(--text-muted) !important; }
+.text-light { color: var(--text-light) !important; }
+.text-white { color: var(--text-inverse) !important; }
+
+.bg-primary { background-color: var(--primary) !important; }
+.bg-secondary { background-color: var(--secondary) !important; }
+.bg-dark { background-color: var(--dark) !important; }
+.bg-light { background-color: var(--bg-alt) !important; }
+.bg-white { background-color: var(--bg-body) !important; }
+
+.border-primary { border-color: var(--primary) !important; }
+.border-main { border-color: var(--border-main) !important; }
+.border-light { border-color: var(--border-light) !important; }
+
+/* Legacy helper backgrounds */
+.color-1 { background: var(--bg-body); }
+.color-2 { background: var(--bg-alt); }
+.color-3 { background: var(--dark); color: var(--text-inverse); }
+.color-4 { background: #000000; color: var(--text-inverse); }
+
+/* ===================================================
+   VERSION STATUS CLASSES (Engine Update Checker)
+   =================================================== */
+.version-status-ok {
+  border-left: 5px solid var(--version-status-uptodate) !important;
+  background-color: var(--version-status-uptodate-bg) !important;
+}
+.version-status-ok .version-title {
+  color: var(--version-status-uptodate-text);
+}
+.version-status-ok .version-status-text {
+  color: var(--version-status-uptodate-text);
+  font-weight: 600;
+}
+.version-status-ok .version-status-pill {
+  background: var(--version-status-uptodate);
+  color: #ffffff;
+}
+
+.version-status-warn {
+  border-left: 5px solid var(--version-status-warning) !important;
+  background-color: var(--version-status-warning-bg) !important;
+}
+.version-status-warn .version-title {
+  color: var(--version-status-warning-text);
+}
+.version-status-warn .version-status-text {
+  color: var(--version-status-warning-text);
+  font-weight: 600;
+}
+.version-status-warn .version-status-pill {
+  background: var(--version-status-warning);
+  color: #ffffff;
+}
+
+.version-status-danger {
+  border-left: 5px solid var(--version-status-critical) !important;
+  background-color: var(--version-status-critical-bg) !important;
+}
+.version-status-danger .version-title {
+  color: var(--version-status-critical-text);
+}
+.version-status-danger .version-status-text {
+  color: var(--version-status-critical-text);
+  font-weight: 600;
+}
+.version-status-danger .version-status-pill {
+  background: var(--version-status-critical);
+  color: #ffffff;
+}

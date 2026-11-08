@@ -1,0 +1,53 @@
+<!-- Dynamic Modular Grading & Exams Assembler with Weight Calculation -->
+{% assign path_parts = page.path | split: "/" %}
+{% assign parts_count = path_parts.size %}
+{% assign last_idx = parts_count | minus: 1 %}
+{% assign dir_parts = "" | split: "" %}
+{% for p in path_parts %}
+  {% if forloop.index0 < last_idx %}
+    {% assign dir_parts = dir_parts | push: p %}
+  {% endif %}
+{% endfor %}
+{% assign course_dir = dir_parts | join: "/" | append: "/" %}
+
+{% assign exam_modules = site.lessons | where_exp: "item", "item.path contains course_dir" | where: "section_type", "exam" | sort: "order" %}
+
+{% assign total_percentage = 0 %}
+{% for exam in exam_modules %}
+  {% assign exam_pct = exam.percentage | default: 0 | plus: 0 %}
+  {% assign total_percentage = total_percentage | plus: exam_pct %}
+{% endfor %}
+
+{% if exam_modules.size > 0 %}
+  {% if total_percentage < 100 %}
+  <blockquote class="lesson-warning grading-warning">
+    <p>⚠️ <strong>{% if page.lang == "tr" %}Uyarı: Notlandırma Dağılımı Eksik!{% else %}Warning: Incomplete Grading Weight!{% endif %}</strong> 
+    {% if page.lang == "tr" %}
+      Tanımlanan sınav ve projelerin toplam ağırlığı <strong>%{{ total_percentage }}</strong> olarak hesaplandı. Eksik oran: <strong>%{{ 100 | minus: total_percentage }}</strong>. Geçerli bir ders değerlendirmesi için toplam tam olarak <strong>%100</strong> olmalıdır.
+    {% else %}
+      The total assessment weight is <strong>{{ total_percentage }}%</strong> (short by <strong>{{ 100 | minus: total_percentage }}%</strong>). Total grading distribution must equal exactly <strong>100%</strong>.
+    {% endif %}
+    </p>
+  </blockquote>
+  {% elsif total_percentage > 100 %}
+  <blockquote class="lesson-warning grading-warning">
+    <p>⚠️ <strong>{% if page.lang == "tr" %}Uyarı: Notlandırma %100'ü Aşıyor!{% else %}Warning: Grading Weight Exceeds 100%!{% endif %}</strong> 
+    {% if page.lang == "tr" %}
+      Tanımlanan sınav ve projelerin toplam ağırlığı <strong>%{{ total_percentage }}</strong> olarak hesaplandı. Toplam tam olarak <strong>%100</strong> olmalıdır.
+    {% else %}
+      The total assessment weight is <strong>{{ total_percentage }}%</strong>. Total weight must equal exactly <strong>100%</strong>.
+    {% endif %}
+    </p>
+  </blockquote>
+  {% endif %}
+
+  <div class="grading-grid" data-total-percentage="{{ total_percentage }}">
+    {% for exam in exam_modules %}
+    <blockquote class="grading-card" data-percentage="{{ exam.percentage }}">
+      <h3 id="{{ exam.title | slugify }}">{{ exam.title }}</h3>
+      <h4 class="grading-percent">{% if page.lang == "tr" %}%{{ exam.percentage }}{% else %}{{ exam.percentage }}%{% endif %}</h4>
+      {{ exam.content | markdownify }}
+    </blockquote>
+    {% endfor %}
+  </div>
+{% endif %}

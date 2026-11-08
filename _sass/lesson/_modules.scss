@@ -1,0 +1,120 @@
+/**
+ * Interactive Syllabus Table & Accordion Styles
+ * Renders weekly syllabus rows as clickable tabs with smooth expandable drawers
+ */
+
+.lesson-markdown table {
+  width: 100%;
+  margin: 28px 0 35px 0;
+  border-collapse: collapse;
+  box-shadow: var(--shadow-sm);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.lesson-markdown table tr.lesson-week-row {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.15s ease;
+}
+
+.lesson-markdown table tr.lesson-week-row:hover td {
+  background-color: var(--primary-light) !important;
+}
+
+.lesson-markdown table tr.lesson-week-row.active td {
+  background-color: var(--bg-hover) !important;
+  font-weight: 600;
+  border-bottom-color: transparent;
+}
+
+.lesson-markdown table tr.lesson-week-row.active td:first-child {
+  background-color: var(--primary) !important;
+  color: #fff !important;
+}
+
+.lesson-markdown table tr.lesson-week-row .week-toggle-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  float: right;
+  margin-left: 10px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, background-color 0.2s ease, color 0.2s ease;
+  font-size: 11px;
+}
+
+.lesson-markdown table tr.lesson-week-row:hover .week-toggle-arrow {
+  background: var(--primary);
+  color: #fff;
+}
+
+.lesson-markdown table tr.lesson-week-row.active .week-toggle-arrow {
+  transform: rotate(180deg);
+  background: var(--primary);
+  color: #fff;
+}
+
+.lesson-markdown table tr.lesson-week-detail-row td.lesson-week-detail-cell {
+  background-color: var(--bg-card) !important;
+  padding: 0 !important;
+  border-top: 1px dashed var(--border-main);
+  border-bottom: 2px solid var(--primary);
+}
+
+.lesson-week-detail-drawer {
+  padding: 24px 28px;
+  background: var(--bg-subtle);
+  border-left: 4px solid var(--primary);
+  animation: fadeInWeekDetail 0.2s ease;
+}
+
+@keyframes fadeInWeekDetail {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lesson-week-detail-drawer h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 16px 0 8px 0;
+  color: var(--text-main);
+}
+
+.lesson-week-detail-drawer h4:first-child {
+  margin-top: 0;
+}
+
+.lesson-week-detail-drawer h4::after {
+  display: none !important;
+}
+
+.lesson-week-detail-drawer p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.lesson-week-detail-drawer ul,
+.lesson-week-detail-drawer ol {
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+
+.lesson-week-detail-drawer li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}

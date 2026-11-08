@@ -1,0 +1,165 @@
+---
+layout: default
+---
+
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign lang_slash = "/" | append: current_lang | append: "/" %}
+
+<div class="fac-page projects-archive-page">
+  <div class="archive-page-container">
+    <div class="container-fluid">
+
+      <!-- Header Section -->
+      <div class="archive-header">
+        <h1>{{ page.title | default: locale.ui.projects_title }}</h1>
+        <p>{{ page.description | default: locale.ui.projects_description }}</p>
+      </div>
+
+      <!-- Intro Content if provided in markdown page -->
+      {% if content and content != "" %}
+      <div class="archive-intro-content markdown-body">
+        {{ content }}
+      </div>
+      {% endif %}
+
+      <!-- Search & Category Filter Controls -->
+      <div class="archive-controls">
+        <div class="archive-search-box">
+          <div class="input-group">
+            <span class="input-group-addon">
+              {% include icon.html name="search" %}
+            </span>
+            <input type="text" id="projectSearchInput" class="form-control" placeholder="{{ locale.ui.search_projects_placeholder | default: 'Search projects...' }}">
+          </div>
+        </div>
+
+        <div class="archive-filter-pills" id="projectFilterButtons">
+          <button class="btn btn-sm btn-primary active archive-filter-btn project-cat-btn" data-category="all">
+            {{ locale.ui.projects_all | default: "All Projects" }}
+          </button>
+          <button class="btn btn-sm btn-default archive-filter-btn project-cat-btn" data-category="institutional">
+            {% include icon.html name="building" %} {{ locale.ui.projects_institutional | default: "Institutional & Community" }}
+          </button>
+          <button class="btn btn-sm btn-default archive-filter-btn project-cat-btn" data-category="research">
+            {% include icon.html name="flask" %} {{ locale.ui.projects_research | default: "Research & Data" }}
+          </button>
+          <button class="btn btn-sm btn-default archive-filter-btn project-cat-btn" data-category="social">
+            {% include icon.html name="heart" %} {{ locale.ui.projects_social | default: "Social Responsibility" }}
+          </button>
+          <button class="btn btn-sm btn-default archive-filter-btn project-cat-btn" data-category="culture">
+            {% include icon.html name="bookmark" %} {{ locale.ui.projects_culture | default: "Culture & Archive" }}
+          </button>
+        </div>
+      </div>
+
+      {% assign raw_projects = site.project | default: site.projects %}
+      {% assign all_projects = "" | split: "" %}
+      {% for proj in raw_projects %}
+        {% assign match = false %}
+        {% if current_lang == "tr" %}
+          {% if proj.path contains "/_project/tr/" or proj.path contains "_project/tr/" %}
+            {% assign match = true %}
+          {% elsif proj.lang == "tr" %}
+            {% unless proj.path contains "/en/" or proj.path contains "_project/en" %}
+              {% assign match = true %}
+            {% endunless %}
+          {% endif %}
+        {% elsif current_lang == "en" %}
+          {% if proj.path contains "/_project/en/" or proj.path contains "_project/en/" %}
+            {% assign match = true %}
+          {% elsif proj.lang == "en" %}
+            {% unless proj.path contains "/tr/" or proj.path contains "_project/tr" %}
+              {% assign match = true %}
+            {% endunless %}
+          {% endif %}
+        {% else %}
+          {% if proj.lang == current_lang or proj.path contains lang_slash %}
+            {% assign match = true %}
+          {% endif %}
+        {% endif %}
+        {% if match %}
+          {% assign all_projects = all_projects | push: proj %}
+        {% endif %}
+      {% endfor %}
+      {% assign all_projects = all_projects | sort: "order" %}
+
+      <!-- Projects Archive Grid (Flex Masonry) -->
+      <div class="row flex-masonry-grid" id="projectsGrid">
+        {% for proj in all_projects %}
+        <div class="col-md-6 col-sm-12 archive-card-col project-card-item flex-masonry-item" data-category="{{ proj.category }}" data-title="{{ proj.title | downcase | escape }}" data-tags="{% for tag in proj.tags %}{{ tag | downcase }} {% endfor %}">
+          <div class="archive-card">
+            {% if proj.image and proj.image != "" %}
+            <div class="archive-card-image">
+              <img src="{{ proj.image }}" alt="{{ proj.title }}">
+            </div>
+            {% endif %}
+            
+            <div class="archive-card-body">
+              <div class="archive-card-meta">
+                {% if proj.badge_label %}
+                <span class="label archive-badge-primary">{{ proj.badge_label }}</span>
+                {% endif %}
+                {% if proj.status %}
+                <span class="status-badge {{ proj.status_class | default: 'status-active' }}">
+                  {{ proj.status }}
+                </span>
+                {% endif %}
+              </div>
+              
+              <h3 class="archive-card-title">
+                {% if proj.link and proj.link != "" %}
+                  <a href="{{ proj.link | relative_url }}" {% if proj.link contains 'http' %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ proj.title }}</a>
+                {% else %}
+                  {{ proj.title }}
+                {% endif %}
+              </h3>
+              
+              {% if proj.subtitle %}
+              <div class="archive-card-subtitle">
+                {% include icon.html name="info-circle" %} {{ proj.subtitle }}
+              </div>
+              {% endif %}
+              
+              <div class="archive-card-desc">
+                {{ proj.content | markdownify }}
+              </div>
+              
+              {% if proj.tags and proj.tags.size > 0 %}
+              <div class="archive-card-tags">
+                {% for tag in proj.tags %}
+                <span class="archive-card-tag">{{ tag }}</span>
+                {% endfor %}
+              </div>
+              {% endif %}
+              
+              <div class="archive-card-footer">
+                {% if proj.link and proj.link != "" %}
+                  <a href="{{ proj.link | relative_url }}" {% if proj.link contains 'http' %}target="_blank" rel="noopener noreferrer"{% endif %} class="btn btn-sm btn-default archive-card-action-btn">
+                    {{ proj.link_text | default: locale.ui.view_project_details | default: "View Details" }}
+                    {% if proj.link_icon %}
+                      {% include icon.html name=proj.link_icon %}
+                    {% else %}
+                      &rarr;
+                    {% endif %}
+                  </a>
+                {% else %}
+                  <span class="archive-role-text">{{ proj.role | default: locale.ui.default_project_role | default: "Social Responsibility Initiative" }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- No Matches Alert -->
+      <div id="noProjectsMatch" class="archive-no-match">
+        {% include icon.html name="folder-open" %}
+        <h4>{{ locale.ui.no_projects_found | default: "No projects found matching your search." }}</h4>
+        <p>{{ locale.ui.no_projects_found_sub | default: "Please try another search query or change category filter." }}</p>
+      </div>
+
+    </div>
+  </div>
+</div>

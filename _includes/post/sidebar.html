@@ -1,0 +1,222 @@
+{% assign current_lang = page.lang | default: site.default_lang | default: "tr" %}
+{% if page.url contains "/en/" %}{% assign current_lang = "en" %}{% endif %}
+{% assign locale = site.data.locales[current_lang] %}
+{% assign is_en = false %}
+{% if current_lang == "en" %}
+  {% assign is_en = true %}
+{% endif %}
+{% assign posts_archive_url = "/yazilar/" %}
+{% if is_en %}
+  {% assign posts_archive_url = "/en/posts/" %}
+{% endif %}
+
+{% assign filtered_posts = "" | split: "" %}
+{% for p in site.posts %}
+  {% assign p_lang = p.lang | default: "" %}
+  {% if p_lang == "" %}
+    {% if p.url contains "/en/" %}
+      {% assign p_lang = "en" %}
+    {% else %}
+      {% assign p_lang = "tr" %}
+    {% endif %}
+  {% endif %}
+
+  {% if p_lang == current_lang %}
+    {% assign filtered_posts = filtered_posts | push: p %}
+  {% endif %}
+{% endfor %}
+
+{% assign author_key = page.author | default: "akademisyen" | strip | downcase %}
+{% assign post_author = site.person | where: "username", author_key | first %}
+{% if post_author == nil %}
+  {% assign post_author = site.person | where: "slug", author_key | first %}
+{% endif %}
+{% if post_author == nil %}
+  {% assign post_author = site.person | where: "name", page.author | first %}
+{% endif %}
+{% if post_author == nil %}
+  {% assign post_author = site.person | first %}
+{% endif %}
+
+{% assign author_name = page.author_name | default: post_author.name | default: page.author | default: site.author %}
+{% assign author_avatar = page.author_avatar | default: post_author.avatar | default: site.avatar | default: "/assets/images/default-avatar.svg" %}
+{% assign author_role = page.author_role | default: post_author.role %}
+{% assign author_institution = page.author_institution | default: post_author.institution | default: site.institution %}
+{% assign author_bio = page.author_bio | default: post_author.bio %}
+{% assign author_social = page.author_social | default: post_author.social %}
+
+<!-- Post Sidebar Widget (Dynamic from Post & Person) -->
+<aside class="post-sidebar sidebar-sticky-wrap">
+
+  <!-- Author Profile Card -->
+  <div class="panel panel-default sidebar-profile-card">
+    <div class="sidebar-profile-avatar-wrap">
+      <img src="{{ author_avatar | relative_url }}" alt="{{ author_name }}" class="sidebar-profile-avatar">
+    </div>
+    
+    <h4 class="sidebar-profile-name">{{ author_name }}</h4>
+    
+    {% if author_role or author_institution %}
+    <p class="sidebar-profile-role">
+      {% if author_role %}<strong>{{ author_role }}</strong><br>{% endif %}
+      {% if author_institution %}{{ author_institution }}{% endif %}
+    </p>
+    {% endif %}
+
+    {% if author_bio %}
+    <p class="sidebar-profile-bio">
+      {{ author_bio }}
+    </p>
+    {% endif %}
+
+    {% if author_social and author_social.size > 0 %}
+    <div class="sidebar-profile-social">
+      {% for item in author_social %}
+      <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="btn btn-xs btn-default" title="{{ item.title }}">
+        {% include icon.html name=item.icon %}
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Post Details & Metadata Card (from Post itself) -->
+  <div class="panel panel-default sidebar-widget-card">
+    <div class="sidebar-widget-header">
+      <span>{% include icon.html name="info-circle" %} {{ locale.ui.post_info | default: "Article Information" }}</span>
+    </div>
+    <div class="sidebar-widget-body">
+      <div class="sidebar-meta-list">
+        <div>
+          {% include icon.html name="calendar-o" class="sidebar-meta-icon" %}
+          <strong>{{ locale.ui.published_on | default: "Date" }}:</strong> {% if is_en %}{{ page.date | date: "%B %d, %Y" }}{% else %}{{ page.date | date: "%d.%m.%Y" }}{% endif %}
+        </div>
+        <div>
+          {% include icon.html name="clock-o" class="sidebar-meta-icon" %}
+          {% assign words = page.content | number_of_words %}
+          {% assign reading_time = words | divided_by: 200 | at_least: 1 %}
+          <strong>{{ locale.ui.reading_time_label | default: "Reading Time" }}:</strong> ~{{ reading_time }} {{ locale.ui.min_read | default: "min read" }}
+        </div>
+        {% if page.categories and page.categories.size > 0 %}
+        <div>
+          {% include icon.html name="folder-open-o" class="sidebar-meta-icon" %}
+          <strong>{{ locale.ui.category | default: "Category" }}:</strong>
+          {% for cat in page.categories %}
+          <a href="{{ posts_archive_url | relative_url }}" class="label label-success sidebar-category-badge">{{ cat }}</a>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if page.tags and page.tags.size > 0 %}
+        <div>
+          {% include icon.html name="tags" class="sidebar-meta-icon" %}
+          <strong>{{ locale.ui.tags | default: "Tags" }}:</strong>
+          <div class="sidebar-tags-container">
+            {% for tag in page.tags %}
+            <span class="sidebar-tag-item">#{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Related Posts (Same Category as this Post, filtered by language) -->
+  {% if page.categories and page.categories.size > 0 %}
+    {% assign primary_cat = page.categories | first %}
+    {% assign related_posts = filtered_posts | where_exp: "p", "p.categories contains primary_cat" | where_exp: "p", "p.url != page.url" %}
+    {% if related_posts.size > 0 %}
+    <div class="panel panel-default sidebar-widget-card">
+      <div class="sidebar-widget-header">
+        <span>{% include icon.html name="bookmark-o" %} {{ locale.ui.related_posts | default: "Related Posts" }} ({{ primary_cat }})</span>
+      </div>
+      <div class="sidebar-widget-body">
+        <ul class="sidebar-link-list">
+          {% for rpost in related_posts limit: 4 %}
+          <li class="sidebar-link-item">
+            <span class="sidebar-link-date">
+              {% include icon.html name="calendar-o" %} {% if is_en %}{{ rpost.date | date: "%B %d, %Y" }}{% else %}{{ rpost.date | date: "%d.%m.%Y" }}{% endif %}
+            </span>
+            <a href="{{ rpost.url | relative_url }}" class="sidebar-link-anchor">
+              {{ rpost.title }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+  {% endif %}
+
+  <!-- Recent Posts Widget -->
+  {% assign recent_posts = filtered_posts | where_exp: "p", "p.url != page.url" %}
+  {% if recent_posts.size > 0 %}
+  <div class="panel panel-default sidebar-widget-card">
+    <div class="sidebar-widget-header">
+      <span>{% include icon.html name="newspaper-o" %} {{ locale.ui.latest_posts | default: "Recent Posts" }}</span>
+    </div>
+    <div class="sidebar-widget-body">
+      <ul class="sidebar-link-list">
+        {% for post in recent_posts limit: 5 %}
+        <li class="sidebar-link-item">
+          <span class="sidebar-link-date">
+            {% include icon.html name="calendar-o" %} {% if is_en %}{{ post.date | date: "%B %d, %Y" }}{% else %}{{ post.date | date: "%d.%m.%Y" }}{% endif %}
+          </span>
+          <a href="{{ post.url | relative_url }}" class="sidebar-link-anchor">
+            {{ post.title }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- All Posts & Categories Directory Widget -->
+  {% assign cat_list_str = "" %}
+  {% for post in filtered_posts %}
+    {% if post.categories %}
+      {% for c in post.categories %}
+        {% assign trimmed_c = c | strip %}
+        {% if trimmed_c != "" %}
+          {% assign cat_list_str = cat_list_str | append: trimmed_c | append: "|||" %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+  {% assign raw_cats = cat_list_str | split: "|||" | sort %}
+  {% assign unique_cats = "" | split: "" %}
+  {% for c in raw_cats %}
+    {% if c != "" and unique_cats contains c %}{% else %}{% if c != "" %}{% assign unique_cats = unique_cats | push: c %}{% endif %}{% endif %}
+  {% endfor %}
+
+  {% if unique_cats.size > 0 %}
+  <div class="panel panel-default sidebar-widget-card">
+    <div class="sidebar-widget-header">
+      <span>{% include icon.html name="folder-open" %} {{ locale.ui.categories | default: "Categories" }}</span>
+      <a href="{{ posts_archive_url | relative_url }}" class="sidebar-link-anchor">{{ locale.ui.view_all | default: "View All" }} &rarr;</a>
+    </div>
+    <div class="sidebar-widget-body">
+      <ul class="sidebar-link-list">
+        {% for cat in unique_cats %}
+          {% assign cat_count = 0 %}
+          {% for p in filtered_posts %}
+            {% if p.categories contains cat %}
+              {% assign cat_count = cat_count | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+          <li class="sidebar-link-item sidebar-link-row-between">
+            <a href="{{ posts_archive_url | relative_url }}" class="sidebar-link-anchor">
+              {{ cat }}
+            </a>
+            <span class="badge sidebar-link-badge">
+              {{ cat_count }}
+            </span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endif %}
+
+</aside>

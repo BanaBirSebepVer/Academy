@@ -1,0 +1,84 @@
+{% if site.analytics.enabled != false %}
+<!-- Community Open Analytics & Directory Configuration (assets/js/modules/analytics.js) -->
+{% assign build_commit = site.data.version.commit | default: "v1" %}
+{% assign build_epoch = site.time | date: "%s" %}
+{% assign build_date = site.time | date_to_xmlschema %}
+{% assign build_id = build_commit | append: "_" | append: build_epoch %}
+
+{% assign tr_home = site.pages | where: "ref", "home" | where: "lang", "tr" | first %}
+{% assign en_home = site.pages | where: "ref", "home" | where: "lang", "en" | first %}
+{% if tr_home == nil %}{% assign tr_home = site.pages | where: "url", "/" | first %}{% endif %}
+{% if en_home == nil %}{% assign en_home = site.pages | where: "url", "/en/" | first %}{% endif %}
+
+{% assign raw_avatar = site.avatar | default: tr_home.avatar | default: en_home.avatar | default: tr_home.image | default: "/assets/images/default-avatar.svg" %}
+{% if raw_avatar contains "://" %}
+  {% assign full_avatar = raw_avatar %}
+{% else %}
+  {% assign full_avatar = raw_avatar | absolute_url %}
+{% endif %}
+
+<meta name="academy-analytics" content="enabled" 
+      data-endpoint="{{ site.analytics.endpoint | default: 'https://academy.banabirsebepver.com' }}" 
+      data-tracker="{{ site.analytics.tracker_path | default: '/api/event.php' }}"
+      data-register="{{ site.analytics.register_path | default: '/api/register.php' }}"
+      data-baseurl="{{ site.baseurl }}"
+      data-site-url="{{ site.url | default: '' | append: site.baseurl }}"
+      data-build-id="{{ build_id }}"
+      data-build-date="{{ build_date }}">
+
+<script type="application/json" id="academy-registration-data">
+{
+  "build_id": {{ build_id | jsonify }},
+  "build_time": {{ build_date | jsonify }},
+  "profile": {
+    "title": {{ site.title | default: "" | jsonify }},
+    "author": {{ site.author | default: site.title | default: "" | jsonify }},
+    "email": {{ site.email | default: "" | jsonify }},
+    "description": {{ site.description | default: "" | jsonify }},
+    "institution": {{ site.institution | default: "" | jsonify }},
+    "faculty": {{ site.faculty | default: tr_home.faculty | default: site.department | default: "" | jsonify }},
+    "department": {{ site.department | default: "" | jsonify }},
+    "country": {{ site.country | default: tr_home.country | default: "" | jsonify }},
+    "fields": {{ site.fields | default: tr_home.fields | default: "" | jsonify }},
+    "keywords": {{ site.keywords | default: tr_home.keywords | jsonify }},
+    "avatar": {{ full_avatar | jsonify }},
+    "site_url": {{ site.url | default: "" | append: site.baseurl | jsonify }},
+    "repository": {{ site.repository | default: site.github_repo | default: "" | jsonify }},
+    "github_repo": {{ site.github_repo | default: "" | jsonify }},
+    "bio_tr": {{ tr_home.bio | default: "" | jsonify }},
+    "bio_en": {{ en_home.bio | default: "" | jsonify }},
+    "social": {{ en_home.social | default: tr_home.social | jsonify }}
+  },
+  "index_data": {
+    "tr": {
+      "title": {{ tr_home.title | default: site.title | jsonify }},
+      "name": {{ tr_home.author | default: tr_home.title | default: site.author | jsonify }},
+      "institution": {{ tr_home.institution | default: site.institution | jsonify }},
+      "faculty": {{ tr_home.faculty | default: site.faculty | default: site.department | jsonify }},
+      "department": {{ tr_home.department | default: site.department | jsonify }},
+      "country": {{ tr_home.country | default: site.country | default: "" | jsonify }},
+      "fields": {{ tr_home.fields | default: site.fields | default: "" | jsonify }},
+      "keywords": {{ tr_home.keywords | default: site.keywords | jsonify }},
+      "avatar": {{ full_avatar | jsonify }},
+      "bio": {{ tr_home.bio | default: "" | jsonify }},
+      "social": {{ tr_home.social | jsonify }},
+      "languages": {{ tr_home.languages | jsonify }}
+    },
+    "en": {
+      "title": {{ en_home.title | default: site.title | jsonify }},
+      "name": {{ en_home.author | default: en_home.title | default: site.author | jsonify }},
+      "institution": {{ en_home.institution | default: site.institution | jsonify }},
+      "faculty": {{ en_home.faculty | default: site.faculty | default: site.department | jsonify }},
+      "department": {{ en_home.department | default: site.department | jsonify }},
+      "country": {{ en_home.country | default: site.country | default: "" | jsonify }},
+      "fields": {{ en_home.fields | default: site.fields | default: "" | jsonify }},
+      "keywords": {{ en_home.keywords | default: site.keywords | jsonify }},
+      "avatar": {{ full_avatar | jsonify }},
+      "bio": {{ en_home.bio | default: "" | jsonify }},
+      "social": {{ en_home.social | jsonify }},
+      "languages": {{ en_home.languages | jsonify }}
+    }
+  }
+}
+</script>
+{% endif %}

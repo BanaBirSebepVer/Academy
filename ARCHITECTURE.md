@@ -1,27 +1,34 @@
 # System Architecture & Dependency Impact Graph
 
-This document serves as the **Single Source of Truth (SSOT)** for the architecture, component dependencies, and change blast radius of the **Academy Academic Website Engine**.
+This document serves as the **Single Source of Truth (SSOT)** for the system architecture, component dependency hierarchy, rendering pipelines, and change blast radius of the **Academy Academic Website Engine**.
 
-Use this guide before refactoring, renaming, or modifying any template, configuration setting, collection, or localization dictionary to prevent 404 routing errors, broken layouts, or Jekyll build failures.
+Use this specification before refactoring, renaming, or modifying any template, data schema, collection, or stylesheet to prevent 404 routing errors, broken layouts, or build failures.
 
 ---
 
 ## 1. Core Architecture Principles
 
-1. **Zero Custom Ruby Plugins (GitHub Pages Native)**:
-   - The entire website compiles strictly with standard GitHub Pages dependencies (`jekyll`, `jekyll-redirect-from`, `jekyll-feed`, `kramdown`).
-   - Complex behaviors (dynamic multilingual routing, category aggregation, headings-driven syllabus navigation, related content filtering) are executed purely through Liquid templates and vanilla ES6 client-side modules.
+1. **GitHub Pages Native (Zero Custom Ruby Gems)**:
+   - Compiles strictly with GitHub Pages standard dependencies (`jekyll`, `jekyll-redirect-from`, `jekyll-feed`, `kramdown`).
+   - Advanced functionality (modular multi-file courseware assembly, dynamic bilingual routing, BiBTeX citation generation, responsive timetable generation, and language-isolated filtering) is executed entirely via native Liquid filters, pure SCSS, and vanilla ES6 client-side modules.
 
-2. **Decoupled 4-Layer Hierarchy**:
-   - **Layer 1: Configuration & Structured Data**: Central site configuration (`_config.yml`), UI localization dictionaries (`_data/locales/`), compact data collections (CV items), and author personas (`_person/`).
-   - **Layer 2: Reusable Partials (`_includes/`)**: Modular widgets, navigation engines, and section-specific sub-components.
-   - **Layer 3: Layout Templates (`_layouts/`)**: Structural HTML scaffolds (default, page, homepage, archives, and single detail views).
-   - **Layer 4: Target Content & Public Output URLs**: Symmetrical markdown pages (`pages/tr/` vs `pages/en/`) and rich content collections (`_lessons/`, `_posts/`, `_publications/`, `_project/`).
+2. **Decoupled 4-Layer System Hierarchy**:
+   - **Layer 1: Configuration & Structured Data**: Central config (`_config.yml`), centralized social & academic identity (`_data/socials.yml`), bilingual interface localization (`_data/locales/{tr,en}.yml`), and compact CV collections (`_educations/`, `_awards/`, etc.).
+   - **Layer 2: Asset & Utility Pipelines**: Native Sass stylesheet compilation (`_sass/`, `assets/css/master.scss`), crisp vector SVG icon sprite system (`_includes/icon.html`, `_includes/icons-sprite.svg`), ES6 JavaScript bundling, and automated Python CLI utilities (`scripts/`).
+   - **Layer 3: Reusable Partials & Layout Templates**: Semantic HTML5 layout templates (`_layouts/`) and modular Liquid partials (`_includes/`), featuring dedicated academic print engines and dynamic content aggregators.
+   - **Layer 4: Target Content, Modular Courseware & Public Endpoints**: Localized markdown pages (`pages/tr/`, `pages/en/`), modular course directories (`_lessons/`), scholarly publications (`_publications/`), blog posts (`_posts/`), and machine-readable AI manifests (`llms.txt`, `llms-full.txt`, `ai.json`).
 
-3. **Dynamic Folder-Driven Bilingual Isolation**:
-   - Navigation menus are computed dynamically by scanning language folders (`pages/tr/` vs `pages/en/`) rather than static lists.
-   - Archives (`/yazilar/` vs `/en/posts/`, `/yayinlar/` vs `/en/publications/`, `/dersler/` vs `/en/lessons/`) strictly isolate content, categories, badges, and post counts per active language.
-   - Cross-language page switching matches corresponding documents seamlessly using shared `ref:` identifiers.
+3. **Dynamic Folder-Driven Bilingual Isolation (TR / EN)**:
+   - Navigation menus are computed dynamically by inspecting `pages/tr/` vs `pages/en/` without hardcoded navigation tables.
+   - Content archives (`/dersler/` vs `/en/lessons/`, `/yayinlar/` vs `/en/publications/`, `/yazilar/` vs `/en/posts/`) strictly isolate tags, category counts, and pagination per active language.
+   - Cross-language switching matches counterpart documents via `ref:`, `slug:`, or `translation_url`, with automated section-level 404 fallbacks.
+
+4. **Zero-Font Performance & Crisp Vector Icons**:
+   - Heavy legacy font files (`fontawesome-webfont.*`, `academicons.*`) and static vendor stylesheets (`bootstrap.css`, `js_composer.min.css`) have been eliminated.
+   - All social, academic, and UI icons render via inline SVG `<use>` references pointing to a cached, zero-overhead SVG sprite (`_includes/icons-sprite.svg`).
+
+5. **Dual Academic Print Architecture**:
+   - High-contrast, strictly monochrome print stylesheets (`_sass/_print.scss`) automatically transform the Homepage into a standard **US Academic Curriculum Vitae** and single course pages into an official **University Course Syllabus**.
 
 ---
 
@@ -32,11 +39,12 @@ flowchart TD
     %% ==========================================
     %% LAYER 1: CONFIGURATION & DATA
     %% ==========================================
-    subgraph L1["Layer 1: Core Configuration & Data Sources"]
-        CFG["_config.yml<br/><i>(Routes, Defaults, Collections, default_lang)</i>"]
-        LOC_TR["_data/locales/tr.yml<br/><i>(TR UI interface dictionary)</i>"]
-        LOC_EN["_data/locales/en.yml<br/><i>(EN UI interface dictionary)</i>"]
-        
+    subgraph L1["Layer 1: Configuration & Structured Data"]
+        CFG["_config.yml<br/>(Global Routes, Collections, Site Defaults)"]
+        SOC["_data/socials.yml<br/>(Centralized SNS, ORCID, Scholar, GitHub)"]
+        LOC_TR["_data/locales/tr.yml<br/>(TR UI Interface Dictionary)"]
+        LOC_EN["_data/locales/en.yml<br/>(EN UI Interface Dictionary)"]
+
         subgraph CompactCollections["Compact CV Collections (output: false)"]
             COL_EDU["_educations/"]
             COL_AWD["_awards/"]
@@ -50,268 +58,294 @@ flowchart TD
     end
 
     %% ==========================================
-    %% LAYER 2: REUSABLE PARTIALS (_includes/)
+    %% LAYER 2: ASSET & UTILITY PIPELINE
     %% ==========================================
-    subgraph L2["Layer 2: Reusable Partials (_includes/)"]
-        INC_HEAD["_includes/head.html<br/><i>(SEO, Meta, master.css)</i>"]
-        INC_SIDEBAR["_includes/sidebar.html<br/><i>(Profile, Dynamic Institution, Switcher)</i>"]
-        INC_NAV["_includes/navigation.html<br/><i>(Folder-Driven Menu: pages/lang/)</i>"]
-        INC_SWITCHER["_includes/language-switcher.html<br/><i>(TR/EN Flag Router via ref)</i>"]
-        INC_FOOTER["_includes/footer.html<br/><i>(Copyright, master.js ES6 module)</i>"]
+    subgraph L2["Layer 2: Asset & Utility Pipeline"]
+        SAS_MST["assets/css/master.scss<br/>(Native Sass Entrypoint)"]
+        SAS_PRT["_sass/_print.scss<br/>(US CV & Syllabus Print Engine)"]
+        SAS_PRT --> SAS_MST
+        
+        SVG_SPR["_includes/icons-sprite.svg<br/>(Central Vector SVG Sprite)"]
+        INC_ICO["_includes/icon.html<br/>(SVG Icon Helper: use href='#icon-name')"]
+        SVG_SPR --> INC_ICO
 
-        subgraph ModuleIncludes["Section Modules"]
-            INC_LES_HDR["_includes/lesson/lesson-header.html"]
-            INC_LES_TBL["_includes/lesson/lesson-timetable.html<br/><i>(Dynamic Headings Bar)</i>"]
-            INC_LES_SBR["_includes/lesson/lesson-sidebar.html"]
-            INC_LES_FTR["_includes/lesson/lesson-footer.html"]
-            INC_PST_SBR["_includes/post/sidebar.html<br/><i>(Localized Meta, Language-Scoped Widgets)</i>"]
+        SCR_VER["scripts/verify_network.py<br/>(Front-Matter Linter & Network CI)"]
+        SCR_ORC["scripts/sync_orcid.py<br/>(Zero-Config Crossref/ORCID Sync)"]
+        SCR_BND["scripts/bundle_js.py<br/>(ES6 JavaScript Module Bundler)"]
+    end
+
+    %% ==========================================
+    %% LAYER 3: LAYOUT TEMPLATES & PARTIALS
+    %% ==========================================
+    subgraph L3["Layer 3: Templates & Reusable Partials"]
+        INC_HEAD["_includes/head.html<br/>(SEO, Scholar Meta, OpenGraph, master.css)"]
+        INC_SIDEBAR["_includes/sidebar.html<br/>(Profile, Dynamic Institution, Socials)"]
+        INC_NAV["_includes/navigation.html<br/>(Folder-Driven Menu: pages/lang/)"]
+        INC_SWT["_includes/language-switcher.html<br/>(Resilient Switcher + 404 Fallback)"]
+        INC_FOOTER["_includes/footer.html<br/>(Copyright, bundle.js)"]
+
+        subgraph Layouts["Structural HTML Layouts (_layouts/)"]
+            LAY_DEF["_layouts/default.html<br/>(Root HTML shell, SVG sprite embed)"]
+            LAY_HOME["_layouts/homepage.html<br/>(Dynamic Academic CV View)"]
+            LAY_PAGE["_layouts/page.html<br/>(Static Page Container)"]
+            LAY_LES_SNG["_layouts/lesson/single.html<br/>(Modular Syllabus Dynamic Aggregator)"]
+            LAY_LES_ARC["_layouts/lesson/archive.html<br/>(Courseware Catalog Grid)"]
+            LAY_PUB_SNG["_layouts/publication/single.html<br/>(Publication Hero, DOI, BiBTeX)"]
+            LAY_PUB_ARC["_layouts/publication/archive.html<br/>(Scholarly Publication Archive)"]
+            LAY_PST_SBR["_layouts/post/sidebar.html<br/>(Article Reading Scaffold + Share Bar)"]
+            LAY_PST_SNG["_layouts/post/single.html<br/>(Individual Post Container)"]
+            LAY_PST_ARC["_layouts/post/archive.html<br/>(Localized Blog Archive Grid)"]
         end
     end
 
     %% ==========================================
-    %% LAYER 3: LAYOUT TEMPLATES (_layouts/)
+    %% LAYER 4: TARGET CONTENT & PUBLIC ENDPOINTS
     %% ==========================================
-    subgraph L3["Layer 3: Layout Templates (_layouts/)"]
-        LAY_DEF["_layouts/default.html<br/><i>(HTML shell, responsive wrapper)</i>"]
-        LAY_HOME["_layouts/homepage.html<br/><i>(Dynamic One-Page Academic CV)</i>"]
-        LAY_PAGE["_layouts/page.html<br/><i>(Static content container)</i>"]
-
-        subgraph LessonLayouts["Lesson Layouts"]
-            LAY_LES_SNG["_layouts/lesson/single.html"]
-            LAY_LES_ARC["_layouts/lesson/archive.html"]
-        end
-
-        subgraph PostLayouts["Post Layouts"]
-            LAY_PST_SBR["_layouts/post/sidebar.html<br/><i>(Article Scaffold + Share Bar)</i>"]
-            LAY_PST_SNG["_layouts/post/single.html"]
-            LAY_PST_ARC["_layouts/post/archive.html<br/><i>(Language-Filtered Post Grid)</i>"]
-        end
-
-        subgraph PubLayouts["Publication Layouts"]
-            LAY_PUB_SNG["_layouts/publication/single.html"]
-            LAY_PUB_ARC["_layouts/publication/archive.html<br/><i>(Language-Filtered Pub Grid)</i>"]
-        end
-
-        subgraph ProjLayouts["Project Layouts"]
-            LAY_PRJ_SNG["_layouts/project/single.html"]
-            LAY_PRJ_ARC["_layouts/project/archive.html"]
-        end
-    end
-
-    %% ==========================================
-    %% LAYER 4: TARGET CONTENT & OUTPUT
-    %% ==========================================
-    subgraph L4["Layer 4: Target Content & Public Output URLs"]
+    subgraph L4["Layer 4: Target Content & Public Endpoints"]
         subgraph StaticPages["Symmetrical Pages (pages/)"]
-            PG_TR_INDEX["pages/tr/index.md<br/><b>/</b>"]
-            PG_EN_INDEX["pages/en/index.md<br/><b>/en/</b>"]
-            PG_PAGES_TR["pages/tr/*.md<br/><b>/akademik/, /iletisim/, /carmen/, /dalis/</b>"]
-            PG_PAGES_EN["pages/en/*.md<br/><b>/en/academic/, /en/contact/, /en/carmen/, /en/diving/</b>"]
-            PG_ARC_TR["pages/tr/ archives<br/><b>/dersler/, /yazilar/, /projeler/, /yayinlar/</b>"]
-            PG_ARC_EN["pages/en/ archives<br/><b>/en/lessons/, /en/posts/, /en/projects/, /en/publications/</b>"]
+            PG_TR_INDEX["pages/tr/index.md -> /"]
+            PG_EN_INDEX["pages/en/index.md -> /en/"]
+            PG_PAGES_TR["pages/tr/*.md -> /akademik/, /iletisim/, etc."]
+            PG_PAGES_EN["pages/en/*.md -> /en/academic/, /en/contact/, etc."]
         end
 
-        subgraph RichCollections["Rich Content Collections (output: true)"]
-            COL_LES["_lessons/tr/* & _lessons/en/*<br/><b>/dersler/:slug/ & /en/lessons/:slug/</b>"]
-            COL_PST["_posts/tr/* & _posts/en/*<br/><b>/yazilar/:date/:title/ & /en/posts/:date/:title/</b>"]
-            COL_PUB["_publications/tr/* & _publications/en/*<br/><b>/yayinlar/:slug/ & /en/publications/:slug/</b>"]
-            COL_PRJ["_project/*<br/><b>/projeler/:slug/</b>"]
+        subgraph ModularCourseware["Modular Courseware (_lessons/)"]
+            LES_MAIN["_lessons/{lang}/{slug}/{slug}.md<br/>(Course Master Manifest)"]
+            LES_SUB["_lessons/{lang}/{slug}/*.md<br/>(01-outcomes, 02-policy, week-*.md)"]
+            LES_SUB --> LES_MAIN
+        end
+
+        subgraph ScholarlyAndBlog["Collections (_publications/ & _posts/)"]
+            COL_PUB["_publications/{lang}/*.md<br/>(Journal, Conference, Book)"]
+            COL_PST["_posts/{lang}/*.md<br/>(Bilingual Essays & Notes)"]
+        end
+
+        subgraph AIEndpoints["AI Semantic Endpoints (Root)"]
+            AI_TXT["llms.txt & llms-full.txt<br/>(Markdown Digest for LLMs)"]
+            AI_JSON["ai.json<br/>(Structured JSON Schema API)"]
         end
     end
 
     %% ==========================================
     %% PIPELINE LINKAGES
     %% ==========================================
-    CFG -.->|Scoped Defaults & Permalinks| L3
-    CFG -.->|Routing Rules| L4
-
-    PG_PAGES_TR -->|Scanned dynamically when lang=tr| INC_NAV
-    PG_TR_INDEX -->|Scanned dynamically when lang=tr| INC_NAV
-    PG_ARC_TR -->|Scanned dynamically when lang=tr| INC_NAV
-
-    PG_PAGES_EN -->|Scanned dynamically when lang=en| INC_NAV
-    PG_EN_INDEX -->|Scanned dynamically when lang=en| INC_NAV
-    PG_ARC_EN -->|Scanned dynamically when lang=en| INC_NAV
-
-    LOC_TR --> INC_SWITCHER
-    LOC_EN --> INC_SWITCHER
-    LOC_TR --> INC_SIDEBAR
-    LOC_EN --> INC_SIDEBAR
-    LOC_TR --> INC_PST_SBR
-    LOC_EN --> INC_PST_SBR
+    CFG -.-> L3
+    CFG -.-> L4
+    SOC --> INC_SIDEBAR
+    SOC --> SCR_ORC
+    LOC_TR --> L3
+    LOC_EN --> L3
 
     CompactCollections --> LAY_HOME
-    COL_PER --> LAY_PST_SBR
-    COL_PER --> INC_PST_SBR
-
     INC_HEAD --> LAY_DEF
     INC_SIDEBAR --> LAY_DEF
     INC_NAV --> INC_SIDEBAR
-    INC_SWITCHER --> INC_SIDEBAR
+    INC_SWT --> INC_SIDEBAR
+    INC_ICO --> INC_SIDEBAR
+    INC_ICO --> LAY_LES_SNG
+    INC_ICO --> LAY_PUB_SNG
     INC_FOOTER --> LAY_DEF
 
     LAY_DEF --> LAY_HOME
     LAY_DEF --> LAY_PAGE
     LAY_DEF --> LAY_LES_SNG
     LAY_DEF --> LAY_LES_ARC
-    LAY_DEF --> LAY_PST_SBR
-    LAY_DEF --> LAY_PST_ARC
     LAY_DEF --> LAY_PUB_SNG
     LAY_DEF --> LAY_PUB_ARC
-    LAY_DEF --> LAY_PRJ_SNG
-    LAY_DEF --> LAY_PRJ_ARC
-
+    LAY_DEF --> LAY_PST_SBR
     LAY_PST_SBR --> LAY_PST_SNG
-
-    INC_LES_HDR --> LAY_LES_SNG
-    INC_LES_TBL --> LAY_LES_SNG
-    INC_LES_SBR --> LAY_LES_SNG
-    INC_LES_FTR --> LAY_LES_SNG
-    INC_PST_SBR --> LAY_PST_SBR
+    LAY_DEF --> LAY_PST_ARC
 
     LAY_HOME --> PG_TR_INDEX
     LAY_HOME --> PG_EN_INDEX
-    LAY_PAGE --> PG_PAGES_TR
-    LAY_PAGE --> PG_PAGES_EN
-    
-    LAY_LES_ARC --> PG_ARC_TR
-    LAY_LES_ARC --> PG_ARC_EN
-    LAY_LES_SNG --> COL_LES
-
-    LAY_PST_ARC --> PG_ARC_TR
-    LAY_PST_ARC --> PG_ARC_EN
-    LAY_PST_SNG --> COL_PST
-
-    LAY_PUB_ARC --> PG_ARC_TR
-    LAY_PUB_ARC --> PG_ARC_EN
+    LAY_LES_SNG --> LES_MAIN
     LAY_PUB_SNG --> COL_PUB
-
-    LAY_PRJ_ARC --> PG_ARC_TR
-    LAY_PRJ_ARC --> PG_ARC_EN
-    LAY_PRJ_SNG --> COL_PRJ
+    LAY_PST_SNG --> COL_PST
 ```
 
 ---
 
-## 3. Bilingual Routing & Content Isolation Contract
+## 3. Subsystem Architecture
 
-### 3.1 Dynamic Navigation Menu (`_includes/navigation.html`)
-- **No Hardcoded Navigation Tables**: Menu items are dynamically queried from `site.pages` matching the active folder prefix:
-  - Turkish: `pages/tr/`
-  - English: `pages/en/`
-- **Front Matter Controls**:
-  - `nav_title:` Clean label displayed in the menu (falls back to `title`).
-  - `nav_order:` Numerical sorting order (1, 2, 3...).
-  - `parent:` Parent page's `ref` identifier for nested dropdown submenus.
-  - `nav_exclude: true`: Hides private or unlisted pages from the menu.
+### 3.1 Modular Lesson Content Separation (`_lessons/`)
+Rather than maintaining monolithic single markdown files containing 14 weeks of lecture notes and syllabi, courses are divided into clean, decoupled sub-documents:
 
-### 3.2 Bidirectional Page Switcher (`_includes/language-switcher.html`)
-- Every bilingual document shares a matching `ref:` property in its front matter.
-- When toggling flags:
-  1. Checks `site.pages` for target language matching `ref`.
-  2. Checks current collection (`lessons`, `posts`, `publications`, `project`).
-  3. Checks all rich collections as fallback.
-  4. Falls back to target language homepage (`/` or `/en/`).
+```
+_lessons/
+└── tr/
+    └── bte311/
+        ├── bte311.md            <- Master course entry (layout: lesson/single)
+        ├── 01-outcomes.md       <- Course outcomes & competencies (section_type: outcomes)
+        ├── 02-policy.md         <- Course policies & grading breakdown (section_type: policy)
+        ├── week-01.md           <- Weekly topic & practical tasks (section_type: week, order: 1)
+        ├── week-02.md           <- Weekly topic & practical tasks (section_type: week, order: 2)
+        └── ...
+```
 
-### 3.3 Dynamic Institution & Profile Resolution (`_includes/sidebar.html`)
-- Profile card queries the home document corresponding to `current_lang` (`ref: home`).
-- Institution dynamically displays:
-  - **Turkish**: `Doğu Akdeniz Üniversitesi` (avatar links to `/`).
-  - **English**: `Eastern Mediterranean University` (avatar links to `/en/`).
-- Copyright statement automatically uses `locale.ui.all_rights_reserved`.
+#### Runtime Assembly Engine:
+1. `_layouts/lesson/single.html` extracts the current course directory by analyzing `page.path`.
+2. It queries `site.lessons` for all sub-documents sharing that directory path.
+3. Documents are categorized into metadata scopes (`outcomes`, `policy`, `week`, `exam`).
+4. Weekly units are sorted numerically by their `order:` front-matter attribute and rendered sequentially into the unified syllabus view, complete with expandable `<details>` modules, learning goals, and assignment directives.
+5. In print mode, `_sass/_print.scss` formats this assembled document as an official university Course Syllabus.
 
-### 3.4 Language-Isolated Archive & Single Views
-- **Post & Publication Archives**:
-  - `site.posts` and `site.publications` are strictly partitioned into `filtered_posts` and `filtered_publications` matching `current_lang`.
-  - Category badges, search bars, and post counts only consider documents within that language domain.
-- **Single Post Sidebar & Footers**:
-  - "Related Posts" only displays sibling articles in the same language and category.
-  - "Recent Posts" and "Categories" directory only list content belonging to the active language.
-  - Date formats adhere to locale: `%B %d, %Y` (English) vs `%d.%m.%Y` (Turkish).
-  - Back buttons route strictly to the active archive (`/en/posts/` vs `/yazilar/`).
+---
 
-### 3.5 Dynamic Empty Category Suppression (`_layouts/homepage.html`)
-- When rendering CV section cards (e.g. Education, Awards, Publications), the template inspects the active language collection.
-- If a category has no entries for the active language, its header and section are completely suppressed, avoiding blank cards.
+### 3.2 Centralized Social & Scholarly Networks (`_data/socials.yml`)
+All academic identifiers, citation databases, developer platforms, and communication channels are configured in `_data/socials.yml`:
+
+```yaml
+# Academic Profiles
+orcid: "0000-0002-1825-0097"
+google_scholar: "https://scholar.google.com/citations?user=..."
+researchgate: "https://www.researchgate.net/profile/..."
+academia: "https://independent.academia.edu/..."
+
+# Developer & Social
+github: "https://github.com/..."
+linkedin: "https://www.linkedin.com/in/..."
+x: "https://x.com/..."
+email: "author@university.edu"
+```
+
+- **Sidebar Integration**: `_includes/sidebar.html` loops over `site.data.socials`, automatically rendering standard vector icons via `{% include icon.html name=platform %}`.
+- **ORCID Formatter**: Bare 16-digit ORCID handles (`0000-0002-xxxx-xxxx`) automatically resolve to canonical `https://orcid.org/0000-0002-xxxx-xxxx` URLs in UI anchors and schema tags.
+- **CLI Sync Utility**: `scripts/sync_orcid.py` reads `orcid:` directly from `_data/socials.yml` to query Crossref and ORCID public APIs.
+
+---
+
+### 3.3 Zero-Font Vector SVG System
+Web font icon kits (`fontawesome-webfont.*`, `academicons.*`) are replaced with an optimized inline SVG sprite architecture:
+
+- **Central Sprite (`_includes/icons-sprite.svg`)**: Embedded once at the top of `_layouts/default.html` inside an invisible SVG `<defs>` block.
+- **Helper Include (`_includes/icon.html`)**:
+  ```liquid
+  {% include icon.html name="orcid" class="icon-sm" %}
+  ```
+  Renders:
+  ```html
+  <svg class="icon icon-orcid icon-sm" aria-hidden="true" focusable="false">
+    <use href="#icon-orcid"></use>
+  </svg>
+  ```
+- **Performance Benefits**: Eliminates render-blocking FOIT (Flash of Invisible Text), cuts ~400KB of binary webfont downloads, and renders sharp at all DPI scaling levels.
+
+---
+
+### 3.4 Smart Cross-Language Switcher with 404 Fallback
+The language switcher (`_includes/language-switcher.html`) ensures that switching between Turkish and English never lands on a 404 error page:
+
+1. **Exact Counterpart Matching**:
+   - Inspects `ref:`, `slug:`, and `translation_url:` front-matter properties.
+   - Searches `site.pages`, `site.posts`, `site.publications`, and `site.lessons` in the opposite language (`current_lang == 'tr' ? 'en' : 'tr'`).
+2. **Graceful Section Fallback**:
+   - If an exact counterpart page does not exist:
+     - Publications fallback: `/en/publications/` or `/yayinlar/`
+     - Lessons fallback: `/en/lessons/` or `/dersler/`
+     - Blog posts fallback: `/en/posts/` or `/yazilar/`
+     - All other pages fallback: `/en/` or `/`
+
+---
+
+### 3.5 Academic Print Engine (`_sass/_print.scss`)
+Native print styles ensure that browser printing (`Cmd + P` / `Ctrl + P`) or PDF exports produce official, high-contrast academic documents:
+
+- **Monochrome Reset**: Enforces `color: #000 !important; background: transparent !important;` across all elements, disabling shadows, gradients, and dark mode overrides.
+- **UI Element Suppression**: Suppresses `header`, `footer`, `nav`, `.navbar`, `.sidebar`, `.language-switcher`, `.btn`, search inputs, and pagination controls.
+- **Homepage -> US Academic Curriculum Vitae**:
+  - Formats personal profile, affiliations, education, academic appointments, awards, and certifications into a clean, single/multi-page academic CV with standard serif typography (`Times New Roman`).
+- **Lesson Page -> Academic Course Syllabus**:
+  - Strips interactive timetable bars and drawer buttons.
+  - Automatically unfolds all `<details>` and `<summary>` accordion units so the full weekly schedule, grading policies, and competencies print in full.
+  - Generates course syllabus headers with course title, semester, instructor info, and weekly breakdown tables.
+
+---
+
+### 3.6 Automated CI Validation & Linter Suite (`scripts/verify_network.py`)
+`scripts/verify_network.py` serves as both an automated CI front-matter linter and an academic network health checker:
+
+```bash
+python3 scripts/verify_network.py
+```
+
+- **Scope & Validation Rules**:
+  - `_publications/`: Requires `title`, `date` (`YYYY-MM-DD`), and `lang` (`tr`|`en`). Verifies valid `entryType` (`article`, `inproceedings`, `book`, etc.) and guards against duplicate DOIs.
+  - `_lessons/`: Main course manifests must define `layout: lesson/single`. Modular week files must contain `title`, `order` (integer), and `topic`.
+  - `_posts/`: Requires `title`, `date`, and `lang`.
+- **Exit Codes**: Returns `0` on clean pass; returns `1` with explicit file paths and missing attributes on failure, blocking broken PRs in GitHub Actions.
 
 ---
 
 ## 4. Front-End Asset Architecture
 
-### 4.1 Modular CSS Hierarchy (`assets/css/modules/`)
-Styles are structured into 24 decoupled BEM-compliant CSS modules, imported and aggregated in strict dependency order by `assets/css/master.css`:
+### 4.1 Native SCSS Pipeline
+All styles are compiled by Jekyll via `assets/css/master.scss`, pulling from modular partials in `_sass/`:
 
-| Module File | Component Responsibility |
-| :--- | :--- |
-| `color.css` | CSS custom properties, palette variables, and theme tokens. |
-| `typography.css` | Font families, typographic scale, line-heights, and headings. |
-| `layout.css` | Scaffold grid, responsive wrappers, container bounds. |
-| `sidebar.css` | Desktop persistent sidebar & off-canvas drawer navigation. |
-| `navigation.css` | Menu items, active states, hover effects, and mobile toggles. |
-| `flags.css` | Multilingual flag icons and language switcher styling. |
-| `profile.css` | User portrait, institution text, and author badges. |
-| `social.css` | Academic and social networking icon pills. |
-| `footer.css` | Sticky footer and copyright notice layout. |
-| `forms.css` | Search inputs, filter fields, and contact form controls. |
-| `card.css` | Base card layout, borders, soft shadows, and hover lifts. |
-| `homepage.css` | Academic CV timeline sections and resume widgets. |
-| `timeline.css` | Chronological education & career timeline markers. |
-| `archive.css` | Course, publication, and blog post archive grid listings. |
-| `single.css` | Single article reading view, typography, and meta strips. |
-| `post.css` | Post body styles, code blocks, blockquotes, and callouts. |
-| `publication.css` | Dedicated `.publication-hero`, DOI badges, BibTeX box, citation styles. |
-| `lesson.css` | Course overview, syllabus structure, and lecture notes. |
-| `lesson-panel.css` | Course metadata sidebar cards, instructor badges, and navigation bar. |
-| `dates.css` | Calendar icon stamps and localized date pills. |
-| `details.css` | Expandable `<details>` and course unit accordions. |
-| `gallery.css` | Media grid layouts and responsive image frames. |
-| `contact.css` | Contact channels, address blocks, and interactive maps. |
-| `visual-composer.css`| Grid utilities, row/column alignments, and responsive helpers. |
+| Partial Path | Scope & Responsibility |
+|:---|:---|
+| `_sass/_color.scss` | CSS custom property tokens, palettes, dark/light contrast rules. |
+| `_sass/_typography.scss` | Typographic scale, headings, font stacks, and SVG `.icon` dimensions. |
+| `_sass/_layout.scss` | Core grid wrappers, responsive scaffolding, mobile breakpoints. |
+| `_sass/_sidebar.scss` | Persistent sidebar, author portrait, and dynamic institution badge. |
+| `_sass/_navigation.scss`| Folder-driven menu typography, active states, mobile toggles. |
+| `_sass/_social.scss` | Academic & social SVG icon link styling. |
+| `_sass/_homepage.scss` | One-page academic CV layout, timeline components, compact cards. |
+| `_sass/_publication.scss`| Publication hero, DOI badges, instant BiBTeX box, citation styling. |
+| `_sass/_lesson.scss` | Course syllabus layout, weekly breakdown grids, timetable pills. |
+| `_sass/_print.scss` | **Academic Print Engine** for US CVs and Course Syllabi. |
 
-### 4.2 ES6 JavaScript Modules (`assets/js/modules/`)
-Client-side interactivity uses modern, dependency-free vanilla ES6 modules aggregated by `assets/js/master.js`:
+### 4.2 Modular Vanilla ES6 JavaScript (`assets/js/modules/`)
+Interactive features run with zero third-party framework dependencies, bundled into `assets/js/bundle.js` via `scripts/bundle_js.py`:
 
-- **`navigation.js`**: Mobile drawer toggle, off-canvas backdrop handling, and submenu click events.
+- **`navigation.js`**: Mobile drawer toggle, off-canvas backdrop handling, and keyboard accessibility.
 - **`scroll.js`**: Smooth scrolling for intra-page anchor links with sticky header offset compensation.
 - **`archive.js`**: Instant client-side live search and multi-tag filtering across post, publication, and lesson archives.
-- **`lesson.js`**: Dynamic headings scanner (`h2`/`h3`), generating one-click syllabus navigation pills in `.lesson-timetable-bar`.
-- **`publications.js`**: BibTeX copy-to-clipboard actions and citation format toggling.
+- **`lesson.js`**: Dynamic headings scanner (`h2`/`h3`) generating one-click syllabus navigation pills in `.lesson-timetable-bar`.
+- **`publications.js`**: BiBTeX copy-to-clipboard actions and citation format toggling.
 - **`accordion.js`**: Accessible accordion expand/collapse mechanics for syllabus weeks and course units.
-- **`timeline.js`**: Interactive timeline animations and reveal states on scroll.
 
 ---
 
 ## 5. Exhaustive Blast Radius & File Impact Matrix
 
-| File / Directory Path | Role & Responsibility | Upstream Dependents | Downstream Dependencies | Public Live URLs Impacted | Change Risk Level |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **`_config.yml`** | Unified configuration: personal site profile at top, framework collections & defaults below. | Jekyll Build Engine | `_layouts/`, `pages/`, plugins | **Entire website globally** (all routes, permalinks, language prefixes). | `🔴 Critical Engine` |
-| **`_data/locales/tr.yml`** | Turkish UI interface dictionary: button labels, headings, metadata labels, institution names. | Partials, layouts, switcher | None | Text strings across all Turkish routes. | `🟡 Medium` |
-| **`_data/locales/en.yml`** | English UI interface dictionary: button labels, headings, metadata labels, institution names. | Partials, layouts, switcher | None | Text strings across all English routes. | `🟡 Medium` |
-| **`_includes/navigation.html`** | **Dynamic navigation engine:** scans `pages/[current_lang]/`, sorts by `nav_order`, builds parent/child menus. | `_includes/sidebar.html` | Front matter of `pages/tr/` & `pages/en/` | **Sitewide navigation menu** across all devices and pages. | `🟠 High` |
-| **`_includes/sidebar.html`** | Off-canvas / desktop persistent sidebar: author portrait, dynamic institution, navigation, switcher. | `_layouts/default.html` | `navigation.html`, `language-switcher.html`, `locales` | **Sitewide** (main user navigation on every page). | `🟠 High` |
-| **`_includes/language-switcher.html`**| Resolves translation targets between TR and EN using shared `ref` tags, falling back cleanly to root. | `_includes/sidebar.html` | `site.languages`, `site.pages`, collections | **Sitewide** (the flag switcher at sidebar footer). | `🟠 High` |
-| **`_layouts/default.html`** | Root HTML scaffolding: `<!DOCTYPE>`, `<html>`, `<body>`, `#wrapper`, `#main`. | All child layouts | `head.html`, `sidebar.html`, `footer.html` | **Sitewide** (every single page on the site). | `🔴 Critical` |
-| **`_layouts/homepage.html`** | Renders dynamic one-page academic CV with language detection and empty category suppression. | Used by `pages/tr/index.md` & `pages/en/index.md` | Compact collections, `locales` | Root landing pages: `/` (TR) and `/en/` (EN). | `🟠 High` |
-| **`_layouts/post/sidebar.html`** | Single post reading layout: localized hero header, article body, share bar, and back button. | Used by `_layouts/post/single.html` | `_includes/post/sidebar.html`, `locales` | All individual post URLs (`/yazilar/...`, `/en/posts/...`). | `🟡 Medium` |
-| **`_includes/post/sidebar.html`** | Post metadata card, localized fields, language-filtered related posts, recent posts, and categories widget. | `_layouts/post/sidebar.html` | `filtered_posts`, `locales` | All individual post sidebars. | `🟡 Medium` |
-| **`_layouts/post/archive.html`** | Searchable, filterable post grid strictly partitioned by language. | `pages/tr/post.md`, `pages/en/post.md` | `assets/js/modules/archive.js` | Blog archives: `/yazilar/` and `/en/posts/`. | `🟡 Medium` |
-| **`_layouts/publication/single.html`**| Single publication layout featuring dedicated `.publication-hero`, citation cards, BibTeX box. | Used by `_publications/` | `assets/css/modules/publication.css` | All individual publication URLs (`/yayinlar/...`, `/en/publications/...`).| `🟡 Medium` |
-| **`_layouts/publication/archive.html`**| Filterable publication archive strictly partitioned by language. | `pages/tr/publications.md`, `pages/en/publications.md`| `assets/js/modules/archive.js` | Publication archives: `/yayinlar/` and `/en/publications/`. | `🟡 Medium` |
-| **`_layouts/lesson/single.html`** | Detailed course syllabus layout: timetable bar, instructor card, learning outcomes, lecture notes. | Used by `_lessons/` | `_includes/lesson/*`, `lesson-panel.css` | All course URLs (`/dersler/...`, `/en/lessons/...`). | `🟡 Medium` |
-| **`_layouts/lesson/archive.html`** | Academic course catalog grid with department and semester filters. | `pages/tr/lessons.md`, `pages/en/lessons.md` | `assets/js/modules/archive.js` | Course archives: `/dersler/` and `/en/lessons/`. | `🟡 Medium` |
-| **`assets/css/master.css`** | CSS Master aggregator that imports all 24 modular stylesheets. | `_includes/head.html` | All `assets/css/modules/*.css` | **Sitewide styling and visual presentation**. | `🟠 High` |
-| **`assets/js/master.js`** | ES6 module bundle consolidator initializing smooth scroll, navigation, live search, and syllabus pills. | `_includes/footer.html` | `assets/js/modules/*.js` | **Sitewide client-side interactivity and UX**. | `🟠 High` |
+| File / Directory Path | Role & System Responsibility | Upstream Ingestion | Downstream Dependents | Public Output Impacted | Change Blast Radius |
+|:---|:---|:---|:---|:---|:---|
+| **`_config.yml`** | Global engine configuration: URLs, collections, permalinks, plugin registry. | Jekyll Core | All layouts, includes, pages, collections | **Entire website globally** | `🔴 Critical Engine` |
+| **`_data/socials.yml`** | Central registry for ORCID, Google Scholar, GitHub, LinkedIn, Email. | User / Editor | `_includes/sidebar.html`, `scripts/sync_orcid.py` | Sitewide sidebars, footers, profile schemas, ORCID sync | `🟠 High` |
+| **`_data/locales/{tr,en}.yml`** | UI interface dictionaries for navigation, buttons, syllabus labels. | Translators | `_includes/*`, `_layouts/*` | All localized UI labels in respective language | `🟡 Medium` |
+| **`_includes/icon.html`** | Reusable SVG icon renderer (`<svg><use href="#..."></svg>`). | Layouts / Partials | `_includes/icons-sprite.svg` | Sitewide iconography across cards, buttons, sidebars | `🟠 High` |
+| **`_includes/icons-sprite.svg`** | Vector SVG definitions for all social, academic, and UI icons. | `_includes/icon.html` | `_layouts/default.html` | Sitewide vector icon rendering | `🟠 High` |
+| **`_includes/navigation.html`** | Scans `pages/{lang}/` to dynamically construct localized menu trees. | `_includes/sidebar.html` | `pages/tr/*.md`, `pages/en/*.md` | Navigation bars on desktop and mobile viewports | `🟠 High` |
+| **`_includes/language-switcher.html`** | Resolves translation counterparts via `ref`/`slug` with section 404 fallbacks. | `_includes/sidebar.html` | `site.pages`, `site.posts`, `site.lessons`, `site.publications` | Flag switcher in sidebar footer on every page | `🟠 High` |
+| **`_layouts/default.html`** | Master HTML scaffold (`<html>`, `<head>`, `#wrapper`, `#main`, SVG sprite). | All child layouts | `_includes/head.html`, `sidebar.html`, `footer.html` | **Every single page on the site** | `🔴 Critical` |
+| **`_layouts/homepage.html`** | Renders dynamic one-page academic CV with category suppression. | `pages/{lang}/index.md` | Compact collections (`_educations/`, etc.) | Root landing pages (`/` and `/en/`) | `🟠 High` |
+| **`_layouts/lesson/single.html`** | Assembles modular course sub-documents into an interactive course syllabus. | `_lessons/{lang}/{slug}/` | `_includes/lesson/*`, `_sass/_lesson.scss` | All course URLs (`/dersler/:slug/`, `/en/lessons/:slug/`) | `🟠 High` |
+| **`_layouts/publication/single.html`**| Single publication layout with `.publication-hero`, DOI badges, BiBTeX. | `_publications/` | `_includes/icon.html`, `assets/js/modules/publications.js` | All publication URLs (`/yayinlar/:slug/`, `/en/publications/:slug/`) | `🟡 Medium` |
+| **`_sass/_print.scss`** | Academic print stylesheets for US Academic CV and University Syllabus. | `assets/css/master.scss`| Browser print dialog (`Cmd + P` / `Ctrl + P`) | Physical prints and PDF exports of homepage & courses | `🟡 Medium` |
+| **`scripts/verify_network.py`** | CI front-matter linter and academic network health validation script. | GitHub Actions CI | `_publications/`, `_lessons/`, `_posts/` | Pull request validation and deployment gatekeeping | `🟠 High` |
+| **`scripts/sync_orcid.py`** | Fetches scholarly works from ORCID/Crossref APIs into markdown. | Editor / CLI | `_data/socials.yml`, `_publications/` | Generates/updates publication markdown documents | `🟡 Medium` |
 
 ---
 
-## 6. Developer Verification & Audit Runbook
+## 6. Developer Pre-Flight Audit Runbook
 
-Run these commands prior to submitting pull requests or pushing changes to GitHub Pages:
+Run these checks locally prior to committing changes or opening a pull request:
 
-### 1. Audit dynamic navigation pages discovered by Jekyll
+### 1. Execute Markdown Front-Matter & Network Linter
+```bash
+python3 scripts/verify_network.py
+```
+*Guarantees zero malformed front-matter blocks, validates required keys, and verifies lesson sequencing.*
+
+### 2. Verify Jekyll Site Compilation
 ```bash
 export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+bundle exec jekyll build --trace
+```
+*Ensures all Liquid tags, collection loops, and SCSS modules compile with zero errors.*
+
+### 3. Audit Dynamic Navigation Page Discovery
+```bash
 bundle exec ruby -rjekyll -e '
 site = Jekyll::Site.new(Jekyll.configuration({"source" => "."}))
 site.read
@@ -322,18 +356,6 @@ site.pages.select { |p| p.path.start_with?("pages/en/") && !p.data["nav_exclude"
 '
 ```
 
-### 2. Audit all shared `ref` keys across bilingual pages
-```bash
-grep -rn "^ref:" academy/pages/ | sort -k2
-```
-
-### 3. Verify clean Jekyll build with strict error reporting
-```bash
-export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
-cd academy && bundle exec jekyll build --trace
-```
-
-### 4. Verify language-isolated outputs
-- Check that `/en/posts/` and `/yazilar/` contain strictly English and Turkish posts respectively.
-- Verify that English single post pages display `Eastern Mediterranean University` in the sidebar and `All Posts` on back buttons.
-- Verify that Turkish single post pages display `Doğu Akdeniz Üniversitesi` in the sidebar and `Tüm Yazılar` on back buttons.
+### 4. Test Academic Print Layouts
+- Open `/` in your browser and press `Cmd + P` (or `Ctrl + P`) to verify the clean, serif US Academic CV format.
+- Open any lesson page (e.g., `/dersler/bte311/`) and open the print preview to verify the unrolled academic syllabus format.
